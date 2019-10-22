@@ -42,6 +42,7 @@
             this.Remove.TabIndex = 0;
             this.Remove.Text = "Remove";
             this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.Click += new System.EventHandler(this.button1_Click);
             // 
             // Cancel
             // 
@@ -51,6 +52,7 @@
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // Team_Name
             // 

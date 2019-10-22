@@ -57,6 +57,7 @@
             this.Remove_Team.TabIndex = 1;
             this.Remove_Team.Text = "Remove Team";
             this.Remove_Team.UseVisualStyleBackColor = true;
+            this.Remove_Team.Click += new System.EventHandler(this.button2_Click);
             // 
             // Refresh
             // 

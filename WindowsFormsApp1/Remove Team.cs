@@ -16,5 +16,18 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+        // Remove Team Button
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            Close();
+        }
+
+        // Cancel Button
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
