@@ -17,13 +17,19 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+        private void button4_Click(object sender, EventArgs e)
+        {
 
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             var f2 = new Add_Team();
             f2.Show();
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
 
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
