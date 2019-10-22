@@ -28,22 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Add = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Team_Name = new System.Windows.Forms.Label();
             this.GithubURL = new System.Windows.Forms.Label();
             this.TeamNameBox = new System.Windows.Forms.TextBox();
             this.GithubURLBox = new System.Windows.Forms.TextBox();
+            this.Add = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // Add
-            // 
-            this.Add.Location = new System.Drawing.Point(204, 327);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(75, 42);
-            this.Add.TabIndex = 0;
-            this.Add.Text = "Add";
-            this.Add.UseVisualStyleBackColor = true;
             // 
             // Cancel
             // 
@@ -53,6 +44,7 @@
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // Team_Name
             // 
@@ -88,17 +80,27 @@
             this.GithubURLBox.Size = new System.Drawing.Size(664, 26);
             this.GithubURLBox.TabIndex = 5;
             // 
+            // Add
+            // 
+            this.Add.Location = new System.Drawing.Point(225, 327);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(75, 42);
+            this.Add.TabIndex = 6;
+            this.Add.Text = "Add";
+            this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Add_Team
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Add);
             this.Controls.Add(this.GithubURLBox);
             this.Controls.Add(this.TeamNameBox);
             this.Controls.Add(this.GithubURL);
             this.Controls.Add(this.Team_Name);
             this.Controls.Add(this.Cancel);
-            this.Controls.Add(this.Add);
             this.Name = "Add_Team";
             this.Text = "Add Team";
             this.ResumeLayout(false);
@@ -107,12 +109,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label Team_Name;
         private System.Windows.Forms.Label GithubURL;
         private System.Windows.Forms.TextBox TeamNameBox;
         private System.Windows.Forms.TextBox GithubURLBox;
+        private System.Windows.Forms.Button Add;
     }
 }

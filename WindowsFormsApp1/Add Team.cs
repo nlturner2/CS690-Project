@@ -24,7 +24,21 @@ namespace WindowsFormsApp1
 
         private void GithubURL_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        // Add Team Button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            
+            Close();
+        }
+        
+        // Cancel Button
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class TeamDashboard
+    partial class Team_Dashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,113 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Add_Team = new System.Windows.Forms.Button();
-            this.Remove_Team = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
-            this.Settings = new System.Windows.Forms.Button();
-            this.Notifications = new System.Windows.Forms.Label();
-            this.Team_Dashboard = new System.Windows.Forms.Label();
-            this.Team_List = new System.Windows.Forms.ListBox();
-            this.Notifications_List = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Weekly_Progress = new System.Windows.Forms.Button();
+            this.Notes = new System.Windows.Forms.Button();
+            this.Github_History = new System.Windows.Forms.Button();
+            this.TeadDashboard = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Team_Members = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Add_Team
+            // button1
             // 
-            this.Add_Team.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Add_Team.Location = new System.Drawing.Point(976, 12);
-            this.Add_Team.Name = "Add_Team";
-            this.Add_Team.Size = new System.Drawing.Size(75, 64);
-            this.Add_Team.TabIndex = 0;
-            this.Add_Team.Text = "Add Team";
-            this.Add_Team.UseVisualStyleBackColor = true;
-            this.Add_Team.Click += new System.EventHandler(this.button3_Click);
+            this.button1.Location = new System.Drawing.Point(713, 340);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 46);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // Remove_Team
+            // Weekly_Progress
             // 
-            this.Remove_Team.Location = new System.Drawing.Point(1057, 13);
-            this.Remove_Team.Name = "Remove_Team";
-            this.Remove_Team.Size = new System.Drawing.Size(98, 64);
-            this.Remove_Team.TabIndex = 1;
-            this.Remove_Team.Text = "Remove Team";
-            this.Remove_Team.UseVisualStyleBackColor = true;
+            this.Weekly_Progress.Location = new System.Drawing.Point(713, 236);
+            this.Weekly_Progress.Name = "Weekly_Progress";
+            this.Weekly_Progress.Size = new System.Drawing.Size(75, 46);
+            this.Weekly_Progress.TabIndex = 1;
+            this.Weekly_Progress.Text = "Weekly Progress";
+            this.Weekly_Progress.UseVisualStyleBackColor = true;
             // 
-            // Refresh
+            // Notes
             // 
-            this.Refresh.Location = new System.Drawing.Point(884, 12);
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(86, 64);
-            this.Refresh.TabIndex = 2;
-            this.Refresh.Text = "Refresh";
-            this.Refresh.UseVisualStyleBackColor = true;
-            this.Refresh.Click += new System.EventHandler(this.button3_Click);
+            this.Notes.Location = new System.Drawing.Point(713, 392);
+            this.Notes.Name = "Notes";
+            this.Notes.Size = new System.Drawing.Size(75, 46);
+            this.Notes.TabIndex = 2;
+            this.Notes.Text = "Notes";
+            this.Notes.UseVisualStyleBackColor = true;
             // 
-            // Settings
+            // Github_History
             // 
-            this.Settings.Location = new System.Drawing.Point(1539, 10);
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(83, 66);
-            this.Settings.TabIndex = 3;
-            this.Settings.Text = "Settings";
-            this.Settings.UseVisualStyleBackColor = true;
-            this.Settings.Click += new System.EventHandler(this.button1_Click);
+            this.Github_History.Location = new System.Drawing.Point(713, 288);
+            this.Github_History.Name = "Github_History";
+            this.Github_History.Size = new System.Drawing.Size(75, 46);
+            this.Github_History.TabIndex = 3;
+            this.Github_History.Text = "Github History";
+            this.Github_History.UseVisualStyleBackColor = true;
             // 
-            // Notifications
+            // TeadDashboard
             // 
-            this.Notifications.AutoSize = true;
-            this.Notifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Notifications.Location = new System.Drawing.Point(1156, 28);
-            this.Notifications.Name = "Notifications";
-            this.Notifications.Size = new System.Drawing.Size(158, 29);
-            this.Notifications.TabIndex = 4;
-            this.Notifications.Text = "Notifications";
-            this.Notifications.Click += new System.EventHandler(this.label1_Click);
+            this.TeadDashboard.AutoSize = true;
+            this.TeadDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TeadDashboard.Location = new System.Drawing.Point(8, 9);
+            this.TeadDashboard.Name = "TeadDashboard";
+            this.TeadDashboard.Size = new System.Drawing.Size(146, 20);
+            this.TeadDashboard.TabIndex = 4;
+            this.TeadDashboard.Text = "Team Dashboard";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 343);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(695, 95);
+            this.listBox1.TabIndex = 5;
+            // 
+            // Team_Members
+            // 
+            this.Team_Members.AutoSize = true;
+            this.Team_Members.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Team_Members.Location = new System.Drawing.Point(13, 321);
+            this.Team_Members.Name = "Team_Members";
+            this.Team_Members.Size = new System.Drawing.Size(131, 20);
+            this.Team_Members.TabIndex = 6;
+            this.Team_Members.Text = "Team Members";
             // 
             // Team_Dashboard
             // 
-            this.Team_Dashboard.AutoSize = true;
-            this.Team_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Team_Dashboard.Location = new System.Drawing.Point(24, 28);
-            this.Team_Dashboard.Name = "Team_Dashboard";
-            this.Team_Dashboard.Size = new System.Drawing.Size(214, 29);
-            this.Team_Dashboard.TabIndex = 5;
-            this.Team_Dashboard.Text = "Team Dashboard";
-            // 
-            // Team_List
-            // 
-            this.Team_List.FormattingEnabled = true;
-            this.Team_List.ItemHeight = 20;
-            this.Team_List.Location = new System.Drawing.Point(29, 82);
-            this.Team_List.Name = "Team_List";
-            this.Team_List.ScrollAlwaysVisible = true;
-            this.Team_List.Size = new System.Drawing.Size(1126, 1004);
-            this.Team_List.TabIndex = 6;
-            this.Team_List.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // Notifications_List
-            // 
-            this.Notifications_List.FormattingEnabled = true;
-            this.Notifications_List.ItemHeight = 20;
-            this.Notifications_List.Location = new System.Drawing.Point(1161, 82);
-            this.Notifications_List.Name = "Notifications_List";
-            this.Notifications_List.ScrollAlwaysVisible = true;
-            this.Notifications_List.Size = new System.Drawing.Size(472, 1004);
-            this.Notifications_List.TabIndex = 7;
-            // 
-            // TeamDashboard
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1643, 1093);
-            this.Controls.Add(this.Notifications_List);
-            this.Controls.Add(this.Team_List);
-            this.Controls.Add(this.Team_Dashboard);
-            this.Controls.Add(this.Notifications);
-            this.Controls.Add(this.Settings);
-            this.Controls.Add(this.Refresh);
-            this.Controls.Add(this.Remove_Team);
-            this.Controls.Add(this.Add_Team);
-            this.Name = "TeamDashboard";
-            this.Text = "Team Dashboard";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Team_Members);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.TeadDashboard);
+            this.Controls.Add(this.Github_History);
+            this.Controls.Add(this.Notes);
+            this.Controls.Add(this.Weekly_Progress);
+            this.Controls.Add(this.button1);
+            this.Name = "Team_Dashboard";
+            this.Text = "Team_Dashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,14 +122,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Add_Team;
-        private System.Windows.Forms.Button Remove_Team;
-        private System.Windows.Forms.Button Refresh;
-        private System.Windows.Forms.Button Settings;
-        private System.Windows.Forms.Label Notifications;
-        private System.Windows.Forms.Label Team_Dashboard;
-        private System.Windows.Forms.ListBox Team_List;
-        private System.Windows.Forms.ListBox Notifications_List;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Weekly_Progress;
+        private System.Windows.Forms.Button Notes;
+        private System.Windows.Forms.Button Github_History;
+        private System.Windows.Forms.Label TeadDashboard;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label Team_Members;
     }
 }
-

@@ -8,36 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace WindowsFormsApp1
 {
-    public partial class TeamDashboard : Form
+    public partial class Team_Dashboard : Form
     {
-        public TeamDashboard()
+        public Team_Dashboard()
         {
             InitializeComponent();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var f2 = new Add_Team();
-            f2.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
-    
 }
