@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Remove Team.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remove Team.Designer.cs">
+      <DependentUpon>Remove Team.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Remove Team.resx">
+      <DependentUpon>Remove Team.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Team Dashboard.resx">
       <DependentUpon>Team Dashboard.cs</DependentUpon>
     </EmbeddedResource>

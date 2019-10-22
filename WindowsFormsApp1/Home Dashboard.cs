@@ -28,7 +28,8 @@ namespace WindowsFormsApp1
         }
         private void button2_Click(object sender, EventArgs e)
         {
-
+            var f2 = new Remove_Team();
+            f2.Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
