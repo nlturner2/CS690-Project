@@ -40,5 +40,10 @@ namespace WindowsFormsApp1
         {
             Close();
         }
+
+        private void TeamNameBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

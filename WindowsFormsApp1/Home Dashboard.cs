@@ -55,6 +55,16 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Notifications_List_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }
