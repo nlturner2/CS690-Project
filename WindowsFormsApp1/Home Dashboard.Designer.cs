@@ -118,12 +118,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Team_List.FormattingEnabled = true;
-            this.Team_List.Location = new System.Drawing.Point(18, 53);
+            this.Team_List.Location = new System.Drawing.Point(24, 54);
             this.Team_List.Margin = new System.Windows.Forms.Padding(2);
-            this.Team_List.MaximumSize = new System.Drawing.Size(594, 589);
+            this.Team_List.MaximumSize = new System.Drawing.Size(594, 500);
             this.Team_List.Name = "Team_List";
             this.Team_List.ScrollAlwaysVisible = true;
-            this.Team_List.Size = new System.Drawing.Size(594, 589);
+            this.Team_List.Size = new System.Drawing.Size(594, 459);
             this.Team_List.TabIndex = 6;
             this.Team_List.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -135,10 +135,10 @@
             this.Notifications_List.FormattingEnabled = true;
             this.Notifications_List.Location = new System.Drawing.Point(622, 53);
             this.Notifications_List.Margin = new System.Windows.Forms.Padding(2);
-            this.Notifications_List.MaximumSize = new System.Drawing.Size(274, 654);
+            this.Notifications_List.MaximumSize = new System.Drawing.Size(274, 500);
             this.Notifications_List.Name = "Notifications_List";
             this.Notifications_List.ScrollAlwaysVisible = true;
-            this.Notifications_List.Size = new System.Drawing.Size(274, 654);
+            this.Notifications_List.Size = new System.Drawing.Size(274, 459);
             this.Notifications_List.TabIndex = 7;
             this.Notifications_List.SelectedIndexChanged += new System.EventHandler(this.Notifications_List_SelectedIndexChanged);
             // 
@@ -156,6 +156,7 @@
             this.Controls.Add(this.Remove_Team);
             this.Controls.Add(this.Add_Team);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(923, 600);
             this.Name = "HomeDashboard";
             this.Text = "Home Dashboard";
             this.Load += new System.EventHandler(this.TeamDashboard_Load);
