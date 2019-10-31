@@ -46,7 +46,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button4_Click);
             // 
             // Weekly_Progress
             // 
@@ -56,6 +56,7 @@
             this.Weekly_Progress.TabIndex = 1;
             this.Weekly_Progress.Text = "Weekly Progress";
             this.Weekly_Progress.UseVisualStyleBackColor = true;
+            this.Weekly_Progress.Click += new System.EventHandler(this.button2_Click);
             // 
             // Notes
             // 
@@ -65,6 +66,7 @@
             this.Notes.TabIndex = 2;
             this.Notes.Text = "Notes";
             this.Notes.UseVisualStyleBackColor = true;
+            this.Notes.Click += new System.EventHandler(this.button5_Click);
             // 
             // Github_History
             // 
@@ -74,6 +76,7 @@
             this.Github_History.TabIndex = 3;
             this.Github_History.Text = "Github History";
             this.Github_History.UseVisualStyleBackColor = true;
+            this.Github_History.Click += new System.EventHandler(this.button3_Click);
             // 
             // TeadDashboard
             // 
