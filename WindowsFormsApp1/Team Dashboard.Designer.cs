@@ -35,6 +35,7 @@
             this.TeadDashboard = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.Team_Members = new System.Windows.Forms.Label();
+            this.Home = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -102,11 +103,22 @@
             this.Team_Members.TabIndex = 6;
             this.Team_Members.Text = "Team Members";
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(713, 9);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(75, 46);
+            this.Home.TabIndex = 7;
+            this.Home.Text = "Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Team_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.Team_Members);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.TeadDashboard);
@@ -130,5 +142,6 @@
         private System.Windows.Forms.Label TeadDashboard;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label Team_Members;
+        private System.Windows.Forms.Button Home;
     }
 }
