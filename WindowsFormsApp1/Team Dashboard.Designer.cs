@@ -30,11 +30,14 @@
         {
             this.TeadDashboard = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
-            this.Members = new System.Windows.Forms.TabControl();
-            this.Summary = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this._notes = new System.Windows.Forms.TabPage();
             this.GithubHistory = new System.Windows.Forms.TabPage();
-            this.Members.SuspendLayout();
+            this.Members = new System.Windows.Forms.TabPage();
+            this.Summary = new System.Windows.Forms.TabPage();
+            this.Notes = new System.Windows.Forms.TabControl();
+            this.TeamMeeting = new System.Windows.Forms.TabPage();
+            this.WeeklyProgress = new System.Windows.Forms.TabPage();
+            this.Notes.SuspendLayout();
             this.SuspendLayout();
             // 
             // TeadDashboard
@@ -57,16 +60,34 @@
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.button1_Click);
             // 
+            // _notes
+            // 
+            this._notes.Location = new System.Drawing.Point(4, 22);
+            this._notes.Name = "_notes";
+            this._notes.Padding = new System.Windows.Forms.Padding(3);
+            this._notes.Size = new System.Drawing.Size(687, 380);
+            this._notes.TabIndex = 3;
+            this._notes.Text = "Notes";
+            this._notes.UseVisualStyleBackColor = true;
+            // 
+            // GithubHistory
+            // 
+            this.GithubHistory.Location = new System.Drawing.Point(4, 22);
+            this.GithubHistory.Name = "GithubHistory";
+            this.GithubHistory.Size = new System.Drawing.Size(687, 380);
+            this.GithubHistory.TabIndex = 2;
+            this.GithubHistory.Text = "Github History";
+            this.GithubHistory.UseVisualStyleBackColor = true;
+            // 
             // Members
             // 
-            this.Members.Controls.Add(this.Summary);
-            this.Members.Controls.Add(this.tabPage2);
-            this.Members.Controls.Add(this.GithubHistory);
-            this.Members.Location = new System.Drawing.Point(12, 54);
+            this.Members.Location = new System.Drawing.Point(4, 22);
             this.Members.Name = "Members";
-            this.Members.SelectedIndex = 0;
-            this.Members.Size = new System.Drawing.Size(695, 406);
-            this.Members.TabIndex = 8;
+            this.Members.Padding = new System.Windows.Forms.Padding(3);
+            this.Members.Size = new System.Drawing.Size(687, 380);
+            this.Members.TabIndex = 1;
+            this.Members.Text = "Members";
+            this.Members.UseVisualStyleBackColor = true;
             // 
             // Summary
             // 
@@ -79,36 +100,49 @@
             this.Summary.UseVisualStyleBackColor = true;
             this.Summary.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // tabPage2
+            // Notes
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(687, 380);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Members";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.Notes.Controls.Add(this.Summary);
+            this.Notes.Controls.Add(this.Members);
+            this.Notes.Controls.Add(this.GithubHistory);
+            this.Notes.Controls.Add(this.TeamMeeting);
+            this.Notes.Controls.Add(this.WeeklyProgress);
+            this.Notes.Controls.Add(this._notes);
+            this.Notes.Location = new System.Drawing.Point(12, 61);
+            this.Notes.Name = "Notes";
+            this.Notes.SelectedIndex = 0;
+            this.Notes.Size = new System.Drawing.Size(695, 406);
+            this.Notes.TabIndex = 8;
             // 
-            // GithubHistory
+            // TeamMeeting
             // 
-            this.GithubHistory.Location = new System.Drawing.Point(4, 22);
-            this.GithubHistory.Name = "GithubHistory";
-            this.GithubHistory.Size = new System.Drawing.Size(687, 380);
-            this.GithubHistory.TabIndex = 2;
-            this.GithubHistory.Text = "Github History";
-            this.GithubHistory.UseVisualStyleBackColor = true;
+            this.TeamMeeting.Location = new System.Drawing.Point(4, 22);
+            this.TeamMeeting.Name = "TeamMeeting";
+            this.TeamMeeting.Size = new System.Drawing.Size(687, 380);
+            this.TeamMeeting.TabIndex = 4;
+            this.TeamMeeting.Text = "Team Meeting";
+            this.TeamMeeting.UseVisualStyleBackColor = true;
+            // 
+            // WeeklyProgress
+            // 
+            this.WeeklyProgress.Location = new System.Drawing.Point(4, 22);
+            this.WeeklyProgress.Name = "WeeklyProgress";
+            this.WeeklyProgress.Size = new System.Drawing.Size(687, 380);
+            this.WeeklyProgress.TabIndex = 5;
+            this.WeeklyProgress.Text = "Weekly Progress";
+            this.WeeklyProgress.UseVisualStyleBackColor = true;
             // 
             // Team_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 488);
-            this.Controls.Add(this.Members);
+            this.Controls.Add(this.Notes);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.TeadDashboard);
             this.Name = "Team_Dashboard";
             this.Text = "Team_Dashboard";
-            this.Members.ResumeLayout(false);
+            this.Notes.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,9 +151,12 @@
         #endregion
         private System.Windows.Forms.Label TeadDashboard;
         private System.Windows.Forms.Button Home;
-        private System.Windows.Forms.TabControl Members;
-        private System.Windows.Forms.TabPage Summary;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage _notes;
         private System.Windows.Forms.TabPage GithubHistory;
+        private System.Windows.Forms.TabPage Members;
+        private System.Windows.Forms.TabPage Summary;
+        private System.Windows.Forms.TabControl Notes;
+        private System.Windows.Forms.TabPage TeamMeeting;
+        private System.Windows.Forms.TabPage WeeklyProgress;
     }
 }
