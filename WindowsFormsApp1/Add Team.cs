@@ -29,23 +29,28 @@ namespace WindowsFormsApp1
             
         }
 
-        // Add Team Button
-        private void button1_Click(object sender, EventArgs e)
+        // Add Button
+        public void button1_Click(object sender, EventArgs e)
+        {
+
+            createTeam(TL);
+
+            Close();
+        }
+        public void createTeam(HomeDashboard obj)
         {
             var name = TeamNameBox.Text;
             var url = GithubURLBox.Text;
 
-            if((name != "")&&(url != ""))
-            {         
-                Button button = new Button();
-                button.Size = new Size(100, 30);
-                button.Name = name;
-                TL.Show();
-                TL.flowLayoutPanel1.Controls.Add(button);
-            }
-           
-            
-            Close();
+            if ((name != "") && (url != ""))
+            {
+                LinkLabel lLabel = new LinkLabel();
+                lLabel.Size = new Size(100, 30);
+                lLabel.Text = name;
+                obj.flowLayoutPanel1.Controls.Add(lLabel);
+                obj.flowLayoutPanel1.Show();
+                obj.Show();
+            } 
         }
         
         // Cancel Button

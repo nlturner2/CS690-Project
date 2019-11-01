@@ -23,8 +23,11 @@ namespace WindowsFormsApp1
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            //HomeDashboard TL = new HomeDashboard();
             var f2 = new Add_Team();
             f2.Show();
+            //.button1_Click(f2, e);
+            f2.createTeam(this);
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -42,10 +45,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
 
         private void Team_Dashboard_Click(object sender, EventArgs e)
         {

@@ -39,7 +39,7 @@
             // Cancel
             // 
             this.Cancel.Location = new System.Drawing.Point(313, 213);
-            this.Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(50, 27);
             this.Cancel.TabIndex = 1;
@@ -72,7 +72,7 @@
             // TeamNameBox
             // 
             this.TeamNameBox.Location = new System.Drawing.Point(33, 51);
-            this.TeamNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TeamNameBox.Margin = new System.Windows.Forms.Padding(2);
             this.TeamNameBox.Name = "TeamNameBox";
             this.TeamNameBox.Size = new System.Drawing.Size(444, 20);
             this.TeamNameBox.TabIndex = 4;
@@ -81,7 +81,7 @@
             // GithubURLBox
             // 
             this.GithubURLBox.Location = new System.Drawing.Point(33, 116);
-            this.GithubURLBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GithubURLBox.Margin = new System.Windows.Forms.Padding(2);
             this.GithubURLBox.Name = "GithubURLBox";
             this.GithubURLBox.Size = new System.Drawing.Size(444, 20);
             this.GithubURLBox.TabIndex = 5;
@@ -90,7 +90,7 @@
             // Add
             // 
             this.Add.Location = new System.Drawing.Point(150, 213);
-            this.Add.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Add.Margin = new System.Windows.Forms.Padding(2);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(50, 27);
             this.Add.TabIndex = 6;
@@ -109,7 +109,7 @@
             this.Controls.Add(this.GithubURL);
             this.Controls.Add(this.Team_Name);
             this.Controls.Add(this.Cancel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Add_Team";
             this.Text = "Add Team";
             this.ResumeLayout(false);

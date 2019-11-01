@@ -6,8 +6,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    static class Program
+    public class Program
     {
+              
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,6 +19,8 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new HomeDashboard());
             //Application.Run(new Team_Dashboard());
+
+
         }
     }
 }
