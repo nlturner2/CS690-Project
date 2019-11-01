@@ -19,6 +19,11 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
         }
     }
