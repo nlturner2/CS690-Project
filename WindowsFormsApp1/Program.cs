@@ -16,7 +16,8 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomeDashboard());
+            // Application.Run(new HomeDashboard());
+            Application.Run(new Team_Dashboard());
         }
     }
 }

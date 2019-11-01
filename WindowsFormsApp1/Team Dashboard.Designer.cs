@@ -28,55 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.Weekly_Progress = new System.Windows.Forms.Button();
-            this.Notes = new System.Windows.Forms.Button();
-            this.Github_History = new System.Windows.Forms.Button();
             this.TeadDashboard = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.Team_Members = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
+            this.Members = new System.Windows.Forms.TabControl();
+            this.Summary = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.GithubHistory = new System.Windows.Forms.TabPage();
+            this.Members.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(713, 340);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // Weekly_Progress
-            // 
-            this.Weekly_Progress.Location = new System.Drawing.Point(713, 236);
-            this.Weekly_Progress.Name = "Weekly_Progress";
-            this.Weekly_Progress.Size = new System.Drawing.Size(75, 46);
-            this.Weekly_Progress.TabIndex = 1;
-            this.Weekly_Progress.Text = "Weekly Progress";
-            this.Weekly_Progress.UseVisualStyleBackColor = true;
-            this.Weekly_Progress.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // Notes
-            // 
-            this.Notes.Location = new System.Drawing.Point(713, 392);
-            this.Notes.Name = "Notes";
-            this.Notes.Size = new System.Drawing.Size(75, 46);
-            this.Notes.TabIndex = 2;
-            this.Notes.Text = "Notes";
-            this.Notes.UseVisualStyleBackColor = true;
-            this.Notes.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // Github_History
-            // 
-            this.Github_History.Location = new System.Drawing.Point(713, 288);
-            this.Github_History.Name = "Github_History";
-            this.Github_History.Size = new System.Drawing.Size(75, 46);
-            this.Github_History.TabIndex = 3;
-            this.Github_History.Text = "Github History";
-            this.Github_History.UseVisualStyleBackColor = true;
-            this.Github_History.Click += new System.EventHandler(this.button3_Click);
             // 
             // TeadDashboard
             // 
@@ -88,27 +47,9 @@
             this.TeadDashboard.TabIndex = 4;
             this.TeadDashboard.Text = "Team Dashboard";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 343);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(695, 95);
-            this.listBox1.TabIndex = 5;
-            // 
-            // Team_Members
-            // 
-            this.Team_Members.AutoSize = true;
-            this.Team_Members.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Team_Members.Location = new System.Drawing.Point(13, 321);
-            this.Team_Members.Name = "Team_Members";
-            this.Team_Members.Size = new System.Drawing.Size(131, 20);
-            this.Team_Members.TabIndex = 6;
-            this.Team_Members.Text = "Team Members";
-            // 
             // Home
             // 
-            this.Home.Location = new System.Drawing.Point(713, 9);
+            this.Home.Location = new System.Drawing.Point(628, 9);
             this.Home.Name = "Home";
             this.Home.Size = new System.Drawing.Size(75, 46);
             this.Home.TabIndex = 7;
@@ -116,35 +57,69 @@
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Members
+            // 
+            this.Members.Controls.Add(this.Summary);
+            this.Members.Controls.Add(this.tabPage2);
+            this.Members.Controls.Add(this.GithubHistory);
+            this.Members.Location = new System.Drawing.Point(12, 54);
+            this.Members.Name = "Members";
+            this.Members.SelectedIndex = 0;
+            this.Members.Size = new System.Drawing.Size(695, 406);
+            this.Members.TabIndex = 8;
+            // 
+            // Summary
+            // 
+            this.Summary.Location = new System.Drawing.Point(4, 22);
+            this.Summary.Name = "Summary";
+            this.Summary.Padding = new System.Windows.Forms.Padding(3);
+            this.Summary.Size = new System.Drawing.Size(687, 380);
+            this.Summary.TabIndex = 0;
+            this.Summary.Text = "Summary";
+            this.Summary.UseVisualStyleBackColor = true;
+            this.Summary.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(687, 380);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Members";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // GithubHistory
+            // 
+            this.GithubHistory.Location = new System.Drawing.Point(4, 22);
+            this.GithubHistory.Name = "GithubHistory";
+            this.GithubHistory.Size = new System.Drawing.Size(687, 380);
+            this.GithubHistory.TabIndex = 2;
+            this.GithubHistory.Text = "Github History";
+            this.GithubHistory.UseVisualStyleBackColor = true;
+            // 
             // Team_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(718, 488);
+            this.Controls.Add(this.Members);
             this.Controls.Add(this.Home);
-            this.Controls.Add(this.Team_Members);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.TeadDashboard);
-            this.Controls.Add(this.Github_History);
-            this.Controls.Add(this.Notes);
-            this.Controls.Add(this.Weekly_Progress);
-            this.Controls.Add(this.button1);
             this.Name = "Team_Dashboard";
             this.Text = "Team_Dashboard";
+            this.Members.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button Weekly_Progress;
-        private System.Windows.Forms.Button Notes;
-        private System.Windows.Forms.Button Github_History;
         private System.Windows.Forms.Label TeadDashboard;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label Team_Members;
         private System.Windows.Forms.Button Home;
+        private System.Windows.Forms.TabControl Members;
+        private System.Windows.Forms.TabPage Summary;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage GithubHistory;
     }
 }
