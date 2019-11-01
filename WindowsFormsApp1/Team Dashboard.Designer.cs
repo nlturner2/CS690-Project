@@ -30,14 +30,14 @@
         {
             this.TeadDashboard = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
-            this._notes = new System.Windows.Forms.TabPage();
+            this.Notes = new System.Windows.Forms.TabPage();
             this.GithubHistory = new System.Windows.Forms.TabPage();
             this.Members = new System.Windows.Forms.TabPage();
             this.Summary = new System.Windows.Forms.TabPage();
-            this.Notes = new System.Windows.Forms.TabControl();
+            this.TabBox = new System.Windows.Forms.TabControl();
             this.TeamMeeting = new System.Windows.Forms.TabPage();
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
-            this.Notes.SuspendLayout();
+            this.TabBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TeadDashboard
@@ -60,15 +60,16 @@
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.button1_Click);
             // 
-            // _notes
+            // Notes
             // 
-            this._notes.Location = new System.Drawing.Point(4, 22);
-            this._notes.Name = "_notes";
-            this._notes.Padding = new System.Windows.Forms.Padding(3);
-            this._notes.Size = new System.Drawing.Size(687, 380);
-            this._notes.TabIndex = 3;
-            this._notes.Text = "Notes";
-            this._notes.UseVisualStyleBackColor = true;
+            this.Notes.Location = new System.Drawing.Point(4, 22);
+            this.Notes.Name = "Notes";
+            this.Notes.Padding = new System.Windows.Forms.Padding(3);
+            this.Notes.Size = new System.Drawing.Size(687, 380);
+            this.Notes.TabIndex = 3;
+            this.Notes.Text = "Notes";
+            this.Notes.UseVisualStyleBackColor = true;
+            this.Notes.Click += new System.EventHandler(this._notes_Click);
             // 
             // GithubHistory
             // 
@@ -100,19 +101,19 @@
             this.Summary.UseVisualStyleBackColor = true;
             this.Summary.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // Notes
+            // TabBox
             // 
-            this.Notes.Controls.Add(this.Summary);
-            this.Notes.Controls.Add(this.Members);
-            this.Notes.Controls.Add(this.GithubHistory);
-            this.Notes.Controls.Add(this.TeamMeeting);
-            this.Notes.Controls.Add(this.WeeklyProgress);
-            this.Notes.Controls.Add(this._notes);
-            this.Notes.Location = new System.Drawing.Point(12, 61);
-            this.Notes.Name = "Notes";
-            this.Notes.SelectedIndex = 0;
-            this.Notes.Size = new System.Drawing.Size(695, 406);
-            this.Notes.TabIndex = 8;
+            this.TabBox.Controls.Add(this.Summary);
+            this.TabBox.Controls.Add(this.Members);
+            this.TabBox.Controls.Add(this.GithubHistory);
+            this.TabBox.Controls.Add(this.TeamMeeting);
+            this.TabBox.Controls.Add(this.WeeklyProgress);
+            this.TabBox.Controls.Add(this.Notes);
+            this.TabBox.Location = new System.Drawing.Point(12, 61);
+            this.TabBox.Name = "TabBox";
+            this.TabBox.SelectedIndex = 0;
+            this.TabBox.Size = new System.Drawing.Size(695, 406);
+            this.TabBox.TabIndex = 8;
             // 
             // TeamMeeting
             // 
@@ -137,12 +138,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 488);
-            this.Controls.Add(this.Notes);
+            this.Controls.Add(this.TabBox);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.TeadDashboard);
             this.Name = "Team_Dashboard";
             this.Text = "Team_Dashboard";
-            this.Notes.ResumeLayout(false);
+            this.TabBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,11 +152,11 @@
         #endregion
         private System.Windows.Forms.Label TeadDashboard;
         private System.Windows.Forms.Button Home;
-        private System.Windows.Forms.TabPage _notes;
+        private System.Windows.Forms.TabPage Notes;
         private System.Windows.Forms.TabPage GithubHistory;
         private System.Windows.Forms.TabPage Members;
         private System.Windows.Forms.TabPage Summary;
-        private System.Windows.Forms.TabControl Notes;
+        private System.Windows.Forms.TabControl TabBox;
         private System.Windows.Forms.TabPage TeamMeeting;
         private System.Windows.Forms.TabPage WeeklyProgress;
     }

@@ -26,5 +26,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void _notes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
