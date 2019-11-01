@@ -85,6 +85,7 @@
             this.GithubURLBox.Name = "GithubURLBox";
             this.GithubURLBox.Size = new System.Drawing.Size(444, 20);
             this.GithubURLBox.TabIndex = 5;
+            this.GithubURLBox.TextChanged += new System.EventHandler(this.GithubURLBox_TextChanged);
             // 
             // Add
             // 
