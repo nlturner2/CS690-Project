@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
         {
             var f2 = new Add_Team();
             f2.Show();
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -43,7 +44,7 @@ namespace WindowsFormsApp1
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+          
         }
 
         private void Team_Dashboard_Click(object sender, EventArgs e)
@@ -65,6 +66,13 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        public void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+      
     }
     
 }

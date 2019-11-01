@@ -34,8 +34,8 @@
             this.Settings = new System.Windows.Forms.Button();
             this.Notifications = new System.Windows.Forms.Label();
             this.Home_Dashboard = new System.Windows.Forms.Label();
-            this.Team_List = new System.Windows.Forms.ListBox();
             this.Notifications_List = new System.Windows.Forms.ListBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // Add_Team
@@ -112,21 +112,6 @@
             this.Home_Dashboard.Text = "Home Dashboard";
             this.Home_Dashboard.Click += new System.EventHandler(this.Team_Dashboard_Click);
             // 
-            // Team_List
-            // 
-            this.Team_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Team_List.FormattingEnabled = true;
-            this.Team_List.Location = new System.Drawing.Point(24, 54);
-            this.Team_List.Margin = new System.Windows.Forms.Padding(2);
-            this.Team_List.MaximumSize = new System.Drawing.Size(594, 500);
-            this.Team_List.Name = "Team_List";
-            this.Team_List.ScrollAlwaysVisible = true;
-            this.Team_List.Size = new System.Drawing.Size(594, 459);
-            this.Team_List.TabIndex = 6;
-            this.Team_List.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
             // Notifications_List
             // 
             this.Notifications_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -142,13 +127,23 @@
             this.Notifications_List.TabIndex = 7;
             this.Notifications_List.SelectedIndexChanged += new System.EventHandler(this.Notifications_List_SelectedIndexChanged);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 55);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 457);
+            this.flowLayoutPanel1.TabIndex = 8;
+            this.flowLayoutPanel1.WrapContents = false;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
             // HomeDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 561);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.Notifications_List);
-            this.Controls.Add(this.Team_List);
             this.Controls.Add(this.Home_Dashboard);
             this.Controls.Add(this.Notifications);
             this.Controls.Add(this.Settings);
@@ -166,15 +161,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Add_Team;
         private System.Windows.Forms.Button Remove_Team;
         private System.Windows.Forms.Button Refresh;
         private System.Windows.Forms.Button Settings;
         private System.Windows.Forms.Label Notifications;
         private System.Windows.Forms.Label Home_Dashboard;
-        private System.Windows.Forms.ListBox Team_List;
         private System.Windows.Forms.ListBox Notifications_List;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        public System.Windows.Forms.Button Add_Team;
     }
 }
 
