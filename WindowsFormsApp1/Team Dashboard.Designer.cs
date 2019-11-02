@@ -69,7 +69,7 @@
             this.Notes.TabIndex = 3;
             this.Notes.Text = "Notes";
             this.Notes.UseVisualStyleBackColor = true;
-            this.Notes.Click += new System.EventHandler(this._notes_Click);
+           
             // 
             // GithubHistory
             // 

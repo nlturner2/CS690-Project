@@ -29,8 +29,8 @@ namespace WindowsFormsApp1
             //HomeDashboard TL = new HomeDashboard();
             var f2 = new Add_Team();
             f2.Show();
-            //.button1_Click(f2, e);
-            f2.createTeam(this);
+            //f2.button1_Click(this,f2, e);
+            //f2.createTeam(this);
 
         }
         private void button2_Click(object sender, EventArgs e)
