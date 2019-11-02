@@ -32,8 +32,8 @@ namespace WindowsFormsApp1
         // Add Button
         public void button1_Click(object sender, EventArgs e)
         {
-
-            createTeam(TL);
+            var main = Application.OpenForms.OfType<HomeDashboard>().First();
+            createTeam(main);
 
             Close();
         }
