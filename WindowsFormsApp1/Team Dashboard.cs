@@ -24,12 +24,33 @@ namespace WindowsFormsApp1
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
+            string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md");
+            string txt = Summary.Text;
+            for (int i = 0; i < lines.Length; i++)
+            {
 
-        }
+                //getting textfield name and comparing it with text  
+                if (txt == "Summary")
+                {
+                    //finding this heading in file
+                    if (lines[i].Contains("Summary"))
+                    {
 
-        private void _notes_Click(object sender, EventArgs e)
-        {
+                        //reading lines and displaying in TabBox
 
+                        TabBox.Text += "\n" + lines[i + 2];
+                        if (lines[i].Contains("#"))
+                        {
+                            break;
+                        }
+
+
+                    }
+                }
+            }
         }
     }
 }
+
+
+        
