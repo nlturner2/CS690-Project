@@ -15,7 +15,10 @@ namespace WindowsFormsApp1
     {
         public HomeDashboard()
         {
+            
             InitializeComponent();
+            
+            
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -68,7 +71,7 @@ namespace WindowsFormsApp1
 
         public void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
 
       
