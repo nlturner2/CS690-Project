@@ -11,20 +11,21 @@ namespace WindowsFormsApp1
         public GithubAPI()
         {
 
-            var githubToken = "token";
+            var githubToken = "84829a0f70155da53e96bd51506836d1db226e9d";
             var request = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/nlturner2/CS690-Project");
             request.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", githubToken));
             request.Accept = "application/vnd.github.v3.raw";
-            request.UserAgent = "test app"; //user agent is required https://developer.github.com/v3/#user-agent-required
+            request.UserAgent = "nlturner2/CS690-Project"; //user agent is required https://developer.github.com/v3/#user-agent-required
             using (var response = request.GetResponse())
             {
                 var encoding = System.Text.ASCIIEncoding.UTF8;
                 using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
                 {
                     var fileContent = reader.ReadToEnd();
+                    Console.WriteLine(fileContent);
+
                 }
             }
-
 
         }
 
