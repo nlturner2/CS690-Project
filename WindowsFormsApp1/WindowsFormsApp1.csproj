@@ -56,6 +56,14 @@
       <HintPath>..\packages\RestEase.1.4.10\lib\net45\RestEase.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Reactive">
+      <HintPath>..\packages\System.Reactive.4.0.0\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Octokit.Reactive">
+      <HintPath>..\packages\Octokit.Reactive.0.36.0\lib\net46\Octokit.Reactive.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Remove Team.cs">
