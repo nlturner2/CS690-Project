@@ -44,11 +44,11 @@ namespace WindowsFormsApp1
 
             if ((name != "") && (url != ""))
             {
-                LinkLabel lLabel = new LinkLabel();
-                lLabel.Size = new Size(100, 30);
-                lLabel.Text = name;
-                obj.flowLayoutPanel1.Controls.Add(lLabel);
-                obj.flowLayoutPanel1.Show();
+                Button button = new Button();
+                button.Size = new Size(540, 50);
+                button.Text = name;
+                obj.tableLayoutPanel1.Controls.Add(button);
+                obj.tableLayoutPanel1.Show();
                 obj.Show();
             } 
         }
