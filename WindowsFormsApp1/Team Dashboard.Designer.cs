@@ -99,7 +99,7 @@
             this.Summary.TabIndex = 0;
             this.Summary.Text = "Summary";
             this.Summary.UseVisualStyleBackColor = true;
-            this.Summary.Click += new System.EventHandler(this.tabPage1_Click);
+            this.Summary.Click += new System.EventHandler(this.TabPage1_Click);
             // 
             // TabBox
             // 

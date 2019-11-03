@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -22,30 +23,37 @@ namespace WindowsFormsApp1
             Close();
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void TabPage1_Click(object sender, EventArgs e)
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md");
-            string txt = Summary.Text;
+            string txt = TabPage1_Click.Text;
+            System.Console.WriteLine("Contents of WriteLines2.txt = ");
+            if (File.Exists(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md"))
+            {
+                foreach (string line in lines)
+                {
+                    TabBox.Text += line + "\n";
+                }
+
+            }
+            else
+            {
+                TabBox.Text += "\t" + "No such file exists" + "\n";
+            }
+            
             for (int i = 0; i < lines.Length; i++)
             {
-
-                //getting textfield name and comparing it with text  
                 if (txt == "Summary")
                 {
-                    //finding this heading in file
                     if (lines[i].Contains("Summary"))
                     {
-
-                        //reading lines and displaying in TabBox
-
                         TabBox.Text += "\n" + lines[i + 2];
                         if (lines[i].Contains("#"))
                         {
                             break;
                         }
+                    }                           
 
-
-                    }
                 }
             }
         }
