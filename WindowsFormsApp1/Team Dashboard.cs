@@ -16,35 +16,41 @@ namespace WindowsFormsApp1
         public Team_Dashboard()
         {
             InitializeComponent();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            HomeDashboard hme = new HomeDashboard();
+            hme.Show();
         }
 
         private void TabPage1_Click(object sender, EventArgs e)
         {
+            // Read each line of the file into a string array. Each element
+            // of the array is one line of the file.
+            summaryrichTextBox1.Clear();
             string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md");
 
             // Display the file contents by using a foreach loop.
             //System.Console.WriteLine("Contents of WriteLines2.txt = ");
-            if (File.Exists(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md"))
+            if (System.IO.File.Exists(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md"))
             {
 
 
                 foreach (string line in lines)
                 {
                     // Use a tab to indent each line of the file.
-                    richTextBox1.Text += line + "\n";
+                    summaryrichTextBox1.Text += line + "\n";
                 }
             }
             else
             {
-                richTextBox1.Text += "\t" + "No such file exists" + "\n";
+                summaryrichTextBox1.Text += "\t" + "No such file exists" + "\n";
             }
 
         }
+
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {

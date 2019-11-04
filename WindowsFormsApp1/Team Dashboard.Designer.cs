@@ -34,10 +34,10 @@
             this.GithubHistory = new System.Windows.Forms.TabPage();
             this.Members = new System.Windows.Forms.TabPage();
             this.Summary = new System.Windows.Forms.TabPage();
+            this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TabBox = new System.Windows.Forms.TabControl();
             this.TeamMeeting = new System.Windows.Forms.TabPage();
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Summary.SuspendLayout();
             this.TabBox.SuspendLayout();
             this.SuspendLayout();
@@ -98,7 +98,7 @@
             // 
             // Summary
             // 
-            this.Summary.Controls.Add(this.richTextBox1);
+            this.Summary.Controls.Add(this.summaryrichTextBox1);
             this.Summary.Location = new System.Drawing.Point(4, 29);
             this.Summary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Summary.Name = "Summary";
@@ -108,6 +108,15 @@
             this.Summary.Text = "Summary";
             this.Summary.UseVisualStyleBackColor = true;
             this.Summary.Click += new System.EventHandler(this.TabPage1_Click);
+            // 
+            // summaryrichTextBox1
+            // 
+            this.summaryrichTextBox1.Location = new System.Drawing.Point(26, 24);
+            this.summaryrichTextBox1.Name = "summaryrichTextBox1";
+            this.summaryrichTextBox1.Size = new System.Drawing.Size(832, 320);
+            this.summaryrichTextBox1.TabIndex = 0;
+            this.summaryrichTextBox1.Text = "";
+            this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // TabBox
             // 
@@ -144,15 +153,6 @@
             this.WeeklyProgress.Text = "Weekly Progress";
             this.WeeklyProgress.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(26, 24);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(832, 320);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
             // Team_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -181,6 +181,6 @@
         private System.Windows.Forms.TabControl TabBox;
         private System.Windows.Forms.TabPage TeamMeeting;
         private System.Windows.Forms.TabPage WeeklyProgress;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox summaryrichTextBox1;
     }
 }
