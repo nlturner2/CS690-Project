@@ -40,6 +40,10 @@ namespace WindowsFormsApp1
                 sw.WriteLine(teamBook[i].Url);
                 
             }
+            //teamBook = new Team[count + 1];
+            //teamBook[teamBook.Length-1] = obj;
+            //count++;
+
 
             sw.Close();
         }
@@ -58,7 +62,7 @@ namespace WindowsFormsApp1
                 //count++;
             }
 
-            //count = teamBook.Length;
+            count = teamBook.Length;
 
             sr.Close();
         }
