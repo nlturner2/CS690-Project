@@ -1,43 +1,59 @@
-public class Team
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
 {
-    string teamName;
-    int teamMembersCount;
-    string teamURL;
+    public class Team
+    {
+        private String name;
+        private String url;
+        private Button button;
 
-    public Team(string name, string url)
-    {
-        teamName = name;
-        teamURL = url;
-        teamMembersCount = 0;
-    }
+        
+        public Team()
+        {
+            button = new Button();
+            button.Size = new Size(540, 50);
 
-    public Team(string name, string url, int count)
-    {
-        teamName = name;
-        teamURL = url;
-        teamMembersCount = count;
-    }
+        }
 
-    public void setCount (int count)
-    {
-        teamMembersCount = count; 
-    }
+        public Team(String n, String u)
+        {
+            name = n;
+            url = u;
+            button = new Button();
+            button.Text = n;
+            button.Size = new Size(540, 50);
+        }
 
-    public string getName()
-    {
-        return teamName;
-    }
+        public Button getButton()
+        {
+            return button;
+        }
 
-    public string getUrl()
-    {
-        return teamURL;
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public String Url
+        {
+            get { return url; }
+            set { url = value; }
+        }
+
+        public override string ToString()
+        {
+            return "Person: " + name + " " + url;
+        }
+
     }
-    public int getCount ()
-    {
-        return teamMembersCount;
-    }
-    
-    
 }
-    
-

@@ -58,6 +58,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Team.cs" />
     <Compile Include="Remove Team.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,26 +14,81 @@ namespace WindowsFormsApp1
 {
     public partial class HomeDashboard : Form
     {
+        //FileStream fs = new FileStream("teams.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+        public Team[] teamBook = new Team[1];
+        public int count = 0;
+        
         public HomeDashboard()
         {
             
             InitializeComponent();
             
-            
         }
+
+        public void Write(Team obj)
+        {
+            
+            StreamWriter sw = new StreamWriter("teams.txt");
+            sw.WriteLine(teamBook.Length+1);
+            sw.WriteLine(obj.Name);
+            sw.WriteLine(obj.Url);
+            
+
+            for (int i = 0; i < teamBook.Length; i++)
+            {
+                sw.WriteLine(teamBook[i].Name);
+                sw.WriteLine(teamBook[i].Url);
+                
+            }
+
+            sw.Close();
+        }
+
+        public void Read()
+        {
+            StreamReader sr = new StreamReader("teams.txt");
+            teamBook = new Team[Convert.ToInt32(sr.ReadLine())];
+
+            for (int i = 0; i < teamBook.Length; i++)
+            {
+                teamBook[i] = new Team();
+                teamBook[i].Name = sr.ReadLine();
+                teamBook[i].Url = sr.ReadLine();
+                teamBook[i].getButton().Text = teamBook[i].Name;
+                //count++;
+            }
+
+            //count = teamBook.Length;
+
+            sr.Close();
+        }
+
+        private void Display()
+        {
+            if (teamBook.Length != 0) {
+                for (int i = 0; i < teamBook.Length; i++)
+                {
+                    this.tableLayoutPanel1.Controls.Add(teamBook[i].getButton());
+                }
+            }     
+        }
+
+
         private void button4_Click(object sender, EventArgs e)
         {
 
         }
+
+        // Add Team Button
         private void button3_Click(object sender, EventArgs e)
         {
-            //HomeDashboard TL = new HomeDashboard();
+            
             var f2 = new Add_Team();
             f2.Show();
-            //f2.button1_Click(this,f2, e);
-            //f2.createTeam(this);
-
         }
+
+
+        // Remove Team Button
         private void button2_Click(object sender, EventArgs e)
         {
             var f2 = new Remove_Team();
@@ -56,7 +112,8 @@ namespace WindowsFormsApp1
 
         private void TeamDashboard_Load(object sender, EventArgs e)
         {
-
+            Read();
+            Display();
         }
 
         private void Refresh_Click(object sender, EventArgs e)

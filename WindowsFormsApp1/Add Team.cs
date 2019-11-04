@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,15 @@ namespace WindowsFormsApp1
 {
     public partial class Add_Team : Form 
     {
-        HomeDashboard TL = new HomeDashboard();
+
+     
         public Add_Team()
         {
             InitializeComponent();
             
         }
 
+        
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -35,22 +38,31 @@ namespace WindowsFormsApp1
             var main = Application.OpenForms.OfType<HomeDashboard>().First();
             createTeam(main);
 
+            
             Close();
         }
+
+        // creates a team when Add button is clicked
         public void createTeam(HomeDashboard obj)
         {
             var name = TeamNameBox.Text;
             var url = GithubURLBox.Text;
+            
 
             if ((name != "") && (url != ""))
             {
-                Button button = new Button();
-                button.Size = new Size(540, 50);
-                button.Text = name;
-                obj.tableLayoutPanel1.Controls.Add(button);
+                Team team = new Team(name, url);
+                obj.tableLayoutPanel1.Controls.Add(team.getButton());
                 obj.tableLayoutPanel1.Show();
                 obj.Show();
-            } 
+                var main = Application.OpenForms.OfType<HomeDashboard>().First();
+                //main.teamBook[main.count]=team;
+                main.Write(team);
+                //main.count++;
+
+            }
+
+            
         }
         
         // Cancel Button
