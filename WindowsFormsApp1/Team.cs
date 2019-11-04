@@ -50,10 +50,10 @@ namespace WindowsFormsApp1
             set { url = value; }
         }
 
-        public override string ToString()
+        /*public override string ToString()
         {
-            return "Person: " + name + " " + url;
-        }
+            return "Team: " + name + " " + url;
+        }*/
 
     }
 }

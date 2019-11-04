@@ -40,9 +40,10 @@ namespace WindowsFormsApp1
                 sw.WriteLine(teamBook[i].Url);
                 
             }
-            //teamBook = new Team[count + 1];
-            //teamBook[teamBook.Length-1] = obj;
-            //count++;
+            
+            Array.Resize<Team>(ref teamBook, count + 1);
+            teamBook[teamBook.Count()-1] = obj;
+            count++;
 
 
             sw.Close();
@@ -54,15 +55,16 @@ namespace WindowsFormsApp1
             teamBook = new Team[Convert.ToInt32(sr.ReadLine())];
 
             for (int i = 0; i < teamBook.Length; i++)
-            {
-                teamBook[i] = new Team();
-                teamBook[i].Name = sr.ReadLine();
-                teamBook[i].Url = sr.ReadLine();
-                teamBook[i].getButton().Text = teamBook[i].Name;
-                //count++;
+            {     
+                    teamBook[i] = new Team();
+                    teamBook[i].Name = sr.ReadLine();
+                    teamBook[i].Url = sr.ReadLine();
+                    teamBook[i].getButton().Text = teamBook[i].Name;
+                    
+
             }
 
-            count = teamBook.Length;
+            count = teamBook.Count();
 
             sr.Close();
         }

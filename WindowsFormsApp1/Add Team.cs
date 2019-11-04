@@ -58,7 +58,6 @@ namespace WindowsFormsApp1
                 var main = Application.OpenForms.OfType<HomeDashboard>().First();
                 //main.teamBook[main.count]=team;
                 main.Write(team);
-                //main.count++;
 
             }
 
