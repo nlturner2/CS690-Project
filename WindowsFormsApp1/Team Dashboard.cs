@@ -27,21 +27,37 @@ namespace WindowsFormsApp1
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md");
 
+            // Display the file contents by using a foreach loop.
+            //System.Console.WriteLine("Contents of WriteLines2.txt = ");
             if (File.Exists(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md"))
             {
+
+
                 foreach (string line in lines)
                 {
-                    TabBox.Text += line + "\n";
+                    // Use a tab to indent each line of the file.
+                    richTextBox1.Text += line + "\n";
                 }
             }
             else
             {
-                TabBox.Text += "\t" + "No such file exists" + "\n";
+                richTextBox1.Text += "\t" + "No such file exists" + "\n";
             }
+
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+    }
         
-    } 
+        
+    
 }
+
 
               
           
