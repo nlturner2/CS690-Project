@@ -25,22 +25,25 @@ namespace WindowsFormsApp1
 
         private void TabPage1_Click(object sender, EventArgs e)
         {
-            int counter = 0;
-            string line;
-            StreamReader file =new StreamReader(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\Hello.txt");
-            while((line = file.ReadLine()) != null)
-            {
+            string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md");
 
-                Console.WriteLine(line);
-                counter++;
+            if (File.Exists(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md"))
+            {
+                foreach (string line in lines)
+                {
+                    TabBox.Text += line + "\n";
+                }
             }
-            file.Close();
-            Console.WriteLine("There were {0} lines.", counter);
-            // Suspend the screen.  
-            Console.ReadLine();
+            else
+            {
+                TabBox.Text += "\t" + "No such file exists" + "\n";
+            }
         }
-    }
+        
+    } 
 }
-            
+
+              
+          
 
         

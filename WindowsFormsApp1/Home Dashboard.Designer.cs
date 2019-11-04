@@ -197,7 +197,7 @@
 
         #endregion
         private System.Windows.Forms.Button Remove_Team;
-        private System.Windows.Forms.Button Refresh;
+        //private System.Windows.Forms.Button Refresh;
         private System.Windows.Forms.Button Settings;
         private System.Windows.Forms.Label Notifications;
         private System.Windows.Forms.Label Home_Dashboard;
