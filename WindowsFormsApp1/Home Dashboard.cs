@@ -41,6 +41,7 @@ namespace WindowsFormsApp1
                 
             }
             
+            //resizes the array
             Array.Resize<Team>(ref teamBook, count + 1);
             teamBook[teamBook.Count()-1] = obj;
             count++;

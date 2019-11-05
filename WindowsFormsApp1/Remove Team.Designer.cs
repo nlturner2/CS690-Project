@@ -31,14 +31,15 @@
             this.Remove = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Team_Name = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.RemoveTeamNameBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Remove
             // 
-            this.Remove.Location = new System.Drawing.Point(207, 293);
+            this.Remove.Location = new System.Drawing.Point(138, 190);
+            this.Remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Remove.Name = "Remove";
-            this.Remove.Size = new System.Drawing.Size(97, 66);
+            this.Remove.Size = new System.Drawing.Size(65, 43);
             this.Remove.TabIndex = 0;
             this.Remove.Text = "Remove";
             this.Remove.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(483, 293);
+            this.Cancel.Location = new System.Drawing.Point(322, 190);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(97, 66);
+            this.Cancel.Size = new System.Drawing.Size(65, 43);
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -57,28 +59,32 @@
             // Team_Name
             // 
             this.Team_Name.AutoSize = true;
-            this.Team_Name.Location = new System.Drawing.Point(132, 103);
+            this.Team_Name.Location = new System.Drawing.Point(88, 67);
+            this.Team_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Team_Name.Name = "Team_Name";
-            this.Team_Name.Size = new System.Drawing.Size(149, 30);
+            this.Team_Name.Size = new System.Drawing.Size(68, 13);
             this.Team_Name.TabIndex = 2;
             this.Team_Name.Text = "Team Name:";
             // 
-            // textBox1
+            // RemoveTeamNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(246, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(445, 26);
-            this.textBox1.TabIndex = 3;
+            this.RemoveTeamNameBox.Location = new System.Drawing.Point(164, 65);
+            this.RemoveTeamNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RemoveTeamNameBox.Name = "RemoveTeamNameBox";
+            this.RemoveTeamNameBox.Size = new System.Drawing.Size(298, 20);
+            this.RemoveTeamNameBox.TabIndex = 3;
+            this.RemoveTeamNameBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Remove_Team
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.RemoveTeamNameBox);
             this.Controls.Add(this.Team_Name);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Remove);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Remove_Team";
             this.Text = "Remove Team";
             this.ResumeLayout(false);
@@ -91,6 +97,6 @@
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label Team_Name;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox RemoveTeamNameBox;
     }
 }
