@@ -90,6 +90,43 @@ namespace WindowsFormsApp1
             var f2 = new Remove_Team();
             f2.Show();
         }
+        public void removeTeam(string teamName)
+        {
+            string team = @"C:\Teamfiles\" + teamName;
+            
+            //MessageBox.Show(team);
+            Team[] tempTeam = new Team[teamBook.Count() - 1];
+            int index = 0;
+            foreach (Team i in teamBook)
+            {
+                
+                if (i.Name != teamName)
+                {
+                    tempTeam[index] = i;
+                    index++;
+                }
+                else
+                {
+                    File.Delete(team);
+                    tableLayoutPanel1.Controls.Clear();
+
+                }
+            }
+            //Array.Resize<Team>(array: ref main.teamBook, newSize: index +1);
+            count = tempTeam.Count();
+            Array.Resize<Team>(ref teamBook, count);
+            
+            index = 0;
+            foreach (Team i in tempTeam)
+            {
+                teamBook[index] = i;
+                tableLayoutPanel1.Controls.Add(i.getButton());
+            }
+
+            tableLayoutPanel1.Show();
+            Show();
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 

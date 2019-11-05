@@ -31,7 +31,7 @@
             this.Remove = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Team_Name = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.removeTeamBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Remove
@@ -59,23 +59,24 @@
             this.Team_Name.AutoSize = true;
             this.Team_Name.Location = new System.Drawing.Point(132, 103);
             this.Team_Name.Name = "Team_Name";
-            this.Team_Name.Size = new System.Drawing.Size(149, 30);
+            this.Team_Name.Size = new System.Drawing.Size(99, 20);
             this.Team_Name.TabIndex = 2;
             this.Team_Name.Text = "Team Name:";
             // 
-            // textBox1
+            // removeTeamBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(246, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(445, 26);
-            this.textBox1.TabIndex = 3;
+            this.removeTeamBox.Location = new System.Drawing.Point(246, 100);
+            this.removeTeamBox.Name = "removeTeamBox";
+            this.removeTeamBox.Size = new System.Drawing.Size(445, 26);
+            this.removeTeamBox.TabIndex = 3;
+            this.removeTeamBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Remove_Team
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.removeTeamBox);
             this.Controls.Add(this.Team_Name);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Remove);
@@ -91,6 +92,6 @@
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label Team_Name;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox removeTeamBox;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,15 +20,24 @@ namespace WindowsFormsApp1
         // Remove Team Button
         private void button1_Click(object sender, EventArgs e)
         {
+            var main = Application.OpenForms.OfType<HomeDashboard>().First();
+            var name = removeTeamBox.Text;
+            main.removeTeam(name);
 
 
             Close();
         }
+       
 
         // Cancel Button
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
