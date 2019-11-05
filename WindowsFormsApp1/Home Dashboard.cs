@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Net;
 
 namespace WindowsFormsApp1
 {
@@ -151,7 +151,16 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)
         {
+            //getting data from readme file
+            using (WebClient client = new WebClient())
+            {
+                string u = "https://raw.githubusercontent.com/hergin/CapstoneProjectTemplate/master/README.md";
+                string s = client.DownloadString(u );
+                MessageBox.Show(s);
 
+            }
+            
+           
         }
 
         private void Notifications_List_SelectedIndexChanged(object sender, EventArgs e)
