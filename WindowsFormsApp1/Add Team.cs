@@ -45,21 +45,20 @@ namespace WindowsFormsApp1
         // creates a team when Add button is clicked
         public void createTeam(HomeDashboard obj)
         {
+            //get team name and url
             var name = TeamNameBox.Text;
             var url = GithubURLBox.Text;
             
-
+            // check if either box was empty
             if ((name != "") && (url != ""))
             {
+                // create team
                 Team team = new Team(name, url);
                 obj.tableLayoutPanel1.Controls.Add(team.getButton());
                 obj.tableLayoutPanel1.Show();
                 obj.Show();
                 var main = Application.OpenForms.OfType<HomeDashboard>().First();
-                //main.teamBook[main.count]=team;
                 main.Write(team);
-                //main.count++;
-
             }
 
             

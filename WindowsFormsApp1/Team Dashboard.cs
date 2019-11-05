@@ -21,8 +21,9 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            HomeDashboard hme = new HomeDashboard();
-            hme.Show();
+            //HomeDashboard hme = new HomeDashboard();
+           //hme.Show();
+            Close();
         }
 
         private void TabPage1_Click(object sender, EventArgs e)
@@ -57,7 +58,10 @@ namespace WindowsFormsApp1
 
         }
 
+        private void Team_Dashboard_Load(object sender, EventArgs e)
+        {
 
+        }
     }
         
         
