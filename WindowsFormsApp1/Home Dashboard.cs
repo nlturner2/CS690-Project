@@ -113,9 +113,14 @@ namespace WindowsFormsApp1
 
             foreach (Team i in teamBook)
             {
+                if (!File.Exists(team))
+                {
+                    break;
+                }
                 //check if a file is in array when it is delete it.
                 if (i.Name != teamName)
                 {
+
                     tempTeam[index] = i;
                     index++;
                 }
@@ -134,6 +139,10 @@ namespace WindowsFormsApp1
             index = 0;
             foreach (Team i in tempTeam)
             {
+                if (!File.Exists(team))
+                {
+                    break;
+                }
                 teamBook[index] = i;
                 tableLayoutPanel1.Controls.Add(i.getButton());
                 index++;
