@@ -113,6 +113,7 @@ namespace WindowsFormsApp1
 
             foreach (Team i in teamBook)
             {
+                //check if file exists
                 if (!File.Exists(team))
                 {
                     break;
@@ -141,6 +142,7 @@ namespace WindowsFormsApp1
             {
                 if (!File.Exists(team))
                 {
+                    MessageBox.Show("Team does not exist.");
                     break;
                 }
                 teamBook[index] = i;
