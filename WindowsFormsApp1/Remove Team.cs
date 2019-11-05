@@ -39,5 +39,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void Remove_Team_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

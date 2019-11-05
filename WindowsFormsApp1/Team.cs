@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
 
         }
 
+        // team constructor
         public Team(String n, String u)
         {
             name = n;
@@ -32,7 +33,6 @@ namespace WindowsFormsApp1
             button = new Button();
             button.Text = n;
             button.Size = new Size(540, 50);
-
         }
 
         public Button getButton()
