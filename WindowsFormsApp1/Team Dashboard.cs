@@ -17,16 +17,19 @@ namespace WindowsFormsApp1
         public Team_Dashboard()
         {
             InitializeComponent();
-
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //HomeDashboard hme = new HomeDashboard();
             //hme.Show();
-            //Close();
+            
+
+            //linking this page with Homedashboard page 
             new HomeDashboard().Show();
             this.Hide();
+            
         }
 
         private void TabPage1_Click(object sender, EventArgs e)
