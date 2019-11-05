@@ -110,49 +110,44 @@ namespace WindowsFormsApp1
             //create new smaller temporary array
             Team[] tempTeam = new Team[teamBook.Count() - 1];
             int index = 0;
-
-            foreach (Team i in teamBook)
-            {
-                //check if file exists
-                if (!File.Exists(team))
+            if (File.Exists(team)) {
+                foreach (Team i in teamBook)
                 {
-                    break;
+                    //check if a file is in array when it is delete it.
+                    if (i.Name != teamName)
+                    {
+
+                        tempTeam[index] = i;
+                        index++;
+                    }
+                    else
+                    {
+                        File.Delete(team);
+                        tableLayoutPanel1.Controls.Clear();
+
+                    }
                 }
-                //check if a file is in array when it is delete it.
-                if (i.Name != teamName)
+                //resize teamBook array
+                count = tempTeam.Count();
+                Array.Resize<Team>(ref teamBook, count);
+            
+                //add all the items back to the original array
+                index = 0;
+                foreach (Team i in tempTeam)
                 {
-
-                    tempTeam[index] = i;
+                    
+                    teamBook[index] = i;
+                    tableLayoutPanel1.Controls.Add(i.getButton());
                     index++;
                 }
-                else
-                {
-                    File.Delete(team);
-                    tableLayoutPanel1.Controls.Clear();
 
-                }
+                tableLayoutPanel1.Show();
+                Show();
             }
-            //resize teamBook array
-            count = tempTeam.Count();
-            Array.Resize<Team>(ref teamBook, count);
-            
-            //add all the items back to the original array
-            index = 0;
-            foreach (Team i in tempTeam)
+            else
             {
-                if (!File.Exists(team))
-                {
-                    MessageBox.Show("Team does not exist.");
-                    break;
-                }
-                teamBook[index] = i;
-                tableLayoutPanel1.Controls.Add(i.getButton());
-                index++;
+                MessageBox.Show("Team does not exist.");
             }
-
-            tableLayoutPanel1.Show();
-            Show();
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
