@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
 
         private void GithubURLBox_TextChanged(object sender, EventArgs e)
         {
-            var TU = this.TeamNameBox.Text.Insert(this.TeamNameBox.SelectionStart, "0");
+            var TU = this.GithubURLBox.Text.Insert(this.GithubURLBox.SelectionStart, "0");
         }
     }
 }

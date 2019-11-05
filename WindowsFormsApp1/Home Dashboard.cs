@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     public partial class HomeDashboard : Form
     {
         //FileStream fs = new FileStream("teams.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
-        public Team[] teamBook = new Team[20];
+        public Team[] teamBook = new Team[1];
         public int count = 0;
         
         public HomeDashboard()
@@ -28,13 +28,18 @@ namespace WindowsFormsApp1
         public void Write(Team obj)
         {
             //Create File
-            string fileName = @"C:\Teamfiles\" + obj.Name + ".txt";
+            string fileName = @"C:\Teamfiles\" + obj.Name;
             FileStream fs = File.Create(fileName);
             fs.Close();
 
             //write URL to it
             StreamWriter sw = new StreamWriter(fileName);
             sw.WriteLine(obj.Url);
+
+            //add object to array
+            Array.Resize<Team>(ref teamBook, count + 1);
+            teamBook[teamBook.Count() - 1] = obj;
+            count = teamBook.Count();
             sw.Close();
         }
 
@@ -42,13 +47,16 @@ namespace WindowsFormsApp1
         {
 
             int i = 0;
+       
             string[] files = Directory.GetFiles(@"C:\Teamfiles\");
-
+            string url = "i hate C#";
+            teamBook = new Team[Directory.GetFiles(@"C:\Teamfiles").Length];
             for (int iFile = 0; iFile < files.Length; iFile++)
             {
-                teamBook[i] = new Team(new FileInfo(files[iFile]).Name, "x");
+                teamBook[i] = new Team(new FileInfo(files[iFile]).Name, url );
                 i++;
             }
+            count = teamBook.Count();
         }
 
         private void Display()
