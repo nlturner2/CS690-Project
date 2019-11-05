@@ -30,11 +30,11 @@ namespace WindowsFormsApp1
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             summaryrichTextBox1.Clear();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\TextFile\content.txt");
 
             // Display the file contents by using a foreach loop.
             //System.Console.WriteLine("Contents of WriteLines2.txt = ");
-            if (System.IO.File.Exists(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\README.md"))
+            if (System.IO.File.Exists(@"C:\TextFile\content.txt"))
             {
 
 
