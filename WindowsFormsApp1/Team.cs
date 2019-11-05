@@ -67,5 +67,9 @@ namespace WindowsFormsApp1
             
         }
 
+        internal static bool isNull(Team[] tempTeam)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -136,6 +136,7 @@ namespace WindowsFormsApp1
             {
                 teamBook[index] = i;
                 tableLayoutPanel1.Controls.Add(i.getButton());
+                index++;
             }
 
             tableLayoutPanel1.Show();
