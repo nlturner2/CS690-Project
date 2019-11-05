@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
 
 namespace WindowsFormsApp1
 {
@@ -28,6 +29,15 @@ namespace WindowsFormsApp1
 
         private void TabPage1_Click(object sender, EventArgs e)
         {
+            using (WebClient client = new WebClient())
+            {
+                string u = "https://raw.githubusercontent.com/hergin/CapstoneProjectTemplate/master/README.md";
+                string s = client.DownloadString(u);
+                summaryrichTextBox1.Clear();
+                MessageBox.Show(s);
+
+            }
+            /*
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             summaryrichTextBox1.Clear();
@@ -48,7 +58,7 @@ namespace WindowsFormsApp1
             else
             {
                 summaryrichTextBox1.Text += "\t" + "No such file exists" + "\n";
-            }
+            }*/
 
         }
 
