@@ -53,6 +53,9 @@ namespace WindowsFormsApp1
             teamBook = new Team[Directory.GetFiles(@"C:\Teamfiles").Length];
             for (int iFile = 0; iFile < files.Length; iFile++)
             {
+                StreamReader sr = new StreamReader(files[iFile]);
+                url = sr.ReadLine();
+                sr.Close();
                 teamBook[i] = new Team(new FileInfo(files[iFile]).Name, url );
                 i++;
             }
