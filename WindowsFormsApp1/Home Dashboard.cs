@@ -47,7 +47,11 @@ namespace WindowsFormsApp1
         {
 
             int i = 0;
-       
+            if (!Directory.Exists(@"C:\Teamfiles"))
+            {
+                Directory.CreateDirectory(@"C:\Teamfiles");
+            }
+
             string[] files = Directory.GetFiles(@"C:\Teamfiles\");
             string url = "i hate C#";
             teamBook = new Team[Directory.GetFiles(@"C:\Teamfiles").Length];
