@@ -23,8 +23,10 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             //HomeDashboard hme = new HomeDashboard();
-           //hme.Show();
-            Close();
+            //hme.Show();
+            //Close();
+            new HomeDashboard().Show();
+            this.Hide();
         }
 
         private void TabPage1_Click(object sender, EventArgs e)
@@ -33,9 +35,25 @@ namespace WindowsFormsApp1
             {
                 string u = "https://raw.githubusercontent.com/hergin/CapstoneProjectTemplate/master/README.md";
                 string s = client.DownloadString(u);
-                summaryrichTextBox1.Text+=s;
-                
-       
+                summaryrichTextBox1.Text += s;
+                for (int i = 0; i < s.Length; i++)
+                {
+
+
+
+                    //finding this heading in file
+                    if (s.Contains("Summary"))
+                    {
+                        //reading lines and displaying in richTextBox1
+
+                        summaryrichTextBox1.Text += "\n" + s[i + 2];
+                        if (s.Contains("#"))
+                        {
+                            break;
+                        }
+
+                    }
+                }
             }
 
         }
