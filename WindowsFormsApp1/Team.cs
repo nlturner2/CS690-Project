@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         {
             button = new Button();
             button.Size = new Size(540, 50);
-
+            button.Click += button_Click;
         }
 
         public Team(String n, String u)
@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
             button = new Button();
             button.Text = n;
             button.Size = new Size(540, 50);
+            button.Click += button_Click;
         }
 
         public Button getButton()
@@ -53,6 +54,17 @@ namespace WindowsFormsApp1
         public override string ToString()
         {
             return "Person: " + name + " " + url;
+        }
+
+        public void button_Click(object sender, EventArgs e)
+        {
+            //this.button.Click += (object sender, EventArgs e) =>
+            // var mainTD = Application.OpenForms.OfType<Team_Dashboard>().First();
+            //mainTD.Show();
+
+            Team_Dashboard TD = new Team_Dashboard();
+            TD.Show();
+            
         }
 
     }
