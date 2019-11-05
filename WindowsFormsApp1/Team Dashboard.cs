@@ -33,32 +33,10 @@ namespace WindowsFormsApp1
             {
                 string u = "https://raw.githubusercontent.com/hergin/CapstoneProjectTemplate/master/README.md";
                 string s = client.DownloadString(u);
-                summaryrichTextBox1.Clear();
-                MessageBox.Show(s);
-
+                summaryrichTextBox1.Text+=s;
+                
+       
             }
-            /*
-            // Read each line of the file into a string array. Each element
-            // of the array is one line of the file.
-            summaryrichTextBox1.Clear();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\TextFile\content.txt");
-
-            // Display the file contents by using a foreach loop.
-            //System.Console.WriteLine("Contents of WriteLines2.txt = ");
-            if (System.IO.File.Exists(@"C:\TextFile\content.txt"))
-            {
-
-
-                foreach (string line in lines)
-                {
-                    // Use a tab to indent each line of the file.
-                    summaryrichTextBox1.Text += line + "\n";
-                }
-            }
-            else
-            {
-                summaryrichTextBox1.Text += "\t" + "No such file exists" + "\n";
-            }*/
 
         }
 
