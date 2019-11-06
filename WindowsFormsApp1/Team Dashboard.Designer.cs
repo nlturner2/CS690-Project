@@ -37,7 +37,7 @@
             this.TabBox = new System.Windows.Forms.TabControl();
             this.TeamMeeting = new System.Windows.Forms.TabPage();
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Summary.SuspendLayout();
             this.TabBox.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +93,7 @@
             // 
             // Summary
             // 
-            this.Summary.Controls.Add(this.richTextBox1);
+            this.Summary.Controls.Add(this.summaryrichTextBox1);
             this.Summary.Location = new System.Drawing.Point(4, 22);
             this.Summary.Name = "Summary";
             this.Summary.Padding = new System.Windows.Forms.Padding(3);
@@ -135,13 +135,15 @@
             this.WeeklyProgress.Text = "Weekly Progress";
             this.WeeklyProgress.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // summaryrichTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 6);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(863, 450);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.summaryrichTextBox1.Location = new System.Drawing.Point(17, 16);
+            this.summaryrichTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.summaryrichTextBox1.Name = "summaryrichTextBox1";
+            this.summaryrichTextBox1.Size = new System.Drawing.Size(835, 425);
+            this.summaryrichTextBox1.TabIndex = 0;
+            this.summaryrichTextBox1.Text = "";
+            this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // Team_Dashboard
             // 
@@ -171,6 +173,6 @@
         private System.Windows.Forms.TabControl TabBox;
         private System.Windows.Forms.TabPage TeamMeeting;
         private System.Windows.Forms.TabPage WeeklyProgress;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox summaryrichTextBox1;
     }
 }
