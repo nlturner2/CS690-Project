@@ -48,17 +48,24 @@ namespace WindowsFormsApp1
             //get team name and url
             var name = TeamNameBox.Text;
             var url = GithubURLBox.Text;
-            
+            string fileName = @"C:\Teamfiles" + TeamNameBox.Text;
             // check if either box was empty
             if ((name != "") && (url != ""))
             {
-                // create team
-                Team team = new Team(name, url);
-                obj.tableLayoutPanel1.Controls.Add(team.getButton());
-                obj.tableLayoutPanel1.Show();
-                obj.Show();
-                var main = Application.OpenForms.OfType<HomeDashboard>().First();
-                main.Write(team);
+                if (File.Exists(fileName))
+                {
+                    // create team
+                    Team team = new Team(name, url);
+                    obj.tableLayoutPanel1.Controls.Add(team.getButton());
+                    obj.tableLayoutPanel1.Show();
+                    obj.Show();
+                    var main = Application.OpenForms.OfType<HomeDashboard>().First();
+                    main.Write(team);
+                }
+                else
+                {
+                    MessageBox.Show("Team already exists.");
+                }
             }
 
             

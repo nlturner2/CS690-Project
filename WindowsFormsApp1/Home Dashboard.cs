@@ -29,19 +29,22 @@ namespace WindowsFormsApp1
         {
             //Create File
             string fileName = @"C:\Teamfiles\" + obj.Name;
-            FileStream fs = File.Create(fileName);
-            fs.Close();
+            if (!File.Exists(fileName)) 
+            {
+                FileStream fs = File.Create(fileName);
+                fs.Close();
 
-            // open file and write URL to it
-            StreamWriter sw = new StreamWriter(fileName);
-            sw.WriteLine(obj.Url);
+                // open file and write URL to it
+                StreamWriter sw = new StreamWriter(fileName);
+                sw.WriteLine(obj.Url);
 
-            //resize array and add object to it.
-            Array.Resize<Team>(ref teamBook, count + 1);
-            teamBook[teamBook.Count() - 1] = obj;
-            count = teamBook.Count();
-            //close file
-            sw.Close();
+                //resize array and add object to it.
+                Array.Resize<Team>(ref teamBook, count + 1);
+                teamBook[teamBook.Count() - 1] = obj;
+                count = teamBook.Count();
+                //close file
+                sw.Close();
+            }
         }
 
         public void Read()
