@@ -48,11 +48,11 @@ namespace WindowsFormsApp1
             //get team name and url
             var name = TeamNameBox.Text;
             var url = GithubURLBox.Text;
-            string fileName = @"C:\Teamfiles" + TeamNameBox.Text;
+            string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
             // check if either box was empty
             if ((name != "") && (url != ""))
             {
-                if (File.Exists(fileName))
+                if (!File.Exists(fileName))
                 {
                     // create team
                     Team team = new Team(name, url);

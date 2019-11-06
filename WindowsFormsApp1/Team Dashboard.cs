@@ -22,14 +22,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //HomeDashboard hme = new HomeDashboard();
-            //hme.Show();
-            
-
-            //linking this page with Homedashboard page 
-            new HomeDashboard().Show();
-            this.Hide();
-            
+            //Close teamdashboard
+            Close();
         }
 
         private void TabPage1_Click(object sender, EventArgs e)
