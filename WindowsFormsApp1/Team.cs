@@ -56,7 +56,27 @@ namespace WindowsFormsApp1
         {
             return "Person: " + name + " " + url;
         }
+        
 
+        public string URLFactory (string URL)
+        {
+            string partialText = "";
+            if (!String.IsNullOrWhiteSpace(URL))
+            {
+                int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
+
+                if (charLocation > 0)
+                {
+
+                    partialText = URL.Substring(charLocation + 1);
+                    int secondLocation = partialText.LastIndexOf('.');
+                    partialText = partialText.Remove(secondLocation);
+                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
+                }
+
+            }
+            return partialText;
+        }
         public void button_Click(object sender, EventArgs e)
         {
             //this.button.Click += (object sender, EventArgs e) =>
@@ -67,6 +87,7 @@ namespace WindowsFormsApp1
             using (WebClient client = new WebClient())
             {
                 string rdmeu = this.url;
+                rdmeu = URLFactory(rdmeu);
                 string s = client.DownloadString(rdmeu);
                 TD.summaryrichTextBox1.Text += s;
 
