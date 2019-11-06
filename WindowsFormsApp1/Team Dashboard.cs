@@ -14,10 +14,12 @@ namespace WindowsFormsApp1
 {
     public partial class Team_Dashboard : Form
     {
-        public Team_Dashboard()
+        Team currentTeam;
+        public Team_Dashboard(Team obj)
         {
             InitializeComponent();
             this.Hide();
+            currentTeam = obj;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,31 +30,15 @@ namespace WindowsFormsApp1
 
         private void TabPage1_Click(object sender, EventArgs e)
         {
+            /**
             using (WebClient client = new WebClient())
             {
-                string u = "https://raw.githubusercontent.com/hergin/CapstoneProjectTemplate/master/README.md";
+                string u = currentTeam.Url;
                 string s = client.DownloadString(u);
                 summaryrichTextBox1.Text += s;
-                for (int i = 0; i < s.Length; i++)
-                {
-
-
-
-                    //finding this heading in file
-                    if (s.Contains("Summary"))
-                    {
-                        //reading lines and displaying in richTextBox1
-
-                        summaryrichTextBox1.Text += "\n" + s[i + 2];
-                        if (s.Contains("#"))
-                        {
-                            break;
-                        }
-
-                    }
-                }
+                
             }
-
+    */
         }
 
 

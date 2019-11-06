@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -62,7 +63,14 @@ namespace WindowsFormsApp1
             // var mainTD = Application.OpenForms.OfType<Team_Dashboard>().First();
             //mainTD.Show();
 
-            Team_Dashboard TD = new Team_Dashboard();
+            Team_Dashboard TD = new Team_Dashboard(this);
+            using (WebClient client = new WebClient())
+            {
+                string rdmeu = this.url;
+                string s = client.DownloadString(rdmeu);
+                TD.summaryrichTextBox1.Text += s;
+
+            }
             TD.Show();
             
         }

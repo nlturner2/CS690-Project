@@ -173,6 +173,6 @@
         private System.Windows.Forms.TabControl TabBox;
         private System.Windows.Forms.TabPage TeamMeeting;
         private System.Windows.Forms.TabPage WeeklyProgress;
-        private System.Windows.Forms.RichTextBox summaryrichTextBox1;
+        public System.Windows.Forms.RichTextBox summaryrichTextBox1;
     }
 }
