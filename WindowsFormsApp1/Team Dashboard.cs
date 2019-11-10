@@ -41,6 +41,12 @@ namespace WindowsFormsApp1
             */
         }
 
+        private void TabPage2_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -50,6 +56,11 @@ namespace WindowsFormsApp1
         private void Team_Dashboard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            
         }
     }
         

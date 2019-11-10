@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -92,6 +93,7 @@ namespace WindowsFormsApp1
                 string s = client.DownloadString(rdmeu);
                 TD.summaryrichTextBox1.Text += parse_Summary(s);
                 TD.teamMembersRichTextBox1.Text += parse_Members(s);
+                TD.meetingRichTextBox1.Text += parse_Meeting(s);
 
             }
             TD.Show();
@@ -112,6 +114,28 @@ namespace WindowsFormsApp1
 
             return Members;
         }
+        private string parse_Meeting(string data)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\MeetingMinutes\Team\9-30-2019_10-6-2019.md");
+            string txt = null;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                //getting textfield name and comparing it with text
+                if (lines[i].Contains("Meeting Start Time"))
+                {
+                    //reading lines and displaying in richTextBox1
+                    txt += "\n" + lines[i + 2];
+                    if (lines[i].Contains("#"))
+                    {
+                        break;
+                    }
+                }
+
+            }
+            return txt;
+        }
+
+
         internal static bool isNull(Team[] tempTeam)
         {
             throw new NotImplementedException();
