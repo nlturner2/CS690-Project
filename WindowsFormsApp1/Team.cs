@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
     {
         private String name;
         private String url;
+        private string summary;
         private Button button;
 
 
@@ -89,13 +90,19 @@ namespace WindowsFormsApp1
                 string rdmeu = this.url;
                 rdmeu = URLFactory(rdmeu);
                 string s = client.DownloadString(rdmeu);
-                TD.summaryrichTextBox1.Text += s;
+                TD.summaryrichTextBox1.Text += parse_Summary(s);
 
             }
             TD.Show();
             
         }
+        private string parse_Summary(string data)
+        {
+            string[] summaryWithH = data.Split('#');
+            string[] summary = summaryWithH[3].Split('\n');
 
+            return summary[2];
+        }
         internal static bool isNull(Team[] tempTeam)
         {
             throw new NotImplementedException();

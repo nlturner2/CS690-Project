@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
                 summaryrichTextBox1.Text += s;
                 
             }
-    */
+            */
         }
 
 
