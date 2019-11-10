@@ -91,6 +91,7 @@ namespace WindowsFormsApp1
                 rdmeu = URLFactory(rdmeu);
                 string s = client.DownloadString(rdmeu);
                 TD.summaryrichTextBox1.Text += parse_Summary(s);
+                TD.teamMembersRichTextBox1.Text += parse_Members(s);
 
             }
             TD.Show();
@@ -102,6 +103,14 @@ namespace WindowsFormsApp1
             string[] summary = summaryWithH[3].Split('\n');
 
             return summary[2];
+        }
+        private string parse_Members(string data)
+        {
+            string[] membersWithH = data.Split('#');
+            string[] teamMembers = membersWithH[5].Split('\n');
+            string Members = teamMembers[2] + "\n"+ teamMembers[3] +"\n"+ teamMembers[4];
+
+            return Members;
         }
         internal static bool isNull(Team[] tempTeam)
         {
