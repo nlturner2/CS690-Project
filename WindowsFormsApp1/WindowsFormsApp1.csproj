@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -96,6 +99,7 @@
     <Compile Include="Team Dashboard.Designer.cs">
       <DependentUpon>Team Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeamMembers.cs" />
     <EmbeddedResource Include="Home Dashboard.resx">
       <DependentUpon>Home Dashboard.cs</DependentUpon>
     </EmbeddedResource>

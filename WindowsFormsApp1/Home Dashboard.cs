@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using LiteDB;
 
 namespace WindowsFormsApp1
 {
@@ -176,7 +177,8 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            //getting data from readme file
+            /**
+             //getting data from readme file
             using (WebClient client = new WebClient())
             {
                 string u = "https://raw.githubusercontent.com/hergin/CapstoneProjectTemplate/master/README.md";
@@ -184,8 +186,28 @@ namespace WindowsFormsApp1
                 MessageBox.Show(s);
 
             }
-            
-           
+            */
+            TeamMembers m1 = new TeamMembers("shree", "cs692");
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var collection = db.GetCollection<TeamMembers>("team");
+                var team = new TeamMembers
+                {
+                    MemberName =m1.MemberName,
+                    TeamName=m1.TeamName
+
+
+                };
+
+
+                collection.Insert(m1);
+            }
+            string t1 = m1.MemberName;
+            MessageBox.Show(t1);
+            MessageBox.Show(m1.TeamName);
+
+
+
         }
 
         private void Notifications_List_SelectedIndexChanged(object sender, EventArgs e)
