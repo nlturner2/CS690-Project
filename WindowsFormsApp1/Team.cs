@@ -106,18 +106,33 @@ namespace WindowsFormsApp1
         }
         private string parse_Members(string data)
         {
-            string[] membersWithH = data.Split('#');
-            string[] teamMembers = membersWithH[5].Split('\n');
+            string[] teamMembers = data.Split('\n');
             string Members = null;
+            int index = 0;
             foreach(string s in teamMembers)
             {
-                if(s == "\n")
+                if(s == "Team Members")
                 {
+                    while (index < teamMembers.Length)
+                    {
+                        if (teamMembers[index] == "Client Partner Information")
+                            break;
+                        if (teamMembers[index] != "\n")
+                        {
+                            Members += teamMembers[index] + "\n";
+                        }
+                        index++;
+                    }
+                    break;
+                }
+                else if( s == "## **Team Members**")
+                {
+                    Members = "Yes";
                     break;
                 }
                 else
                 {
-                    Members += s + "\n";
+                    index++;
                 }
             }
 

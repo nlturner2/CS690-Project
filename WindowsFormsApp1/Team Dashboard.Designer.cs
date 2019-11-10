@@ -150,7 +150,7 @@
             // 
             // teamMembersRichTextBox1
             // 
-            this.teamMembersRichTextBox1.Location = new System.Drawing.Point(6, 6);
+            this.teamMembersRichTextBox1.Location = new System.Drawing.Point(6, 7);
             this.teamMembersRichTextBox1.Name = "teamMembersRichTextBox1";
             this.teamMembersRichTextBox1.Size = new System.Drawing.Size(863, 450);
             this.teamMembersRichTextBox1.TabIndex = 0;
