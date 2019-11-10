@@ -187,6 +187,8 @@ namespace WindowsFormsApp1
 
             }
             */
+
+            //testing liteDB connection and creating tables
             TeamMembers m1 = new TeamMembers("shree", "cs692");
             using (var db = new LiteDatabase(@"MyData.db"))
             {
