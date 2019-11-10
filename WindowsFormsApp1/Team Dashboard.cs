@@ -62,6 +62,16 @@ namespace WindowsFormsApp1
         {
             
         }
+
+        private void TeamMeeting_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
     }
         
         
