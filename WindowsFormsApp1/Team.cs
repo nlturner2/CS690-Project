@@ -108,7 +108,18 @@ namespace WindowsFormsApp1
         {
             string[] membersWithH = data.Split('#');
             string[] teamMembers = membersWithH[5].Split('\n');
-            string Members = teamMembers[2] + "\n"+ teamMembers[3] +"\n"+ teamMembers[4];
+            string Members = null;
+            foreach(string s in teamMembers)
+            {
+                if(s == "\n")
+                {
+                    break;
+                }
+                else
+                {
+                    Members += s + "\n";
+                }
+            }
 
             return Members;
         }
