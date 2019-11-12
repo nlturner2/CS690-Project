@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
                 string s = client.DownloadString(rdmeu);
                 TD.summaryrichTextBox1.Text += parse_Summary(s);
                 TD.teamMembersRichTextBox1.Text += parse_Members(s);
-                //TD.meetingRichTextBox1.Text += parse_Meeting(s);
+                TD.meetingRichTextBox1.Text += parse_Meeting(s);
 
             }
             TD.Show();
@@ -179,15 +179,32 @@ namespace WindowsFormsApp1
                 if (lines[i].Contains("Meeting Start Time"))
                 {
                     //reading lines and displaying in richTextBox1
-                    txt += "\n" + lines[i + 0];
+                    //txt += "\n" + lines[i + 0];
                     txt += "\n" + lines[i + 1];
-                    if (lines[i].Contains("#"))
+                    
+                }
+                else
+                {
+                    if (lines[i].Contains("Meeting End Time"))
                     {
-                        break;
+                        //reading lines and displaying in richTextBox1
+                        txt += "\n" + lines[i + 2];
+                        txt += "\n" + lines[i + 3];
+                        if (lines[i].Contains("#"))
+                        {
+                            break;
+                        }
                     }
                 }
+  
 
             }
+
+            txt = txt.Replace("-", "");
+            txt = txt.Replace(".", "");
+            txt = txt.Replace("*", "");
+            txt = txt.Replace("\t", "");
+            txt = txt.Trim();
             return txt;
         }
 
