@@ -151,6 +151,7 @@ namespace WindowsFormsApp1
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
                             teamMembers[index + 1] = teamMembers[index + 1].Trim();
                             Members += teamMembers[index+1] + "\n";
+                            TeamMembers team = new TeamMembers(teamMembers[index+1],this.Name);
                         }
                         index++;
                     }
