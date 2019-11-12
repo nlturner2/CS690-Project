@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
             return button;
         }
 
+        public int Id { get; set; }
         public String Name
         {
             get { return name; }
