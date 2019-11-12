@@ -137,15 +137,20 @@ namespace WindowsFormsApp1
         }
         private string parse_Meeting(string data)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\CapstoneProjectTemplate-master\CapstoneProjectTemplate-master\MeetingMinutes\Team\9-30-2019_10-6-2019.md");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\BookArtsCollaborativeBusinessOperationSoftware-master\BookArtsCollaborativeBusinessOperationSoftware-master\MeetingMinutes\Team\10-7-2019_10-13-2019.md");
             string txt = null;
+            /*string format = "yyyy mm dd h:mm ";
+            DateTime dateTime = DateTime.ParseExact(txt, format);
+            */
+            
             for (int i = 0; i < lines.Length; i++)
             {
                 //getting textfield name and comparing it with text
                 if (lines[i].Contains("Meeting Start Time"))
                 {
                     //reading lines and displaying in richTextBox1
-                    txt += "\n" + lines[i + 2];
+                    txt += "\n" + lines[i + 0];
+                    txt += "\n" + lines[i + 1];
                     if (lines[i].Contains("#"))
                     {
                         break;
