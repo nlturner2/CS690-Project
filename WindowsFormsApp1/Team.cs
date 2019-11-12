@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
     {
         private String name;
         private String url;
-        private string summary;
         private Button button;
 
 
@@ -101,10 +100,37 @@ namespace WindowsFormsApp1
         }
         private string parse_Summary(string data)
         {
-            string[] summaryWithH = data.Split('#');
-            string[] summary = summaryWithH[3].Split('\n');
+            string[] summaryWithH = data.Split('\n');
+            string summary = null;
+            int index = 0;
+            foreach (string s in summaryWithH)
+            {
+                if (s.Contains("Summary")|| s.Contains("summary"))
+                {
+                    while (index < summaryWithH.Length)
+                    {
+                        if (summaryWithH[index + 1].Contains("Team"))
+                            break;
+                        else if (summaryWithH[index + 1] != "\n")
+                        {
+                            summary += summaryWithH[index + 1];
+                        }
+                        index++;
+                    }
+                    break;
+                }
+                else
+                {
+                    index++;
+                }
+            }
+            summary = summary.Replace("-", "");
+            summary = summary.Replace("\t", "");
+            summary = summary.Trim();
 
-            return summary[2];
+            return summary;
+
+
         }
         private string parse_Members(string data)
         {
@@ -117,11 +143,15 @@ namespace WindowsFormsApp1
                 {
                     while (index < teamMembers.Length)
                     {
-                        if (teamMembers[index].Contains("Client"))
+                        if (teamMembers[index+1].Contains("Client"))
                             break;
-                        if (teamMembers[index] != "\n")
+                        else if (teamMembers[index+1] != "\n")
                         {
-                            Members += teamMembers[index] + "\n";
+                            teamMembers[index + 1] = teamMembers[index + 1].Replace("-", "");
+                            teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
+                            teamMembers[index + 1] = teamMembers[index + 1].Trim();
+                            Members += teamMembers[index+1] + "\n";
+                            TeamMembers team = new TeamMembers(teamMembers[index+1],this.Name);
                         }
                         index++;
                     }
@@ -132,7 +162,7 @@ namespace WindowsFormsApp1
                     index++;
                 }
             }
-
+            Members = Members.Trim();
             return Members;
         }
         private string parse_Meeting(string data)
