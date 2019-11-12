@@ -31,19 +31,18 @@
             this.TeadDashboard = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
             this.Notes = new System.Windows.Forms.TabPage();
-            this.GithubHistory = new System.Windows.Forms.TabPage();
+            this.WeeklyProgress = new System.Windows.Forms.TabPage();
+            this.TeamMeeting = new System.Windows.Forms.TabPage();
+            this.meetingRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Members = new System.Windows.Forms.TabPage();
             this.teamMembersRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Summary = new System.Windows.Forms.TabPage();
             this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TabBox = new System.Windows.Forms.TabControl();
-            this.TeamMeeting = new System.Windows.Forms.TabPage();
-            this.WeeklyProgress = new System.Windows.Forms.TabPage();
-            this.meetingRichTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.TeamMeeting.SuspendLayout();
             this.Members.SuspendLayout();
             this.Summary.SuspendLayout();
             this.TabBox.SuspendLayout();
-            this.TeamMeeting.SuspendLayout();
             this.SuspendLayout();
             // 
             // TeadDashboard
@@ -79,15 +78,36 @@
             this.Notes.Text = "Notes";
             this.Notes.UseVisualStyleBackColor = true;
             // 
-            // GithubHistory
+            // WeeklyProgress
             // 
-            this.GithubHistory.Location = new System.Drawing.Point(4, 29);
-            this.GithubHistory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GithubHistory.Name = "GithubHistory";
-            this.GithubHistory.Size = new System.Drawing.Size(1316, 718);
-            this.GithubHistory.TabIndex = 2;
-            this.GithubHistory.Text = "Github History";
-            this.GithubHistory.UseVisualStyleBackColor = true;
+            this.WeeklyProgress.Location = new System.Drawing.Point(4, 29);
+            this.WeeklyProgress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.WeeklyProgress.Name = "WeeklyProgress";
+            this.WeeklyProgress.Size = new System.Drawing.Size(1316, 718);
+            this.WeeklyProgress.TabIndex = 5;
+            this.WeeklyProgress.Text = "Weekly Progress";
+            this.WeeklyProgress.UseVisualStyleBackColor = true;
+            // 
+            // TeamMeeting
+            // 
+            this.TeamMeeting.Controls.Add(this.meetingRichTextBox1);
+            this.TeamMeeting.Location = new System.Drawing.Point(4, 29);
+            this.TeamMeeting.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TeamMeeting.Name = "TeamMeeting";
+            this.TeamMeeting.Size = new System.Drawing.Size(1316, 718);
+            this.TeamMeeting.TabIndex = 4;
+            this.TeamMeeting.Text = "Team Meeting";
+            this.TeamMeeting.UseVisualStyleBackColor = true;
+            this.TeamMeeting.Click += new System.EventHandler(this.TeamMeeting_Click);
+            // 
+            // meetingRichTextBox1
+            // 
+            this.meetingRichTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.meetingRichTextBox1.Name = "meetingRichTextBox1";
+            this.meetingRichTextBox1.Size = new System.Drawing.Size(1310, 712);
+            this.meetingRichTextBox1.TabIndex = 0;
+            this.meetingRichTextBox1.Text = "";
+            this.meetingRichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged_2);
             // 
             // Members
             // 
@@ -137,7 +157,6 @@
             // 
             this.TabBox.Controls.Add(this.Summary);
             this.TabBox.Controls.Add(this.Members);
-            this.TabBox.Controls.Add(this.GithubHistory);
             this.TabBox.Controls.Add(this.TeamMeeting);
             this.TabBox.Controls.Add(this.WeeklyProgress);
             this.TabBox.Controls.Add(this.Notes);
@@ -147,37 +166,6 @@
             this.TabBox.SelectedIndex = 0;
             this.TabBox.Size = new System.Drawing.Size(1324, 751);
             this.TabBox.TabIndex = 8;
-            // 
-            // TeamMeeting
-            // 
-            this.TeamMeeting.Controls.Add(this.meetingRichTextBox1);
-            this.TeamMeeting.Location = new System.Drawing.Point(4, 29);
-            this.TeamMeeting.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TeamMeeting.Name = "TeamMeeting";
-            this.TeamMeeting.Size = new System.Drawing.Size(1316, 718);
-            this.TeamMeeting.TabIndex = 4;
-            this.TeamMeeting.Text = "Team Meeting";
-            this.TeamMeeting.UseVisualStyleBackColor = true;
-            this.TeamMeeting.Click += new System.EventHandler(this.TeamMeeting_Click);
-            // 
-            // WeeklyProgress
-            // 
-            this.WeeklyProgress.Location = new System.Drawing.Point(4, 29);
-            this.WeeklyProgress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.WeeklyProgress.Name = "WeeklyProgress";
-            this.WeeklyProgress.Size = new System.Drawing.Size(1316, 718);
-            this.WeeklyProgress.TabIndex = 5;
-            this.WeeklyProgress.Text = "Weekly Progress";
-            this.WeeklyProgress.UseVisualStyleBackColor = true;
-            // 
-            // meetingRichTextBox1
-            // 
-            this.meetingRichTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.meetingRichTextBox1.Name = "meetingRichTextBox1";
-            this.meetingRichTextBox1.Size = new System.Drawing.Size(1310, 712);
-            this.meetingRichTextBox1.TabIndex = 0;
-            this.meetingRichTextBox1.Text = "";
-            this.meetingRichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged_2);
             // 
             // Team_Dashboard
             // 
@@ -191,10 +179,10 @@
             this.Name = "Team_Dashboard";
             this.Text = "Team_Dashboard";
             this.Load += new System.EventHandler(this.Team_Dashboard_Load);
+            this.TeamMeeting.ResumeLayout(false);
             this.Members.ResumeLayout(false);
             this.Summary.ResumeLayout(false);
             this.TabBox.ResumeLayout(false);
-            this.TeamMeeting.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,14 +192,13 @@
         private System.Windows.Forms.Label TeadDashboard;
         private System.Windows.Forms.Button Home;
         private System.Windows.Forms.TabPage Notes;
-        private System.Windows.Forms.TabPage GithubHistory;
-        private System.Windows.Forms.TabPage Members;
-        private System.Windows.Forms.TabPage Summary;
-        private System.Windows.Forms.TabControl TabBox;
-        private System.Windows.Forms.TabPage TeamMeeting;
         private System.Windows.Forms.TabPage WeeklyProgress;
-        public System.Windows.Forms.RichTextBox summaryrichTextBox1;
-        public System.Windows.Forms.RichTextBox teamMembersRichTextBox1;
+        private System.Windows.Forms.TabPage TeamMeeting;
         public System.Windows.Forms.RichTextBox meetingRichTextBox1;
+        private System.Windows.Forms.TabPage Members;
+        public System.Windows.Forms.RichTextBox teamMembersRichTextBox1;
+        private System.Windows.Forms.TabPage Summary;
+        public System.Windows.Forms.RichTextBox summaryrichTextBox1;
+        private System.Windows.Forms.TabControl TabBox;
     }
 }
