@@ -171,7 +171,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 863);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1352, 837);
             this.Controls.Add(this.TabBox);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.TeadDashboard);
