@@ -178,15 +178,24 @@ namespace WindowsFormsApp1
 
             for (int i = 0; i < lines.Length; i++)
             {
-                //getting textfield name and comparing it with text
-                if (lines[i].Contains("Meeting Start Time"))
+
+
+                foreach (string line in lines)
                 {
+                    // Use a tab to indent each line of the file.
+                    txt += line + "\n";
+                   
+                }
+                break;
+            }
+            return txt; 
+
+        }
+
                     //reading lines and displaying in richTextBox1
                     //txt += "\n" + lines[i + 0];
-                    txt += "\n" + lines[i + 1];
-
-                }
-                else
+                    //txt += "\n" + lines[i + 1];
+                /*else
                 {
                     if (lines[i].Contains("Meeting End Time"))
                     {
@@ -197,21 +206,8 @@ namespace WindowsFormsApp1
                         {
                             break;
                         }
-                    }
-                }
-
-
-            }
-
-            txt = txt.Replace("-", "");
-            txt = txt.Replace(".", "");
-            txt = txt.Replace("*", "");
-            txt = txt.Replace("\t", "");
-            txt = txt.Trim();
-            return txt;
-        }
-
-       
+                    }*/
+           
         internal static bool isNull(Team[] tempTeam)
         {
             throw new NotImplementedException();

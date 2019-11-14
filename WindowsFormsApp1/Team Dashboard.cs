@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
                 responseString = reader.ReadToEnd();
             }
             //Convert the JSON string to a C# object
-            //I'm using Dynamic object. You can use a strongly types object as well if you want.
+            
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
