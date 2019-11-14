@@ -172,24 +172,16 @@ namespace WindowsFormsApp1
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\BookArtsCollaborativeBusinessOperationSoftware-master\BookArtsCollaborativeBusinessOperationSoftware-master\MeetingMinutes\Team\10-7-2019_10-13-2019.md");
             string txt = null;
-            /*string format = "yyyy mm dd h:mm ";
-            DateTime dateTime = DateTime.ParseExact(txt, format);
-            */
-
             for (int i = 0; i < lines.Length; i++)
             {
-
-
                 foreach (string line in lines)
                 {
                     // Use a tab to indent each line of the file.
                     txt += line + "\n";
-                   
                 }
                 break;
             }
             return txt; 
-
         }
 
                     //reading lines and displaying in richTextBox1
