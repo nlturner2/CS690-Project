@@ -34,9 +34,9 @@
             this.Settings = new System.Windows.Forms.Button();
             this.Notifications = new System.Windows.Forms.Label();
             this.Home_Dashboard = new System.Windows.Forms.Label();
-            this.Notifications_List = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TeamListLabel = new System.Windows.Forms.Label();
+            this.Notification_Table = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // Add_Team
@@ -113,26 +113,11 @@
             this.Home_Dashboard.Text = "Home Dashboard";
             this.Home_Dashboard.Click += new System.EventHandler(this.Team_Dashboard_Click);
             // 
-            // Notifications_List
-            // 
-            this.Notifications_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Notifications_List.FormattingEnabled = true;
-            this.Notifications_List.Location = new System.Drawing.Point(622, 53);
-            this.Notifications_List.Margin = new System.Windows.Forms.Padding(2);
-            this.Notifications_List.MaximumSize = new System.Drawing.Size(274, 500);
-            this.Notifications_List.Name = "Notifications_List";
-            this.Notifications_List.ScrollAlwaysVisible = true;
-            this.Notifications_List.Size = new System.Drawing.Size(274, 459);
-            this.Notifications_List.TabIndex = 7;
-            this.Notifications_List.SelectedIndexChanged += new System.EventHandler(this.Notifications_List_SelectedIndexChanged);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 567F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 81);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 20;
@@ -171,14 +156,41 @@
             this.TeamListLabel.Text = "Team List";
             this.TeamListLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // Notification_Table
+            // 
+            this.Notification_Table.AutoScroll = true;
+            this.Notification_Table.ColumnCount = 1;
+            this.Notification_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Notification_Table.Location = new System.Drawing.Point(619, 81);
+            this.Notification_Table.Name = "Notification_Table";
+            this.Notification_Table.RowCount = 16;
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Notification_Table.Size = new System.Drawing.Size(255, 431);
+            this.Notification_Table.TabIndex = 10;
+            // 
             // HomeDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 561);
+            this.Controls.Add(this.Notification_Table);
             this.Controls.Add(this.TeamListLabel);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.Notifications_List);
             this.Controls.Add(this.Home_Dashboard);
             this.Controls.Add(this.Notifications);
             this.Controls.Add(this.Settings);
@@ -201,10 +213,10 @@
         private System.Windows.Forms.Button Settings;
         private System.Windows.Forms.Label Notifications;
         private System.Windows.Forms.Label Home_Dashboard;
-        private System.Windows.Forms.ListBox Notifications_List;
         public System.Windows.Forms.Button Add_Team;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label TeamListLabel;
+        private System.Windows.Forms.TableLayoutPanel Notification_Table;
     }
 }
 
