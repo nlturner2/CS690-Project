@@ -38,10 +38,9 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(313, 213);
-            this.Cancel.Margin = new System.Windows.Forms.Padding(2);
+            this.Cancel.Location = new System.Drawing.Point(470, 328);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(50, 27);
+            this.Cancel.Size = new System.Drawing.Size(75, 42);
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -50,10 +49,9 @@
             // Team_Name
             // 
             this.Team_Name.AutoSize = true;
-            this.Team_Name.Location = new System.Drawing.Point(30, 30);
-            this.Team_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Team_Name.Location = new System.Drawing.Point(45, 46);
             this.Team_Name.Name = "Team_Name";
-            this.Team_Name.Size = new System.Drawing.Size(68, 13);
+            this.Team_Name.Size = new System.Drawing.Size(99, 20);
             this.Team_Name.TabIndex = 2;
             this.Team_Name.Text = "Team Name:";
             this.Team_Name.Click += new System.EventHandler(this.label1_Click);
@@ -61,38 +59,34 @@
             // GithubURL
             // 
             this.GithubURL.AutoSize = true;
-            this.GithubURL.Location = new System.Drawing.Point(30, 95);
-            this.GithubURL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GithubURL.Location = new System.Drawing.Point(45, 146);
             this.GithubURL.Name = "GithubURL";
-            this.GithubURL.Size = new System.Drawing.Size(63, 13);
+            this.GithubURL.Size = new System.Drawing.Size(94, 20);
             this.GithubURL.TabIndex = 3;
             this.GithubURL.Text = "GithubURL:";
             this.GithubURL.Click += new System.EventHandler(this.GithubURL_Click);
             // 
             // TeamNameBox
             // 
-            this.TeamNameBox.Location = new System.Drawing.Point(33, 51);
-            this.TeamNameBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TeamNameBox.Location = new System.Drawing.Point(50, 78);
             this.TeamNameBox.Name = "TeamNameBox";
-            this.TeamNameBox.Size = new System.Drawing.Size(444, 20);
+            this.TeamNameBox.Size = new System.Drawing.Size(664, 26);
             this.TeamNameBox.TabIndex = 4;
             this.TeamNameBox.TextChanged += new System.EventHandler(this.TeamNameBox_TextChanged);
             // 
             // GithubURLBox
             // 
-            this.GithubURLBox.Location = new System.Drawing.Point(33, 116);
-            this.GithubURLBox.Margin = new System.Windows.Forms.Padding(2);
+            this.GithubURLBox.Location = new System.Drawing.Point(50, 178);
             this.GithubURLBox.Name = "GithubURLBox";
-            this.GithubURLBox.Size = new System.Drawing.Size(444, 20);
+            this.GithubURLBox.Size = new System.Drawing.Size(664, 26);
             this.GithubURLBox.TabIndex = 5;
             this.GithubURLBox.TextChanged += new System.EventHandler(this.GithubURLBox_TextChanged);
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(150, 213);
-            this.Add.Margin = new System.Windows.Forms.Padding(2);
+            this.Add.Location = new System.Drawing.Point(225, 328);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(50, 27);
+            this.Add.Size = new System.Drawing.Size(75, 42);
             this.Add.TabIndex = 6;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
@@ -100,18 +94,18 @@
             // 
             // Add_Team
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.GithubURLBox);
             this.Controls.Add(this.TeamNameBox);
             this.Controls.Add(this.GithubURL);
             this.Controls.Add(this.Team_Name);
             this.Controls.Add(this.Cancel);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Add_Team";
             this.Text = "Add Team";
+            this.Load += new System.EventHandler(this.Add_Team_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

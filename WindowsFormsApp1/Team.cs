@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -58,9 +59,9 @@ namespace WindowsFormsApp1
         {
             return "Person: " + name + " " + url;
         }
-        
 
-        public string URLFactory (string URL)
+
+        public string URLFactory(string URL)
         {
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
@@ -94,10 +95,11 @@ namespace WindowsFormsApp1
                 TD.summaryrichTextBox1.Text += parse_Summary(s);
                 TD.teamMembersRichTextBox1.Text += parse_Members(s);
                 TD.meetingRichTextBox1.Text += parse_Meeting(s);
+                TD.LoadGithubDataAsync();
 
             }
             TD.Show();
-            
+
         }
         private string parse_Summary(string data)
         {
@@ -106,7 +108,7 @@ namespace WindowsFormsApp1
             int index = 0;
             foreach (string s in summaryWithH)
             {
-                if (s.Contains("Summary")|| s.Contains("summary"))
+                if (s.Contains("Summary") || s.Contains("summary"))
                 {
                     while (index < summaryWithH.Length)
                     {
@@ -138,21 +140,21 @@ namespace WindowsFormsApp1
             string[] teamMembers = data.Split('\n');
             string Members = null;
             int index = 0;
-            foreach(string s in teamMembers)
+            foreach (string s in teamMembers)
             {
-                if(s.Contains("Team Members") || s.Contains("Team members")|| s.Contains("team Members") || s.Contains("team members"))
+                if (s.Contains("Team Members") || s.Contains("Team members") || s.Contains("team Members") || s.Contains("team members"))
                 {
                     while (index < teamMembers.Length)
                     {
-                        if (teamMembers[index+1].Contains("Client"))
+                        if (teamMembers[index + 1].Contains("Client"))
                             break;
-                        else if (teamMembers[index+1] != "\n")
+                        else if (teamMembers[index + 1] != "\n")
                         {
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("-", "");
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
                             teamMembers[index + 1] = teamMembers[index + 1].Trim();
-                            Members += teamMembers[index+1] + "\n";
-                            TeamMembers team = new TeamMembers(teamMembers[index+1],this.Name);
+                            Members += teamMembers[index + 1] + "\n";
+                            TeamMembers team = new TeamMembers(teamMembers[index + 1], this.Name);
                         }
                         index++;
                     }
@@ -173,7 +175,7 @@ namespace WindowsFormsApp1
             /*string format = "yyyy mm dd h:mm ";
             DateTime dateTime = DateTime.ParseExact(txt, format);
             */
-            
+
             for (int i = 0; i < lines.Length; i++)
             {
                 //getting textfield name and comparing it with text
@@ -182,7 +184,7 @@ namespace WindowsFormsApp1
                     //reading lines and displaying in richTextBox1
                     //txt += "\n" + lines[i + 0];
                     txt += "\n" + lines[i + 1];
-                    
+
                 }
                 else
                 {
@@ -197,7 +199,7 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
-  
+
 
             }
 
@@ -209,10 +211,14 @@ namespace WindowsFormsApp1
             return txt;
         }
 
-
+       
         internal static bool isNull(Team[] tempTeam)
         {
             throw new NotImplementedException();
         }
     }
 }
+
+
+
+ 
