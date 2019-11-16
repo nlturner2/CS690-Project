@@ -88,5 +88,10 @@ namespace WindowsFormsApp1
         {
             var TU = this.GithubURLBox.Text.Insert(this.GithubURLBox.SelectionStart, "0");
         }
+
+        private void Add_Team_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

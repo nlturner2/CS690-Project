@@ -32,17 +32,19 @@
             this.Home = new System.Windows.Forms.Button();
             this.Notes = new System.Windows.Forms.TabPage();
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
+            this.Progress_List = new System.Windows.Forms.ListBox();
             this.TeamMeeting = new System.Windows.Forms.TabPage();
             this.meetingRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Members = new System.Windows.Forms.TabPage();
             this.teamMembersRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Summary = new System.Windows.Forms.TabPage();
             this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.TabBox = new System.Windows.Forms.TabControl();
+            this.TextBox = new System.Windows.Forms.TabControl();
+            this.WeeklyProgress.SuspendLayout();
             this.TeamMeeting.SuspendLayout();
             this.Members.SuspendLayout();
             this.Summary.SuspendLayout();
-            this.TabBox.SuspendLayout();
+            this.TextBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TeadDashboard
@@ -80,6 +82,7 @@
             // 
             // WeeklyProgress
             // 
+            this.WeeklyProgress.Controls.Add(this.Progress_List);
             this.WeeklyProgress.Location = new System.Drawing.Point(4, 29);
             this.WeeklyProgress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.WeeklyProgress.Name = "WeeklyProgress";
@@ -87,6 +90,17 @@
             this.WeeklyProgress.TabIndex = 5;
             this.WeeklyProgress.Text = "Weekly Progress";
             this.WeeklyProgress.UseVisualStyleBackColor = true;
+            // 
+            // Progress_List
+            // 
+            this.Progress_List.FormattingEnabled = true;
+            this.Progress_List.ItemHeight = 20;
+            this.Progress_List.Location = new System.Drawing.Point(12, 17);
+            this.Progress_List.Name = "Progress_List";
+            this.Progress_List.ScrollAlwaysVisible = true;
+            this.Progress_List.Size = new System.Drawing.Size(1290, 684);
+            this.Progress_List.TabIndex = 0;
+            this.Progress_List.SelectedIndexChanged += new System.EventHandler(this.Progress_List_SelectedIndexChanged);
             // 
             // TeamMeeting
             // 
@@ -153,19 +167,19 @@
             this.summaryrichTextBox1.Text = "";
             this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // TabBox
+            // TextBox
             // 
-            this.TabBox.Controls.Add(this.Summary);
-            this.TabBox.Controls.Add(this.Members);
-            this.TabBox.Controls.Add(this.TeamMeeting);
-            this.TabBox.Controls.Add(this.WeeklyProgress);
-            this.TabBox.Controls.Add(this.Notes);
-            this.TabBox.Location = new System.Drawing.Point(18, 94);
-            this.TabBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TabBox.Name = "TabBox";
-            this.TabBox.SelectedIndex = 0;
-            this.TabBox.Size = new System.Drawing.Size(1324, 751);
-            this.TabBox.TabIndex = 8;
+            this.TextBox.Controls.Add(this.Summary);
+            this.TextBox.Controls.Add(this.Members);
+            this.TextBox.Controls.Add(this.TeamMeeting);
+            this.TextBox.Controls.Add(this.WeeklyProgress);
+            this.TextBox.Controls.Add(this.Notes);
+            this.TextBox.Location = new System.Drawing.Point(18, 94);
+            this.TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBox.Name = "TextBox";
+            this.TextBox.SelectedIndex = 0;
+            this.TextBox.Size = new System.Drawing.Size(1324, 751);
+            this.TextBox.TabIndex = 8;
             // 
             // Team_Dashboard
             // 
@@ -173,17 +187,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1352, 837);
-            this.Controls.Add(this.TabBox);
+            this.Controls.Add(this.TextBox);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.TeadDashboard);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Team_Dashboard";
             this.Text = "Team_Dashboard";
             this.Load += new System.EventHandler(this.Team_Dashboard_Load);
+            this.WeeklyProgress.ResumeLayout(false);
             this.TeamMeeting.ResumeLayout(false);
             this.Members.ResumeLayout(false);
             this.Summary.ResumeLayout(false);
-            this.TabBox.ResumeLayout(false);
+            this.TextBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,6 +215,7 @@
         public System.Windows.Forms.RichTextBox teamMembersRichTextBox1;
         private System.Windows.Forms.TabPage Summary;
         public System.Windows.Forms.RichTextBox summaryrichTextBox1;
-        private System.Windows.Forms.TabControl TabBox;
+        private System.Windows.Forms.TabControl TextBox;
+        public System.Windows.Forms.ListBox Progress_List;
     }
 }
