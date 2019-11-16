@@ -80,26 +80,39 @@ namespace WindowsFormsApp1
             }
             return partialText;
         }
+        
         public void button_Click(object sender, EventArgs e)
         {
+            //this.button.Click += (object sender, EventArgs e) =>
+            // var mainTD = Application.OpenForms.OfType<Team_Dashboard>().First();
+            //mainTD.Show();
 
             Team_Dashboard TD = new Team_Dashboard(this);
-            using (WebClient client = new WebClient())
+            try
             {
-                string rdmeu = this.url;
-                rdmeu = URLFactory(rdmeu);
-                string s = client.DownloadString(rdmeu);
-                TD.summaryrichTextBox1.Text += parse_Summary(s);
-                TD.teamMembersRichTextBox1.Text += parse_Members(s);
-                TD.LoadGithubDataAsync();
+                using (WebClient client = new WebClient())
+                {
+                    //getting url
+                    string rdmeu = this.url;
+                    rdmeu = URLFactory(rdmeu);
+                    //downloading string from url which is store in rdmeu 
+                    string s = client.DownloadString(rdmeu);
+                    //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
+                    TD.summaryrichTextBox1.Text += parse_Summary(s);
+                    //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
+                    TD.teamMembersRichTextBox1.Text += parse_Members(s);
+                    //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
+                    TD.meetingRichTextBox1.Text += parse_Meeting(s);
+                    // Display the some commits in like date, name, and message in weekly progress
+                    TD.LoadGithubDataAsync();
 
-                // Parse_Meeting is currently broken
-                //TD.meetingRichTextBox1.Text += parse_Meeting(s);
-
-
+                }
+                TD.Show();
             }
-            TD.Show();
-
+            catch (Exception)
+            {
+                MessageBox.Show("There is no data in file");
+            }
         }
         private string parse_Summary(string data)
         {
