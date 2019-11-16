@@ -169,6 +169,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="packages.config" />
+    <Compile Include="Parser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
