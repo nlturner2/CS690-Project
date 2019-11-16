@@ -83,9 +83,7 @@ namespace WindowsFormsApp1
         
         public void button_Click(object sender, EventArgs e)
         {
-            //this.button.Click += (object sender, EventArgs e) =>
-            // var mainTD = Application.OpenForms.OfType<Team_Dashboard>().First();
-            //mainTD.Show();
+
 
             Team_Dashboard TD = new Team_Dashboard(this);
             try

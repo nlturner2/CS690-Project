@@ -31,15 +31,7 @@ namespace WindowsFormsApp1
 
         private void TabPage1_Click(object sender, EventArgs e)
         {
-            /**
-            using (WebClient client = new WebClient())
-            {
-                string u = currentTeam.Url;
-                string s = client.DownloadString(u);
-                summaryrichTextBox1.Text += s;
-                
-            }
-            */
+
         }
 
         private void TabPage2_Click(object sender, EventArgs e)
