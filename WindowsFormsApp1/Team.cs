@@ -82,9 +82,6 @@ namespace WindowsFormsApp1
         }
         public void button_Click(object sender, EventArgs e)
         {
-            //this.button.Click += (object sender, EventArgs e) =>
-            // var mainTD = Application.OpenForms.OfType<Team_Dashboard>().First();
-            //mainTD.Show();
 
             Team_Dashboard TD = new Team_Dashboard(this);
             using (WebClient client = new WebClient())
@@ -94,8 +91,11 @@ namespace WindowsFormsApp1
                 string s = client.DownloadString(rdmeu);
                 TD.summaryrichTextBox1.Text += parse_Summary(s);
                 TD.teamMembersRichTextBox1.Text += parse_Members(s);
-                TD.meetingRichTextBox1.Text += parse_Meeting(s);
                 TD.LoadGithubDataAsync();
+
+                // Parse_Meeting is currently broken
+                //TD.meetingRichTextBox1.Text += parse_Meeting(s);
+
 
             }
             TD.Show();
@@ -183,22 +183,6 @@ namespace WindowsFormsApp1
             }
             return txt; 
         }
-
-                    //reading lines and displaying in richTextBox1
-                    //txt += "\n" + lines[i + 0];
-                    //txt += "\n" + lines[i + 1];
-                /*else
-                {
-                    if (lines[i].Contains("Meeting End Time"))
-                    {
-                        //reading lines and displaying in richTextBox1
-                        txt += "\n" + lines[i + 2];
-                        txt += "\n" + lines[i + 3];
-                        if (lines[i].Contains("#"))
-                        {
-                            break;
-                        }
-                    }*/
            
         internal static bool isNull(Team[] tempTeam)
         {
