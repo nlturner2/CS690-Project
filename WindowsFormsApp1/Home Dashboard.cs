@@ -194,7 +194,12 @@ namespace WindowsFormsApp1
 
 
         }
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            var f2 = new Settings();
+            f2.Show();
 
+        }
         private void Notifications_List_SelectedIndexChanged(object sender, EventArgs e)
         {
 

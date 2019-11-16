@@ -86,7 +86,7 @@
             this.Settings.TabIndex = 3;
             this.Settings.Text = "Settings";
             this.Settings.UseVisualStyleBackColor = true;
-            this.Settings.Click += new System.EventHandler(this.button1_Click);
+            this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // Notifications
             // 
