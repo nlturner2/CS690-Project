@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
                 string s = client.DownloadString(rdmeu);
                 TD.summaryrichTextBox1.Text += parse_Summary(s);
                 TD.teamMembersRichTextBox1.Text += parse_Members(s);
-                TD.meetingRichTextBox1.Text += parse_Meeting(s);
+                //TD.meetingRichTextBox1.Text += parse_Meeting(s);
 
             }
             TD.Show();
