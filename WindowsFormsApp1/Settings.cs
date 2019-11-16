@@ -16,5 +16,14 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
