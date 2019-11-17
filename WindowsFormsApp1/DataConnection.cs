@@ -10,6 +10,7 @@ namespace WindowsFormsApp1
 {
     public class DataConnection
     {
+        
         public DataConnection()
         {
             using (var db = new LiteDatabase(@"TrackingData.db"))
@@ -19,6 +20,7 @@ namespace WindowsFormsApp1
             }
                 
         }
+        //Function to add a team to the database, it takes a Team object.
         public void AddTeam(Team item)
         {
 
@@ -29,6 +31,7 @@ namespace WindowsFormsApp1
             }
             
         }
+        //Function to add members of a team to the database, it take TeamMembers object.
         public void AddMember(TeamMembers item)
         {
 
@@ -39,6 +42,8 @@ namespace WindowsFormsApp1
             }
             
         }
+
+        //Function to count the number of teams in the database
         public int CountTeams()
         {
             int count;
@@ -49,6 +54,8 @@ namespace WindowsFormsApp1
             }
             return count;
         }
+
+        //Function to count the number of members in the database
         public int CountMembers()
         {
             int count;
@@ -59,6 +66,8 @@ namespace WindowsFormsApp1
             }
             return count;
         }
+
+        //Function to delete the team and the members that belongs to that team. it takes the string team name
         public void DeleteRecord(string theTeam)
         {
             using (var db = new LiteDatabase(@"TrackingData.db"))
@@ -69,6 +78,42 @@ namespace WindowsFormsApp1
                 membersCollection.Delete(Query.EQ("TeamName", theTeam));
                 
             }
+        }
+
+        //return a list of team
+
+        public IList<Team> GetAll()
+        {
+            var teamToReturn = new List<Team>();
+            using (var db = new LiteDatabase(@"TrackingData.db"))
+            {
+                var teamCollection = db.GetCollection<Team>("teams");
+                var results = teamCollection.FindAll();
+                foreach (Team teamItem in results)
+                {
+                    teamToReturn.Add(teamItem);
+                }
+                return teamToReturn;
+            }
+        }
+        public void UpdateNotification(string theTeam)
+        {
+            using (var db = new LiteDatabase(@"TrackingData.db"))
+            {
+                // Open data file (or create if not exits)  
+                var teamCollection = db.GetCollection<Team>("teams");
+                
+                    // Update an existing issue document  
+                    
+                    var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
+                //updateTeam.meetingNotification = true;
+                teamCollection.Update(updateTeam);
+
+            }
+        }
+        public string ReadTeam()
+        {
+            return "a";
         }
     }
 }

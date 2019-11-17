@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         {
             MemberName = name;
             TeamName = team;
+            commitNotification = false;
         }
         /**
         public t()
@@ -40,6 +41,7 @@ namespace WindowsFormsApp1
         public int Id { get; set; }
         public string MemberName { get; set; }
         public string TeamName { get; set; }
+        public Boolean commitNotification { get; set; }
     }
 }
 

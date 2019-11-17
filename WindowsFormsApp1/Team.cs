@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
         {
             name = n;
             url = u;
+            meetingNotification = false;
             button = new Button();
             button.Text = n;
             button.Size = new Size(540, 50);
@@ -43,6 +44,7 @@ namespace WindowsFormsApp1
         }
 
         public int Id { get; set; }
+        public Boolean meetingNotification { get; set; }
         public String Name
         {
             get { return name; }
