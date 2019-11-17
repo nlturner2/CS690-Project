@@ -100,14 +100,34 @@ namespace WindowsFormsApp1
             return Members;
         }*/
 
+        public string URL_Commit(string URL)
+        {
+            string partialText = "";
+            if (!String.IsNullOrWhiteSpace(URL))
+            {
+                int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
-        /*public List<string> LoadGithubDataAsync()
+                if (charLocation > 0)
+                {
+                    //https://github.com/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware.git
+                    //https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/commits
+                    partialText = URL.Substring(charLocation + 1);
+                    int secondLocation = partialText.LastIndexOf('.');
+                    partialText = partialText.Remove(secondLocation);
+                    partialText = "https://api.github.com/repos" + partialText + "commits";
+                }
+
+            }
+            return partialText;
+        }
+
+        public List<string> LoadGithubDataAsync(string apiURL)
         {
             List<string> list = new List<string>();
             string line = null;
             string responseString = "";
             //Create a request object to call Github API
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(" https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/commits"));
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(apiURL));
             //GitHub API will reject any request without this header
             request.UserAgent = "my user agent";
             //Add compression headers
@@ -128,8 +148,8 @@ namespace WindowsFormsApp1
             for (int i = 0; i < data.Length; i++)
             {
 
-                //line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
-                line = data[i].name;
+                line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
+                //line = data[i].name;
                 list.Add(line);
                 //Loop through the object and add items to the UI.
                 //Progress_List.Items.Add(line);
@@ -138,7 +158,7 @@ namespace WindowsFormsApp1
 
             return list;
 
-        }*/
+        }
 
         /*private string parse_Meeting(string data)
         {

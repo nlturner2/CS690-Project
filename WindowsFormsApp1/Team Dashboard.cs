@@ -73,10 +73,10 @@ namespace WindowsFormsApp1
 
         private void Progress_List_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
-        /*public void parse()
+       /* public void parse()
         {
             Parser parser = new Parser();
             foreach (var item in parser.LoadGithubDataAsync())
@@ -87,12 +87,14 @@ namespace WindowsFormsApp1
 
         }*/
 
-       public void LoadGithubDataAsync()
+
+
+       /*public void LoadGithubDataAsync()
         {
             string line = null;
             string responseString = "";
             //Create a request object to call Github API
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri("https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/orgs/collaborators/:username/permission"));
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri("https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware"));
             //GitHub API will reject any request without this header
             request.UserAgent = "my user agent";
             //Add compression headers
@@ -114,13 +116,13 @@ namespace WindowsFormsApp1
             for (int i = 0; i < data.Length; i++)
             {
                 //line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
-                line = data[i].login;
+                line = data[i];
                 //Loop through the object and add items to the UI.
                 Progress_List.Items.Add(line);
                 //Check the data object from watch window. You can loop through it and find different properties as you want
             }
 
-        }
+        }*/
 
     }
    

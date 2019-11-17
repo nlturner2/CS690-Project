@@ -93,6 +93,7 @@ namespace WindowsFormsApp1
                 using (WebClient client = new WebClient())
                 {
                     //getting url
+                    string commitURL = this.url;
                     string rdmeu = this.url;
                     rdmeu = parser.URL_Readme(rdmeu);
                     //downloading string from url which is store in rdmeu 
@@ -105,8 +106,11 @@ namespace WindowsFormsApp1
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
                     //TD.meetingRichTextBox1.Text += parse_Meeting(s);
                     // Display the some commits in like date, name, and message in weekly progress
-                    TD.LoadGithubDataAsync();
-
+                    
+                    foreach(var item in parser.LoadGithubDataAsync(parser.URL_Commit(commitURL)))
+                    {
+                        TD.Progress_List.Items.Add(item);
+                    }
                 }
                 TD.Show();
             }
