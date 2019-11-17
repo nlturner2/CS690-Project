@@ -94,6 +94,7 @@ namespace WindowsFormsApp1
                     string rdmeu = this.url;
                     rdmeu = parser.URL_Readme(rdmeu);
                     //downloading string from url which is store in rdmeu 
+                    //MessageBox.Show(rdmeu);
                     string s = client.DownloadString(rdmeu);
                     //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
                     TD.summaryrichTextBox1.Text += parse_Summary(s);
