@@ -15,8 +15,8 @@ namespace WindowsFormsApp1
 {
     public class Team
     {
-        private String name;
-        private String url;
+        private string name;
+        private string url;
         private Button button;
 
 
@@ -96,15 +96,16 @@ namespace WindowsFormsApp1
                     string rdmeu = this.url;
                     rdmeu = parser.URL_Readme(rdmeu);
                     //downloading string from url which is store in rdmeu 
+                    //MessageBox.Show(rdmeu);
                     string s = client.DownloadString(rdmeu);
                     //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
                     TD.summaryrichTextBox1.Text += parse_Summary(s);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
                     TD.teamMembersRichTextBox1.Text += parse_Members(s);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
-                    TD.meetingRichTextBox1.Text += parse_Meeting(s);
+                    //TD.meetingRichTextBox1.Text += parse_Meeting(s);
                     // Display the some commits in like date, name, and message in weekly progress
-                    TD.parse();
+                    //TD.parse();
 
                 }
                 TD.Show();
@@ -181,9 +182,9 @@ namespace WindowsFormsApp1
             Members = Members.Trim();
             return Members;
         }
-        private string parse_Meeting(string data)
+        /*private string parse_Meeting(string data)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\BookArtsCollaborativeBusinessOperationSoftware-master\BookArtsCollaborativeBusinessOperationSoftware-master\MeetingMinutes\Team\10-7-2019_10-13-2019.md");
+            string[] lines = data.Split('\n');
             string txt = null;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -195,7 +196,7 @@ namespace WindowsFormsApp1
                 break;
             }
             return txt; 
-        }
+        }*/
            
         internal static bool isNull(Team[] tempTeam)
         {
