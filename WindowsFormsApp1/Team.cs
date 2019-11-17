@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
                     //TD.meetingRichTextBox1.Text += parse_Meeting(s);
                     // Display the some commits in like date, name, and message in weekly progress
-                    //TD.parse();
+                    TD.LoadGithubDataAsync();
 
                 }
                 TD.Show();

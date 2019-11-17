@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
 
         }
 
-        public void parse()
+        /*public void parse()
         {
             Parser parser = new Parser();
             foreach (var item in parser.LoadGithubDataAsync())
@@ -85,18 +85,19 @@ namespace WindowsFormsApp1
             }
 
 
-        }
+        }*/
 
-       /* public void LoadGithubDataAsync()
+       public void LoadGithubDataAsync()
         {
             string line = null;
             string responseString = "";
             //Create a request object to call Github API
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(" https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/commits"));
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri("https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/orgs/collaborators/:username/permission"));
             //GitHub API will reject any request without this header
             request.UserAgent = "my user agent";
             //Add compression headers
             request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.PreAuthenticate = true;
             //Get the response from the GitHub API
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             //Read the response in a stream
@@ -112,14 +113,14 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
-                line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
-                //line = data[i].name;
+                //line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
+                line = data[i].login;
                 //Loop through the object and add items to the UI.
                 Progress_List.Items.Add(line);
                 //Check the data object from watch window. You can loop through it and find different properties as you want
             }
 
-        }*/
+        }
 
     }
    
