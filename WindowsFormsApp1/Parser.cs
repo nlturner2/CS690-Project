@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Parser
     {
-        private string teamURL;
+        //private string teamURL;
 
 
         public string URL_Readme(string URL)
@@ -140,7 +140,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private string parse_Meeting(string data)
+        /*private string parse_Meeting(string data)
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\BookArtsCollaborativeBusinessOperationSoftware-master\BookArtsCollaborativeBusinessOperationSoftware-master\MeetingMinutes\Team\10-7-2019_10-13-2019.md");
             string txt = null;
@@ -154,6 +154,6 @@ namespace WindowsFormsApp1
                 break;
             }
             return txt;
-        }
+        }*/
     }
 }
