@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
         }
 
         // Add Button
-        public void button1_Click(object sender, EventArgs e)
+        public void Add_Click(object sender, EventArgs e)
         {
             var main = Application.OpenForms.OfType<HomeDashboard>().First();
             createTeam(main);
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
         }
         
         // Cancel Button
-        private void button2_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)
         {
             Close();
         }

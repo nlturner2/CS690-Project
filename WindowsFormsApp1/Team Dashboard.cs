@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             currentTeam = obj;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Home_Click(object sender, EventArgs e)
         {
             //Close teamdashboard
             Close();

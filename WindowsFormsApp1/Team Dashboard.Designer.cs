@@ -67,7 +67,7 @@
             this.Home.TabIndex = 7;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
-            this.Home.Click += new System.EventHandler(this.button1_Click);
+            this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
             // Notes
             // 
