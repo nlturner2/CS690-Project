@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
         {
             var main = Application.OpenForms.OfType<HomeDashboard>().First();
             createTeam(main);
+            main.Display();
 
             
             Close();

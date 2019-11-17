@@ -22,8 +22,10 @@ namespace WindowsFormsApp1
         // Remove Team Button
         private void button1_Click(object sender, EventArgs e)
         {
+            var main = Application.OpenForms.OfType<HomeDashboard>().First();
             var name = removeTeamBox.Text;
             Variables.TMInstance.removeTeam(name);
+            main.Display();
 
             Close();
         }
