@@ -13,8 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class Add_Team : Form 
     {
+        public Variables Callingform { get; set; }
 
-     
         public Add_Team()
         {
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
                     obj.tableLayoutPanel1.Show();
                     obj.Show();
                     var main = Application.OpenForms.OfType<HomeDashboard>().First();
-                    main.Write(team);
+                    Variables.TMInstance.Write(team);
                 }
                 else
                 {

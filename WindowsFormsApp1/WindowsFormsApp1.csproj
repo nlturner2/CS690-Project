@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Team Management.cs" />
     <Compile Include="DataConnection.cs" />
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
@@ -134,6 +135,7 @@
       <DependentUpon>Team Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="TeamMembers.cs" />
+    <Compile Include="Variables.cs" />
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
