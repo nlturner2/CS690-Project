@@ -100,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Team Management.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="TeamButton.cs" />
     <Compile Include="DataConnection.cs" />
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>

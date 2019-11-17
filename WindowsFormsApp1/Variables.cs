@@ -15,6 +15,15 @@ namespace WindowsFormsApp1
             
         }
 
+        private static DataConnection dbc = new DataConnection();
+
+        public static DataConnection db
+        {
+            get => dbc;
+            
+
+        }
+
     }
 
 

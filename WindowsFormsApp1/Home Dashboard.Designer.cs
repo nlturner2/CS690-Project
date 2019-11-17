@@ -182,6 +182,7 @@
             this.Notification_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.Notification_Table.Size = new System.Drawing.Size(255, 431);
             this.Notification_Table.TabIndex = 10;
+            this.Notification_Table.Paint += new System.Windows.Forms.PaintEventHandler(this.Notification_Table_Paint);
             // 
             // HomeDashboard
             // 
@@ -216,7 +217,7 @@
         public System.Windows.Forms.Button Add_Team;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label TeamListLabel;
-        private System.Windows.Forms.TableLayoutPanel Notification_Table;
+        public System.Windows.Forms.TableLayoutPanel Notification_Table;
     }
 }
 
