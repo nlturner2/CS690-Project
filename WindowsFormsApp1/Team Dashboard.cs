@@ -76,7 +76,18 @@ namespace WindowsFormsApp1
 
         }
 
-        public void LoadGithubDataAsync()
+        public void parse()
+        {
+            Parser parser = new Parser();
+            foreach (var item in parser.LoadGithubDataAsync())
+            {
+                Progress_List.Items.Add(item);
+            }
+
+
+        }
+
+       /* public void LoadGithubDataAsync()
         {
             string line = null;
             string responseString = "";
@@ -108,7 +119,7 @@ namespace WindowsFormsApp1
                 //Check the data object from watch window. You can loop through it and find different properties as you want
             }
 
-        }
+        }*/
 
     }
    

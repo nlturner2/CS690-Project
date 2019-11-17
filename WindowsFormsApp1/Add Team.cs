@@ -13,8 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class Add_Team : Form 
     {
+        public Variables Callingform { get; set; }
 
-     
         public Add_Team()
         {
             InitializeComponent();
@@ -45,22 +45,25 @@ namespace WindowsFormsApp1
         // creates a team when Add button is clicked
         public void createTeam(HomeDashboard obj)
         {
+            //DataConnection dbc = new DataConnection();
             //get team name and url
             var name = TeamNameBox.Text;
             var url = GithubURLBox.Text;
-            string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
+            //string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
             // check if either box was empty
             if ((name != "") && (url != ""))
             {
-                if (!File.Exists(fileName))
+                // replaced "!File.Exists(fileName)" with true
+                if (true)
                 {
                     // create team
                     Team team = new Team(name, url);
+                    Variables.db.AddTeam(team);
                     obj.tableLayoutPanel1.Controls.Add(team.getButton());
                     obj.tableLayoutPanel1.Show();
                     obj.Show();
                     var main = Application.OpenForms.OfType<HomeDashboard>().First();
-                    main.Write(team);
+                    Variables.TMInstance.Write(team);
                 }
                 else
                 {
