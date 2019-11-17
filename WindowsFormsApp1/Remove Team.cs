@@ -13,17 +13,17 @@ namespace WindowsFormsApp1
 {
     public partial class Remove_Team : Form
     {
+        public Variables Callingform { get; set; }
         public Remove_Team()
         {
             InitializeComponent();
+
         }
         // Remove Team Button
         private void button1_Click(object sender, EventArgs e)
         {
-            var main = Application.OpenForms.OfType<HomeDashboard>().First();
             var name = removeTeamBox.Text;
-            main.removeTeam(name);
-
+            Variables.TMInstance.removeTeam(name);
 
             Close();
         }
