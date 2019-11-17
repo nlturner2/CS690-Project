@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
                     // create team
                     Team team = new Team(name, url);
                     Variables.db.AddTeam(team);
-                    obj.tableLayoutPanel1.Controls.Add(team.getButton());
+                    //obj.tableLayoutPanel1.Controls.Add(team.getButton());
                     obj.tableLayoutPanel1.Show();
                     obj.Show();
                     var main = Application.OpenForms.OfType<HomeDashboard>().First();

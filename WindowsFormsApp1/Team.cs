@@ -17,14 +17,12 @@ namespace WindowsFormsApp1
     {
         private string name;
         private string url;
-        private Button button;
+        
 
 
         public Team()
         {
-            button = new Button();
-            button.Size = new Size(540, 50);
-            button.Click += button_Click;
+            
         }
 
         public Team(String n, String u)
@@ -32,16 +30,10 @@ namespace WindowsFormsApp1
             name = n;
             url = u;
             meetingNotification = false;
-            button = new Button();
-            button.Text = n;
-            button.Size = new Size(540, 50);
-            button.Click += button_Click;
+            
         }
 
-        public Button getButton()
-        {
-            return button;
-        }
+        
 
         public int Id { get; set; }
         public Boolean meetingNotification { get; set; }
@@ -56,12 +48,12 @@ namespace WindowsFormsApp1
             get { return url; }
             set { url = value; }
         }
-
+        /**
         public override string ToString()
         {
             return "Person: " + name + " " + url;
         }
-
+        */
 
         /*public string URLFactory(string URL)
         {
@@ -81,7 +73,7 @@ namespace WindowsFormsApp1
 
             }
             return partialText;
-        }*/
+        }
         
         public void button_Click(object sender, EventArgs e)
         {

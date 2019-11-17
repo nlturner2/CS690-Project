@@ -33,7 +33,8 @@ namespace WindowsFormsApp1
             if (Variables.TMInstance.teamBook.Length != 0 && Variables.TMInstance.teamBook != null) {
                 for (int i = 0; i < Variables.TMInstance.teamBook.Length; i++)
                 {
-                    this.tableLayoutPanel1.Controls.Add(Variables.TMInstance.teamBook[i].getButton());
+                    TeamButton newButton = new TeamButton(Variables.TMInstance.teamBook[i]);
+                    this.tableLayoutPanel1.Controls.Add(newButton.getButton());
                 }
             }     
         }
@@ -84,17 +85,19 @@ namespace WindowsFormsApp1
         private void Refresh_Click(object sender, EventArgs e)
         {
             
-            TeamMembers m1 = new TeamMembers("3rd member", "3rd");
-            Team t55 = new Team("3rd", "www.google.com");
+            
             DataConnection db = new DataConnection();
-            //db.AddTeam(t55);
-            //db.AddMember(m1);
-            int x =db.CountMembers();
-            string y = db.CountMembers().ToString();
 
-            //MessageBox.Show(x.ToString());
+
+           foreach(var item in db.GetAll())
+            {
+                MessageBox.Show(item.ToString());
+            }
+                
+
+            //MessageBox.Show(a.ToString());
             //MessageBox.Show(y);
-            db.DeleteRecord("3rd");
+            
             //MessageBox.Show(x.ToString());
             //MessageBox.Show(y);
 
