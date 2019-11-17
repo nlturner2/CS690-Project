@@ -9,21 +9,25 @@ namespace WindowsFormsApp1
 {
     public class TeamManagement
     {
+        public Variables Callingform { get; set; }
         /* To use Functions from this class or variables from this class in other places put 
          * "Variables.TM"
          * in front of them.
          */
+
+        //DataConnection dbc = new DataConnection();
         public Team[] teamBook = new Team[1];
         public int count = 0;
 
         public void removeTeam(string teamName)
         {
-            string team = @"C:\Teamfiles\" + teamName;
+            //string team = @"C:\Teamfiles\" + teamName;
 
             //create new smaller temporary array
             Team[] tempTeam = new Team[teamBook.Count() - 1];
             int index = 0;
-            if (File.Exists(team))
+            // replaced "File.Exists(team)" with true
+            if (true)
             {
                 foreach (Team i in teamBook)
                 {
@@ -35,7 +39,7 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        File.Delete(team);
+                        Variables.db.DeleteRecord(teamName);
                     }
                 }
                 //resize teamBook array

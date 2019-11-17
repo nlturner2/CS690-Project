@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         
         public DataConnection()
         {
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 var membersCollection = db.GetCollection<TeamMembers>("members");                
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         public void AddTeam(Team item)
         {
 
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 teamCollection.Insert(item);
@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
         public int CountTeams()
         {
             int count;
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 count=teamCollection.Count();
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
         public int CountMembers()
         {
             int count;
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var membersCollection = db.GetCollection<TeamMembers>("members");
                 count = membersCollection.Count();
@@ -70,7 +70,7 @@ namespace WindowsFormsApp1
         //Function to delete the team and the members that belongs to that team. it takes the string team name
         public void DeleteRecord(string theTeam)
         {
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 var membersCollection = db.GetCollection<TeamMembers>("members");
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
         public IList<Team> GetAll()
         {
             var teamToReturn = new List<Team>();
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 var results = teamCollection.FindAll();
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
         }
         public void UpdateNotification(string theTeam)
         {
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 // Open data file (or create if not exits)  
                 var teamCollection = db.GetCollection<Team>("teams");
