@@ -215,7 +215,10 @@ namespace WindowsFormsApp1
 
         }
 
-        
+        private void Notification_Table_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     
 }
