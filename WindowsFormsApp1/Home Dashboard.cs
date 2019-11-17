@@ -27,8 +27,9 @@ namespace WindowsFormsApp1
         }
 
         //Display teams after the read function
-        private void Display()
+        public void Display()
         {
+            this.tableLayoutPanel1.Controls.Clear();
             if (Variables.TMInstance.teamBook.Length != 0 && Variables.TMInstance.teamBook != null) {
                 for (int i = 0; i < Variables.TMInstance.teamBook.Length; i++)
                 {

@@ -78,6 +78,7 @@ namespace WindowsFormsApp1
         }
         public void Read()
         {
+            
             int i = 0;
             string url = "";
             //create folder if none exists
