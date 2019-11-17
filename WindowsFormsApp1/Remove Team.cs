@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
 
         }
         // Remove Team Button
-        private void button1_Click(object sender, EventArgs e)
+        private void Remove_Click(object sender, EventArgs e)
         {
             var main = Application.OpenForms.OfType<HomeDashboard>().First();
             var name = removeTeamBox.Text;
@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
        
 
         // Cancel Button
-        private void button2_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
