@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
         //private string teamURL;
 
 
-        public string URL_Readme(string URL)
+        public string URLFactory(string URL, string options)
         {
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
@@ -24,15 +24,48 @@ namespace WindowsFormsApp1
                     partialText = URL.Substring(charLocation + 1);
                     int secondLocation = partialText.LastIndexOf('.');
                     partialText = partialText.Remove(secondLocation);
-                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
+                    switch (options)
+                    {
+                        case "readme":
+                            partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
+                            break;
+                        case "meetings":
+                            partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes/Team?ref=master";
+                            break;
+                        case "commit":
+                            partialText = "https://api.github.com/repos" + partialText + "/commits";
+                            break;
+                    }
+
                 }
 
             }
             return partialText;
         }
 
+        public string meetingFileURL(string URL,List<string> fileNames)
+        {
+            string partialText = "";
+            if (!String.IsNullOrWhiteSpace(URL))
+            {
+                int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
-        /*private string parse_Summary(string data)
+                if (charLocation > 0) 
+                {
+                    /*foreach (var fileName in fileNames)
+                    {*/
+                        partialText = URL.Substring(charLocation + 1);
+                        int secondLocation = partialText.LastIndexOf('.');
+                        partialText = partialText.Remove(secondLocation);
+                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
+                   // }
+                }
+            }
+            return partialText;
+        }
+
+
+           public string parse_Summary(string data)
         {
             string[] summaryWithH = data.Split('\n');
             string summary = null;
@@ -66,7 +99,7 @@ namespace WindowsFormsApp1
 
 
         }
-        private string parse_Members(string data)
+        public string parse_Members(string data)
         {
             string[] teamMembers = data.Split('\n');
             string Members = null;
@@ -85,7 +118,6 @@ namespace WindowsFormsApp1
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
                             teamMembers[index + 1] = teamMembers[index + 1].Trim();
                             Members += teamMembers[index + 1] + "\n";
-                            TeamMembers team = new TeamMembers(teamMembers[index + 1], this.Name);
                         }
                         index++;
                     }
@@ -98,30 +130,10 @@ namespace WindowsFormsApp1
             }
             Members = Members.Trim();
             return Members;
-        }*/
-
-        public string URL_Commit(string URL)
-        {
-            string partialText = "";
-            if (!String.IsNullOrWhiteSpace(URL))
-            {
-                int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
-
-                if (charLocation > 0)
-                {
-                    //https://github.com/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware.git
-                    //https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/commits
-                    partialText = URL.Substring(charLocation + 1);
-                    int secondLocation = partialText.LastIndexOf('.');
-                    partialText = partialText.Remove(secondLocation);
-                    partialText = "https://api.github.com/repos" + partialText + "commits";
-                }
-
-            }
-            return partialText;
         }
 
-        public List<string> LoadGithubDataAsync(string apiURL)
+
+        public List<string> LoadGithubDataAsync(string apiURL,string options)
         {
             List<string> list = new List<string>();
             string line = null;
@@ -147,9 +159,27 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
+                //line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
+                switch (options)
+                {
+                    case "commit":
+                        line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
+                        break;
 
-                line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
-                //line = data[i].name;
+                    case "username":
+                        line = data[i].commit.author.name;
+                        break;
+                    case "filename":
+                        line = data[i].name;
+                        break;
+                    default:
+                        line = data[i];
+                        break;
+
+                
+
+            }
+               
                 list.Add(line);
                 //Loop through the object and add items to the UI.
                 //Progress_List.Items.Add(line);

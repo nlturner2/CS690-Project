@@ -84,20 +84,9 @@ namespace WindowsFormsApp1
         private void Refresh_Click(object sender, EventArgs e)
         {
             
-            TeamMembers m1 = new TeamMembers("3rd member", "3rd");
-            Team t55 = new Team("3rd", "www.google.com");
-            DataConnection db = new DataConnection();
-            //db.AddTeam(t55);
-            //db.AddMember(m1);
-            int x =db.CountMembers();
-            string y = db.CountMembers().ToString();
+            
 
-            //MessageBox.Show(x.ToString());
-            //MessageBox.Show(y);
-            db.DeleteRecord("3rd");
-            //MessageBox.Show(x.ToString());
-            //MessageBox.Show(y);
-
+            MessageBox.Show("");
 
         }
         private void Settings_Click(object sender, EventArgs e)

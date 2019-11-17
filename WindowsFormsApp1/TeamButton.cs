@@ -23,41 +23,49 @@ namespace WindowsFormsApp1
             this.newTeam = newTeam;
             button.Text = newTeam.Name;
             button.Size = new Size(540, 50);
-            //button.Click += button_Click;
+            button.Click += button_Click;
 
         }
 
-        /*public void button_Click(object sender, EventArgs e)
+        public void button_Click(object sender, EventArgs e)
         {
 
-
+            Parser parser = new Parser();
             Team_Dashboard TD = new Team_Dashboard(newTeam);
             try
             {
                 using (WebClient client = new WebClient())
                 {
                     //getting url
-                    string rdmeu = newTeam.Url;
-                    rdmeu = URLFactory(rdmeu);
+                    string meetingfileNameURL = parser.URLFactory(newTeam.Url, "meetings");
+                    string commitURL = parser.URLFactory(newTeam.Url, "commit");
+                    string readmeURL = parser.URLFactory(newTeam.Url, "readme");
+                    string meetingMinutesURL = parser.meetingFileURL(newTeam.Url, parser.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
-                    string s = client.DownloadString(rdmeu);
+                    //MessageBox.Show(rdmeu);
+                    string readMe = client.DownloadString(readmeURL);
+                    string meetingMinutesFile = client.DownloadString(meetingMinutesURL);
                     //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
-                    TD.summaryrichTextBox1.Text += parse_Summary(s);
+                    TD.summaryrichTextBox1.Text += parser.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
-                    TD.teamMembersRichTextBox1.Text += parse_Members(s);
+                    TD.teamMembersRichTextBox1.Text += parser.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
-                    TD.meetingRichTextBox1.Text += parse_Meeting(s);
+                    TD.meetingRichTextBox1.Text += meetingMinutesFile;
                     // Display the some commits in like date, name, and message in weekly progress
-                    TD.LoadGithubDataAsync();
 
+                    foreach (var item in parser.LoadGithubDataAsync(commitURL, "commit"))
+                    {
+                        TD.Progress_List.Items.Add(item);
+                    }
                 }
                 TD.Show();
+
             }
             catch (Exception)
             {
                 MessageBox.Show("There is no data in file");
             }
-        }*/
+        }
 
     }
 }
