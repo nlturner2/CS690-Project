@@ -16,7 +16,9 @@ namespace WindowsFormsApp1
          */
 
         //DataConnection dbc = new DataConnection();
+        
         public Team[] teamBook = new Team[1];
+        public List<TeamButton> teamButton = new List<TeamButton>();
         public int count = 0;
 
         public void removeTeam(string teamName)
@@ -58,23 +60,12 @@ namespace WindowsFormsApp1
         public void Write(Team obj)
         {
             //Create File
-            string fileName = @"C:\Teamfiles\" + obj.Name;
-            if (!File.Exists(fileName))
-            {
-                FileStream fs = File.Create(fileName);
-                fs.Close();
-
-                // open file and write URL to it
-                StreamWriter sw = new StreamWriter(fileName);
-                sw.WriteLine(obj.Url);
-
-                //resize array and add object to it.
+           
                 Array.Resize<Team>(ref teamBook, count + 1);
                 teamBook[teamBook.Count() - 1] = obj;
                 count = teamBook.Count();
-                //close file
-                sw.Close();
-            }
+                
+            
         }
         public void Read()
         {
@@ -82,24 +73,25 @@ namespace WindowsFormsApp1
             int i = 0;
             string url = "";
             //create folder if none exists
-            if (!Directory.Exists(@"C:\Teamfiles"))
-            {
-                Directory.CreateDirectory(@"C:\Teamfiles");
-            }
-
+            
             //create array of files and set teamBook length
-            string[] files = Directory.GetFiles(@"C:\Teamfiles\");
-            teamBook = new Team[Directory.GetFiles(@"C:\Teamfiles").Length];
+            
+            teamBook = new Team[Variables.db.CountTeams()];
 
             //read in all the file names and the first line of each file which contains the URL
-            for (int iFile = 0; iFile < files.Length; iFile++)
+            
+            foreach (var item in Variables.db.GetAll())
             {
-                StreamReader sr = new StreamReader(files[iFile]);
-                url = sr.ReadLine();
-                sr.Close();
-                teamBook[i] = new Team(new FileInfo(files[iFile]).Name, url);
-                i++;
+                
+                teamBook[i] = item;
+                //TeamButton newTeamButton = new TeamButton(item);
+                //teamButton[i] = newTeamButton;
+                
+                i++; 
+                
+
             }
+
             //get the size of teamBook
             count = teamBook.Count();
         }

@@ -33,7 +33,8 @@ namespace WindowsFormsApp1
             if (Variables.TMInstance.teamBook.Length != 0 && Variables.TMInstance.teamBook != null) {
                 for (int i = 0; i < Variables.TMInstance.teamBook.Length; i++)
                 {
-                    this.tableLayoutPanel1.Controls.Add(Variables.TMInstance.teamBook[i].getButton());
+                    TeamButton newButton = new TeamButton(Variables.TMInstance.teamBook[i]);
+                    this.tableLayoutPanel1.Controls.Add(newButton.getButton());
                 }
             }     
         }
@@ -85,8 +86,21 @@ namespace WindowsFormsApp1
         {
             
             
+            DataConnection db = new DataConnection();
 
-            MessageBox.Show("");
+
+           foreach(var item in db.GetAll())
+            {
+                MessageBox.Show(item.ToString());
+            }
+                
+
+            //MessageBox.Show(a.ToString());
+            //MessageBox.Show(y);
+            
+            //MessageBox.Show(x.ToString());
+            //MessageBox.Show(y);
+
 
         }
         private void Settings_Click(object sender, EventArgs e)

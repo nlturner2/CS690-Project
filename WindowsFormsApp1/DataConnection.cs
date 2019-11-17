@@ -96,6 +96,24 @@ namespace WindowsFormsApp1
                 return teamToReturn;
             }
         }
+
+        
+        public List<Team> StartProgram()
+        {
+            var teamToReturn = new List<Team>();
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var teamCollection = db.GetCollection<Team>("teams");
+                int numberOfTeams = teamCollection.Count();
+                
+                for (int i = 0; i <= numberOfTeams;i++ )
+                {
+
+                }
+
+            }
+            return teamToReturn;
+        }
         public void UpdateNotification(string theTeam)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
