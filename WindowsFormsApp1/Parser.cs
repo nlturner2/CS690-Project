@@ -190,20 +190,12 @@ namespace WindowsFormsApp1
 
         }
 
-        /*private string parse_Meeting(string data)
+        public string parse_Meeting(string data)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\BookArtsCollaborativeBusinessOperationSoftware-master\BookArtsCollaborativeBusinessOperationSoftware-master\MeetingMinutes\Team\10-7-2019_10-13-2019.md");
-            string txt = null;
-            for (int i = 0; i < lines.Length; i++)
-            {
-                foreach (string line in lines)
-                {
-                    // Use a tab to indent each line of the file.
-                    txt += line + "\n";
-                }
-                break;
-            }
-            return txt;
-        }*/
+            data = data.Replace("#", "");
+            data = data.Replace("*", "");
+            data = data.Replace("-", "");
+            return data;
+        }
     }
 }

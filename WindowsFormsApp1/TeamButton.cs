@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
                     TD.teamMembersRichTextBox1.Text += parser.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
-                    TD.meetingRichTextBox1.Text += meetingMinutesFile;
+                    TD.meetingRichTextBox1.Text += parser.parse_Meeting(meetingMinutesFile);
                     // Display the some commits in like date, name, and message in weekly progress
                     
                     foreach (var item in parser.LoadGithubDataAsync(commitURL, "commit"))
