@@ -13,18 +13,31 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    class TeamButton
+    public class TeamButton
     {
         Team newTeam;
+
         private Button button;
 
-        public TeamButton(Team newTeam)
+        public TeamButton(Team aTeam)
         {
-            this.newTeam = newTeam;
-            button.Text = newTeam.Name;
+            this.newTeam = aTeam;
+            button = new Button();
+            button.Text = aTeam.Name;
             button.Size = new Size(540, 50);
             button.Click += button_Click;
 
+        }
+
+        public String Text
+        {
+            get { return Text; }
+            set { Text = value; }
+        }
+
+        public Button getButton()
+        {
+            return button;
         }
 
         public void button_Click(object sender, EventArgs e)
@@ -36,13 +49,19 @@ namespace WindowsFormsApp1
             {
                 using (WebClient client = new WebClient())
                 {
+
                     //getting url
+                    //MessageBox.Show(newTeam.Url);
                     string meetingfileNameURL = parser.URLFactory(newTeam.Url, "meetings");
+                    //MessageBox.Show("2");
+                    MessageBox.Show(meetingfileNameURL);
                     string commitURL = parser.URLFactory(newTeam.Url, "commit");
+                    //MessageBox.Show("3");
                     string readmeURL = parser.URLFactory(newTeam.Url, "readme");
+                    //essageBox.Show("4");
                     string meetingMinutesURL = parser.meetingFileURL(newTeam.Url, parser.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
-                    //MessageBox.Show(rdmeu);
+                    
                     string readMe = client.DownloadString(readmeURL);
                     string meetingMinutesFile = client.DownloadString(meetingMinutesURL);
                     //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
@@ -52,7 +71,7 @@ namespace WindowsFormsApp1
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
                     TD.meetingRichTextBox1.Text += meetingMinutesFile;
                     // Display the some commits in like date, name, and message in weekly progress
-
+                    
                     foreach (var item in parser.LoadGithubDataAsync(commitURL, "commit"))
                     {
                         TD.Progress_List.Items.Add(item);
