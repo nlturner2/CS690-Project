@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
 {
     public class TeamButton
     {
+        public Variables Callingform { get; set; }
         Team newTeam;
 
         private Button button;
@@ -43,7 +44,6 @@ namespace WindowsFormsApp1
         public void button_Click(object sender, EventArgs e)
         {
 
-            Parser parser = new Parser();
             Team_Dashboard TD = new Team_Dashboard(newTeam);
             try
             {
@@ -52,27 +52,27 @@ namespace WindowsFormsApp1
 
                     //getting url
                     //MessageBox.Show(newTeam.Url);
-                    string meetingfileNameURL = parser.URLFactory(newTeam.Url, "meetings");
+                    string meetingfileNameURL = Variables.parseInstance.URLFactory(newTeam.Url, "meetings");
                     //MessageBox.Show("2");
                     MessageBox.Show(meetingfileNameURL);
-                    string commitURL = parser.URLFactory(newTeam.Url, "commit");
+                    string commitURL = Variables.parseInstance.URLFactory(newTeam.Url, "commit");
                     //MessageBox.Show("3");
-                    string readmeURL = parser.URLFactory(newTeam.Url, "readme");
+                    string readmeURL = Variables.parseInstance.URLFactory(newTeam.Url, "readme");
                     //essageBox.Show("4");
-                    string meetingMinutesURL = parser.meetingFileURL(newTeam.Url, parser.LoadGithubDataAsync(meetingfileNameURL, "filename"));
+                    string meetingMinutesURL = Variables.parseInstance.meetingFileURL(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
                     
                     string readMe = client.DownloadString(readmeURL);
                     string meetingMinutesFile = client.DownloadString(meetingMinutesURL);
                     //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
-                    TD.summaryrichTextBox1.Text += parser.parse_Summary(readMe);
+                    TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
-                    TD.teamMembersRichTextBox1.Text += parser.parse_Members(readMe);
+                    TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
-                    TD.meetingRichTextBox1.Text += parser.parse_Meeting(meetingMinutesFile);
+                    TD.meetingRichTextBox1.Text += Variables.parseInstance.parse_Meeting(meetingMinutesFile);
                     // Display the some commits in like date, name, and message in weekly progress
                     
-                    foreach (var item in parser.LoadGithubDataAsync(commitURL, "commit"))
+                    foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))
                     {
                         TD.Progress_List.Items.Add(item);
                     }
