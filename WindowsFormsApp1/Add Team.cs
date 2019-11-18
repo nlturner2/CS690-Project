@@ -35,45 +35,17 @@ namespace WindowsFormsApp1
         // Add Button
         public void Add_Click(object sender, EventArgs e)
         {
-            var main = Application.OpenForms.OfType<HomeDashboard>().First();
-            createTeam(main);
-            main.Display();
+            // avoiding creating HomeDashboard instance
+            //var main = Application.OpenForms.OfType<HomeDashboard>().First();
+            Variables.TMInstance.CreateTeam(Application.OpenForms.OfType<HomeDashboard>().First(), TeamNameBox.Text, GithubURLBox.Text);
+            Application.OpenForms.OfType<HomeDashboard>().First().Display();
 
             
             Close();
         }
 
         // creates a team when Add button is clicked
-        public void createTeam(HomeDashboard obj)
-        {
-            //DataConnection dbc = new DataConnection();
-            //get team name and url
-            var name = TeamNameBox.Text;
-            var url = GithubURLBox.Text;
-            //string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
-            // check if either box was empty
-            if ((name != "") && (url != ""))
-            {
-                // replaced "!File.Exists(fileName)" with true
-                if (true)
-                {
-                    // create team
-                    Team team = new Team(name, url);
-                    Variables.db.AddTeam(team);
-                    //obj.tableLayoutPanel1.Controls.Add(team.getButton());
-                    obj.tableLayoutPanel1.Show();
-                    obj.Show();
-                    var main = Application.OpenForms.OfType<HomeDashboard>().First();
-                    Variables.TMInstance.Write(team);
-                }
-                else
-                {
-                    MessageBox.Show("Team already exists.");
-                }
-            }
-
-            
-        }
+        
         
         // Cancel Button
         private void Cancel_Click(object sender, EventArgs e)

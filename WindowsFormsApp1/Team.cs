@@ -29,14 +29,14 @@ namespace WindowsFormsApp1
         {
             name = n;
             url = u;
-            meetingNotification = false;
+            MeetingNotification = false;
             
         }
 
         
 
         public int Id { get; set; }
-        public Boolean meetingNotification { get; set; }
+        public Boolean MeetingNotification { get; set; }
         public String Name
         {
             get { return name; }

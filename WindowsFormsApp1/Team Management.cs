@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
+using System.Collections;
 
 namespace WindowsFormsApp1
 {
@@ -21,6 +23,55 @@ namespace WindowsFormsApp1
         public List<TeamButton> teamButton = new List<TeamButton>();
         public int count = 0;
 
+        public void CreateTeam(HomeDashboard obj, string name, string url)
+        {
+            //DataConnection dbc = new DataConnection();
+            //get team name and url
+            //var name = TeamNameBox.Text;
+            //var url = GithubURLBox.Text;
+            //string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
+            // check if either box was empty
+            if ((name != "") && (url != ""))
+            {
+                // replaced "!File.Exists(fileName)" with true
+                if (true)
+                {
+                    // create team
+                    Team team = new Team(name, url);
+                    Variables.db.AddTeam(team);
+                    CreateMembers(name, url);
+                    //obj.tableLayoutPanel1.Controls.Add(team.getButton());
+                    obj.tableLayoutPanel1.Show();
+                    obj.Show();
+                    var main = Application.OpenForms.OfType<HomeDashboard>().First();
+                    Variables.TMInstance.Write(team);
+                }
+                else
+                {
+                    MessageBox.Show("Team already exists.");
+                }
+            }
+
+
+        }
+
+        public void CreateMembers(string teamName, string url)
+        {
+            IList users = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "username");
+            
+            string userName = "";
+
+            foreach (string item in users)
+            {
+                if (userName != item)
+                {
+                    userName = item;
+                    TeamMembers Member = new TeamMembers(item, teamName);
+                    Variables.db.AddMember(Member);
+                }
+                
+            }
+        }
         public void removeTeam(string teamName)
         {
             //string team = @"C:\Teamfiles\" + teamName;
