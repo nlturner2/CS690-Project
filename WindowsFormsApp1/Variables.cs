@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
         public static TeamManagement TMInstance
         {
             get => TM;
-            
+
         }
 
         private static DataConnection dbc = new DataConnection();
@@ -20,11 +20,24 @@ namespace WindowsFormsApp1
         public static DataConnection db
         {
             get => dbc;
-            
+
+
+        }
+        private static Parser parse = new Parser();
+        public static Parser parseInstance
+        {
+            get => parse;
+        }
+        private static NotificationTriggers NT = new NotificationTriggers();
+        public static NotificationTriggers NTInstance
+        {
+            get => NT;
 
         }
 
+
     }
+
 
 
         

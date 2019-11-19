@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
+using System.Collections;
 
 namespace WindowsFormsApp1
 {
@@ -16,9 +18,61 @@ namespace WindowsFormsApp1
          */
 
         //DataConnection dbc = new DataConnection();
+        
         public Team[] teamBook = new Team[1];
+        //public TeamMembers[] memberBook = new TeamMembers[1];
+        public List<TeamButton> teamButton = new List<TeamButton>();
         public int count = 0;
 
+        public void CreateTeam(HomeDashboard obj, string name, string url)
+        {
+            //DataConnection dbc = new DataConnection();
+            //get team name and url
+            //var name = TeamNameBox.Text;
+            //var url = GithubURLBox.Text;
+            //string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
+            // check if either box was empty
+            if ((name != "") && (url != ""))
+            {
+                // replaced "!File.Exists(fileName)" with true
+                if (true)
+                {
+                    // create team
+                    Team team = new Team(name, url);
+                    Variables.db.AddTeam(team);
+                    CreateMembers(name, url);
+                    //obj.tableLayoutPanel1.Controls.Add(team.getButton());
+                    obj.tableLayoutPanel1.Show();
+                    obj.Show();
+                    var main = Application.OpenForms.OfType<HomeDashboard>().First();
+                    Variables.TMInstance.Write(team);
+                }
+                else
+                {
+                    MessageBox.Show("Team already exists.");
+                }
+            }
+
+
+        }
+
+        public void CreateMembers(string teamName, string url)
+        {
+            IList users = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "username");
+            
+            string userName = "";
+
+            foreach (string item in users)
+            {
+                if (userName != item)
+                {
+                    userName = item;
+                    TeamMembers Member = new TeamMembers(item, teamName);
+                    Variables.db.AddMember(Member);
+                }
+                
+            }
+        }
         public void removeTeam(string teamName)
         {
             //string team = @"C:\Teamfiles\" + teamName;
@@ -58,47 +112,38 @@ namespace WindowsFormsApp1
         public void Write(Team obj)
         {
             //Create File
-            string fileName = @"C:\Teamfiles\" + obj.Name;
-            if (!File.Exists(fileName))
-            {
-                FileStream fs = File.Create(fileName);
-                fs.Close();
-
-                // open file and write URL to it
-                StreamWriter sw = new StreamWriter(fileName);
-                sw.WriteLine(obj.Url);
-
-                //resize array and add object to it.
+           
                 Array.Resize<Team>(ref teamBook, count + 1);
                 teamBook[teamBook.Count() - 1] = obj;
                 count = teamBook.Count();
-                //close file
-                sw.Close();
-            }
+                
+            
         }
         public void Read()
         {
+            
             int i = 0;
             string url = "";
             //create folder if none exists
-            if (!Directory.Exists(@"C:\Teamfiles"))
-            {
-                Directory.CreateDirectory(@"C:\Teamfiles");
-            }
-
+            
             //create array of files and set teamBook length
-            string[] files = Directory.GetFiles(@"C:\Teamfiles\");
-            teamBook = new Team[Directory.GetFiles(@"C:\Teamfiles").Length];
+            
+            teamBook = new Team[Variables.db.CountTeams()];
 
             //read in all the file names and the first line of each file which contains the URL
-            for (int iFile = 0; iFile < files.Length; iFile++)
+            
+            foreach (var item in Variables.db.GetAll())
             {
-                StreamReader sr = new StreamReader(files[iFile]);
-                url = sr.ReadLine();
-                sr.Close();
-                teamBook[i] = new Team(new FileInfo(files[iFile]).Name, url);
-                i++;
+                
+                teamBook[i] = item;
+                //TeamButton newTeamButton = new TeamButton(item);
+                //teamButton[i] = newTeamButton;
+                
+                i++; 
+                
+
             }
+
             //get the size of teamBook
             count = teamBook.Count();
         }

@@ -44,7 +44,7 @@
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
-            this.Cancel.Click += new System.EventHandler(this.button2_Click);
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // Team_Name
             // 
@@ -90,7 +90,7 @@
             this.Add.TabIndex = 6;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.button1_Click);
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // Add_Team
             // 

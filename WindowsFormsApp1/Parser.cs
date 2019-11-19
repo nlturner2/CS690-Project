@@ -8,10 +8,11 @@ namespace WindowsFormsApp1
 {
     public class Parser
     {
+
         //private string teamURL;
 
 
-        public string URL_Readme(string URL)
+        public string URLFactory(string URL, string options)
         {
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
@@ -24,15 +25,48 @@ namespace WindowsFormsApp1
                     partialText = URL.Substring(charLocation + 1);
                     int secondLocation = partialText.LastIndexOf('.');
                     partialText = partialText.Remove(secondLocation);
-                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
+                    switch (options)
+                    {
+                        case "readme":
+                            partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
+                            break;
+                        case "meetings":
+                            partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes/Team?ref=master";
+                            break;
+                        case "commit":
+                            partialText = "https://api.github.com/repos" + partialText + "/commits";
+                            break;
+                    }
+
                 }
 
             }
             return partialText;
         }
 
+        public string meetingFileURL(string URL,List<string> fileNames)
+        {
+            string partialText = "";
+            if (!String.IsNullOrWhiteSpace(URL))
+            {
+                int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
-        /*private string parse_Summary(string data)
+                if (charLocation > 0) 
+                {
+                    /*foreach (var fileName in fileNames)
+                    {*/
+                        partialText = URL.Substring(charLocation + 1);
+                        int secondLocation = partialText.LastIndexOf('.');
+                        partialText = partialText.Remove(secondLocation);
+                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
+                   // }
+                }
+            }
+            return partialText;
+        }
+
+
+           public string parse_Summary(string data)
         {
             string[] summaryWithH = data.Split('\n');
             string summary = null;
@@ -66,7 +100,7 @@ namespace WindowsFormsApp1
 
 
         }
-        private string parse_Members(string data)
+        public string parse_Members(string data)
         {
             string[] teamMembers = data.Split('\n');
             string Members = null;
@@ -85,7 +119,6 @@ namespace WindowsFormsApp1
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
                             teamMembers[index + 1] = teamMembers[index + 1].Trim();
                             Members += teamMembers[index + 1] + "\n";
-                            TeamMembers team = new TeamMembers(teamMembers[index + 1], this.Name);
                         }
                         index++;
                     }
@@ -98,16 +131,16 @@ namespace WindowsFormsApp1
             }
             Members = Members.Trim();
             return Members;
-        }*/
+        }
 
 
-        public List<string> LoadGithubDataAsync()
+        public List<string> LoadGithubDataAsync(string apiURL,string options)
         {
             List<string> list = new List<string>();
             string line = null;
             string responseString = "";
             //Create a request object to call Github API
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(" https://api.github.com/repos/MikeyG677/BookArtsCollaborativeBusinessOperationSoftware/commits"));
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(apiURL));
             //GitHub API will reject any request without this header
             request.UserAgent = "my user agent";
             //Add compression headers
@@ -127,9 +160,27 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
-
                 //line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
-                line = data[i].name;
+                switch (options)
+                {
+                    case "commit":
+                        line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
+                        break;
+
+                    case "username":
+                        line = data[i].commit.author.name;
+                        break;
+                    case "filename":
+                        line = data[i].name;
+                        break;
+                    default:
+                        line = data[i];
+                        break;
+
+                
+
+            }
+               
                 list.Add(line);
                 //Loop through the object and add items to the UI.
                 //Progress_List.Items.Add(line);
@@ -140,20 +191,12 @@ namespace WindowsFormsApp1
 
         }
 
-        /*private string parse_Meeting(string data)
+        public string parse_Meeting(string data)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\BookArtsCollaborativeBusinessOperationSoftware-master\BookArtsCollaborativeBusinessOperationSoftware-master\MeetingMinutes\Team\10-7-2019_10-13-2019.md");
-            string txt = null;
-            for (int i = 0; i < lines.Length; i++)
-            {
-                foreach (string line in lines)
-                {
-                    // Use a tab to indent each line of the file.
-                    txt += line + "\n";
-                }
-                break;
-            }
-            return txt;
-        }*/
+            data = data.Replace("#", "");
+            data = data.Replace("*", "");
+            data = data.Replace("-", "");
+            return data;
+        }
     }
 }

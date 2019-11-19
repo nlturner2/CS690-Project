@@ -17,34 +17,26 @@ namespace WindowsFormsApp1
     {
         private string name;
         private string url;
-        private Button button;
+        
 
 
         public Team()
         {
-            button = new Button();
-            button.Size = new Size(540, 50);
-            button.Click += button_Click;
+            
         }
 
         public Team(String n, String u)
         {
             name = n;
             url = u;
-            meetingNotification = false;
-            button = new Button();
-            button.Text = n;
-            button.Size = new Size(540, 50);
-            button.Click += button_Click;
+            MeetingNotification = false;
+            
         }
 
-        public Button getButton()
-        {
-            return button;
-        }
+        
 
         public int Id { get; set; }
-        public Boolean meetingNotification { get; set; }
+        public Boolean MeetingNotification { get; set; }
         public String Name
         {
             get { return name; }
@@ -56,12 +48,12 @@ namespace WindowsFormsApp1
             get { return url; }
             set { url = value; }
         }
-
+        /**
         public override string ToString()
         {
             return "Person: " + name + " " + url;
         }
-
+        */
 
         /*public string URLFactory(string URL)
         {
@@ -81,7 +73,7 @@ namespace WindowsFormsApp1
 
             }
             return partialText;
-        }*/
+        }
         
         public void button_Click(object sender, EventArgs e)
         {
@@ -93,6 +85,7 @@ namespace WindowsFormsApp1
                 using (WebClient client = new WebClient())
                 {
                     //getting url
+                    string commitURL = this.url;
                     string rdmeu = this.url;
                     rdmeu = parser.URL_Readme(rdmeu);
                     //downloading string from url which is store in rdmeu 
@@ -105,8 +98,11 @@ namespace WindowsFormsApp1
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
                     //TD.meetingRichTextBox1.Text += parse_Meeting(s);
                     // Display the some commits in like date, name, and message in weekly progress
-                    //TD.parse();
-
+                    
+                    foreach(var item in parser.LoadGithubDataAsync(parser.URL_Commit(commitURL)))
+                    {
+                        TD.Progress_List.Items.Add(item);
+                    }
                 }
                 TD.Show();
             }

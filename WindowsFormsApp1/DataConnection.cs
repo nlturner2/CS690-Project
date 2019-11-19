@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
         public void AddMember(TeamMembers item)
         {
 
-            using (var db = new LiteDatabase(@"TrackingData.db"))
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var membersCollection = db.GetCollection<TeamMembers>("members");
                 membersCollection.Insert(item);
@@ -95,6 +95,24 @@ namespace WindowsFormsApp1
                 }
                 return teamToReturn;
             }
+        }
+
+        
+        public List<Team> StartProgram()
+        {
+            var teamToReturn = new List<Team>();
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var teamCollection = db.GetCollection<Team>("teams");
+                int numberOfTeams = teamCollection.Count();
+                
+                for (int i = 0; i <= numberOfTeams;i++ )
+                {
+
+                }
+
+            }
+            return teamToReturn;
         }
         public void UpdateNotification(string theTeam)
         {
