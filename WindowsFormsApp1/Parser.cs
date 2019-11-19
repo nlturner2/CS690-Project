@@ -50,27 +50,42 @@ namespace WindowsFormsApp1
 
         public string meetingFileURL(string URL,List<string> fileNames)
         {
+            
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
                 int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
-                if (charLocation > 0) 
+                if (charLocation > 0)
                 {
                     /*foreach (var fileName in fileNames)
                     {*/
-                        partialText = URL.Substring(charLocation + 1);
-                        int secondLocation = partialText.LastIndexOf('.');
-                        partialText = partialText.Remove(secondLocation);
-                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
-                   // }
+                    partialText = URL.Substring(charLocation + 1);
+                    int secondLocation = partialText.LastIndexOf('.');
+                    partialText = partialText.Remove(secondLocation);
+                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
+                    // }
+                
                 }
             }
             return partialText;
         }
 
+        
 
-           public string parse_Summary(string data)
+        public string WebClient(string rawFileUrl)
+        {
+            string file = "";
+            using (WebClient client = new WebClient())
+            {
+                file = client.DownloadString(rawFileUrl);
+            }
+            
+
+            return file;
+        }
+
+        public string parse_Summary(string data)
         {
             string[] summaryWithH = data.Split('\n');
             string summary = null;
