@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
                     string commitURL = Variables.parseInstance.URLFactory(newTeam.Url, "commit");
                     //MessageBox.Show("3");
                     string readmeURL = Variables.parseInstance.URLFactory(newTeam.Url, "readme");
-                    //essageBox.Show("4");
+                    // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
                     string meetingMinutesURL = Variables.parseInstance.meetingFileURL(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
                     
