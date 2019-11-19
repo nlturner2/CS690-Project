@@ -50,6 +50,7 @@ namespace WindowsFormsApp1
 
         public string meetingFileURL(string URL,List<string> fileNames)
         {
+            
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
@@ -69,6 +70,19 @@ namespace WindowsFormsApp1
             return partialText;
         }
 
+        
+
+        public string WebClient(string rawFileUrl)
+        {
+            string file = "";
+            using (WebClient client = new WebClient())
+            {
+                file = client.DownloadString(rawFileUrl);
+            }
+            
+
+            return file;
+        }
 
            public string parse_Summary(string data)
         {
