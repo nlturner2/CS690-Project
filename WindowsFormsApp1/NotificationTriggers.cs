@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
         private int TeamDays2 = 14;
         private int MembersDays1 = 7;
         private int MembersDays2 = 14;
+        public Variables Callingform { get; set; }
 
         public NotificationTriggers()
         {
@@ -60,6 +61,7 @@ namespace WindowsFormsApp1
             return check;
         }
     */
+        public Boolean commitHistoryDate (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
         public void setTeamDays(string days)
         {

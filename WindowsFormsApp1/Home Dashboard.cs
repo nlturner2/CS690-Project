@@ -86,20 +86,23 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            
-            
-            DataConnection db = new DataConnection();
+
+
+            /*DataConnection db = new DataConnection();
 
 
            foreach(var item in db.GetAll())
             {
                 MessageBox.Show(item.ToString());
             }
-                
+                */
+
+            NotificationTriggers nt = new NotificationTriggers();             Boolean result = nt.commitHistoryDate("https://github.com/IanShepard/VisitorCollectionTool.git", 6);             MessageBox.Show(result.ToString());
+
 
             //MessageBox.Show(a.ToString());
             //MessageBox.Show(y);
-            
+
             //MessageBox.Show(x.ToString());
             //MessageBox.Show(y);
 
