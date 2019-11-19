@@ -112,7 +112,6 @@
             this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Member Notifications";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -139,6 +138,7 @@
             this.Controls.Add(this.Save_Teams);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
