@@ -31,8 +31,8 @@
             this.Save_Teams = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Save_Members = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.MembersBox = new System.Windows.Forms.TextBox();
+            this.TeamBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.Save_Teams.TabIndex = 0;
             this.Save_Teams.Text = "Save";
             this.Save_Teams.UseVisualStyleBackColor = true;
-            this.Save_Teams.Click += new System.EventHandler(this.Save_Click);
+            this.Save_Teams.Click += new System.EventHandler(this.SaveTeam_Click);
             // 
             // Cancel
             // 
@@ -67,20 +67,24 @@
             this.Save_Members.TabIndex = 2;
             this.Save_Members.Text = "Save";
             this.Save_Members.UseVisualStyleBackColor = true;
+            this.Save_Members.Click += new System.EventHandler(this.SaveMembers_Click);
             // 
-            // textBox1
+            // MembersBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(215, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(32, 20);
-            this.textBox1.TabIndex = 3;
+            this.MembersBox.HideSelection = false;
+            this.MembersBox.Location = new System.Drawing.Point(215, 92);
+            this.MembersBox.Name = "MembersBox";
+            this.MembersBox.Size = new System.Drawing.Size(32, 20);
+            this.MembersBox.TabIndex = 3;
+            this.MembersBox.TextChanged += new System.EventHandler(this.Members_TextChanged);
             // 
-            // textBox2
+            // TeamBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(215, 151);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(32, 20);
-            this.textBox2.TabIndex = 4;
+            this.TeamBox.Location = new System.Drawing.Point(215, 150);
+            this.TeamBox.Name = "TeamBox";
+            this.TeamBox.Size = new System.Drawing.Size(32, 20);
+            this.TeamBox.TabIndex = 4;
+            this.TeamBox.TextAlignChanged += new System.EventHandler(this.Team_TextChanged);
             // 
             // label1
             // 
@@ -108,7 +112,6 @@
             this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Member Notifications";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -128,13 +131,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TeamBox);
+            this.Controls.Add(this.MembersBox);
             this.Controls.Add(this.Save_Members);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Save_Teams);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,8 +149,8 @@
         private System.Windows.Forms.Button Save_Teams;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button Save_Members;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox MembersBox;
+        private System.Windows.Forms.TextBox TeamBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
