@@ -47,8 +47,7 @@ namespace WindowsFormsApp1
             Team_Dashboard TD = new Team_Dashboard(newTeam);
             try
             {
-                using (WebClient client = new WebClient())
-                {
+                
 
                     //getting url
                     //MessageBox.Show(newTeam.Url);
@@ -58,13 +57,12 @@ namespace WindowsFormsApp1
                     string commitURL = Variables.parseInstance.URLFactory(newTeam.Url, "commit");
                     //MessageBox.Show("3");
                     string readmeURL = Variables.parseInstance.URLFactory(newTeam.Url, "readme");
-                    //MessageBox.Show("4");
+                    // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
                     string meetingMinutesURL = Variables.parseInstance.meetingFileURL(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
-
-                    string readMe = client.DownloadString(readmeURL);
-                    string meetingMinutesFile = client.DownloadString(meetingMinutesURL);
                     
+                    string readMe = Variables.parseInstance.WebClient(readmeURL);
+                    string meetingMinutesFile = Variables.parseInstance.WebClient(meetingMinutesURL);
                     //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
                     TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
@@ -84,13 +82,13 @@ namespace WindowsFormsApp1
                     {
                         TD.Progress_List.Items.Add(item);
                     }
-                }
+                
                 TD.Show();
 
             }
             catch (Exception)
             {
-                MessageBox.Show("There is no data in file");
+                MessageBox.Show("Check Team URL or Internet Connection.");
             }
         }
 

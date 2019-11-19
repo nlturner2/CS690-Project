@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         //DataConnection dbc = new DataConnection();
         
         public Team[] teamBook = new Team[1];
+        //public TeamMembers[] memberBook = new TeamMembers[1];
         public List<TeamButton> teamButton = new List<TeamButton>();
         public int count = 0;
 

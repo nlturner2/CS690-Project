@@ -10,8 +10,12 @@ namespace WindowsFormsApp1
     {
 
         //private string teamURL;
-
-
+        /// <summary>
+        /// get URL for readme file, meeting file and commit history.
+        /// </summary>
+        /// <returns>The actory.</returns>
+        /// <param name="URL">URL.</param> The team URL 
+        /// <param name="options">Options.</param> Have options to get url for readme file, meeting file, and commit history
         public string URLFactory(string URL, string options)
         {
             string partialText = "";
@@ -46,6 +50,7 @@ namespace WindowsFormsApp1
 
         public string meetingFileURL(string URL,List<string> fileNames)
         {
+            
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
@@ -66,6 +71,19 @@ namespace WindowsFormsApp1
             return partialText;
         }
 
+        
+
+        public string WebClient(string rawFileUrl)
+        {
+            string file = "";
+            using (WebClient client = new WebClient())
+            {
+                file = client.DownloadString(rawFileUrl);
+            }
+            
+
+            return file;
+        }
 
         public string parse_Summary(string data)
         {
