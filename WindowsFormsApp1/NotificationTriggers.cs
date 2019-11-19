@@ -8,10 +8,10 @@ namespace WindowsFormsApp1
 {
     public class NotificationTriggers
     {
-        int TeamDays1 = 7;
-        int TeamDays2 = 14;
-        int MembersDays1 = 7;
-        int MembersDays2 = 14;
+        private int TeamDays1 = 7;
+        private int TeamDays2 = 14;
+        private int MembersDays1 = 7;
+        private int MembersDays2 = 14;
 
         public NotificationTriggers()
         {
