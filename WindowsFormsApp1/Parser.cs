@@ -10,8 +10,12 @@ namespace WindowsFormsApp1
     {
 
         //private string teamURL;
-
-
+        /// <summary>
+        /// get URL for readme file, meeting file and commit history.
+        /// </summary>
+        /// <returns>The actory.</returns>
+        /// <param name="URL">URL.</param> The team URL 
+        /// <param name="options">Options.</param> Have options to get url for readme file, meeting file, and commit history
         public string URLFactory(string URL, string options)
         {
             string partialText = "";
