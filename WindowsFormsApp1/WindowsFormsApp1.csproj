@@ -178,5 +178,62 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\commit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\commit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\commit3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\member1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\member2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\member3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\memberCommit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\memberCommit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team5.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

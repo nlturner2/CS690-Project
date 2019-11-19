@@ -15,6 +15,8 @@ namespace WindowsFormsApp1
 {
     public partial class HomeDashboard : Form
     {
+        Notification notification = new Notification();
+        
         public Variables Callingform { get; set; }
         //public variables
         public int count = 0;
@@ -23,7 +25,7 @@ namespace WindowsFormsApp1
         {
             
             InitializeComponent();
-            
+            notification.loadNoitification(this);
         }
 
         //Display teams after the read function
