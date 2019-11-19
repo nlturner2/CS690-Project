@@ -76,6 +76,34 @@ namespace WindowsFormsApp1
             
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filesBox_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string text = filesBox.GetItemText(filesBox.SelectedItem);
+            /*if (filesBox.SelectedIndex == -1)
+            {
+                return;// no selection we exit.
+            }
+            var selection = filesBox.SelectedValue.ToString().Split(' ');
+            //Form ModifierEtSupprimer = new Form(selection[0], selection[1]);
+            //ModifierEtSupprimer.Show();
+            */
+        }
     }
    
 }

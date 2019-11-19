@@ -51,22 +51,23 @@ namespace WindowsFormsApp1
             {
                 int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
-                if (charLocation > 0) 
+                if (charLocation > 0)
                 {
                     /*foreach (var fileName in fileNames)
                     {*/
-                        partialText = URL.Substring(charLocation + 1);
-                        int secondLocation = partialText.LastIndexOf('.');
-                        partialText = partialText.Remove(secondLocation);
-                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
-                   // }
+                    partialText = URL.Substring(charLocation + 1);
+                    int secondLocation = partialText.LastIndexOf('.');
+                    partialText = partialText.Remove(secondLocation);
+                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
+                    // }
+                
                 }
             }
             return partialText;
         }
 
 
-           public string parse_Summary(string data)
+        public string parse_Summary(string data)
         {
             string[] summaryWithH = data.Split('\n');
             string summary = null;
