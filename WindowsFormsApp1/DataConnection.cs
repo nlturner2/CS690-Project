@@ -97,7 +97,22 @@ namespace WindowsFormsApp1
             }
         }
 
-        
+        public IList<TeamMembers> GetMembers()
+        {
+            var teamToReturn = new List<TeamMembers>();
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var membersCollection = db.GetCollection<TeamMembers>("members");
+                var results = membersCollection.FindAll();
+                foreach (TeamMembers memberItem in results)
+                {
+                    teamToReturn.Add(memberItem);
+                }
+                return teamToReturn;
+            }
+        }
+
+/*
         public List<Team> StartProgram()
         {
             var teamToReturn = new List<Team>();
@@ -114,6 +129,8 @@ namespace WindowsFormsApp1
             }
             return teamToReturn;
         }
+        */
+
         public void UpdateNotification(string theTeam)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -126,6 +143,22 @@ namespace WindowsFormsApp1
                     var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
                 //updateTeam.meetingNotification = true;
                 teamCollection.Update(updateTeam);
+
+            }
+        }
+
+        public void UpdateMember(TeamMembers aMember,Boolean x )
+        {
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                // Open data file (or create if not exits)  
+                var membersCollection = db.GetCollection<TeamMembers>("members");
+
+                aMember.CommitNotification = x;
+
+              //var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
+                //updateTeam.meetingNotification = true;
+                membersCollection.Update(aMember);
 
             }
         }

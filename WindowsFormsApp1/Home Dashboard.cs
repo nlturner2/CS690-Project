@@ -88,17 +88,26 @@ namespace WindowsFormsApp1
         {
 
 
-            /*DataConnection db = new DataConnection();
+            DataConnection db = new DataConnection();
 
 
-           foreach(var item in db.GetAll())
+           foreach(TeamMembers item in db.GetMembers())
+
             {
-                MessageBox.Show(item.ToString());
+                if (item.TeamName == "t1")
+                {
+                    item.CommitNotification = true;
+                    db.UpdateMember(item, true);
+
+
+                }
+                
+                MessageBox.Show("team: "+ item.TeamName.ToString() + " member:"+ item.MemberName.ToString()+" notification:" +item.CommitNotification.ToString());
             }
-                */
-
+                
+           /*
             NotificationTriggers nt = new NotificationTriggers();             Boolean result = nt.commitHistoryDate("https://github.com/IanShepard/VisitorCollectionTool.git", 6);             MessageBox.Show(result.ToString());
-
+            */
 
             //MessageBox.Show(a.ToString());
             //MessageBox.Show(y);

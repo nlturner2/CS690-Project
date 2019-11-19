@@ -19,18 +19,29 @@ namespace WindowsFormsApp1
 
         }
 
-        public void CommitTrigger(TeamMembers aMember, int lastCommit,int days)
+        public void CommitTrigger(Team aTeam)
         {
-            if (days<lastCommit)
+            foreach (TeamMembers item in Variables.db.GetMembers())
             {
-                aMember.CommitNotification = true;
-                //more code to make it apper
+
+                if (item.TeamName == aTeam.Name)
+                {
+                    if (commitHistoryDate(aTeam.Url, MembersDays1))
+                    {
+                        item.CommitNotification = false;
+                        Variables.db.UpdateMember(item, false);
+                        //dissmiss notification
+                    }
+                    else
+                    {
+                        item.CommitNotification = true;
+                        Variables.db.UpdateMember(item, true);
+                        //more code to make it apper
+                    }
+                }
+                
             }
-            else
-            {
-                aMember.CommitNotification = false;
-                //dissmiss notification
-            }
+                        
         }
         public void MeetingTrigger(Team aTeam, int lastMeeting, int days)
         {
