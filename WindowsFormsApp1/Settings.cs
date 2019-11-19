@@ -17,7 +17,11 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        private void SaveTeam_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void SaveMembers_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -29,6 +33,17 @@ namespace WindowsFormsApp1
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+        private void Members_TextChanged(object sender, EventArgs e)
+        {
+            var TM = this.MembersBox.Text.Insert(this.MembersBox.SelectionStart, "0");
+
+
+        }
+
+        private void Team_TextChanged(object sender, EventArgs e)
+        {
+            var TU = this.TeamBox.Text.Insert(this.TeamBox.SelectionStart, "0");
         }
     }
 }
