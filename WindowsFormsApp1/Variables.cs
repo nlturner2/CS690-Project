@@ -28,7 +28,16 @@ namespace WindowsFormsApp1
         {
             get => parse;
         }
+        private static NotificationTriggers NT = new NotificationTriggers();
+        public static NotificationTriggers NTInstance
+        {
+            get => NT;
+
+        }
+
+
     }
+
 
 
         

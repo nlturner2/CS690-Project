@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class NotificationTriggers
+    public class NotificationTriggers
     {
         int TeamDays1 = 7;
         int TeamDays2 = 14;
