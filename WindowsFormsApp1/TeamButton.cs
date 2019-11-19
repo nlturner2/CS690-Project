@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-                MessageBox.Show("There is no data in file");
+                MessageBox.Show("Check Team URL or Internet Connection.");
             }
         }
 
