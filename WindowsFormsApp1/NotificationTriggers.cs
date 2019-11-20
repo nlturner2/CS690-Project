@@ -98,17 +98,11 @@ namespace WindowsFormsApp1
                 index++;
             }
             meetingDate.Sort();
-            int datesCount = meetingDate.Count; 
-            
+            int datesCount = meetingDate.Count;
                 DateTime m = DateTime.Parse(meetingDate[datesCount-1]);
-                DateTime today = DateTime.Today;                 DateTime daysAgo = today.AddDays(-numberOfDays);                 if (daysAgo > m)                 {                        acceptable = false;                 }    
-
-            
+                DateTime today = DateTime.Today;                 DateTime daysAgo = today.AddDays(-numberOfDays);                 if (daysAgo > m)                 {                        acceptable = false;                 }   
                 return acceptable;
         }
-
-
-
 
         public void setTeamDays(string days)
         {

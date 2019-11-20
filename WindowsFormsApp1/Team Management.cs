@@ -140,8 +140,6 @@ namespace WindowsFormsApp1
                 //teamButton[i] = newTeamButton;
                 
                 i++; 
-                
-
             }
 
             //get the size of teamBook

@@ -20,8 +20,6 @@ namespace WindowsFormsApp1
         public static DataConnection db
         {
             get => dbc;
-
-
         }
         private static Parser parse = new Parser();
         public static Parser parseInstance
@@ -32,7 +30,6 @@ namespace WindowsFormsApp1
         public static NotificationTriggers NTInstance
         {
             get => NT;
-
         }
 
 
