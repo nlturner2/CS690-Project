@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         {
 
         }
-
+  
         public void CommitTrigger(Team aTeam)
         {
             foreach (TeamMembers item in Variables.db.GetMembers())
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
 
                 if (item.TeamName == aTeam.Name)
                 {
-                    if (commitHistoryDate(aTeam.Url, MembersDays1))
+                    if (CommitHistoryDateCheck(aTeam.Url, MembersDays1))
                     {
                         item.CommitNotification = false;
                         Variables.db.UpdateMember(item, false);
@@ -43,19 +43,6 @@ namespace WindowsFormsApp1
                 
             }
                         
-        }
-        public void MeetingTrigger(Team aTeam, int lastMeeting, int days)
-        {
-            if (days < lastMeeting)
-            {
-                aTeam.MeetingNotification = true;
-                //more code to make it apper
-            }
-            else
-            {
-                aTeam.MeetingNotification = false;
-                //dissmiss notification
-            }
         }
         /**
         public Boolean ProgressTrigger(Array theMembers[])
@@ -73,40 +60,88 @@ namespace WindowsFormsApp1
             return check;
         }
     */
-        public Boolean commitHistoryDate (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
-
-
-        /*public Boolean MeetingDate (string url, int numberOfDays)
+        public void MeetingTrigger(Team aTeam, int lastMeeting, int days)
         {
-            int index = 0;
+            if (days < lastMeeting)
+            {
+                aTeam.MeetingNotification = true;
+                //more code to make it apper
+            }
+            else
+            {
+                aTeam.MeetingNotification = false;
+                //dissmiss notification
+            }
+        }
+        
+        
+        /// <summary>
+        /// to check if the team committed in the past #numberOfDays. 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="numberOfDays"></param>
+        /// <returns></returns> return true if they did, return false if they didn't.
+        public Boolean CommitHistoryDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
+
+
+        public Boolean DismissCheckForCommit(DateTime date)
+        {
+            Boolean dismiss = false;
+            DateTime today = DateTime.Today;
+            if (today > date)
+            {
+                dismiss = true;
+            }
+
+            return dismiss;
+        }
+        
+
+        /// <summary>
+        /// to check if the team has a meeting file in the previous week
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>if the return value is false, it means the team didn't meet last week, otherwise, it's true. 
+        public Boolean MeetingDateCheck (string url)
+        {
+            //int index = 0;
             Boolean acceptable = true;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
-            string meetingMinutesURL = Variables.parseInstance.meetingFileURL(url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
-            
-            string meetingMinutesFile = Variables.parseInstance.WebClient(meetingMinutesURL);
-            string parsedMeetingFile = Variables.parseInstance.parse_Meeting(meetingMinutesFile);
-            string[] meetingFile = parsedMeetingFile.Split('\n');
-            List<string> meetingDate = new List<string>();
-            foreach (var item in meetingFile)
-            {
-                if (item.Contains("Meeting Start Time"))
-                {
-                    meetingDate.Add(meetingFile[index+2]);
-                    
-                    index++;
-                }
-                index++;
-            }
-            meetingDate.Sort();
-            int datesCount = meetingDate.Count; 
-            
-                DateTime m = DateTime.Parse(meetingDate[datesCount-1]);
-                DateTime today = DateTime.Today;                 DateTime daysAgo = today.AddDays(-numberOfDays);                 if (daysAgo > m)                 {                        acceptable = false;                 }    
+            //string meetingMinutesURL = Variables.parseInstance.meetingFileURL(url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
+            List<string> filename = new List<string>();
 
+
+            DayOfWeek weekStart = DayOfWeek.Monday;
+            DateTime startingDate = DateTime.Today;
+            while (startingDate.DayOfWeek != weekStart)
+                startingDate = startingDate.AddDays(-1);
+
+            DateTime previousWeekStart = startingDate.AddDays(-7);
+            DateTime previousWeekEnd = startingDate.AddDays(-1);
+
+            foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+            {
+                filename.Add(item);
+            }
+            foreach (var item in filename)
+            {
+                int Location = item.LastIndexOf('.');
+                var revisedItem = item.Remove(Location);
+                string[] list = revisedItem.Split('_');
+                string startDate = list[0].Replace('-', '/');
+                string endDate = list[1].Replace('-', '/');
+                DateTime start = DateTime.Parse(startDate);
+                DateTime end = DateTime.Parse(endDate);
+                if (previousWeekStart > end)
+                {
+                    acceptable = false;
+                }
+
+            }
             
-                return acceptable;
-        }*/
-        
+            return acceptable;
+        }
+
 
 
 

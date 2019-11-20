@@ -47,15 +47,12 @@ namespace WindowsFormsApp1
             Team_Dashboard TD = new Team_Dashboard(newTeam);
             try
             {
-                
-
+               
                     //getting url
-                    //MessageBox.Show(newTeam.Url);
                     string meetingfileNameURL = Variables.parseInstance.URLFactory(newTeam.Url, "meetings");
-                    //MessageBox.Show("2");
-                    //MessageBox.Show(meetingfileNameURL);
+                    
                     string commitURL = Variables.parseInstance.URLFactory(newTeam.Url, "commit");
-                    //MessageBox.Show("3");
+
                     string readmeURL = Variables.parseInstance.URLFactory(newTeam.Url, "readme");
                     // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
                     //downloading string from url which is store in rdmeu 
@@ -63,7 +60,7 @@ namespace WindowsFormsApp1
                     string readMe = Variables.parseInstance.WebClient(readmeURL);
                     string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[0];
                 //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
-                TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
+                    TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
                     TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
@@ -74,7 +71,6 @@ namespace WindowsFormsApp1
                         TD.filesBox.Items.Add(item);
                         
 
-                        //MessageBox.Show(item);
                     }
 
                     foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))

@@ -71,6 +71,16 @@ namespace WindowsFormsApp1
             
         }
 
+        public void AddTriggers(Triggers item)
+        {
+
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
+                triggersCollection.Insert((Triggers)item);
+
+            }
+        }
         //Function to count the number of teams in the database
         public int CountTeams()
         {
