@@ -41,6 +41,7 @@
             this.Summary = new System.Windows.Forms.TabPage();
             this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TextBox = new System.Windows.Forms.TabControl();
+            this.Notification_Table2 = new System.Windows.Forms.TableLayoutPanel();
             this.WeeklyProgress.SuspendLayout();
             this.TeamMeeting.SuspendLayout();
             this.Members.SuspendLayout();
@@ -132,6 +133,7 @@
             // 
             // Members
             // 
+            this.Members.Controls.Add(this.Notification_Table2);
             this.Members.Controls.Add(this.teamMembersRichTextBox1);
             this.Members.Location = new System.Drawing.Point(4, 22);
             this.Members.Name = "Members";
@@ -185,6 +187,47 @@
             this.TextBox.Size = new System.Drawing.Size(883, 488);
             this.TextBox.TabIndex = 8;
             // 
+            // Notification_Table2
+            // 
+            this.Notification_Table2.AutoScroll = true;
+            this.Notification_Table2.ColumnCount = 1;
+            this.Notification_Table2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Notification_Table2.Location = new System.Drawing.Point(587, 7);
+            this.Notification_Table2.Name = "Notification_Table2";
+            this.Notification_Table2.RowCount = 30;
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.Notification_Table2.Size = new System.Drawing.Size(282, 449);
+            this.Notification_Table2.TabIndex = 1;
+            // 
             // Team_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +263,7 @@
         public System.Windows.Forms.RichTextBox summaryrichTextBox1;
         public System.Windows.Forms.TabControl TextBox;
         public System.Windows.Forms.ListBox Progress_List;
+        public System.Windows.Forms.TableLayoutPanel Notification_Table2;
         public System.Windows.Forms.ListBox filesBox;
     }
 }

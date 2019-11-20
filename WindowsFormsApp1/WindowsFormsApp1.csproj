@@ -101,7 +101,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotificationButton.cs" />
     <Compile Include="NotificationTriggers.cs" />
+    <Compile Include="SettingsData.cs" />
     <Compile Include="Team Management.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="TeamButton.cs" />
@@ -140,6 +142,7 @@
       <DependentUpon>Team Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="TeamMembers.cs" />
+    <Compile Include="Triggers.cs" />
     <Compile Include="Variables.cs" />
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

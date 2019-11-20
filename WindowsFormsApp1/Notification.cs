@@ -10,70 +10,101 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using System.Windows.Forms;
+
 namespace WindowsFormsApp1
 {
     public class Notification
     {
-        private DataConnection DB = new DataConnection();
-        public void loadNoitification(HomeDashboard hd)
+        public Variables Callingform { get; set; }
+        
+        int x =Variables.db.CountTeams();
+
+        
+
+        
+
+        public void loadNotification(HomeDashboard hd,Triggers t)
         {
-            TeamMeeting(hd);
-            TeamCommit(hd);
-            TeamMemberCommit(hd);
+
+            //TeamMeeting(hd);
+            //TeamCommit(hd);
+            //TeamMemberCommit(hd);
+            
+            //IList<Triggers> trigger = Variables.db.GetTriggers();
+            //foreach (Triggers i in trigger)
+            //{
+                if (t.Type == "teamMeeting")
+                {
+                    TeamMeeting(hd, t);
+                }
+                else if (t.Type == "teamCommit")
+                {
+                    TeamCommit(hd, t);
+                }
+                /*
+                else if (t.Type == "memberCommit")
+                {
+                    TeamMemberCommit(hd, t);
+                }
+                */
+            //}
+
         }
+
+        public void loadNoitification(Team_Dashboard hd, Triggers t)
+        {
+            IList<Triggers> trigger = Variables.db.GetTriggers();
+            //foreach (Triggers i in trigger)
+            //{
+                if (t.Type == "memberCommit" && t.Active)
+                {
+                    TeamMemberCommit(hd, t);
+                }
+            //}
+        }
+
+
+
         // creates notification for Team Meeting if the team does not meet
-        public void TeamMeeting(HomeDashboard hd)
+        public void TeamMeeting(HomeDashboard hd, Triggers x)
         {
-            Button a = createNotiButton("teamMeeting");   
-            hd.Notification_Table.Controls.Add(a);
-            hd.Notification_Table.Show();   
+
+            NotificationButton a = new NotificationButton();
+
+            hd.Notification_Table.Controls.Add(a.createNotificationButton(x));
+            hd.Notification_Table.Show();
+            
         }
+
         // creates notification for commit if the whole team does not commit
-        public void TeamCommit(HomeDashboard hd)
+        public void TeamCommit(HomeDashboard hd, Triggers x)
         {
-            Button b = createNotiButton("teamCommit");
-            hd.Notification_Table.Controls.Add(b);
+
+            NotificationButton b = new NotificationButton();
+
+            hd.Notification_Table.Controls.Add(b.createNotificationButton(x));
             hd.Notification_Table.Show();
         }
+
         // creates notification if a team member does not commit
-        public void TeamMemberCommit(HomeDashboard hd)
+        
+        /*public void TeamMemberCommit(HomeDashboard hd, Triggers x)
         {
-            Button c = createNotiButton("memberCommit");
-            hd.Notification_Table.Controls.Add(c);
+            NotificationButton c = new NotificationButton();
+
+            hd.Notification_Table.Controls.Add(c.createNotificationButton(x));
             hd.Notification_Table.Show();
         }
-        // method for creating notification button
-       public Button createNotiButton(string s)
+        */
+        public void TeamMemberCommit(Team_Dashboard hd,Triggers x)
         {
-            Button notiButton = new Button();
-            Button closeButton = new Button();
-            notiButton.Size = new Size(540, 600);
-            closeButton.Size = new Size(20, 20);
-            closeButton.Image = WindowsFormsApp1.Properties.Resources.close5;
-            closeButton.Location = new Point(238, 0);
-            notiButton.Controls.Add(closeButton);
-            if (s == "teamMeeting")
-            {
-                notiButton.Text = "     Team did not meet";
-                notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
-                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-            }
-            else if(s == "teamCommit")
-            {
-                notiButton.Text = "     Team did not commit";
-                notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.commit3;
-                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-            } 
-            else if(s == "memberCommit")
-            {
-                notiButton.Text = "     Team member did not commit";
-                notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.memberCommit2;
-                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-            }
-            return notiButton;
+            NotificationButton d = new NotificationButton();
+            
+            hd.Notification_Table2.Controls.Add(d.createNotificationButton(x));
+            d.closeButton.Click += new EventHandler(d.closeButton_Click2);
+            hd.Notification_Table2.Show();
         }
+        
+
     }
 }

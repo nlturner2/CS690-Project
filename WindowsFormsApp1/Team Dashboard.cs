@@ -16,11 +16,26 @@ namespace WindowsFormsApp1
     public partial class Team_Dashboard : Form
     {
         Team currentTeam;
+        Notification notification = new Notification();
         public Team_Dashboard(Team obj)
         {
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
+            //notification.loadNoitification(this);
+            IList<Triggers> trig = Variables.db.GetTriggers();
+            List<Notification> n = new List<Notification>();
+            foreach (Triggers i in trig)
+            {
+                if (i.Active && i.TeamName == currentTeam.Name)
+                {
+                    //string name = i.TeamName + ":" + i.MemberName;
+                    //Notification name = new Notification();
+                    Notification a = new Notification();
+                    n.Add(a);
+                    a.loadNoitification(this, i);
+                }
+            }
         }
 
         private void Home_Click(object sender, EventArgs e)
@@ -94,15 +109,17 @@ namespace WindowsFormsApp1
 
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string text = filesBox.GetItemText(filesBox.SelectedItem);
-            /*if (filesBox.SelectedIndex == -1)
+            // make the selected file clicakable 
+            if (filesBox.SelectedItem != null)
             {
-                return;// no selection we exit.
+                // getting the url for specifc file
+                string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
+                // display the content for the file in textbox
+                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[filesBox.SelectedIndex]);
+
+
             }
-            var selection = filesBox.SelectedValue.ToString().Split(' ');
-            //Form ModifierEtSupprimer = new Form(selection[0], selection[1]);
-            //ModifierEtSupprimer.Show();
-            */
+          
         }
     }
    
