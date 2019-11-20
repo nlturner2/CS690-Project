@@ -19,81 +19,82 @@ namespace WindowsFormsApp1
         
         int x =Variables.db.CountTeams();
 
-        Triggers trig;
+        
 
-        public Notification(Triggers t)
-        {
-            trig = t;
-        }
+        
 
-
-        public void loadNotification(HomeDashboard hd)
+        public void loadNotification(HomeDashboard hd,Triggers t)
         {
             
-            TeamMeeting(hd);
-            TeamCommit(hd);
-            TeamMemberCommit(hd);
-            IList<Triggers> trig = Variables.db.GetTriggers();
-            foreach (Triggers i in trig)
-            {
-                if (i.Type == "teamMeeting")
+            //TeamMeeting(hd);
+            //TeamCommit(hd);
+            //TeamMemberCommit(hd);
+            
+                if (t.Type == "teamMeeting")
                 {
-                    TeamMeeting(hd);
+                    TeamMeeting(hd,t);
                 }
-                else if (i.Type == "teamCommit")
+                else if (t.Type == "teamCommit" )
                 {
-                    TeamCommit(hd);
+                    TeamCommit(hd,t);
                 }
-                else if (i.Type == "memberCommit")
+                else if (t.Type == "memberCommit" )
                 {
-                    TeamMemberCommit(hd);
+                    TeamMemberCommit(hd,t);
                 }
-            }
+            
 
         }
 
         public void loadNoitification(Team_Dashboard hd)
         {
-            TeamMemberCommit(hd);
+            IList<Triggers> trig = Variables.db.GetTriggers();
+            foreach (Triggers i in trig)
+            {
+                if (i.Type == "memberCommit" && i.Active)
+                {
+                    TeamMemberCommit(hd, i);
+                }
+            }
         }
 
 
 
         // creates notification for Team Meeting if the team does not meet
-        public void TeamMeeting(HomeDashboard hd)
+        public void TeamMeeting(HomeDashboard hd, Triggers x)
         {
 
             NotificationButton a = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(a.createNotificationButton("teamMeeting"));
+            hd.Notification_Table.Controls.Add(a.createNotificationButton(x));
             hd.Notification_Table.Show();
             
         }
 
         // creates notification for commit if the whole team does not commit
-        public void TeamCommit(HomeDashboard hd)
+        public void TeamCommit(HomeDashboard hd, Triggers x)
         {
 
             NotificationButton b = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(b.createNotificationButton("teamCommit"));
+            hd.Notification_Table.Controls.Add(b.createNotificationButton(x));
             hd.Notification_Table.Show();
         }
 
         // creates notification if a team member does not commit
-        public void TeamMemberCommit(HomeDashboard hd)
+        public void TeamMemberCommit(HomeDashboard hd, Triggers x)
         {
             NotificationButton c = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(c.createNotificationButton("memberCommit"));
+            hd.Notification_Table.Controls.Add(c.createNotificationButton(x));
             hd.Notification_Table.Show();
         }
 
-        public void TeamMemberCommit(Team_Dashboard hd)
+        public void TeamMemberCommit(Team_Dashboard hd,Triggers x)
         {
             NotificationButton d = new NotificationButton();
             
-            hd.Notification_Table2.Controls.Add(d.createNotificationButton("memberCommit"));
+            hd.Notification_Table2.Controls.Add(d.createNotificationButton(x));
             d.closeButton.Click += new EventHandler(d.closeButton_Click2);
             hd.Notification_Table2.Show();
         }

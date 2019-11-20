@@ -8,6 +8,12 @@ namespace WindowsFormsApp1
 {
     public class Triggers
     {
+        public Triggers()
+        {
+
+        }
+
+
         public Triggers(string triggerType, string teamName)
         {
             Type = triggerType;
