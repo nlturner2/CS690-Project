@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,21 +106,24 @@ namespace WindowsFormsApp1
             }*/
                 
            
-            NotificationTriggers nt = new NotificationTriggers();             List<string> result = new List<string>();
+            NotificationTriggers nt = new NotificationTriggers();             //List<string> result = new List<string>();
             /*foreach(var item in nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6))
             {
                 //result.Add(item);
                 MessageBox.Show(item);
             }*/
            // Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
+            Boolean x = nt.MeetingDate("https://github.com/Brysonleeward/PDF-In-Browser-Rendering.git");
             //Boolean y = x.Contains("Meeting Start Time");
-            
+            //DateTime y = DateTime.Parse(x);
 
             //MessageBox.Show(a.ToString());
            // MessageBox.Show(x.ToString());
 
            // MessageBox.Show(x.ToString());
             //MessageBox.Show(y);
+            MessageBox.Show(x.ToString());
+            //MessageBox.Show("helllo");
 
 
         }
