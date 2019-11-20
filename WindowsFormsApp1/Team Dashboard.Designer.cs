@@ -264,5 +264,6 @@
         public System.Windows.Forms.TabControl TextBox;
         public System.Windows.Forms.ListBox Progress_List;
         public System.Windows.Forms.TableLayoutPanel Notification_Table2;
+        public System.Windows.Forms.ListBox filesBox;
     }
 }
