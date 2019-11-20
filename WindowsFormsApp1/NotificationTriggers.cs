@@ -19,6 +19,97 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        public void TriggerCheck()
+        {
+            foreach (Triggers item in Variables.db.GetTriggers())
+            {
+                if(item.Type == "memberCommit")
+                {
+                    if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                    {
+                        if (CommitHistoryDateCheck(item.Url, MembersDays1))
+                        {
+                            item.Active = false;
+                            Variables.db.UpdateTriggers(item, false);
+                            //dissmiss notification
+                        }
+                        else
+                        {
+                            item.Active = true;
+                            Variables.db.UpdateTriggers(item, true);
+                            item.DismissDate = DateTime.Today;
+                            Variables.db.UpdateTriggerDismiss(item, DateTime.Today);
+                            //more code to make it apper
+                        }
+                    }
+                    else
+                    {
+                        item.Active = false;
+                        Variables.db.UpdateTriggers(item, false);
+                        //dissmiss notification
+                    }
+
+                }
+                if (item.Type == "teamCommit")
+                {
+                    Boolean status = true;
+                    int counter = 0;
+                    foreach (Triggers item2 in Variables.db.GetTriggers())
+                    {
+                        
+                        string team = item.TeamName;
+                        if (item.Type == "memberCommit" && team == item.TeamName)
+                        {
+                            status = item.Active && status;
+                            counter++;
+                        }
+                        
+                    }
+                    if (counter > 0)
+                    {
+                        item.Active = status;
+                        Variables.db.UpdateTriggers(item, status);
+                    }
+                    else
+                    {
+                        item.Active = false;
+                        Variables.db.UpdateTriggers(item, false);
+                    }
+                    
+                }
+                if (item.Type == "teamMeeting")
+                {
+                    // need to replace this line with the new function
+                    //if (DismissCheckForCommit(item.DismissDate))
+                    if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                    {
+                        if (MeetingDateCheck(item.Url))
+                        {
+                            item.Active = false;
+                            Variables.db.UpdateTriggers(item, false);
+                            //dissmiss notification
+                        }
+                        else
+                        {
+                            item.Active = true;
+                            Variables.db.UpdateTriggers(item, true);
+                            item.DismissDate = DateTime.Today;
+                            Variables.db.UpdateTriggerDismiss(item, DateTime.Today);
+                            //more code to make it apper
+                        }
+                    }
+                    else
+                    {
+                        item.Active = false;
+                        Variables.db.UpdateTriggers(item, false);
+                        //dissmiss notification
+                    }
+                }
+            }
+        }
+
+
   
         public void CommitTrigger(Team aTeam)
         {
@@ -84,10 +175,11 @@ namespace WindowsFormsApp1
         public Boolean CommitHistoryDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
 
-        public Boolean DismissCheckForCommit(DateTime date)
+        public Boolean DismissCheckForCommit(DateTime date, int numberOfDays)
         {
             Boolean dismiss = false;
             DateTime today = DateTime.Today;
+            date = date.AddDays(+numberOfDays);
             if (today > date)
             {
                 dismiss = true;

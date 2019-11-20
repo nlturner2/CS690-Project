@@ -14,19 +14,21 @@ namespace WindowsFormsApp1
         }
 
 
-        public Triggers(string triggerType, string teamName)
+        public Triggers(string triggerType, string teamName, string url)
         {
             Type = triggerType;
             TeamName = teamName;
             MemberName = "no member";
+            Url = url;
             Active = false;
             DismissDate = DateTime.Today;
         }
-        public Triggers(string triggerType, string teamName, string memberName)
+        public Triggers(string triggerType, string teamName, string url, string memberName)
         {
             Type = triggerType;
             TeamName = teamName;
             MemberName = memberName;
+            Url = url;
             Active = false;
             DismissDate = DateTime.Today;
         }
@@ -34,6 +36,8 @@ namespace WindowsFormsApp1
         public string Type { get; set; }
         public string TeamName { get; set; }
         public string MemberName { get; set; }
+
+        public string Url { get; set; }
 
         public Boolean Active { get; set; }
         //public Boolean Dismissed { get; set; }
