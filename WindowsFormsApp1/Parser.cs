@@ -48,9 +48,9 @@ namespace WindowsFormsApp1
             return partialText;
         }
 
-        public string meetingFileURL(string URL,List<string> fileNames)
+        public List<string> meetingFile(string URL,List<string> fileNames)
         {
-            
+            List<string> fileContentList = new List<string>();
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
@@ -58,17 +58,23 @@ namespace WindowsFormsApp1
 
                 if (charLocation > 0)
                 {
-                    /*foreach (var fileName in fileNames)
-                    {*/
-                    partialText = URL.Substring(charLocation + 1);
-                    int secondLocation = partialText.LastIndexOf('.');
-                    partialText = partialText.Remove(secondLocation);
-                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
-                    // }
-                
+                    foreach (var fileName in fileNames)
+                    {
+                        partialText = URL.Substring(charLocation + 1);
+                        int secondLocation = partialText.LastIndexOf('.');
+                        partialText = partialText.Remove(secondLocation);
+                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileName;
+
+                        fileContentList.Add(WebClient(partialText));
+
+
+
+
+                    }
+
                 }
             }
-            return partialText;
+            return fileContentList;
         }
 
         
@@ -179,11 +185,10 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
-                //line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
                 switch (options)
                 {
                     case "commit":
-                        line = data[i].commit.committer.date + ": " + data[i].commit.author.name + ": " + data[i].commit.message;
+                        line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + data[i].commit.message;
                         break;
 
                     case "username":
@@ -202,7 +207,7 @@ namespace WindowsFormsApp1
                
                 list.Add(line);
                 //Loop through the object and add items to the UI.
-                //Progress_List.Items.Add(line);
+                
                 //Check the data object from watch window. You can loop through it and find different properties as you want
             }
 

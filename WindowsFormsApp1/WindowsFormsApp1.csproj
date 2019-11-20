@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotificationButton.cs" />
     <Compile Include="NotificationTriggers.cs" />
     <Compile Include="Team Management.cs" />
     <Compile Include="Notification.cs" />

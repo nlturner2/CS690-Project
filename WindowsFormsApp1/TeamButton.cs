@@ -47,23 +47,19 @@ namespace WindowsFormsApp1
             Team_Dashboard TD = new Team_Dashboard(newTeam);
             try
             {
-                
-
+               
                     //getting url
-                    //MessageBox.Show(newTeam.Url);
                     string meetingfileNameURL = Variables.parseInstance.URLFactory(newTeam.Url, "meetings");
-                    //MessageBox.Show("2");
-                    //MessageBox.Show(meetingfileNameURL);
+                    
                     string commitURL = Variables.parseInstance.URLFactory(newTeam.Url, "commit");
-                    //MessageBox.Show("3");
+
                     string readmeURL = Variables.parseInstance.URLFactory(newTeam.Url, "readme");
                     // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
-                    string meetingMinutesURL = Variables.parseInstance.meetingFileURL(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
                     
                     string readMe = Variables.parseInstance.WebClient(readmeURL);
-                    string meetingMinutesFile = Variables.parseInstance.WebClient(meetingMinutesURL);
-                    //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
+                    string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[0];
+                //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
                     TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
                     TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
@@ -75,7 +71,6 @@ namespace WindowsFormsApp1
                         TD.filesBox.Items.Add(item);
                         
 
-                        //MessageBox.Show(item);
                     }
 
                     foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))
