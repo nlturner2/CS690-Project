@@ -76,19 +76,35 @@ namespace WindowsFormsApp1
         public Boolean commitHistoryDate (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
 
-        public Boolean meetingDate (string url, int numberOfDays)
+        public Boolean MeetingDate (string url, int numberOfDays)
         {
-
+            int index = 0;
             Boolean acceptable = true;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
             string meetingMinutesURL = Variables.parseInstance.meetingFileURL(url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
             
-                string meetingMinutesFile = Variables.parseInstance.WebClient(meetingMinutesURL);
-                string parsedMeetingFile = Variables.parseInstance.parse_Meeting(meetingMinutesFile);
+            string meetingMinutesFile = Variables.parseInstance.WebClient(meetingMinutesURL);
+            string parsedMeetingFile = Variables.parseInstance.parse_Meeting(meetingMinutesFile);
+            string[] meetingFile = parsedMeetingFile.Split('\n');
+            List<string> meetingDate = new List<string>();
+            foreach (var item in meetingFile)
+            {
+                if (item.Contains("Meeting Start Time"))
+                {
+                    meetingDate.Add(meetingFile[index+2]);
+                    
+                    index++;
+                }
+                index++;
+            }
+            meetingDate.Sort();
+            int datesCount = meetingDate.Count; 
+            
+                DateTime m = DateTime.Parse(meetingDate[datesCount-1]);
+                DateTime today = DateTime.Today;                 DateTime daysAgo = today.AddDays(-numberOfDays);                 if (daysAgo > m)                 {                        acceptable = false;                 }    
 
             
-
-            return acceptable;
+                return acceptable;
         }
 
 
