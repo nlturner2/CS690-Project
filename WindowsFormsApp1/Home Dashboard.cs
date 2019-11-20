@@ -104,22 +104,23 @@ namespace WindowsFormsApp1
                 
                 MessageBox.Show("team: "+ item.TeamName.ToString() + " member:"+ item.MemberName.ToString()+" notification:" +item.CommitNotification.ToString());
             }*/
-                
-           
-            NotificationTriggers nt = new NotificationTriggers();             List<string> result = new List<string>();
+            MessageBox.Show(DateTime.Today.ToString());
+
+            //NotificationTriggers nt = new NotificationTriggers();
+            // List<string> result = new List<string>();
             /*foreach(var item in nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6))
             {
                 //result.Add(item);
                 MessageBox.Show(item);
             }*/
-            Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
+            //Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
             //Boolean y = x.Contains("Meeting Start Time");
-            
+
 
             //MessageBox.Show(a.ToString());
-           // MessageBox.Show(x.ToString());
+            // MessageBox.Show(x.ToString());
 
-            MessageBox.Show(x.ToString());
+            //MessageBox.Show(x.ToString());
             //MessageBox.Show(y);
 
 

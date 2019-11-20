@@ -8,10 +8,29 @@ namespace WindowsFormsApp1
 {
     public class Triggers
     {
+        public Triggers(string triggerType, string teamName)
+        {
+            Type = triggerType;
+            TeamName = teamName;
+            MemberName = "no member";
+            Active = false;
+            DismissDate = DateTime.Today;
+        }
+        public Triggers(string triggerType, string teamName, string memberName)
+        {
+            Type = triggerType;
+            TeamName = teamName;
+            MemberName = memberName;
+            Active = false;
+            DismissDate = DateTime.Today;
+        }
         public int Id { get; set; }
         public string Type { get; set; }
         public string TeamName { get; set; }
+        public string MemberName { get; set; }
+
         public Boolean Active { get; set; }
+        //public Boolean Dismissed { get; set; }
         public DateTime DismissDate { get; set; }
     }
 }

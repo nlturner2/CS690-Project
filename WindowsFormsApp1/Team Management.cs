@@ -41,6 +41,15 @@ namespace WindowsFormsApp1
                     Team team = new Team(name, url);
                     Variables.db.AddTeam(team);
                     CreateMembers(name, url);
+                    Triggers Trigger1 = new Triggers("teamCommit", name);
+                    Variables.db.AddTriggers(Trigger1);
+                    Triggers Trigger2 = new Triggers("teamMeeting", name);
+                    Variables.db.AddTriggers(Trigger2);
+                    
+                    /*
+                     Triggers Trigger3 = new Triggers("standards", name);
+                    Variables.db.AddTriggers(Trigger3);
+                    */
                     //obj.tableLayoutPanel1.Controls.Add(team.getButton());
                     obj.tableLayoutPanel1.Show();
                     obj.Show();
@@ -68,7 +77,9 @@ namespace WindowsFormsApp1
                 {
                     userName = item;
                     TeamMembers Member = new TeamMembers(item, teamName);
+                    Triggers Trigger = new Triggers("memberCommit", teamName,item);
                     Variables.db.AddMember(Member);
+                    Variables.db.AddTriggers(Trigger);
                 }
                 
             }
