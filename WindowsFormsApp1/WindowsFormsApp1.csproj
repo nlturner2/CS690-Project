@@ -140,6 +140,7 @@
       <DependentUpon>Team Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="TeamMembers.cs" />
+    <Compile Include="Triggers.cs" />
     <Compile Include="Variables.cs" />
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

@@ -16,11 +16,39 @@ namespace WindowsFormsApp1
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
-                var membersCollection = db.GetCollection<TeamMembers>("members");                
+                var membersCollection = db.GetCollection<TeamMembers>("members"); 
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
             }
                 
         }
         //Function to add a team to the database, it takes a Team object.
+        public void Add(Object item)
+        {
+
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                if(item is Team)
+                    
+                {
+                    var teamCollection = db.GetCollection<Team>("teams");
+                    teamCollection.Insert((Team)item);
+                }
+                if (item is TeamMembers)
+                {
+                    var membersCollection = db.GetCollection<TeamMembers>("members");
+                    membersCollection.Insert((TeamMembers)item);
+                }
+                if (item is Triggers)
+                {
+                    var triggersCollection = db.GetCollection<Triggers>("triggers");
+                    triggersCollection.Insert((Triggers)item);
+                }
+                
+            }
+
+        }
+
+
         public void AddTeam(Team item)
         {
 
@@ -63,6 +91,17 @@ namespace WindowsFormsApp1
             {
                 var membersCollection = db.GetCollection<TeamMembers>("members");
                 count = membersCollection.Count();
+            }
+            return count;
+        }
+
+        public int CountTriggers()
+        {
+            int count;
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
+                count = triggersCollection.Count();
             }
             return count;
         }
@@ -112,37 +151,63 @@ namespace WindowsFormsApp1
             }
         }
 
-/*
-        public List<Team> StartProgram()
+        public IList<Triggers> GetTriggers()
         {
-            var teamToReturn = new List<Team>();
+            var triggerToReturn = new List<Triggers>();
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
-                var teamCollection = db.GetCollection<Team>("teams");
-                int numberOfTeams = teamCollection.Count();
-                
-                for (int i = 0; i <= numberOfTeams;i++ )
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
+                var results = triggersCollection.FindAll();
+                foreach (Triggers triggerItem in results)
                 {
-
+                    triggerToReturn.Add(triggerItem);
                 }
-
+                return triggerToReturn;
             }
-            return teamToReturn;
         }
-        */
+        /*
+                public List<Team> StartProgram()
+                {
+                    var teamToReturn = new List<Team>();
+                    using (var db = new LiteDatabase(@"TestDataBase1.db"))
+                    {
+                        var teamCollection = db.GetCollection<Team>("teams");
+                        int numberOfTeams = teamCollection.Count();
 
+                        for (int i = 0; i <= numberOfTeams;i++ )
+                        {
+
+                        }
+
+                    }
+                    return teamToReturn;
+                }
+                */
+        /*
         public void UpdateNotification(string theTeam)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 // Open data file (or create if not exits)  
                 var teamCollection = db.GetCollection<Team>("teams");
-                
-                    // Update an existing issue document  
-                    
-                    var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
+
+                // Update an existing issue document  
+
+                IList<Team> updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
+                Team thisTeam = updateTeam;
                 //updateTeam.meetingNotification = true;
                 teamCollection.Update(updateTeam);
+
+            }
+        }
+        */
+        public void Update(Object x,string y)
+        {
+            if (x is Team)
+            {
+
+            }
+            else if(x is TeamMembers){
 
             }
         }
@@ -162,6 +227,50 @@ namespace WindowsFormsApp1
 
             }
         }
+
+        public void UpdateTeam(Team aTeam, Boolean x)
+        {
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                // Open data file (or create if not exits)  
+                var teamCollection = db.GetCollection<Team>("teams");
+
+                aTeam.MeetingNotification = x;
+
+                //var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
+                //updateTeam.meetingNotification = true;
+                teamCollection.Update(aTeam);
+
+            }
+        }
+
+
+        public void UpdateTriggers(Triggers atrigger, Boolean x)
+        {
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                // Open data file (or create if not exits)  
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
+
+                atrigger.Active = x;
+                triggersCollection.Update(atrigger);
+
+            }
+        }
+
+        public void UpdateTriggerDismiss(Triggers atrigger, DateTime dismissDate)
+        {
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                // Open data file (or create if not exits)  
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
+
+                atrigger.DismissDate = dismissDate;
+                triggersCollection.Update(atrigger);
+
+            }
+        }
+
         public string ReadTeam()
         {
             return "a";
