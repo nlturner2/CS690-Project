@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         {
 
         }
-
+  
         public void CommitTrigger(Team aTeam)
         {
             foreach (TeamMembers item in Variables.db.GetMembers())
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
 
                 if (item.TeamName == aTeam.Name)
                 {
-                    if (commitHistoryDate(aTeam.Url, MembersDays1))
+                    if (CommitHistoryDateCheck(aTeam.Url, MembersDays1))
                     {
                         item.CommitNotification = false;
                         Variables.db.UpdateMember(item, false);

@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show(item);
             }*/
            // Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
-            Boolean x = nt.MeetingDate("https://github.com/Brysonleeward/PDF-In-Browser-Rendering.git");
+            Boolean x = nt.MeetingDateCheck("https://github.com/Brysonleeward/PDF-In-Browser-Rendering.git");
             //Boolean y = x.Contains("Meeting Start Time");
             //DateTime y = DateTime.Parse(x);
 
