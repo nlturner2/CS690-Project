@@ -101,28 +101,37 @@ namespace WindowsFormsApp1
 
             
         {
-            Variables.NTInstance.TriggerCheck();
+
+            
+            
+           // string x = Variables.NTInstance.TriggerCheck();
+            //MessageBox.Show(x);
+            
+
+            //DateTime d = DateTime.Today;
+            // MessageBox.Show(d.ToString());
+
 
             //Variables.db.DeleteSettings();
-            /*
+            
             DataConnection db = new DataConnection();
 
 
             foreach (Triggers item in db.GetTriggers())
 
             {
-                if (item.Type == "teamCommit")
-                {
+                //if (item.Type == "teamCommit")
+                //{
                     item.Active = true;
                     db.UpdateTriggers(item, true);
 
 
-                }
+                //}
 
-                MessageBox.Show("team: " + item.TeamName.ToString() + " member:" + item.MemberName.ToString() + " notification:" + item.Active.ToString());
+                MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString()+" \n URL:"+item.Url);
             }
 
-
+            /*
             DataConnection db = new DataConnection();
 
 

@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
             MemberName = "no member";
             Url = url;
             Active = false;
-            DismissDate = DateTime.Today;
+            DismissDate = DateTime.Today.AddDays(-360);
             Settings = 1;
         }
         public Triggers(string triggerType, string teamName, string url, string memberName)
@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
             MemberName = memberName;
             Url = url;
             Active = false;
-            DismissDate = DateTime.Today;
+            DismissDate = DateTime.Today.AddDays(-360);
             Settings = 7;
         }
         public int Id { get; set; }

@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             List<Notification> n = new List<Notification>();
             foreach (Triggers i in trig)
             {
-                if (i.Active)
+                if (i.Active && i.TeamName == currentTeam.Name)
                 {
                     //string name = i.TeamName + ":" + i.MemberName;
                     //Notification name = new Notification();

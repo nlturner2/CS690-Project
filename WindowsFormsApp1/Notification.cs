@@ -41,11 +41,13 @@ namespace WindowsFormsApp1
                 {
                     TeamCommit(hd, t);
                 }
+                /*
                 else if (t.Type == "memberCommit")
                 {
                     TeamMemberCommit(hd, t);
-               // }
-            }
+                }
+                */
+            //}
 
         }
 
@@ -85,14 +87,15 @@ namespace WindowsFormsApp1
         }
 
         // creates notification if a team member does not commit
-        public void TeamMemberCommit(HomeDashboard hd, Triggers x)
+        
+        /*public void TeamMemberCommit(HomeDashboard hd, Triggers x)
         {
             NotificationButton c = new NotificationButton();
 
             hd.Notification_Table.Controls.Add(c.createNotificationButton(x));
             hd.Notification_Table.Show();
         }
-
+        */
         public void TeamMemberCommit(Team_Dashboard hd,Triggers x)
         {
             NotificationButton d = new NotificationButton();

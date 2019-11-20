@@ -21,25 +21,25 @@ namespace WindowsFormsApp1
 
         }
 
-        public void TriggerCheck()
+        public string TriggerCheck()
         {
             // tracking progress
             string s = "";
             foreach (Triggers item in Variables.db.GetTriggers())
             {
-                s += "team: " + item.TeamName.ToString() + " member: " + item.MemberName.ToString() + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString()+" /n";
+                s += "team: " + item.TeamName.ToString() + " member: " + item.MemberName.ToString() + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString()+ "\n  \n";
                 if (item.Type == "memberCommit")
                 {
-                    s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + " /n";
+                    s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + "\n  \n";
                     if (DismissCheckForCommit(item.DismissDate, TeamDays1))
                     {
-                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitHistoryDateCheck(item.Url, MembersDays1) + " /n";
+                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitHistoryDateCheck(item.Url, MembersDays1) + "\n  \n";
                         if (CommitHistoryDateCheck(item.Url, MembersDays1))
                         {
                             item.Active = false;
                             Variables.db.UpdateTriggers(item, false);
                             //dissmiss notification
-                            s += "if result: true and data should be false"+ " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + " /n";
+                            s += "if result: true and data should be false"+ " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n  \n";
                         }
                         else
                         {
@@ -48,7 +48,7 @@ namespace WindowsFormsApp1
                             item.DismissDate = DateTime.Today;
                             Variables.db.UpdateTriggerDismiss(item, DateTime.Today);
                             //more code to make it apper
-                            s += "if result: false and data should be true" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + " /n";
+                            s += "if result: false and data should be true and date should be todays" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n  \n";
                         }
                     }
                     else
@@ -56,6 +56,7 @@ namespace WindowsFormsApp1
                         item.Active = false;
                         Variables.db.UpdateTriggers(item, false);
                         //dissmiss notification
+                        s += "dismiss if result: false and data should be false" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n \n";
                     }
 
                 }
@@ -92,6 +93,7 @@ namespace WindowsFormsApp1
                     //if (DismissCheckForCommit(item.DismissDate))
                     if (false)
                     {
+                        //ths function has an error
                         if (MeetingDateCheck(item.Url))
                         {
                             item.Active = false;
@@ -115,6 +117,7 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+            return s;
         }
 
 
@@ -143,7 +146,7 @@ namespace WindowsFormsApp1
             }
                         
         }
-        /**
+        /*
         public Boolean ProgressTrigger(Array theMembers[])
         {
             Boolean check = false;
