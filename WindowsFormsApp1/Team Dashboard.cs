@@ -16,11 +16,13 @@ namespace WindowsFormsApp1
     public partial class Team_Dashboard : Form
     {
         Team currentTeam;
+        Notification notification = new Notification();
         public Team_Dashboard(Team obj)
         {
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
+            notification.loadNoitification(this);
         }
 
         private void Home_Click(object sender, EventArgs e)

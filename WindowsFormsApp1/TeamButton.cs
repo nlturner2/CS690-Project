@@ -47,8 +47,7 @@ namespace WindowsFormsApp1
             Team_Dashboard TD = new Team_Dashboard(newTeam);
             try
             {
-                
-
+               
                     //getting url
                     string meetingfileNameURL = Variables.parseInstance.URLFactory(newTeam.Url, "meetings");
                     
@@ -61,7 +60,7 @@ namespace WindowsFormsApp1
                     string readMe = Variables.parseInstance.WebClient(readmeURL);
                     string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[0];
                 //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
-                TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
+                    TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
                     TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1

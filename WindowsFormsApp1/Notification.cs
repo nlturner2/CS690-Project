@@ -15,8 +15,9 @@ namespace WindowsFormsApp1
 {
     public class Notification
     {
-        private DataConnection DB = new DataConnection();
+        public Variables Callingform { get; set; }
         
+        int x =Variables.db.CountTeams();
 
         public void loadNoitification(HomeDashboard hd)
         {
@@ -25,12 +26,20 @@ namespace WindowsFormsApp1
             TeamMemberCommit(hd);
         }
 
+        public void loadNoitification(Team_Dashboard hd)
+        {
+            TeamMemberCommit(hd);
+        }
+
+
+
         // creates notification for Team Meeting if the team does not meet
         public void TeamMeeting(HomeDashboard hd)
         {
-            Button a = createNotiButton("teamMeeting");
-            
-            hd.Notification_Table.Controls.Add(a);
+
+            NotificationButton a = new NotificationButton();
+
+            hd.Notification_Table.Controls.Add(a.createNotificationButton("teamMeeting"));
             hd.Notification_Table.Show();
             
         }
@@ -38,62 +47,31 @@ namespace WindowsFormsApp1
         // creates notification for commit if the whole team does not commit
         public void TeamCommit(HomeDashboard hd)
         {
-            Button b = createNotiButton("teamCommit");
-            
-            hd.Notification_Table.Controls.Add(b);
+
+            NotificationButton b = new NotificationButton();
+
+            hd.Notification_Table.Controls.Add(b.createNotificationButton("teamCommit"));
             hd.Notification_Table.Show();
         }
 
         // creates notification if a team member does not commit
         public void TeamMemberCommit(HomeDashboard hd)
         {
-            Button c = createNotiButton("memberCommit");
+            NotificationButton c = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(c);
+            hd.Notification_Table.Controls.Add(c.createNotificationButton("memberCommit"));
             hd.Notification_Table.Show();
         }
 
-
-        // method for creating notification button
-       public Button createNotiButton(string s)
+        public void TeamMemberCommit(Team_Dashboard hd)
         {
-            Button notiButton = new Button();
-            Button closeButton = new Button();
-            notiButton.Size = new Size(540, 600);
-            closeButton.Size = new Size(20, 20);
-            closeButton.Image = WindowsFormsApp1.Properties.Resources.close5;
-            closeButton.Location = new Point(238, 0);
-            notiButton.Controls.Add(closeButton);
-
-            if (s == "teamMeeting")
-            {
-                notiButton.Text = "     Team did not meet";
-                notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
-                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-            }
-
-            else if(s == "teamCommit")
-            {
-                notiButton.Text = "     Team did not commit";
-                notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.commit3;
-                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-            } 
-
-            else if(s == "memberCommit")
-            {
-                notiButton.Text = "     Team member did not commit";
-                notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.memberCommit2;
-                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-            }
-
-            return notiButton;
-
-
+            NotificationButton d = new NotificationButton();
+            
+            hd.Notification_Table2.Controls.Add(d.createNotificationButton("memberCommit"));
+            d.closeButton.Click += new EventHandler(d.closeButton_Click2);
+            hd.Notification_Table2.Show();
         }
-
+        
 
     }
 }
