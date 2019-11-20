@@ -34,6 +34,7 @@
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
             this.Progress_List = new System.Windows.Forms.ListBox();
             this.TeamMeeting = new System.Windows.Forms.TabPage();
+            this.filesBox = new System.Windows.Forms.ListBox();
             this.meetingRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Members = new System.Windows.Forms.TabPage();
             this.teamMembersRichTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -101,6 +102,7 @@
             // 
             // TeamMeeting
             // 
+            this.TeamMeeting.Controls.Add(this.filesBox);
             this.TeamMeeting.Controls.Add(this.meetingRichTextBox1);
             this.TeamMeeting.Location = new System.Drawing.Point(4, 22);
             this.TeamMeeting.Name = "TeamMeeting";
@@ -110,12 +112,21 @@
             this.TeamMeeting.UseVisualStyleBackColor = true;
             this.TeamMeeting.Click += new System.EventHandler(this.TeamMeeting_Click);
             // 
+            // filesBox
+            // 
+            this.filesBox.FormattingEnabled = true;
+            this.filesBox.Location = new System.Drawing.Point(679, 16);
+            this.filesBox.Name = "filesBox";
+            this.filesBox.Size = new System.Drawing.Size(183, 121);
+            this.filesBox.TabIndex = 1;
+            this.filesBox.SelectedIndexChanged += new System.EventHandler(this.filesBox_SelectedIndexChanged);
+            // 
             // meetingRichTextBox1
             // 
-            this.meetingRichTextBox1.Location = new System.Drawing.Point(2, 2);
+            this.meetingRichTextBox1.Location = new System.Drawing.Point(0, 2);
             this.meetingRichTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.meetingRichTextBox1.Name = "meetingRichTextBox1";
-            this.meetingRichTextBox1.Size = new System.Drawing.Size(875, 464);
+            this.meetingRichTextBox1.Size = new System.Drawing.Size(873, 464);
             this.meetingRichTextBox1.TabIndex = 0;
             this.meetingRichTextBox1.Text = "";
             this.meetingRichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged_2);
@@ -134,9 +145,9 @@
             // 
             // teamMembersRichTextBox1
             // 
-            this.teamMembersRichTextBox1.Location = new System.Drawing.Point(3, 12);
+            this.teamMembersRichTextBox1.Location = new System.Drawing.Point(6, 7);
             this.teamMembersRichTextBox1.Name = "teamMembersRichTextBox1";
-            this.teamMembersRichTextBox1.Size = new System.Drawing.Size(566, 450);
+            this.teamMembersRichTextBox1.Size = new System.Drawing.Size(863, 450);
             this.teamMembersRichTextBox1.TabIndex = 0;
             this.teamMembersRichTextBox1.Text = "";
             this.teamMembersRichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -155,10 +166,10 @@
             // 
             // summaryrichTextBox1
             // 
-            this.summaryrichTextBox1.Location = new System.Drawing.Point(5, 5);
+            this.summaryrichTextBox1.Location = new System.Drawing.Point(17, 16);
             this.summaryrichTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.summaryrichTextBox1.Name = "summaryrichTextBox1";
-            this.summaryrichTextBox1.Size = new System.Drawing.Size(865, 425);
+            this.summaryrichTextBox1.Size = new System.Drawing.Size(835, 425);
             this.summaryrichTextBox1.TabIndex = 0;
             this.summaryrichTextBox1.Text = "";
             this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -222,7 +233,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(901, 487);
+            this.ClientSize = new System.Drawing.Size(908, 456);
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.TeadDashboard);
@@ -250,7 +261,7 @@
         public System.Windows.Forms.RichTextBox teamMembersRichTextBox1;
         private System.Windows.Forms.TabPage Summary;
         public System.Windows.Forms.RichTextBox summaryrichTextBox1;
-        private System.Windows.Forms.TabControl TextBox;
+        public System.Windows.Forms.TabControl TextBox;
         public System.Windows.Forms.ListBox Progress_List;
         public System.Windows.Forms.TableLayoutPanel Notification_Table2;
     }

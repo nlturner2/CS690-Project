@@ -10,8 +10,12 @@ namespace WindowsFormsApp1
     {
 
         //private string teamURL;
-
-
+        /// <summary>
+        /// get URL for readme file, meeting file and commit history.
+        /// </summary>
+        /// <returns>The actory.</returns>
+        /// <param name="URL">URL.</param> The team URL 
+        /// <param name="options">Options.</param> Have options to get url for readme file, meeting file, and commit history
         public string URLFactory(string URL, string options)
         {
             string partialText = "";
@@ -44,29 +48,50 @@ namespace WindowsFormsApp1
             return partialText;
         }
 
-        public string meetingFileURL(string URL,List<string> fileNames)
+        public List<string> meetingFile(string URL,List<string> fileNames)
         {
+            List<string> fileContentList = new List<string>();
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
                 int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
-                if (charLocation > 0) 
+                if (charLocation > 0)
                 {
-                    /*foreach (var fileName in fileNames)
-                    {*/
+                    foreach (var fileName in fileNames)
+                    {
                         partialText = URL.Substring(charLocation + 1);
                         int secondLocation = partialText.LastIndexOf('.');
                         partialText = partialText.Remove(secondLocation);
-                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
-                   // }
+                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileName;
+
+                        fileContentList.Add(WebClient(partialText));
+
+
+
+
+                    }
+
                 }
             }
-            return partialText;
+            return fileContentList;
         }
 
+        
 
-           public string parse_Summary(string data)
+        public string WebClient(string rawFileUrl)
+        {
+            string file = "";
+            using (WebClient client = new WebClient())
+            {
+                file = client.DownloadString(rawFileUrl);
+            }
+            
+
+            return file;
+        }
+
+        public string parse_Summary(string data)
         {
             string[] summaryWithH = data.Split('\n');
             string summary = null;

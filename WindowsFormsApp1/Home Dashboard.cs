@@ -86,21 +86,40 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            
-            
-            DataConnection db = new DataConnection();
 
 
-           foreach(var item in db.GetAll())
+            /*DataConnection db = new DataConnection();
+
+
+           foreach(TeamMembers item in db.GetMembers())
+
             {
-                MessageBox.Show(item.ToString());
-            }
+                if (item.TeamName == "t1")
+                {
+                    item.CommitNotification = true;
+                    db.UpdateMember(item, true);
+
+
+                }
                 
+                MessageBox.Show("team: "+ item.TeamName.ToString() + " member:"+ item.MemberName.ToString()+" notification:" +item.CommitNotification.ToString());
+            }*/
+                
+           
+            NotificationTriggers nt = new NotificationTriggers();             List<string> result = new List<string>();
+            /*foreach(var item in nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6))
+            {
+                //result.Add(item);
+                MessageBox.Show(item);
+            }*/
+           // Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
+            //Boolean y = x.Contains("Meeting Start Time");
+            
 
             //MessageBox.Show(a.ToString());
-            //MessageBox.Show(y);
-            
-            //MessageBox.Show(x.ToString());
+           // MessageBox.Show(x.ToString());
+
+           // MessageBox.Show(x.ToString());
             //MessageBox.Show(y);
 
 

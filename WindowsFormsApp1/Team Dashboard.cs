@@ -78,9 +78,35 @@ namespace WindowsFormsApp1
             
         }
 
-        public void Notification_Table2_Paint(object sender, PaintEventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void filesBox_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (filesBox.SelectedItem != null)
+            {
+                
+                string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
+
+                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[filesBox.SelectedIndex]);
+
+
+            }
+          
         }
     }
    
