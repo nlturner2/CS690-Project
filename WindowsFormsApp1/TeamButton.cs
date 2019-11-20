@@ -58,13 +58,12 @@ namespace WindowsFormsApp1
                     //MessageBox.Show("3");
                     string readmeURL = Variables.parseInstance.URLFactory(newTeam.Url, "readme");
                     // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
-                    string meetingMinutesURL = Variables.parseInstance.meetingFileURL(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                     //downloading string from url which is store in rdmeu 
                     
                     string readMe = Variables.parseInstance.WebClient(readmeURL);
-                    string meetingMinutesFile = Variables.parseInstance.WebClient(meetingMinutesURL);
-                    //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
-                    TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
+                    string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[0];
+                //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
+                TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                     //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
                     TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1

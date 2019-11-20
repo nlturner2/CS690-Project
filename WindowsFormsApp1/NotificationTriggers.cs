@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
         public Boolean commitHistoryDate (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
 
-        public Boolean MeetingDate (string url, int numberOfDays)
+        /*public Boolean MeetingDate (string url, int numberOfDays)
         {
             int index = 0;
             Boolean acceptable = true;
@@ -105,8 +105,8 @@ namespace WindowsFormsApp1
 
             
                 return acceptable;
-        }
-
+        }*/
+        
 
 
 

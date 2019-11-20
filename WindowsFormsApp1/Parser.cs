@@ -48,9 +48,9 @@ namespace WindowsFormsApp1
             return partialText;
         }
 
-        public string meetingFileURL(string URL,List<string> fileNames)
+        public List<string> meetingFile(string URL,List<string> fileNames)
         {
-            
+            List<string> fileContentList = new List<string>();
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
@@ -58,17 +58,23 @@ namespace WindowsFormsApp1
 
                 if (charLocation > 0)
                 {
-                    /*foreach (var fileName in fileNames)
-                    {*/
-                    partialText = URL.Substring(charLocation + 1);
-                    int secondLocation = partialText.LastIndexOf('.');
-                    partialText = partialText.Remove(secondLocation);
-                    partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileNames[0];
-                    // }
-                
+                    foreach (var fileName in fileNames)
+                    {
+                        partialText = URL.Substring(charLocation + 1);
+                        int secondLocation = partialText.LastIndexOf('.');
+                        partialText = partialText.Remove(secondLocation);
+                        partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileName;
+
+                        fileContentList.Add(WebClient(partialText));
+
+
+
+
+                    }
+
                 }
             }
-            return partialText;
+            return fileContentList;
         }
 
         

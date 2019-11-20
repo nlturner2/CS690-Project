@@ -94,15 +94,17 @@ namespace WindowsFormsApp1
 
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string text = filesBox.GetItemText(filesBox.SelectedItem);
-            /*if (filesBox.SelectedIndex == -1)
+
+            if (filesBox.SelectedItem != null)
             {
-                return;// no selection we exit.
+                
+                string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
+
+                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[filesBox.SelectedIndex]);
+
+
             }
-            var selection = filesBox.SelectedValue.ToString().Split(' ');
-            //Form ModifierEtSupprimer = new Form(selection[0], selection[1]);
-            //ModifierEtSupprimer.Show();
-            */
+          
         }
     }
    
