@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
         {
             
             InitializeComponent();
-            notification.loadNoitification(this);
+            notification.loadNotification(this);
         }
 
         //Display teams after the read function

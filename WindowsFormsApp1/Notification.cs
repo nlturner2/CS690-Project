@@ -19,11 +19,37 @@ namespace WindowsFormsApp1
         
         int x =Variables.db.CountTeams();
 
-        public void loadNoitification(HomeDashboard hd)
+        Triggers trig;
+
+        public Notification(Triggers t)
         {
+            trig = t;
+        }
+
+
+        public void loadNotification(HomeDashboard hd)
+        {
+            
             TeamMeeting(hd);
             TeamCommit(hd);
             TeamMemberCommit(hd);
+            IList<Triggers> trig = Variables.db.GetTriggers();
+            foreach (Triggers i in trig)
+            {
+                if (i.Type == "teamMeeting")
+                {
+                    TeamMeeting(hd);
+                }
+                else if (i.Type == "teamCommit")
+                {
+                    TeamCommit(hd);
+                }
+                else if (i.Type == "memberCommit")
+                {
+                    TeamMemberCommit(hd);
+                }
+            }
+
         }
 
         public void loadNoitification(Team_Dashboard hd)
