@@ -40,13 +40,13 @@ namespace WindowsFormsApp1
             if (s == "teamMeeting")
             {
                 string teamName = x.TeamName;
-                notiButton.Text = "    Team did not meet";
+                notiButton.Text = "    " + teamName + " did not meet";
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 closeButton.Click += new EventHandler(closeButton_Click);
 
-                Variables.db.UpdateTriggers(x, true);
+                //Variables.db.UpdateTriggers(x, true);
 
             }
 
@@ -58,18 +58,18 @@ namespace WindowsFormsApp1
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.commit3;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 closeButton.Click += new EventHandler(closeButton_Click);
-                Variables.db.UpdateTriggers(x, true);
+                ///Variables.db.UpdateTriggers(x, true);
             }
 
             else if (s == "memberCommit")
             {
                 string memberName = x.MemberName;
-                notiButton.Text = "     Team member did not commit";
+                notiButton.Text = "     "+ x.MemberName + " did not commit";
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.memberCommit2;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 closeButton.Click += new EventHandler(closeButton_Click2);
-                Variables.db.UpdateTriggers(x, true);
+                //Variables.db.UpdateTriggers(x, true);
             }
 
             return notiButton;

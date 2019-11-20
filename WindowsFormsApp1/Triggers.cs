@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             Url = url;
             Active = false;
             DismissDate = DateTime.Today;
+            Settings = 1;
         }
         public Triggers(string triggerType, string teamName, string url, string memberName)
         {
@@ -31,11 +32,13 @@ namespace WindowsFormsApp1
             Url = url;
             Active = false;
             DismissDate = DateTime.Today;
+            Settings = 7;
         }
         public int Id { get; set; }
         public string Type { get; set; }
         public string TeamName { get; set; }
         public string MemberName { get; set; }
+        public int Settings { get; set; }
 
         public string Url { get; set; }
 

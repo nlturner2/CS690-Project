@@ -9,6 +9,7 @@ namespace WindowsFormsApp1
 {
     public class NotificationTriggers
     {
+
         private int TeamDays1 = 7;
         private int TeamDays2 = 14;
         private int MembersDays1 = 7;
@@ -22,17 +23,23 @@ namespace WindowsFormsApp1
 
         public void TriggerCheck()
         {
+            // tracking progress
+            string s = "";
             foreach (Triggers item in Variables.db.GetTriggers())
             {
-                if(item.Type == "memberCommit")
+                s += "team: " + item.TeamName.ToString() + " member: " + item.MemberName.ToString() + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString()+" /n";
+                if (item.Type == "memberCommit")
                 {
+                    s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + " /n";
                     if (DismissCheckForCommit(item.DismissDate, TeamDays1))
                     {
+                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitHistoryDateCheck(item.Url, MembersDays1) + " /n";
                         if (CommitHistoryDateCheck(item.Url, MembersDays1))
                         {
                             item.Active = false;
                             Variables.db.UpdateTriggers(item, false);
                             //dissmiss notification
+                            s += "if result: true and data should be false"+ " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + " /n";
                         }
                         else
                         {
@@ -41,6 +48,7 @@ namespace WindowsFormsApp1
                             item.DismissDate = DateTime.Today;
                             Variables.db.UpdateTriggerDismiss(item, DateTime.Today);
                             //more code to make it apper
+                            s += "if result: false and data should be true" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + " /n";
                         }
                     }
                     else
@@ -82,7 +90,7 @@ namespace WindowsFormsApp1
                 {
                     // need to replace this line with the new function
                     //if (DismissCheckForCommit(item.DismissDate))
-                    if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                    if (false)
                     {
                         if (MeetingDateCheck(item.Url))
                         {
@@ -236,16 +244,43 @@ namespace WindowsFormsApp1
 
 
 
+        
 
+        //Variables.SettingsInstance
         public void setTeamDays(string days)
         {
+            int count = 0;
+            foreach (SettingsData i in Variables.db.GetSettings())
+            {
+                count++;
+            }
+            if (count == 0)
+            {
+                Variables.db.AddSettings(Variables.SettingsInstance);
+            }
+            
             this.TeamDays1 = Convert.ToInt32(days);
+            Variables.SettingsInstance.TeamWeeks = this.TeamDays1;
+            Variables.db.UpdateSettings(Variables.SettingsInstance);
             this.TeamDays2 = 2*this.TeamDays1;
+
         }
         public void setMemberDays(string days)
         {
+            int count = 0;
+            foreach (SettingsData i in Variables.db.GetSettings())
+            {
+                count++;
+            }
+            if (count == 0)
+            {
+                Variables.db.AddSettings(Variables.SettingsInstance);
+            }
+
             this.MembersDays1 = Convert.ToInt32(days);
             this.MembersDays2 = 2 * this.MembersDays1;
+            Variables.SettingsInstance.MembersDays = MembersDays1;
+            Variables.db.UpdateSettings(Variables.SettingsInstance);
         }
     }
 }

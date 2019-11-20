@@ -22,17 +22,20 @@ namespace WindowsFormsApp1
 
         public HomeDashboard()
         {
-            Notification a = new Notification();
+            
             InitializeComponent();
             IList<Triggers> trig = Variables.db.GetTriggers();
+            List<Notification> n= new List<Notification>();
             foreach (Triggers i in trig)
             {
                 if (i.Active)
                 {
+                    //string name = i.TeamName + ":" + i.MemberName;
+                    //Notification name = new Notification();
+                    Notification a = new Notification();
+                    n.Add(a);
                     a.loadNotification(this, i);
                 }
-                
-                
             }
 
             
@@ -95,8 +98,13 @@ namespace WindowsFormsApp1
         }
 
         private void Refresh_Click(object sender, EventArgs e)
-        {
 
+            
+        {
+            Variables.NTInstance.TriggerCheck();
+
+            //Variables.db.DeleteSettings();
+            /*
             DataConnection db = new DataConnection();
 
 
@@ -115,7 +123,7 @@ namespace WindowsFormsApp1
             }
 
 
-            /*DataConnection db = new DataConnection();
+            DataConnection db = new DataConnection();
 
 
            foreach(TeamMembers item in db.GetMembers())

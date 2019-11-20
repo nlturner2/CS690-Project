@@ -60,6 +60,7 @@ namespace WindowsFormsApp1
             
         }
         //Function to add members of a team to the database, it take TeamMembers object.
+
         public void AddMember(TeamMembers item)
         {
 
@@ -81,6 +82,19 @@ namespace WindowsFormsApp1
 
             }
         }
+
+        public void AddSettings(SettingsData item)
+        {
+
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var settingsCollection = db.GetCollection<SettingsData>("settings");
+                settingsCollection.Insert(item);
+            }
+
+        }
+        //Function to add members of a team to the database, it take TeamMembers object.
+
         //Function to count the number of teams in the database
         public int CountTeams()
         {
@@ -123,10 +137,20 @@ namespace WindowsFormsApp1
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 var membersCollection = db.GetCollection<TeamMembers>("members");
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
                 teamCollection.Delete(Query.EQ("Name", theTeam));
                 membersCollection.Delete(Query.EQ("TeamName", theTeam));
-                
+                triggersCollection.Delete(Query.EQ("TeamName", theTeam));
             }
+        }
+
+        public void DeleteSettings()
+        {
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var settingsCollection = db.GetCollection<SettingsData>("settings");
+                settingsCollection.Delete(Query.All());
+                }
         }
 
         //return a list of team
@@ -175,6 +199,23 @@ namespace WindowsFormsApp1
                 return triggerToReturn;
             }
         }
+
+        public IList<SettingsData> GetSettings()
+        {
+            var settingsToReturn = new List<SettingsData>();
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var settingsCollection = db.GetCollection<SettingsData>("settings");
+                var results =settingsCollection.FindAll();
+                foreach (SettingsData settingsItem in results)
+                {
+                    settingsToReturn.Add(settingsItem);
+                }
+                return settingsToReturn;
+            }
+        }
+
+        
         /*
                 public List<Team> StartProgram()
                 {
@@ -268,6 +309,17 @@ namespace WindowsFormsApp1
             }
         }
 
+        public void UpdateSettings(SettingsData item)
+        {
+
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var settingsCollection = db.GetCollection<SettingsData>("settings");
+                settingsCollection.Update(item);
+            }
+
+        }
+
         public void UpdateTriggerDismiss(Triggers atrigger, DateTime dismissDate)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -280,7 +332,20 @@ namespace WindowsFormsApp1
 
             }
         }
+        /*
+        public void UpdateTriggerSettings(Triggers atrigger, int s)
+        {
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                // Open data file (or create if not exits)  
+                var triggersCollection = db.GetCollection<Triggers>("triggers");
 
+                atrigger.Settings = s;
+                triggersCollection.Update(atrigger);
+
+            }
+        }
+        */
         public string ReadTeam()
         {
             return "a";

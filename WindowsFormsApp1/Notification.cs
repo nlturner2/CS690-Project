@@ -25,37 +25,40 @@ namespace WindowsFormsApp1
 
         public void loadNotification(HomeDashboard hd,Triggers t)
         {
-            
+
             //TeamMeeting(hd);
             //TeamCommit(hd);
             //TeamMemberCommit(hd);
             
+            //IList<Triggers> trigger = Variables.db.GetTriggers();
+            //foreach (Triggers i in trigger)
+            //{
                 if (t.Type == "teamMeeting")
                 {
-                    TeamMeeting(hd,t);
+                    TeamMeeting(hd, t);
                 }
-                else if (t.Type == "teamCommit" )
+                else if (t.Type == "teamCommit")
                 {
-                    TeamCommit(hd,t);
+                    TeamCommit(hd, t);
                 }
-                else if (t.Type == "memberCommit" )
+                else if (t.Type == "memberCommit")
                 {
-                    TeamMemberCommit(hd,t);
-                }
-            
+                    TeamMemberCommit(hd, t);
+               // }
+            }
 
         }
 
-        public void loadNoitification(Team_Dashboard hd)
+        public void loadNoitification(Team_Dashboard hd, Triggers t)
         {
-            IList<Triggers> trig = Variables.db.GetTriggers();
-            foreach (Triggers i in trig)
-            {
-                if (i.Type == "memberCommit" && i.Active)
+            IList<Triggers> trigger = Variables.db.GetTriggers();
+            //foreach (Triggers i in trigger)
+            //{
+                if (t.Type == "memberCommit" && t.Active)
                 {
-                    TeamMemberCommit(hd, i);
+                    TeamMemberCommit(hd, t);
                 }
-            }
+            //}
         }
 
 
