@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -23,34 +24,195 @@ namespace WindowsFormsApp1
 
         }
 
-        public string TriggerCheck()
+
+        
+        public void TeamCommitTrigger(Team t)
+        {
+            //making sure team have at least one memmber
+            int counter =0;
+            foreach(TeamMembers members in Variables.db.GetMembers())
+            {
+                if (members.TeamName == t.Name)
+                {
+                    counter++;
+                }
+            }
+            //MessageBox.Show("Counter is " + counter.ToString());
+
+            if (counter > 0)
+            {
+                Boolean checkTeamCommit = true;
+                //update members commit
+                foreach (Triggers item in Variables.db.GetTriggers())
+                {
+                    //MessageBox.Show("1");
+                    if (t.Name == item.TeamName && item.Type == "memberCommit")
+                    {
+                        if(item.Active == false)
+                        {
+                            checkTeamCommit = checkTeamCommit && false;
+                        }     
+                        else if (item.Active == true)
+                        {
+                            checkTeamCommit = checkTeamCommit && true;
+                        }
+                    }
+                }
+
+                //update team commit
+                foreach (Triggers itemTeamCommit in Variables.db.GetTriggers())
+                {
+                    if((itemTeamCommit.Type == "teamCommit"))
+                    {
+                        itemTeamCommit.Active = checkTeamCommit;
+                        Variables.db.UpdateTriggers(itemTeamCommit, checkTeamCommit);
+                    }
+                    else
+                    {
+                        itemTeamCommit.Active = false;
+                        Variables.db.UpdateTriggers(itemTeamCommit, false);
+                    }
+                }
+            }
+
+        }
+
+        public void CommitTrigger2(Team t, Boolean commitCheck)
+        {
+            //update members commit
+            foreach (Triggers item in Variables.db.GetTriggers())
+                {
+                    //MessageBox.Show("1");
+                    if (t.Name == item.TeamName)
+                    {
+                        //MessageBox.Show("2");
+                        if (item.Type == "memberCommit")
+                        {
+                            //MessageBox.Show("3");
+                            if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                            {
+                                //MessageBox.Show("4");
+                                if (commitCheck)
+                                {
+                                    //MessageBox.Show("5");
+                                    item.Active = false;
+                                    
+                                    Variables.db.UpdateTriggers(item, false);
+                                }
+                                else
+                                {
+                                    // databse error, it does not update database even though it function work somewhere else
+                                    //it can update the date but does not update the status
+                                    //MessageBox.Show("6");
+                                    item.Active = true;
+                                    
+                                    Variables.db.UpdateTriggers(item, true);
+                                    
+                                }
+                            }
+                            else
+                            {
+                                //MessageBox.Show("7");
+                                item.Active = false;
+                              
+                                Variables.db.UpdateTriggers(item, false);
+                           }
+
+                        }
+                    }
+
+
+                }
+        }
+
+
+
+
+
+        public void MeetingsTrigger(Team t, Boolean meetingCheck)
+        {
+            foreach (Triggers itemMeetings in Variables.db.GetTriggers())
+            {
+                if (itemMeetings.Type == "teamMeeting")
+                {
+                    //MessageBox.Show("1");
+                    //if (DismissCheckForMeeting(itemMeetings.DismissDate))
+                    //if(true)
+                    if (DismissCheckForCommit(itemMeetings.DismissDate, TeamDays1))
+                    {
+                        //MessageBox.Show("2");
+                        if (meetingCheck)
+                        {
+                           // MessageBox.Show("3");
+                            //item.Active = false;
+                            Variables.db.UpdateTriggers(itemMeetings, false);
+                            //dissmiss notification
+                        }
+                        else
+                        {
+                            //MessageBox.Show("4");
+                            //itemMeetings.Active = true;
+                            Variables.db.UpdateTriggers(itemMeetings, true);
+                            itemMeetings.DismissDate = DateTime.Today;
+                            //Variables.db.UpdateTriggerDismiss(itemMeetings, DateTime.Today);
+                            //more code to make it apper
+                        }
+                    }
+                    else
+                    {
+                       // MessageBox.Show("5");
+                        //itemMeetings.Active = false;
+                        Variables.db.UpdateTriggers(itemMeetings, false);
+                        //dissmiss notification
+                    }
+                }
+            }
+                
+        }
+        
+        public void Refresh()
+        {
+            foreach (Team team in Variables.db.GetAll())
+            {
+                Boolean commit = CommitDateCheck(team.Url, TeamDays1);
+                Boolean meetings = MeetingDateCheck(team.Url);
+                //MessageBox.Show(meetings.ToString());
+
+                CommitTrigger2(team, commit);
+                MeetingsTrigger(team, meetings);
+                //TeamCommitTrigger(team);
+
+            }
+        }
+        /*
+        public void TriggerCheck()
         {
             // tracking progress
-            string s = "";
+            //string s = "";
             foreach (Triggers item in Variables.db.GetTriggers())
             {
-                s += "team: " + item.TeamName.ToString() + " member: " + item.MemberName.ToString() + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString()+ "\n  \n";
+                //s += "team: " + item.TeamName.ToString() + " member: " + item.MemberName.ToString() + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString()+ "\n  \n";
                 if (item.Type == "memberCommit")
                 {
-                    s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + "\n  \n";
+                    //s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + "\n  \n";
                     if (DismissCheckForCommit(item.DismissDate, TeamDays1))
                     {
-                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitDateCheck(item.Url, MembersDays1) + "\n  \n";
+                        //s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitDateCheck(item.Url, MembersDays1) + "\n  \n";
                         if (CommitDateCheck(item.Url, MembersDays1))
                         {
                             item.Active = false;
                             Variables.db.UpdateTriggers(item, false);
                             //dissmiss notification
-                            s += "if result: true and data should be false"+ " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n  \n";
+                            //s += "if result: true and data should be false"+ " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n  \n";
                         }
                         else
                         {
                             item.Active = true;
                             Variables.db.UpdateTriggers(item, true);
                             item.DismissDate = DateTime.Today;
-                            Variables.db.UpdateTriggerDismiss(item, DateTime.Today);
+                            //Variables.db.UpdateTriggerDismiss(item, DateTime.Today);
                             //more code to make it apper
-                            s += "if result: false and data should be true and date should be todays" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n  \n";
+                            //s += "if result: false and data should be true and date should be todays" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n  \n";
                         }
                     }
                     else
@@ -58,7 +220,7 @@ namespace WindowsFormsApp1
                         item.Active = false;
                         Variables.db.UpdateTriggers(item, false);
                         //dissmiss notification
-                        s += "dismiss if result: false and data should be false" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n \n";
+                        //s += "dismiss if result: false and data should be false" + " notification: " + item.Active.ToString() + " date:" + item.DismissDate.ToString() + "\n \n";
                     }
 
                 }
@@ -92,8 +254,8 @@ namespace WindowsFormsApp1
                 if (item.Type == "teamMeeting")
                 {
                     // need to replace this line with the new function
-                    //if (DismissCheckForCommit(item.DismissDate))
-                    if (false)
+                    if (DismissCheckForMeeting(item.DismissDate))
+                    //if (false)
                     {
                         //ths function has an error
                         if (MeetingDateCheck(item.Url))
@@ -119,66 +281,10 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            return s;
+            //return s;
         }
+        */
 
-
-  
-        public void CommitTrigger(Team aTeam)
-        {
-            foreach (TeamMembers item in Variables.db.GetMembers())
-            {
-
-                if (item.TeamName == aTeam.Name)
-                {
-                    if (CommitDateCheck(aTeam.Url, MembersDays1))
-                    {
-                        item.CommitNotification = false;
-                        Variables.db.UpdateMember(item, false);
-                        //dissmiss notification
-                    }
-                    else
-                    {
-                        item.CommitNotification = true;
-                        Variables.db.UpdateMember(item, true);
-                        //more code to make it apper
-                    }
-                }
-                
-            }
-                        
-        }
-        /*
-        public Boolean ProgressTrigger(Array theMembers[])
-        {
-            Boolean check = false;
-            for ( int i = theMembers.Length; TeamMembers aMember in theMembers[])
-
-            {
-                if (aMember.CommitNotification)
-                {
-                    theMembers[].CommitNotification = true;
-
-                }
-            }
-            return check;
-        }
-    */
-        public void MeetingTrigger(Team aTeam, int lastMeeting, int days)
-        {
-            if (days < lastMeeting)
-            {
-                aTeam.MeetingNotification = true;
-                //more code to make it apper
-            }
-            else
-            {
-                aTeam.MeetingNotification = false;
-                //dissmiss notification
-            }
-        }
-        
-        
         /// <summary>
         /// to check if the team committed in the past #numberOfDays. 
         /// </summary>
@@ -199,7 +305,7 @@ namespace WindowsFormsApp1
         {
             Boolean dismiss = false;
             DateTime today = DateTime.Today;
-            date = date.AddDays(+numberOfDays);
+            date = date.AddDays(-numberOfDays);
             if (today > date)
             {
                 dismiss = true;
@@ -207,6 +313,7 @@ namespace WindowsFormsApp1
 
             return dismiss;
         }
+
         /// <summary>
         /// check if the notification need to be shown again, it will not shown until next Monday
         /// </summary>

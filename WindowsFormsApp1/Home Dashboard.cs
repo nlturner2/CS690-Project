@@ -42,16 +42,16 @@ namespace WindowsFormsApp1
         }
         public void DisplayNotifications()
         {
-            IList<Triggers> trig = Variables.db.GetTriggers();
-            List<Notification> n = new List<Notification>();
-            foreach (Triggers i in trig)
+            IList<Triggers> aTrigger = Variables.db.GetTriggers();
+            List<Notification> homeNotifications = new List<Notification>();
+            foreach (Triggers i in aTrigger)
             {
                 if (i.Active)
                 {
                     //string name = i.TeamName + ":" + i.MemberName;
                     //Notification name = new Notification();
                     Notification a = new Notification();
-                    n.Add(a);
+                    homeNotifications.Add(a);
                     a.loadNotification(this, i);
                 }
             }
@@ -104,93 +104,12 @@ namespace WindowsFormsApp1
 
             
         {
-            
+
+            Variables.NTInstance.Refresh();
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
-
-            foreach (Triggers item in Variables.db.GetTriggers())
-
-            {
-                //if (item.Type == "teamCommit")
-                //{
-                //item.Active = true;
-                //Boolean x=Variables.NTInstance.CommitHistoryDateCheck(item.Url, 7);
-                //MessageBox.Show(x.ToString());
-                Variables.db.UpdateTriggers(item, true);
-
-
-                //}
-
-                //MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString() + " \n URL:" + item.Url);
-            }
             this.DisplayNotifications();
-            //Variables.NTInstance.CommitHistoryDateCheck(item.Url, MembersDays1)
+            
 
-
-            // string x = Variables.NTInstance.TriggerCheck();
-            //MessageBox.Show(x);
-
-
-            //DateTime d = DateTime.Today;
-            // MessageBox.Show(d.ToString());
-
-
-            //Variables.db.DeleteSettings();
-
-
-
-            /*
-            foreach (Triggers item in db.GetTriggers())
-
-            {
-                //if (item.Type == "teamCommit")
-                //{
-                    item.Active = true;
-                    db.UpdateTriggers(item, true);
-
-
-                //}
-
-                MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString()+" \n URL:"+item.Url);
-            }
-            */
-            /*
-            DataConnection db = new DataConnection();
-
-
-           foreach(TeamMembers item in db.GetMembers())
-
-            {
-                if (item.TeamName == "t1")
-                {
-                    item.CommitNotification = true;
-                    db.UpdateMember(item, true);
-
-
-                }
-                
-                MessageBox.Show("team: "+ item.TeamName.ToString() + " member:"+ item.MemberName.ToString()+" notification:" +item.CommitNotification.ToString());
-            }*/
-
-
-            // NotificationTriggers nt = new NotificationTriggers();
-            //List<string> result = new List<string>();
-            /*foreach(var item in nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6))
-            {
-                //result.Add(item);
-                MessageBox.Show(item);
-            }*/
-            // Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
-            // Boolean x = nt.MeetingDateCheck("https://github.com/Brysonleeward/PDF-In-Browser-Rendering.git");
-            //Boolean y = x.Contains("Meeting Start Time");
-            //DateTime y = DateTime.Parse(x);
-
-            //MessageBox.Show(a.ToString());
-            // MessageBox.Show(x.ToString());
-
-            // MessageBox.Show(x.ToString());
-            //MessageBox.Show(y);
-            //MessageBox.Show(x.ToString());
-            //MessageBox.Show("helllo");
 
 
         }

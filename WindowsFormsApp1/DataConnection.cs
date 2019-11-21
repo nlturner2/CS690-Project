@@ -252,17 +252,8 @@ namespace WindowsFormsApp1
             }
         }
         */
-        public void Update(Object x,string y)
-        {
-            if (x is Team)
-            {
-
-            }
-            else if(x is TeamMembers){
-
-            }
-        }
-
+ 
+        /*
         public void UpdateMember(TeamMembers aMember,Boolean x )
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -278,7 +269,9 @@ namespace WindowsFormsApp1
 
             }
         }
+        */
 
+        /*
         public void UpdateTeam(Team aTeam, Boolean x)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -294,7 +287,7 @@ namespace WindowsFormsApp1
 
             }
         }
-
+        */
 
         public void UpdateTriggers(Triggers atrigger, Boolean x)
         {

@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
        public void DisplayNotifications()
         {
             IList<Triggers> trig = Variables.db.GetTriggers();
-            List<Notification> n = new List<Notification>();
+            List<Notification> memberNotification = new List<Notification>();
             foreach (Triggers i in trig)
             {
                 if (i.Active && i.TeamName == currentTeam.Name)
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
                     //string name = i.TeamName + ":" + i.MemberName;
                     //Notification name = new Notification();
                     Notification a = new Notification();
-                    n.Add(a);
+                    memberNotification.Add(a);
                     a.loadNoitification(this, i);
                 }
             }
