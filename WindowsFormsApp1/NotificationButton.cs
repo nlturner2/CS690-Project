@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
 {
     class NotificationButton
     {
-       
         public Variables Callingform { get; set; }
 
         public Button notiButton;
@@ -30,50 +29,47 @@ namespace WindowsFormsApp1
             notiButton.Controls.Add(closeButton);
             //closeButton.Click += new EventHandler(closeButton_Click);
 
-            IList<Triggers> trig = Variables.db.GetTriggers();
-            Triggers test = new Triggers("asd", "ddd");
+            //IList<Triggers> trig = Variables.db.GetTriggers();
+            
 
 
             string s = x.Type;
+            //string memberName = x.MemberName;
+            //string teamName = x.TeamName;
 
             if (s == "teamMeeting")
             {
                 string teamName = x.TeamName;
-                notiButton.Text = "    Team did not meet";
+                notiButton.Text = "      " + teamName + " did not meet";
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += new EventHandler(closeButton_Click(null, null, test));
+                closeButton.Click += new EventHandler(closeButton_Click);
 
-                Variables.db.UpdateTriggers(x, true);
+                //Variables.db.UpdateTriggers(x, true);
 
             }
 
             else if (s == "teamCommit")
             {
                 string teamName = x.TeamName;
-                notiButton.Text = "     Team did not commit";
+                notiButton.Text =  "       "+teamName + " did not commit";
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.commit3;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += new EventHandler(closeButton_Click(closeButton, , test));
-                Variables.db.UpdateTriggers(x, true);
+                closeButton.Click += new EventHandler(closeButton_Click);
+                ///Variables.db.UpdateTriggers(x, true);
             }
 
             else if (s == "memberCommit")
             {
-                
-                notiButton.Text = "     Team member did not commit";
+                string memberName = x.MemberName;
+                notiButton.Text = "       "+ x.MemberName + " did not commit";
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.memberCommit2;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                Variables.db.UpdateTriggers(x, true);
-                if (closeButton.)
-                {
-
-                }
                 closeButton.Click += new EventHandler(closeButton_Click2);
-                
+                //Variables.db.UpdateTriggers(x, true);
             }
 
             return notiButton;
@@ -81,7 +77,7 @@ namespace WindowsFormsApp1
         }
 
         // click method for notifications on HomeDahboard
-        public void closeButton_Click(object sender, EventArgs e)
+        public void closeButton_Click(object sender, EventArgs eg)
         {
             //Button button = sender as Button;
             removeNotification();
@@ -102,18 +98,13 @@ namespace WindowsFormsApp1
             
 
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
-            //Variables.db.UpdateTriggerDismiss()
+            
         }
 
         public void removeNotificationMember()
         {
             
             Application.OpenForms.OfType<Team_Dashboard>().First().Notification_Table2.Controls.Remove(notiButton);
-        }
-
-        public void setup()
-        {
-
         }
 
     }

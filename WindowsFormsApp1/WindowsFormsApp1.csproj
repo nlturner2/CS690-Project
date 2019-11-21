@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="NotificationButton.cs" />
     <Compile Include="NotificationTriggers.cs" />
+    <Compile Include="SettingsData.cs" />
     <Compile Include="Team Management.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="TeamButton.cs" />

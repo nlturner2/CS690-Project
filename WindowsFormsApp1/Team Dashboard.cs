@@ -22,7 +22,20 @@ namespace WindowsFormsApp1
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
-            notification.loadNoitification(this);
+            //notification.loadNoitification(this);
+            IList<Triggers> trig = Variables.db.GetTriggers();
+            List<Notification> n = new List<Notification>();
+            foreach (Triggers i in trig)
+            {
+                if (i.Active && i.TeamName == currentTeam.Name)
+                {
+                    //string name = i.TeamName + ":" + i.MemberName;
+                    //Notification name = new Notification();
+                    Notification a = new Notification();
+                    n.Add(a);
+                    a.loadNoitification(this, i);
+                }
+            }
         }
 
         private void Home_Click(object sender, EventArgs e)

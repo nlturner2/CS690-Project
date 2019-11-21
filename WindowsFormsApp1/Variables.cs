@@ -8,6 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Variables
     {
+        public Variables Callingform { get; set; }
         private static TeamManagement TM = new TeamManagement();
         public static TeamManagement TMInstance
         {
@@ -20,8 +21,6 @@ namespace WindowsFormsApp1
         public static DataConnection db
         {
             get => dbc;
-
-
         }
         private static Parser parse = new Parser();
         public static Parser parseInstance
@@ -32,14 +31,22 @@ namespace WindowsFormsApp1
         public static NotificationTriggers NTInstance
         {
             get => NT;
+        }
+        
+
+        private static SettingsData Settings = new SettingsData();
+        public static SettingsData SettingsInstance
+        {
+            get => Settings;
 
         }
 
-        private static Notification notification = new Notification();
+        /*private static Notification notification = new Notification();
         public static Notification notificationInstance
         {
-            get => notification;
-        }
+            get => notificationInstance;
+
+        }*/
 
 
     }

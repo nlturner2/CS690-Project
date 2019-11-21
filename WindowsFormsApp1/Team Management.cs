@@ -41,9 +41,9 @@ namespace WindowsFormsApp1
                     Team team = new Team(name, url);
                     Variables.db.AddTeam(team);
                     CreateMembers(name, url);
-                    Triggers Trigger1 = new Triggers("teamCommit", name);
+                    Triggers Trigger1 = new Triggers("teamCommit", name,url);
                     Variables.db.AddTriggers(Trigger1);
-                    Triggers Trigger2 = new Triggers("teamMeeting", name);
+                    Triggers Trigger2 = new Triggers("teamMeeting", name,url);
                     Variables.db.AddTriggers(Trigger2);
                     
                     /*
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
                 {
                     userName = item;
                     TeamMembers Member = new TeamMembers(item, teamName);
-                    Triggers Trigger = new Triggers("memberCommit", teamName,item);
+                    Triggers Trigger = new Triggers("memberCommit", teamName,url,item);
                     Variables.db.AddMember(Member);
                     Variables.db.AddTriggers(Trigger);
                 }
@@ -151,8 +151,6 @@ namespace WindowsFormsApp1
                 //teamButton[i] = newTeamButton;
                 
                 i++; 
-                
-
             }
 
             //get the size of teamBook

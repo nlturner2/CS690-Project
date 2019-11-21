@@ -15,8 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class HomeDashboard : Form
     {
-        
-        
+              
         public Variables Callingform { get; set; }
         //public variables
         public int count = 0;
@@ -25,7 +24,21 @@ namespace WindowsFormsApp1
         {
             
             InitializeComponent();
-            Variables.notificationInstance.loadNotification(this);
+            IList<Triggers> trig = Variables.db.GetTriggers();
+            List<Notification> n= new List<Notification>();
+            foreach (Triggers i in trig)
+            {
+                if (i.Active)
+                {
+                    //string name = i.TeamName + ":" + i.MemberName;
+                    //Notification name = new Notification();
+                    Notification a = new Notification();
+                    n.Add(a);
+                    a.loadNotification(this, i);
+                }
+            }
+
+            
         }
 
         //Display teams after the read function
@@ -85,10 +98,41 @@ namespace WindowsFormsApp1
         }
 
         private void Refresh_Click(object sender, EventArgs e)
+
+            
         {
 
+            
+            
+           // string x = Variables.NTInstance.TriggerCheck();
+            //MessageBox.Show(x);
+            
 
-            /*DataConnection db = new DataConnection();
+            //DateTime d = DateTime.Today;
+            // MessageBox.Show(d.ToString());
+
+
+            //Variables.db.DeleteSettings();
+            
+            DataConnection db = new DataConnection();
+
+
+            foreach (Triggers item in db.GetTriggers())
+
+            {
+                //if (item.Type == "teamCommit")
+                //{
+                    item.Active = true;
+                    db.UpdateTriggers(item, true);
+
+
+                //}
+
+                MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString()+" \n URL:"+item.Url);
+            }
+
+            /*
+            DataConnection db = new DataConnection();
 
 
            foreach(TeamMembers item in db.GetMembers())
@@ -104,25 +148,26 @@ namespace WindowsFormsApp1
                 
                 MessageBox.Show("team: "+ item.TeamName.ToString() + " member:"+ item.MemberName.ToString()+" notification:" +item.CommitNotification.ToString());
             }*/
-                
-           
-            NotificationTriggers nt = new NotificationTriggers();             //List<string> result = new List<string>();
+
+
+            // NotificationTriggers nt = new NotificationTriggers();
+            //List<string> result = new List<string>();
             /*foreach(var item in nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6))
             {
                 //result.Add(item);
                 MessageBox.Show(item);
             }*/
-           // Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
-            Boolean x = nt.MeetingDateCheck("https://github.com/Brysonleeward/PDF-In-Browser-Rendering.git");
+            // Boolean x = nt.MeetingDate("https://github.com/Brendenjones12/Student-Engagement-and-Retention-Tool.git", 6);
+            // Boolean x = nt.MeetingDateCheck("https://github.com/Brysonleeward/PDF-In-Browser-Rendering.git");
             //Boolean y = x.Contains("Meeting Start Time");
             //DateTime y = DateTime.Parse(x);
 
             //MessageBox.Show(a.ToString());
             // MessageBox.Show(x.ToString());
 
-           // MessageBox.Show(x.ToString());
+            // MessageBox.Show(x.ToString());
             //MessageBox.Show(y);
-            MessageBox.Show(x.ToString());
+            //MessageBox.Show(x.ToString());
             //MessageBox.Show("helllo");
 
 
