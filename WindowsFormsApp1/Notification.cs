@@ -56,7 +56,7 @@ namespace WindowsFormsApp1
             IList<Triggers> trigger = Variables.db.GetTriggers();
             //foreach (Triggers i in trigger)
             //{
-                if (t.Type == "memberCommit" && t.Active)
+                if (t.Type == "memberCommit")
                 {
                     TeamMemberCommit(hd, t);
                 }
