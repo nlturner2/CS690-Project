@@ -100,6 +100,7 @@ namespace WindowsFormsApp1
         {
 
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
+            Variables.db.UpdateTriggers(trig, false);
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
             
         }
@@ -107,6 +108,7 @@ namespace WindowsFormsApp1
         public void removeNotificationMember(Triggers trig)
         {
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
+            Variables.db.UpdateTriggers(trig, false);
             Application.OpenForms.OfType<Team_Dashboard>().First().Notification_Table2.Controls.Remove(notiButton);
         }
 

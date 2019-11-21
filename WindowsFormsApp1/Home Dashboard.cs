@@ -53,6 +53,22 @@ namespace WindowsFormsApp1
                 }
             }     
         }
+        public void DisplayNotifications()
+        {
+            IList<Triggers> trig = Variables.db.GetTriggers();
+            List<Notification> n = new List<Notification>();
+            foreach (Triggers i in trig)
+            {
+                if (i.Active)
+                {
+                    //string name = i.TeamName + ":" + i.MemberName;
+                    //Notification name = new Notification();
+                    Notification a = new Notification();
+                    n.Add(a);
+                    a.loadNotification(this, i);
+                }
+            }
+        }
 
 
         private void button4_Click(object sender, EventArgs e)
@@ -101,6 +117,7 @@ namespace WindowsFormsApp1
 
             
         {
+            //this.DisplayNotifications();
 
             foreach (Triggers item in Variables.db.GetTriggers())
 
@@ -108,14 +125,14 @@ namespace WindowsFormsApp1
                 //if (item.Type == "teamCommit")
                 //{
                 //item.Active = true;
-                Boolean x=Variables.NTInstance.CommitHistoryDateCheck(item.Url, 7);
-                MessageBox.Show(x.ToString());
-                //Variables.db.UpdateTriggers(item, true);
+                //Boolean x=Variables.NTInstance.CommitHistoryDateCheck(item.Url, 7);
+                //MessageBox.Show(x.ToString());
+                Variables.db.UpdateTriggers(item, true);
 
 
                 //}
 
-                MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString() + " \n URL:" + item.Url);
+                //MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString() + " \n URL:" + item.Url);
             }
             //Variables.NTInstance.CommitHistoryDateCheck(item.Url, MembersDays1)
 
