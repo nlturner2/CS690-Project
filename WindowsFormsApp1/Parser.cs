@@ -205,6 +205,9 @@ namespace WindowsFormsApp1
                     case "filename":
                         line = data[i].name;
                         break;
+                    case "date":
+                        line = data[i].commit.committer.date;
+                        break;
                     default:
                         line = data[i];
                         break;
