@@ -21,23 +21,33 @@ namespace WindowsFormsApp1
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
+                //getting index of URL
                 int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
-
+                //if charLocation is not null
                 if (charLocation > 0)
                 {
-
+                    //getting specfic text from URL and storing it in partialText
                     partialText = URL.Substring(charLocation + 1);
+                    //getting partialText last index text and storing it secondLocation
                     int secondLocation = partialText.LastIndexOf('.');
+                    //removing that index which is store in secondLocation from partialText and storing it in partialText
                     partialText = partialText.Remove(secondLocation);
+                    //checking options
                     switch (options)
                     {
+                        //if readme is called
                         case "readme":
+                            //url is sroting in partialText
                             partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
                             break;
+                        //if meetings is called
                         case "meetings":
+                            //url is sroting in partialText
                             partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes/Team?ref=master";
                             break;
+                        //if commit is called
                         case "commit":
+                            //url is sroting in partialText
                             partialText = "https://api.github.com/repos" + partialText + "/commits";
                             break;
                     }
@@ -54,17 +64,21 @@ namespace WindowsFormsApp1
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
             {
+                //getting index of url
                 int charLocation = URL.IndexOf("m", StringComparison.Ordinal);
 
                 if (charLocation > 0)
                 {
                     foreach (var fileName in fileNames)
                     {
+                        //getting specific text from URL
                         partialText = URL.Substring(charLocation + 1);
+                        //getting partialText last index text and storing it secondLocation
                         int secondLocation = partialText.LastIndexOf('.');
+                        //removing that index which is store in secondLocation from partialText and storing it in partialText
                         partialText = partialText.Remove(secondLocation);
+                        //stroing url in partialText
                         partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileName;
-
                         fileContentList.Add(WebClient(partialText));
 
 
@@ -84,40 +98,54 @@ namespace WindowsFormsApp1
             string file = "";
             using (WebClient client = new WebClient())
             {
+                //getting file data from rawFileUrl and storing in file
                 file = client.DownloadString(rawFileUrl);
             }
-            
 
+            //returning file
             return file;
         }
 
         public string parse_Summary(string data)
         {
+            //removing \n from an array
             string[] summaryWithH = data.Split('\n');
             string summary = null;
             int index = 0;
+            //used foreach loop on an array summaryWithH
             foreach (string s in summaryWithH)
             {
+                //if s is containing Summarym or summary
                 if (s.Contains("Summary") || s.Contains("summary"))
                 {
+                    // while index value is less then summaryWithH.Length
                     while (index < summaryWithH.Length)
                     {
+                        //if specific index of summaryWithH contains Team
                         if (summaryWithH[index + 1].Contains("Team"))
+                            //break the loop
                             break;
+                        //if specific index of summaryWithH contains \n 
                         else if (summaryWithH[index + 1] != "\n")
                         {
+                            //attach summaryWithH specific index into summary
                             summary += summaryWithH[index + 1];
                         }
+                        //incerementing index
                         index++;
                     }
+                    //breaking foreach loop
                     break;
                 }
                 else
                 {
+                    //incrementing index
                     index++;
                 }
             }
+            //replacing - with ""
             summary = summary.Replace("-", "");
+            //replacing \t with ""
             summary = summary.Replace("\t", "");
             summary = summary.Trim();
 
@@ -127,40 +155,56 @@ namespace WindowsFormsApp1
         }
         public string parse_Members(string data)
         {
+            //removing \n from an array
             string[] teamMembers = data.Split('\n');
             string Members = null;
             int index = 0;
+            //used foreach loop on an array teamMembers
             foreach (string s in teamMembers)
             {
+                //if s is containing Team Members or Team members or team members or team Members
                 if (s.Contains("Team Members") || s.Contains("Team members") || s.Contains("team Members") || s.Contains("team members"))
                 {
+                    // while index value is less then teamMembers.Length
                     while (index < teamMembers.Length)
                     {
+                        //if specific index of teamMembers contains Client
                         if (teamMembers[index + 1].Contains("Client"))
                             break;
+                        //if specific index of teamMembers contains \n 
                         else if (teamMembers[index + 1] != "\n")
                         {
+                            //replacing - with ""
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("-", "");
+                            //replacing \t with ""
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
+                            //triming indexs
                             teamMembers[index + 1] = teamMembers[index + 1].Trim();
+                            //adding line break in teamMembers index and joining with members
                             Members += teamMembers[index + 1] + "\n";
                         }
+                        //incrementing
                         index++;
                     }
+                    //break loop
                     break;
                 }
                 else
                 {
+                    //incrementing
                     index++;
                 }
             }
+            //triming members
             Members = Members.Trim();
+            //returing it from where it is being called
             return Members;
         }
 
 
         public List<string> LoadGithubDataAsync(string apiURL,string options)
         {
+            //creating list string 
             List<string> list = new List<string>();
             string line = null;
             string responseString = "";
@@ -185,8 +229,10 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
+                //getting values store in options
                 switch (options)
                 {
+                    //if commit is called
                     case "commit":
                         if (i <= 3)
                         {
@@ -198,10 +244,11 @@ namespace WindowsFormsApp1
                             line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " .  " + data[i].commit.message;
                         }
                         break;
-
+                    //if username is called
                     case "username":
                         line = data[i].commit.author.name;
                         break;
+                    //if filename is called
                     case "filename":
                         line = data[i].name;
                         break;
