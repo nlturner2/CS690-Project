@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
             NotificationButton d = new NotificationButton();
             
             hd.Notification_Table2.Controls.Add(d.createNotificationButton(x));
-            d.closeButton.Click += new EventHandler(d.closeButton_Click2);
+            //d.closeButton.Click += new EventHandler(d.closeButton_Click2);
             hd.Notification_Table2.Show();
         }
         

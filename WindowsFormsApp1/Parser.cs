@@ -82,8 +82,6 @@ namespace WindowsFormsApp1
                         fileContentList.Add(WebClient(partialText));
 
 
-
-
                     }
 
                 }
