@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +35,8 @@ namespace WindowsFormsApp1
                     s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + "\n  \n";
                     if (DismissCheckForCommit(item.DismissDate, TeamDays1))
                     {
-                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitHistoryDateCheck(item.Url, MembersDays1) + "\n  \n";
-                        if (CommitHistoryDateCheck(item.Url, MembersDays1))
+                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitDateCheck(item.Url, MembersDays1) + "\n  \n";
+                        if (CommitDateCheck(item.Url, MembersDays1))
                         {
                             item.Active = false;
                             Variables.db.UpdateTriggers(item, false);
@@ -129,7 +131,7 @@ namespace WindowsFormsApp1
 
                 if (item.TeamName == aTeam.Name)
                 {
-                    if (CommitHistoryDateCheck(aTeam.Url, MembersDays1))
+                    if (CommitDateCheck(aTeam.Url, MembersDays1))
                     {
                         item.CommitNotification = false;
                         Variables.db.UpdateMember(item, false);
@@ -183,9 +185,16 @@ namespace WindowsFormsApp1
         /// <param name="url"></param>
         /// <param name="numberOfDays"></param>
         /// <returns></returns> return true if they did, return false if they didn't.
-        public Boolean CommitHistoryDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
+        ///
 
+        public Boolean CommitDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
+        /// <summary>
+        /// to check if the commit notification should shown or not. in the $numberOfDays, after the user dismiss the notification, the notification should shown up again.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="numberOfDays"></param>
+        /// <returns></returns>if it returns true, that means the notification should shown up, otherwise teh notification should not shown.
         public Boolean DismissCheckForCommit(DateTime date, int numberOfDays)
         {
             Boolean dismiss = false;
@@ -198,8 +207,29 @@ namespace WindowsFormsApp1
 
             return dismiss;
         }
-        
+        /// <summary>
+        /// check if the notification need to be shown again, it will not shown until next Monday
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>if it returns true, the notification should shown up, false means not shown 
+        public Boolean DismissCheckForMeeting(DateTime date)
+        {
+            Boolean dismiss = false;
+            DayOfWeek weekStart = DayOfWeek.Monday;
+            DateTime startingDate = DateTime.Today;
+            while (startingDate.DayOfWeek != weekStart)
+                startingDate = startingDate.AddDays(1);
 
+            DateTime nextWeekStart = startingDate.AddDays(1);
+            DateTime nextWeekEnd = startingDate.AddDays(7);
+
+            if(!(date<nextWeekStart))
+            {
+                dismiss = true;
+            }
+
+            return dismiss;
+        }
         /// <summary>
         /// to check if the team has a meeting file in the previous week
         /// </summary>
@@ -263,15 +293,10 @@ namespace WindowsFormsApp1
                     }
 
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     throw new Exception("The MeetingMinutes file is not following the standard format.");
-                }
-
-
-                
-              
-               
+                } 
 
             }
             
@@ -279,8 +304,6 @@ namespace WindowsFormsApp1
         }
 
 
-
-        
 
         //Variables.SettingsInstance
         public void setTeamDays(string days)
