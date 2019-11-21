@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Web.Helpers;
 
@@ -277,6 +278,12 @@ namespace WindowsFormsApp1
             data = data.Replace("*", "");
             data = data.Replace("-", "");
             return data;
+        }
+        public List<string> usernameFilter(List<string> list)
+        {
+            list = list.Distinct().ToList();
+
+            return list;
         }
     }
 }

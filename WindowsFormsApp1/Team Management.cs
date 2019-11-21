@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
 
         public void CreateMembers(string teamName, string url)
         {
-            IList users = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "username");
+            IList users = Variables.parseInstance.usernameFilter(Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "username"));
             
             string userName = "";
 
