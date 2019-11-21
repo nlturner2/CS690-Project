@@ -183,7 +183,9 @@ namespace WindowsFormsApp1
         /// <param name="url"></param>
         /// <param name="numberOfDays"></param>
         /// <returns></returns> return true if they did, return false if they didn't.
-        public Boolean CommitHistoryDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
+        ///
+
+        public Boolean MeetingDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
 
         public Boolean DismissCheckForCommit(DateTime date, int numberOfDays)
@@ -198,27 +200,7 @@ namespace WindowsFormsApp1
 
             return dismiss;
         }
-
-        public Boolean DismissCheckForMeeting(DateTime date)
-        {
-            Boolean dismiss = false;
-
-            // get the date of next Monday.
-            DayOfWeek weekStart = DayOfWeek.Monday;
-            DateTime startingDate = DateTime.Today;
-            while (startingDate.DayOfWeek != weekStart)
-                startingDate = startingDate.AddDays(1); // this will count how many days left in week until next week starts
-            // the end of next week will be the startingdat +7, and the 
-            //DateTime nextWeekEnd = startingDate.AddDays(7);
-            DateTime nextWeekStart = startingDate.AddDays(1);
-
-            if(!(nextWeekStart > date))
-            {
-                dismiss = true;
-            }   
-
-            return dismiss;
-        }
+        
 
         /// <summary>
         /// to check if the team has a meeting file in the previous week
@@ -246,19 +228,47 @@ namespace WindowsFormsApp1
             {
                 filename.Add(item);
             }
+
+            //only check the last 
             foreach (var item in filename)
             {
-                int Location = item.LastIndexOf('.');
-                var revisedItem = item.Remove(Location);
-                string[] list = revisedItem.Split('_');
-                string startDate = list[0].Replace('-', '/');
-                string endDate = list[1].Replace('-', '/');
-                DateTime start = DateTime.Parse(startDate);
-                DateTime end = DateTime.Parse(endDate);
-                if (previousWeekStart > end)
+                try
                 {
-                    acceptable = false;
+                    int Location = item.LastIndexOf('.');
+                    var revisedItem = item.Remove(Location);
+                    if (revisedItem.Contains('_'))
+                    {
+                        string[] list = revisedItem.Split('_');
+                        string startDate = list[0].Replace('-', '/');
+                        string endDate = list[1].Replace('-', '/');
+                        DateTime start = DateTime.Parse(startDate);
+                        DateTime end = DateTime.Parse(endDate);
+
+                        if (previousWeekStart > end)
+                        {
+                            acceptable = false;
+                        }
+                    }
+
+                    if (revisedItem.Contains('-') && !(revisedItem.Contains("_")))
+                    {
+                        string startDate = revisedItem.Replace('-', '/');
+                        string endDate = revisedItem.Replace('-', '/');
+                        DateTime start = DateTime.Parse(startDate);
+                        DateTime end = DateTime.Parse(endDate);
+                        if (previousWeekStart > end)
+                        {
+                            acceptable = false;
+                        }
+
+
+                    }
+
                 }
+                catch (Exception)
+                {
+                    throw new Exception("The MeetingMinutes file is not following the standard format.");
+                } 
 
             }
             
@@ -266,8 +276,6 @@ namespace WindowsFormsApp1
         }
 
 
-
-        
 
         //Variables.SettingsInstance
         public void setTeamDays(string days)
