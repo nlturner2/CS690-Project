@@ -198,7 +198,27 @@ namespace WindowsFormsApp1
 
             return dismiss;
         }
-        
+
+        public Boolean DismissCheckForMeeting(DateTime date)
+        {
+            Boolean dismiss = false;
+
+            // get the date of next Monday.
+            DayOfWeek weekStart = DayOfWeek.Monday;
+            DateTime startingDate = DateTime.Today;
+            while (startingDate.DayOfWeek != weekStart)
+                startingDate = startingDate.AddDays(1); // this will count how many days left in week until next week starts
+            // the end of next week will be the startingdat +7, and the 
+            //DateTime nextWeekEnd = startingDate.AddDays(7);
+            DateTime nextWeekStart = startingDate.AddDays(1);
+
+            if(!(nextWeekStart > date))
+            {
+                dismiss = true;
+            }   
+
+            return dismiss;
+        }
 
         /// <summary>
         /// to check if the team has a meeting file in the previous week
