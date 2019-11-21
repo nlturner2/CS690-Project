@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             this.Hide();
             currentTeam = obj;
             //notification.loadNoitification(this);
-            this.DisplayNotifications();
+            //this.DisplayNotifications();
         }
 
        public void DisplayNotifications()
