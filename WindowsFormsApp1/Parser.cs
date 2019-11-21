@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
     public class Parser
     {
 
-        //private string teamURL;
+        
         /// <summary>
         /// get URL for readme file, meeting file and commit history.
         /// </summary>
@@ -200,10 +200,15 @@ namespace WindowsFormsApp1
             return Members;
         }
 
-
+        /// <summary>
+        /// taking url and convert it to api, after that getting json file for api and start read data for commit history
+        /// </summary>
+        /// <param name="apiURL"></param> The team api for URL
+        /// <param name="options"></param>Have options to load data for commit history from apiurl as json
+        /// <returns></returns>
         public List<string> LoadGithubDataAsync(string apiURL,string options)
         {
-            //creating list string 
+            //List of string 
             List<string> list = new List<string>();
             string line = null;
             string responseString = "";
@@ -261,11 +266,10 @@ namespace WindowsFormsApp1
                 
 
             }
-               
-                list.Add(line);
+
                 //Loop through the object and add items to the UI.
-                
-                //Check the data object from watch window. You can loop through it and find different properties as you want
+                list.Add(line);
+
             }
 
             return list;
