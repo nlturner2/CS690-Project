@@ -31,6 +31,9 @@
             this.TeadDashboard = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
             this.Notes = new System.Windows.Forms.TabPage();
+            this.ClearNotes = new System.Windows.Forms.Button();
+            this.saveNotes = new System.Windows.Forms.Button();
+            this.NotesBox = new System.Windows.Forms.TextBox();
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
             this.Progress_List = new System.Windows.Forms.ListBox();
             this.TeamMeeting = new System.Windows.Forms.TabPage();
@@ -42,9 +45,6 @@
             this.Summary = new System.Windows.Forms.TabPage();
             this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TextBox = new System.Windows.Forms.TabControl();
-            this.NotesBox = new System.Windows.Forms.TextBox();
-            this.saveNotes = new System.Windows.Forms.Button();
-            this.ClearNotes = new System.Windows.Forms.Button();
             this.Notes.SuspendLayout();
             this.WeeklyProgress.SuspendLayout();
             this.TeamMeeting.SuspendLayout();
@@ -65,11 +65,14 @@
             // 
             // Home
             // 
+            this.Home.Image = global::WindowsFormsApp1.Properties.Resources.home1;
+            this.Home.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Home.Location = new System.Drawing.Point(816, 9);
             this.Home.Name = "Home";
             this.Home.Size = new System.Drawing.Size(75, 46);
             this.Home.TabIndex = 7;
             this.Home.Text = "Home";
+            this.Home.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
@@ -86,12 +89,38 @@
             this.Notes.Text = "Notes";
             this.Notes.UseVisualStyleBackColor = true;
             // 
+            // ClearNotes
+            // 
+            this.ClearNotes.Location = new System.Drawing.Point(797, 42);
+            this.ClearNotes.Name = "ClearNotes";
+            this.ClearNotes.Size = new System.Drawing.Size(75, 30);
+            this.ClearNotes.TabIndex = 2;
+            this.ClearNotes.Text = "Clear";
+            this.ClearNotes.UseVisualStyleBackColor = true;
+            // 
+            // saveNotes
+            // 
+            this.saveNotes.Location = new System.Drawing.Point(797, 6);
+            this.saveNotes.Name = "saveNotes";
+            this.saveNotes.Size = new System.Drawing.Size(75, 30);
+            this.saveNotes.TabIndex = 1;
+            this.saveNotes.Text = "Save";
+            this.saveNotes.UseVisualStyleBackColor = true;
+            // 
+            // NotesBox
+            // 
+            this.NotesBox.Location = new System.Drawing.Point(6, 6);
+            this.NotesBox.Multiline = true;
+            this.NotesBox.Name = "NotesBox";
+            this.NotesBox.Size = new System.Drawing.Size(785, 357);
+            this.NotesBox.TabIndex = 0;
+            // 
             // WeeklyProgress
             // 
             this.WeeklyProgress.Controls.Add(this.Progress_List);
             this.WeeklyProgress.Location = new System.Drawing.Point(4, 22);
             this.WeeklyProgress.Name = "WeeklyProgress";
-            this.WeeklyProgress.Size = new System.Drawing.Size(875, 462);
+            this.WeeklyProgress.Size = new System.Drawing.Size(875, 369);
             this.WeeklyProgress.TabIndex = 5;
             this.WeeklyProgress.Text = "Weekly Progress";
             this.WeeklyProgress.UseVisualStyleBackColor = true;
@@ -113,7 +142,7 @@
             this.TeamMeeting.Controls.Add(this.meetingRichTextBox1);
             this.TeamMeeting.Location = new System.Drawing.Point(4, 22);
             this.TeamMeeting.Name = "TeamMeeting";
-            this.TeamMeeting.Size = new System.Drawing.Size(875, 462);
+            this.TeamMeeting.Size = new System.Drawing.Size(875, 369);
             this.TeamMeeting.TabIndex = 4;
             this.TeamMeeting.Text = "Team Meeting";
             this.TeamMeeting.UseVisualStyleBackColor = true;
@@ -145,7 +174,7 @@
             this.Members.Location = new System.Drawing.Point(4, 22);
             this.Members.Name = "Members";
             this.Members.Padding = new System.Windows.Forms.Padding(3);
-            this.Members.Size = new System.Drawing.Size(875, 462);
+            this.Members.Size = new System.Drawing.Size(875, 369);
             this.Members.TabIndex = 1;
             this.Members.Text = "Members";
             this.Members.UseVisualStyleBackColor = true;
@@ -206,7 +235,7 @@
             this.Summary.Location = new System.Drawing.Point(4, 22);
             this.Summary.Name = "Summary";
             this.Summary.Padding = new System.Windows.Forms.Padding(3);
-            this.Summary.Size = new System.Drawing.Size(875, 462);
+            this.Summary.Size = new System.Drawing.Size(875, 369);
             this.Summary.TabIndex = 0;
             this.Summary.Text = "Summary";
             this.Summary.UseVisualStyleBackColor = true;
@@ -234,32 +263,6 @@
             this.TextBox.SelectedIndex = 0;
             this.TextBox.Size = new System.Drawing.Size(883, 395);
             this.TextBox.TabIndex = 8;
-            // 
-            // NotesBox
-            // 
-            this.NotesBox.Location = new System.Drawing.Point(6, 6);
-            this.NotesBox.Multiline = true;
-            this.NotesBox.Name = "NotesBox";
-            this.NotesBox.Size = new System.Drawing.Size(785, 357);
-            this.NotesBox.TabIndex = 0;
-            // 
-            // saveNotes
-            // 
-            this.saveNotes.Location = new System.Drawing.Point(797, 6);
-            this.saveNotes.Name = "saveNotes";
-            this.saveNotes.Size = new System.Drawing.Size(75, 30);
-            this.saveNotes.TabIndex = 1;
-            this.saveNotes.Text = "Save";
-            this.saveNotes.UseVisualStyleBackColor = true;
-            // 
-            // ClearNotes
-            // 
-            this.ClearNotes.Location = new System.Drawing.Point(797, 42);
-            this.ClearNotes.Name = "ClearNotes";
-            this.ClearNotes.Size = new System.Drawing.Size(75, 30);
-            this.ClearNotes.TabIndex = 2;
-            this.ClearNotes.Text = "Clear";
-            this.ClearNotes.UseVisualStyleBackColor = true;
             // 
             // Team_Dashboard
             // 

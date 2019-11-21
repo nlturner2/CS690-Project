@@ -133,14 +133,11 @@
   <data name="close5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="commit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\commit1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="commit2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\commit2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="commit3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\commit3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="commit4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\commit4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="home1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,14 +157,11 @@
   <data name="memberCommit2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\memberCommit2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="team1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\team1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="team2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\team2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="team3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\team3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="team4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\team4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -77,7 +77,11 @@ namespace WindowsFormsApp1
                     {
                         TD.Progress_List.Items.Add(item);
                     }
-                
+
+                // removes notifications from the TeamDashboard and redisplays
+                Application.OpenForms.OfType<Team_Dashboard>().First().Notification_Table2.Controls.Clear();
+                Application.OpenForms.OfType<Team_Dashboard>().First().DisplayNotifications();
+
                 TD.Show();
 
             }

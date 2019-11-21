@@ -28,6 +28,11 @@ namespace WindowsFormsApp1
             Variables.TMInstance.removeTeam(name);
             Application.OpenForms.OfType<HomeDashboard>().First().Display();
 
+            // removes notification from HomeDashboard UI and redisplay them
+            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
+            Application.OpenForms.OfType<HomeDashboard>().First().DisplayNotifications();
+
+            
             Close();
         }
        

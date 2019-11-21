@@ -56,7 +56,7 @@ namespace WindowsFormsApp1
                 string teamName = x.TeamName;
                 notiButton.Text =  "       "+teamName + " did not commit";
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
-                notiButton.Image = WindowsFormsApp1.Properties.Resources.commit3;
+                notiButton.Image = WindowsFormsApp1.Properties.Resources.commit4;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 //closeButton.Click += new EventHandler(closeButton_Click);
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x); };

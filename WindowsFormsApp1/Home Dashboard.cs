@@ -24,21 +24,8 @@ namespace WindowsFormsApp1
         {
             
             InitializeComponent();
-            IList<Triggers> trig = Variables.db.GetTriggers();
-            List<Notification> n= new List<Notification>();
-            foreach (Triggers i in trig)
-            {
-                if (i.Active)
-                {
-                    //string name = i.TeamName + ":" + i.MemberName;
-                    //Notification name = new Notification();
-                    Notification a = new Notification();
-                    n.Add(a);
-                    a.loadNotification(this, i);
-                }
-            }
+            this.DisplayNotifications();
 
-            
         }
 
         //Display teams after the read function
@@ -117,7 +104,8 @@ namespace WindowsFormsApp1
 
             
         {
-            //this.DisplayNotifications();
+            
+            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
 
             foreach (Triggers item in Variables.db.GetTriggers())
 
@@ -134,11 +122,12 @@ namespace WindowsFormsApp1
 
                 //MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString() + " \n URL:" + item.Url);
             }
+            this.DisplayNotifications();
             //Variables.NTInstance.CommitHistoryDateCheck(item.Url, MembersDays1)
 
 
-           // string x = Variables.NTInstance.TriggerCheck();
-           //MessageBox.Show(x);
+            // string x = Variables.NTInstance.TriggerCheck();
+            //MessageBox.Show(x);
 
 
             //DateTime d = DateTime.Today;
@@ -147,7 +136,7 @@ namespace WindowsFormsApp1
 
             //Variables.db.DeleteSettings();
 
-            
+
 
             /*
             foreach (Triggers item in db.GetTriggers())

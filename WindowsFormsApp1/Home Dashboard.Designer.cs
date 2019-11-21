@@ -43,10 +43,10 @@
             // 
             this.Add_Team.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.Add_Team.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Add_Team.Location = new System.Drawing.Point(468, 8);
+            this.Add_Team.Location = new System.Drawing.Point(461, 8);
             this.Add_Team.Margin = new System.Windows.Forms.Padding(2);
             this.Add_Team.Name = "Add_Team";
-            this.Add_Team.Size = new System.Drawing.Size(50, 42);
+            this.Add_Team.Size = new System.Drawing.Size(57, 42);
             this.Add_Team.TabIndex = 0;
             this.Add_Team.Text = "Add Team";
             this.Add_Team.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // Refresh
             // 
             this.Refresh.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Refresh.Location = new System.Drawing.Point(407, 7);
+            this.Refresh.Location = new System.Drawing.Point(391, 8);
             this.Refresh.Margin = new System.Windows.Forms.Padding(2);
             this.Refresh.Name = "Refresh";
             this.Refresh.Size = new System.Drawing.Size(57, 42);
@@ -79,12 +79,15 @@
             // Settings
             // 
             this.Settings.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Settings.Location = new System.Drawing.Point(841, 8);
+            this.Settings.Image = global::WindowsFormsApp1.Properties.Resources.settings;
+            this.Settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Settings.Location = new System.Drawing.Point(799, 8);
             this.Settings.Margin = new System.Windows.Forms.Padding(2);
             this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(55, 43);
+            this.Settings.Size = new System.Drawing.Size(75, 43);
             this.Settings.TabIndex = 3;
             this.Settings.Text = "Settings";
+            this.Settings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Settings.UseVisualStyleBackColor = true;
             this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 

@@ -23,6 +23,11 @@ namespace WindowsFormsApp1
             this.Hide();
             currentTeam = obj;
             //notification.loadNoitification(this);
+            this.DisplayNotifications();
+        }
+
+       public void DisplayNotifications()
+        {
             IList<Triggers> trig = Variables.db.GetTriggers();
             List<Notification> n = new List<Notification>();
             foreach (Triggers i in trig)
