@@ -35,6 +35,12 @@ namespace WindowsFormsApp1
 
         }
 
+        private static Notification notification = new Notification();
+        public static Notification notificationInstance
+        {
+            get => notification;
+        }
+
 
     }
 

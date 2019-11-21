@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
 {
     class NotificationButton
     {
+       
         public Variables Callingform { get; set; }
 
         public Button notiButton;
@@ -30,7 +31,7 @@ namespace WindowsFormsApp1
             //closeButton.Click += new EventHandler(closeButton_Click);
 
             IList<Triggers> trig = Variables.db.GetTriggers();
-            Triggers test = new Triggers("asd");
+            Triggers test = new Triggers("asd", "ddd");
 
 
             string s = x.Type;
@@ -42,7 +43,7 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += new EventHandler(closeButton_Click(null, null, trig));
+                closeButton.Click += new EventHandler(closeButton_Click(null, null, test));
 
                 Variables.db.UpdateTriggers(x, true);
 
@@ -55,7 +56,7 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.commit3;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += new EventHandler(closeButton_Click(null, null, trig));
+                closeButton.Click += new EventHandler(closeButton_Click(closeButton, , test));
                 Variables.db.UpdateTriggers(x, true);
             }
 
@@ -66,8 +67,13 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.memberCommit2;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += new EventHandler(closeButton_Click2(null, null, trig));
                 Variables.db.UpdateTriggers(x, true);
+                if (closeButton.)
+                {
+
+                }
+                closeButton.Click += new EventHandler(closeButton_Click2);
+                
             }
 
             return notiButton;
@@ -75,34 +81,39 @@ namespace WindowsFormsApp1
         }
 
         // click method for notifications on HomeDahboard
-        public void closeButton_Click(object sender, EventArgs e, Triggers trig)
+        public void closeButton_Click(object sender, EventArgs e)
         {
             //Button button = sender as Button;
-            removeNotification(trig.TeamName());
+            removeNotification();
 
             
         }
 
         // click method for notifications of team members on Team_Dashboard
-        public void closeButton_Click2(object sender, EventArgs e, Triggers trig)
+        public void closeButton_Click2(object sender, EventArgs e)
         {
             //Button button = sender as Button;
          
-            removeNotificationMember(trig.);
+            removeNotificationMember();
         }
 
-        public void removeNotification(Team t)
+        public void removeNotification()
         {
-            Variables.db.UpdateTriggers(t, false);
+            
 
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
             //Variables.db.UpdateTriggerDismiss()
         }
 
-        public void removeNotificationMember(TeamMembers t)
+        public void removeNotificationMember()
         {
-            Variables.db.UpdateTriggers(t, false);
+            
             Application.OpenForms.OfType<Team_Dashboard>().First().Notification_Table2.Controls.Remove(notiButton);
+        }
+
+        public void setup()
+        {
+
         }
 
     }

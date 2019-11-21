@@ -19,13 +19,7 @@ namespace WindowsFormsApp1
         
         int x =Variables.db.CountTeams();
 
-        Triggers trig;
-
-        public Notification(Triggers t)
-        {
-            trig = t;
-        }
-
+        IList<Triggers> trig = Variables.db.GetTriggers();
 
         public void loadNotification(HomeDashboard hd)
         {
@@ -33,7 +27,7 @@ namespace WindowsFormsApp1
             TeamMeeting(hd);
             TeamCommit(hd);
             TeamMemberCommit(hd);
-            IList<Triggers> trig = Variables.db.GetTriggers();
+           // IList<Triggers> trig = Variables.db.GetTriggers();
             foreach (Triggers i in trig)
             {
                 if (i.Type == "teamMeeting")
@@ -65,7 +59,7 @@ namespace WindowsFormsApp1
 
             NotificationButton a = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(a.createNotificationButton("teamMeeting"));
+            hd.Notification_Table.Controls.Add(a.createNotificationButton(trig));
             hd.Notification_Table.Show();
             
         }
@@ -76,7 +70,7 @@ namespace WindowsFormsApp1
 
             NotificationButton b = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(b.createNotificationButton("teamCommit"));
+            hd.Notification_Table.Controls.Add(b.createNotificationButton(trig));
             hd.Notification_Table.Show();
         }
 
@@ -85,7 +79,7 @@ namespace WindowsFormsApp1
         {
             NotificationButton c = new NotificationButton();
 
-            hd.Notification_Table.Controls.Add(c.createNotificationButton("memberCommit"));
+            hd.Notification_Table.Controls.Add(c.createNotificationButton(trig));
             hd.Notification_Table.Show();
         }
 
@@ -93,11 +87,25 @@ namespace WindowsFormsApp1
         {
             NotificationButton d = new NotificationButton();
             
-            hd.Notification_Table2.Controls.Add(d.createNotificationButton("memberCommit"));
+            hd.Notification_Table2.Controls.Add(d.createNotificationButton(trig));
             d.closeButton.Click += new EventHandler(d.closeButton_Click2);
             hd.Notification_Table2.Show();
         }
-        
+
+        public void removeNotification(Triggers t, Button x)
+        {
+            Variables.db.UpdateTriggers(t, false);
+
+            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(x);
+            //Variables.db.UpdateTriggerDismiss()
+        }
+
+        public void removeNotificationMember(Triggers t, Button x)
+        {
+            Variables.db.UpdateTriggers(t, false);
+            Application.OpenForms.OfType<Team_Dashboard>().First().Notification_Table2.Controls.Remove(x);
+        }
+
 
     }
 }
