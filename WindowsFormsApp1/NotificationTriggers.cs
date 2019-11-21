@@ -33,8 +33,8 @@ namespace WindowsFormsApp1
                     s +="input1:"+ item.DismissDate + " input2:" + TeamDays1 +" result:"+ DismissCheckForCommit(item.DismissDate, TeamDays1) + "\n  \n";
                     if (DismissCheckForCommit(item.DismissDate, TeamDays1))
                     {
-                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + CommitHistoryDateCheck(item.Url, MembersDays1) + "\n  \n";
-                        if (CommitHistoryDateCheck(item.Url, MembersDays1))
+                        s += "input1:" + item.Url + " input2:" + MembersDays1 + " result:" + MeetingDateCheck(item.Url, MembersDays1) + "\n  \n";
+                        if (MeetingDateCheck(item.Url, MembersDays1))
                         {
                             item.Active = false;
                             Variables.db.UpdateTriggers(item, false);
@@ -129,7 +129,7 @@ namespace WindowsFormsApp1
 
                 if (item.TeamName == aTeam.Name)
                 {
-                    if (CommitHistoryDateCheck(aTeam.Url, MembersDays1))
+                    if (MeetingDateCheck(aTeam.Url, MembersDays1))
                     {
                         item.CommitNotification = false;
                         Variables.db.UpdateMember(item, false);
