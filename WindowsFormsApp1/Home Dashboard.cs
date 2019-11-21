@@ -102,21 +102,37 @@ namespace WindowsFormsApp1
             
         {
 
-            
-            
+            foreach (Triggers item in Variables.db.GetTriggers())
+
+            {
+                //if (item.Type == "teamCommit")
+                //{
+                //item.Active = true;
+                Boolean x=Variables.NTInstance.CommitHistoryDateCheck(item.Url, 7);
+                MessageBox.Show(x.ToString());
+                //Variables.db.UpdateTriggers(item, true);
+
+
+                //}
+
+                MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString() + " \n URL:" + item.Url);
+            }
+            //Variables.NTInstance.CommitHistoryDateCheck(item.Url, MembersDays1)
+
+
            // string x = Variables.NTInstance.TriggerCheck();
-            //MessageBox.Show(x);
-            
+           //MessageBox.Show(x);
+
 
             //DateTime d = DateTime.Today;
             // MessageBox.Show(d.ToString());
 
 
             //Variables.db.DeleteSettings();
+
             
-            DataConnection db = new DataConnection();
 
-
+            /*
             foreach (Triggers item in db.GetTriggers())
 
             {
@@ -130,7 +146,7 @@ namespace WindowsFormsApp1
 
                 MessageBox.Show("team: " + item.TeamName.ToString() + " \n member:" + item.MemberName.ToString() + " \n notification:" + item.Active.ToString()+" \n URL:"+item.Url);
             }
-
+            */
             /*
             DataConnection db = new DataConnection();
 
