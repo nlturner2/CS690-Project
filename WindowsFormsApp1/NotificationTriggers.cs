@@ -183,7 +183,9 @@ namespace WindowsFormsApp1
         /// <param name="url"></param>
         /// <param name="numberOfDays"></param>
         /// <returns></returns> return true if they did, return false if they didn't.
-        public Boolean CommitHistoryDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
+        ///
+
+        public Boolean MeetingDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
 
         public Boolean DismissCheckForCommit(DateTime date, int numberOfDays)
@@ -263,15 +265,10 @@ namespace WindowsFormsApp1
                     }
 
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     throw new Exception("The MeetingMinutes file is not following the standard format.");
-                }
-
-
-                
-              
-               
+                } 
 
             }
             
@@ -279,8 +276,6 @@ namespace WindowsFormsApp1
         }
 
 
-
-        
 
         //Variables.SettingsInstance
         public void setTeamDays(string days)
