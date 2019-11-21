@@ -188,7 +188,15 @@ namespace WindowsFormsApp1
                 switch (options)
                 {
                     case "commit":
-                        line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + data[i].commit.message;
+                        if (i <= 3)
+                        {
+                            line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t" + "         " + data[i].commit.message;
+
+                        }
+                        else
+                        {
+                            line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " .  " + data[i].commit.message;
+                        }
                         break;
 
                     case "username":
