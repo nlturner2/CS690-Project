@@ -189,7 +189,12 @@ namespace WindowsFormsApp1
 
         public Boolean CommitDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             //acceptable = DateTime.Compare(daysAgo, dates[datesCount - 1]);             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
 
-
+        /// <summary>
+        /// to check if the commit notification should shown or not. in the $numberOfDays, after the user dismiss the notification, the notification should shown up again.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="numberOfDays"></param>
+        /// <returns></returns>if it returns true, that means the notification should shown up, otherwise teh notification should not shown.
         public Boolean DismissCheckForCommit(DateTime date, int numberOfDays)
         {
             Boolean dismiss = false;
