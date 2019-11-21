@@ -37,11 +37,15 @@
             this.filesBox = new System.Windows.Forms.ListBox();
             this.meetingRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Members = new System.Windows.Forms.TabPage();
+            this.Notification_Table2 = new System.Windows.Forms.TableLayoutPanel();
             this.teamMembersRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Summary = new System.Windows.Forms.TabPage();
             this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TextBox = new System.Windows.Forms.TabControl();
-            this.Notification_Table2 = new System.Windows.Forms.TableLayoutPanel();
+            this.NotesBox = new System.Windows.Forms.TextBox();
+            this.saveNotes = new System.Windows.Forms.Button();
+            this.ClearNotes = new System.Windows.Forms.Button();
+            this.Notes.SuspendLayout();
             this.WeeklyProgress.SuspendLayout();
             this.TeamMeeting.SuspendLayout();
             this.Members.SuspendLayout();
@@ -71,10 +75,13 @@
             // 
             // Notes
             // 
+            this.Notes.Controls.Add(this.ClearNotes);
+            this.Notes.Controls.Add(this.saveNotes);
+            this.Notes.Controls.Add(this.NotesBox);
             this.Notes.Location = new System.Drawing.Point(4, 22);
             this.Notes.Name = "Notes";
             this.Notes.Padding = new System.Windows.Forms.Padding(3);
-            this.Notes.Size = new System.Drawing.Size(875, 462);
+            this.Notes.Size = new System.Drawing.Size(875, 369);
             this.Notes.TabIndex = 3;
             this.Notes.Text = "Notes";
             this.Notes.UseVisualStyleBackColor = true;
@@ -143,50 +150,6 @@
             this.Members.Text = "Members";
             this.Members.UseVisualStyleBackColor = true;
             // 
-            // teamMembersRichTextBox1
-            // 
-            this.teamMembersRichTextBox1.Location = new System.Drawing.Point(6, 7);
-            this.teamMembersRichTextBox1.Name = "teamMembersRichTextBox1";
-            this.teamMembersRichTextBox1.Size = new System.Drawing.Size(863, 450);
-            this.teamMembersRichTextBox1.TabIndex = 0;
-            this.teamMembersRichTextBox1.Text = "";
-            this.teamMembersRichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // Summary
-            // 
-            this.Summary.Controls.Add(this.summaryrichTextBox1);
-            this.Summary.Location = new System.Drawing.Point(4, 22);
-            this.Summary.Name = "Summary";
-            this.Summary.Padding = new System.Windows.Forms.Padding(3);
-            this.Summary.Size = new System.Drawing.Size(875, 462);
-            this.Summary.TabIndex = 0;
-            this.Summary.Text = "Summary";
-            this.Summary.UseVisualStyleBackColor = true;
-            this.Summary.Click += new System.EventHandler(this.TabPage1_Click);
-            // 
-            // summaryrichTextBox1
-            // 
-            this.summaryrichTextBox1.Location = new System.Drawing.Point(17, 16);
-            this.summaryrichTextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.summaryrichTextBox1.Name = "summaryrichTextBox1";
-            this.summaryrichTextBox1.Size = new System.Drawing.Size(835, 425);
-            this.summaryrichTextBox1.TabIndex = 0;
-            this.summaryrichTextBox1.Text = "";
-            this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // TextBox
-            // 
-            this.TextBox.Controls.Add(this.Summary);
-            this.TextBox.Controls.Add(this.Members);
-            this.TextBox.Controls.Add(this.TeamMeeting);
-            this.TextBox.Controls.Add(this.WeeklyProgress);
-            this.TextBox.Controls.Add(this.Notes);
-            this.TextBox.Location = new System.Drawing.Point(12, 61);
-            this.TextBox.Name = "TextBox";
-            this.TextBox.SelectedIndex = 0;
-            this.TextBox.Size = new System.Drawing.Size(883, 488);
-            this.TextBox.TabIndex = 8;
-            // 
             // Notification_Table2
             // 
             this.Notification_Table2.AutoScroll = true;
@@ -228,18 +191,90 @@
             this.Notification_Table2.Size = new System.Drawing.Size(282, 449);
             this.Notification_Table2.TabIndex = 1;
             // 
+            // teamMembersRichTextBox1
+            // 
+            this.teamMembersRichTextBox1.Location = new System.Drawing.Point(6, 7);
+            this.teamMembersRichTextBox1.Name = "teamMembersRichTextBox1";
+            this.teamMembersRichTextBox1.Size = new System.Drawing.Size(863, 450);
+            this.teamMembersRichTextBox1.TabIndex = 0;
+            this.teamMembersRichTextBox1.Text = "";
+            this.teamMembersRichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // Summary
+            // 
+            this.Summary.Controls.Add(this.summaryrichTextBox1);
+            this.Summary.Location = new System.Drawing.Point(4, 22);
+            this.Summary.Name = "Summary";
+            this.Summary.Padding = new System.Windows.Forms.Padding(3);
+            this.Summary.Size = new System.Drawing.Size(875, 462);
+            this.Summary.TabIndex = 0;
+            this.Summary.Text = "Summary";
+            this.Summary.UseVisualStyleBackColor = true;
+            this.Summary.Click += new System.EventHandler(this.TabPage1_Click);
+            // 
+            // summaryrichTextBox1
+            // 
+            this.summaryrichTextBox1.Location = new System.Drawing.Point(17, 16);
+            this.summaryrichTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.summaryrichTextBox1.Name = "summaryrichTextBox1";
+            this.summaryrichTextBox1.Size = new System.Drawing.Size(835, 425);
+            this.summaryrichTextBox1.TabIndex = 0;
+            this.summaryrichTextBox1.Text = "";
+            this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // TextBox
+            // 
+            this.TextBox.Controls.Add(this.Summary);
+            this.TextBox.Controls.Add(this.Members);
+            this.TextBox.Controls.Add(this.TeamMeeting);
+            this.TextBox.Controls.Add(this.WeeklyProgress);
+            this.TextBox.Controls.Add(this.Notes);
+            this.TextBox.Location = new System.Drawing.Point(12, 61);
+            this.TextBox.Name = "TextBox";
+            this.TextBox.SelectedIndex = 0;
+            this.TextBox.Size = new System.Drawing.Size(883, 395);
+            this.TextBox.TabIndex = 8;
+            // 
+            // NotesBox
+            // 
+            this.NotesBox.Location = new System.Drawing.Point(6, 6);
+            this.NotesBox.Multiline = true;
+            this.NotesBox.Name = "NotesBox";
+            this.NotesBox.Size = new System.Drawing.Size(785, 357);
+            this.NotesBox.TabIndex = 0;
+            // 
+            // saveNotes
+            // 
+            this.saveNotes.Location = new System.Drawing.Point(797, 6);
+            this.saveNotes.Name = "saveNotes";
+            this.saveNotes.Size = new System.Drawing.Size(75, 30);
+            this.saveNotes.TabIndex = 1;
+            this.saveNotes.Text = "Save";
+            this.saveNotes.UseVisualStyleBackColor = true;
+            // 
+            // ClearNotes
+            // 
+            this.ClearNotes.Location = new System.Drawing.Point(797, 42);
+            this.ClearNotes.Name = "ClearNotes";
+            this.ClearNotes.Size = new System.Drawing.Size(75, 30);
+            this.ClearNotes.TabIndex = 2;
+            this.ClearNotes.Text = "Clear";
+            this.ClearNotes.UseVisualStyleBackColor = true;
+            // 
             // Team_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(908, 456);
+            this.ClientSize = new System.Drawing.Size(908, 465);
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.TeadDashboard);
             this.Name = "Team_Dashboard";
             this.Text = "Team_Dashboard";
             this.Load += new System.EventHandler(this.Team_Dashboard_Load);
+            this.Notes.ResumeLayout(false);
+            this.Notes.PerformLayout();
             this.WeeklyProgress.ResumeLayout(false);
             this.TeamMeeting.ResumeLayout(false);
             this.Members.ResumeLayout(false);
@@ -265,5 +300,8 @@
         public System.Windows.Forms.ListBox Progress_List;
         public System.Windows.Forms.TableLayoutPanel Notification_Table2;
         public System.Windows.Forms.ListBox filesBox;
+        private System.Windows.Forms.Button ClearNotes;
+        private System.Windows.Forms.Button saveNotes;
+        private System.Windows.Forms.TextBox NotesBox;
     }
 }
