@@ -58,21 +58,19 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
-
+                
                 //update team commit
                 foreach (Triggers itemTeamCommit in Variables.db.GetTriggers())
                 {
-                    if((itemTeamCommit.Type == "teamCommit"))
+                    
+                    if(t.Name == itemTeamCommit.TeamName && (itemTeamCommit.Type == "teamCommit"))
                     {
-                        itemTeamCommit.Active = checkTeamCommit;
+                        //itemTeamCommit.Active = checkTeamCommit;
                         Variables.db.UpdateTriggers(itemTeamCommit, checkTeamCommit);
                     }
-                    else
-                    {
-                        itemTeamCommit.Active = false;
-                        Variables.db.UpdateTriggers(itemTeamCommit, false);
-                    }
+                   
                 }
+                
             }
 
         }
@@ -139,22 +137,22 @@ namespace WindowsFormsApp1
             {
                 if (itemMeetings.Type == "teamMeeting")
                 {
-                    MessageBox.Show("1");
+                    //MessageBox.Show("1");
                     if (DismissCheckForMeeting(itemMeetings.DismissDate))
                     //if(true)
                     //if (DismissCheckForCommit(itemMeetings.DismissDate, TeamDays1))
                     {
-                        MessageBox.Show("2");
+                        //MessageBox.Show("2");
                         if (meetingCheck)
                         {
-                            MessageBox.Show("3");
+                            //MessageBox.Show("3");
                             //item.Active = false;
                             Variables.db.UpdateTriggers(itemMeetings, false);
                             //dissmiss notification
                         }
                         else
                         {
-                            MessageBox.Show("4");
+                            //MessageBox.Show("4");
                             //itemMeetings.Active = true;
                             Variables.db.UpdateTriggers(itemMeetings, true);
                             //itemMeetings.DismissDate = DateTime.Today;
@@ -164,7 +162,7 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        MessageBox.Show("5");
+                        //MessageBox.Show("5");
                         //itemMeetings.Active = false;
                         Variables.db.UpdateTriggers(itemMeetings, false);
                         //dissmiss notification
@@ -178,13 +176,13 @@ namespace WindowsFormsApp1
         {
             foreach (Team team in Variables.db.GetAll())
             {
-                //Boolean commit = CommitDateCheck(team.Url, TeamDays1);
+                Boolean commit = CommitDateCheck(team.Url, TeamDays1);
                 Boolean meetings = MeetingDateCheck(team.Url);
                 //MessageBox.Show(meetings.ToString());
 
-                //CommitTrigger2(team, commit);
+                CommitTrigger2(team, commit);
                 MeetingsTrigger(team, meetings);
-                //TeamCommitTrigger(team);
+                TeamCommitTrigger(team);
 
             }
         }
@@ -309,7 +307,7 @@ namespace WindowsFormsApp1
         {
             Boolean dismiss = false;
             DateTime today = DateTime.Today;
-            date = date.AddDays(-numberOfDays);
+            date = date.AddDays(+numberOfDays);
             if (today > date)
             {
                 dismiss = true;
