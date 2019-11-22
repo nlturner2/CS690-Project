@@ -32,7 +32,11 @@ namespace WindowsFormsApp1
         {
             get => NT;
         }
-        
+        private static Notes note = new Notes();
+        public static Notes NotesInstance
+        {
+            get => note;
+        }
 
         private static SettingsData Settings = new SettingsData();
         public static SettingsData SettingsInstance
