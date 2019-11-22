@@ -15,8 +15,10 @@ namespace WindowsFormsApp1
 {
     public partial class Team_Dashboard : Form
     {
+        public Variables Callingform { get; set; }
         Team currentTeam;
         Notification notification = new Notification();
+        
         public Team_Dashboard(Team obj)
         {
             InitializeComponent();
@@ -74,6 +76,15 @@ namespace WindowsFormsApp1
         private void TeamMeeting_Click(object sender, EventArgs e)
         {
 
+        }
+        private void SaveNotes_Click(object sender, EventArgs e)
+        {
+            string s = null;
+            foreach(var x in NotesRichTextBox1.Text)
+            {
+                s += x;
+            }
+            Variables.NotesInstance.WriteNotes(currentTeam,s);
         }
 
         private void richTextBox1_TextChanged_2(object sender, EventArgs e)

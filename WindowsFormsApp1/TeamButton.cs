@@ -65,6 +65,8 @@ namespace WindowsFormsApp1
                     TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
                     //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
                     TD.meetingRichTextBox1.Text += Variables.parseInstance.parse_Meeting(meetingMinutesFile);
+
+                    TD.NotesRichTextBox1.Text += Variables.NotesInstance.ReadNotes(newTeam);
                     // Display the some commits in like date, name, and message in weekly progress
                     foreach(var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
                     {
