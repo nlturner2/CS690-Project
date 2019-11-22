@@ -304,6 +304,15 @@ namespace WindowsFormsApp1
 
         public void UpdateSettings(SettingsData item)
         {
+            int count = 0;
+            foreach (SettingsData i in Variables.db.GetSettings())
+            {
+                count++;
+            }
+            if (count == 0)
+            {
+                Variables.db.AddSettings(Variables.SettingsInstance);
+            }
 
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {

@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
         {
             
             InitializeComponent();
+            Variables.db.UpdateSettings(Variables.SettingsInstance);
             this.DisplayNotifications();
 
         }

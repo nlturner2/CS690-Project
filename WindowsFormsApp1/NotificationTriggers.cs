@@ -176,7 +176,7 @@ namespace WindowsFormsApp1
         {
             foreach (Team team in Variables.db.GetAll())
             {
-                Boolean commit = CommitDateCheck(team.Url, TeamDays1);
+                Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
                 Boolean meetings = MeetingDateCheck(team.Url);
                 //MessageBox.Show(meetings.ToString());
 
