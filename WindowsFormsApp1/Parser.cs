@@ -122,7 +122,6 @@ namespace WindowsFormsApp1
                     {
                         //if specific index of summaryWithH contains Team
                         if (summaryWithH[index + 1].Contains("Team"))
-                            //break the loop
                             break;
                         //if specific index of summaryWithH contains \n 
                         else if (summaryWithH[index + 1] != "\n")
@@ -173,11 +172,8 @@ namespace WindowsFormsApp1
                         //if specific index of teamMembers contains \n 
                         else if (teamMembers[index + 1] != "\n")
                         {
-                            //replacing - with ""
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("-", "");
-                            //replacing \t with ""
                             teamMembers[index + 1] = teamMembers[index + 1].Replace("\t", "");
-                            //triming indexs
                             teamMembers[index + 1] = teamMembers[index + 1].Trim();
                             //adding line break in teamMembers index and joining with members
                             Members += teamMembers[index + 1] + "\n";
@@ -185,12 +181,10 @@ namespace WindowsFormsApp1
                        
                         index++;
                     }
-                    
                     break;
                 }
                 else
                 {
-                    //incrementing
                     index++;
                 }
             }
@@ -241,7 +235,6 @@ namespace WindowsFormsApp1
                         if (i <= 3)
                         {
                             line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t" + "         " + data[i].commit.message;
-
                         }
                         else
                         {

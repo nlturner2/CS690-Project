@@ -36,7 +36,6 @@ namespace WindowsFormsApp1
         public void Add_Click(object sender, EventArgs e)
         {
             // avoiding creating HomeDashboard instance
-            //var main = Application.OpenForms.OfType<HomeDashboard>().First();
             Variables.TMInstance.CreateTeam(Application.OpenForms.OfType<HomeDashboard>().First(), TeamNameBox.Text, GithubURLBox.Text);
             Application.OpenForms.OfType<HomeDashboard>().First().Display();
 

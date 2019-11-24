@@ -215,80 +215,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        
-        /*
-                public List<Team> StartProgram()
-                {
-                    var teamToReturn = new List<Team>();
-                    using (var db = new LiteDatabase(@"TestDataBase1.db"))
-                    {
-                        var teamCollection = db.GetCollection<Team>("teams");
-                        int numberOfTeams = teamCollection.Count();
-
-                        for (int i = 0; i <= numberOfTeams;i++ )
-                        {
-
-                        }
-
-                    }
-                    return teamToReturn;
-                }
-                */
-        /*
-        public void UpdateNotification(string theTeam)
-        {
-            using (var db = new LiteDatabase(@"TestDataBase1.db"))
-            {
-                // Open data file (or create if not exits)  
-                var teamCollection = db.GetCollection<Team>("teams");
-
-                // Update an existing issue document  
-
-                IList<Team> updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
-                Team thisTeam = updateTeam;
-                //updateTeam.meetingNotification = true;
-                teamCollection.Update(updateTeam);
-
-            }
-        }
-        */
- 
-        /*
-        public void UpdateMember(TeamMembers aMember,Boolean x )
-        {
-            using (var db = new LiteDatabase(@"TestDataBase1.db"))
-            {
-                // Open data file (or create if not exits)  
-                var membersCollection = db.GetCollection<TeamMembers>("members");
-
-                aMember.CommitNotification = x;
-
-              //var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
-                //updateTeam.meetingNotification = true;
-                membersCollection.Update(aMember);
-
-            }
-        }
-        */
-
-        /*
-        public void UpdateTeam(Team aTeam, Boolean x)
-        {
-            using (var db = new LiteDatabase(@"TestDataBase1.db"))
-            {
-                // Open data file (or create if not exits)  
-                var teamCollection = db.GetCollection<Team>("teams");
-
-                aTeam.MeetingNotification = x;
-
-                //var updateTeam = teamCollection.Find(Query.EQ("Name", theTeam));
-                //updateTeam.meetingNotification = true;
-                teamCollection.Update(aTeam);
-
-            }
-        }
-        */
-
         public void UpdateTriggers(Triggers atrigger, Boolean x)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -334,20 +260,7 @@ namespace WindowsFormsApp1
 
             }
         }
-        /*
-        public void UpdateTriggerSettings(Triggers atrigger, int s)
-        {
-            using (var db = new LiteDatabase(@"TestDataBase1.db"))
-            {
-                // Open data file (or create if not exits)  
-                var triggersCollection = db.GetCollection<Triggers>("triggers");
 
-                atrigger.Settings = s;
-                triggersCollection.Update(atrigger);
-
-            }
-        }
-        */
         public string ReadTeam()
         {
             return "a";
