@@ -38,12 +38,9 @@ namespace WindowsFormsApp1
         public string Type { get; set; }
         public string TeamName { get; set; }
         public string MemberName { get; set; }
-        //public int Settings { get; set; }
 
-        //public string Url { get; set; }
 
         public Boolean Active { get; set; }
-        //public Boolean Dismissed { get; set; }
         public DateTime DismissDate { get; set; }
     }
 }
