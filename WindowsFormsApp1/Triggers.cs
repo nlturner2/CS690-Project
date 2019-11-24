@@ -19,20 +19,16 @@ namespace WindowsFormsApp1
             Type = triggerType;
             TeamName = teamName;
             MemberName = "no member";
-            //Url = url;
             Active = false;
             DismissDate = DateTime.Today.AddDays(-360);
-            //Settings = 1;
         }
         public Triggers(string triggerType, string teamName, string url, string memberName)
         {
             Type = triggerType;
             TeamName = teamName;
             MemberName = memberName;
-            //Url = url;
             Active = false;
             DismissDate = DateTime.Today.AddDays(-360);
-            //Settings = 7;
         }
         public int Id { get; set; }
         public string Type { get; set; }

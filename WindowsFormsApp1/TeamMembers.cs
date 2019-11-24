@@ -20,7 +20,6 @@ namespace WindowsFormsApp1
         {
             MemberName = name;
             TeamName = team;
-            //CommitNotification = false;
         }
         
         public int Id { get; set; }

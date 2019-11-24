@@ -29,8 +29,6 @@ namespace WindowsFormsApp1
         {
             name = n;
             url = u;
-            //MeetingNotification = false;
-            
         }
 
         

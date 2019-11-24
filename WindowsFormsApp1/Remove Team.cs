@@ -23,7 +23,6 @@ namespace WindowsFormsApp1
         private void Remove_Click(object sender, EventArgs e)
         {
             // need to change call main HomeDashboard
-            //var main = Application.OpenForms.OfType<HomeDashboard>().First();
             var name = removeTeamBox.Text;
             Variables.TMInstance.removeTeam(name);
             Application.OpenForms.OfType<HomeDashboard>().First().Display();

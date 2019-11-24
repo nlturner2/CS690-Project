@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
          */
         
         public Team[] teamBook = new Team[1];
-        //public TeamMembers[] memberBook = new TeamMembers[1];
         public List<TeamButton> teamButton = new List<TeamButton>();
         public int count = 0;
 
@@ -44,10 +43,6 @@ namespace WindowsFormsApp1
                     obj.Show();
                     var main = Application.OpenForms.OfType<HomeDashboard>().First();
                     Variables.TMInstance.Write(team);
-                }
-                else
-                {
-                    MessageBox.Show("Team already exists.");
                 }
             }
 

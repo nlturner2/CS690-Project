@@ -26,16 +26,9 @@ namespace WindowsFormsApp1
             closeButton.Size = new Size(20, 20);
             closeButton.Image = WindowsFormsApp1.Properties.Resources.close5;
             closeButton.Location = new Point(238, 0);
-            notiButton.Controls.Add(closeButton);
-            //closeButton.Click += new EventHandler(closeButton_Click);
-
-            //IList<Triggers> trig = Variables.db.GetTriggers();
-            
-
+            notiButton.Controls.Add(closeButton);            
 
             string s = x.Type;
-            //string memberName = x.MemberName;
-            //string teamName = x.TeamName;
 
             if (s == "teamMeeting")
             {
@@ -44,13 +37,9 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                //closeButton.Click += new EventHandler(closeButton_Click);
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x); };
 
-                //Variables.db.UpdateTriggers(x, true);
-
             }
-
             else if (s == "teamCommit")
             {
                 string teamName = x.TeamName;
@@ -58,11 +47,8 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.commit4;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                //closeButton.Click += new EventHandler(closeButton_Click);
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x); };
-                ///Variables.db.UpdateTriggers(x, true);
             }
-
             else if (s == "memberCommit")
             {
                 string memberName = x.MemberName;
@@ -70,39 +56,28 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.memberCommit2;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                //closeButton.Click += new EventHandler(closeButton_Click2);
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click2(sender, EventArgs, x); };
-                //Variables.db.UpdateTriggers(x, true);
             }
-
             return notiButton;
-
         }
 
         // click method for notifications on HomeDahboard
         public void closeButton_Click(object sender, EventArgs e, Triggers t)
         {
-            //Button button = sender as Button;
             removeNotification(t);
-
-            
         }
 
         // click method for notifications of team members on Team_Dashboard
         public void closeButton_Click2(object sender, EventArgs e, Triggers t)
         {
-            //Button button = sender as Button;
-         
             removeNotificationMember(t);
         }
 
         public void removeNotification(Triggers trig)
         {
-
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
             Variables.db.UpdateTriggers(trig, false);
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
-            
         }
 
         public void removeNotificationMember(Triggers trig)
