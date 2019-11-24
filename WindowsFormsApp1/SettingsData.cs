@@ -10,7 +10,8 @@ namespace WindowsFormsApp1
     {
         public SettingsData()
         {
-
+            MembersDays = 7;
+            TeamWeeks = 1;
         }
         public int Id { get; set; }
         public int MembersDays { get; set; }

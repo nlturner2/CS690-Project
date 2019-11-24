@@ -58,21 +58,19 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
-
+                
                 //update team commit
                 foreach (Triggers itemTeamCommit in Variables.db.GetTriggers())
                 {
-                    if((itemTeamCommit.Type == "teamCommit"))
+                    
+                    if(t.Name == itemTeamCommit.TeamName && (itemTeamCommit.Type == "teamCommit"))
                     {
-                        itemTeamCommit.Active = checkTeamCommit;
+                        //itemTeamCommit.Active = checkTeamCommit;
                         Variables.db.UpdateTriggers(itemTeamCommit, checkTeamCommit);
                     }
-                    else
-                    {
-                        itemTeamCommit.Active = false;
-                        Variables.db.UpdateTriggers(itemTeamCommit, false);
-                    }
+                   
                 }
+                
             }
 
         }
@@ -128,7 +126,11 @@ namespace WindowsFormsApp1
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="meetingCheck"></param>
         public void MeetingsTrigger(Team t, Boolean meetingCheck)
         {
             foreach (Triggers itemMeetings in Variables.db.GetTriggers())
@@ -136,14 +138,14 @@ namespace WindowsFormsApp1
                 if (itemMeetings.Type == "teamMeeting")
                 {
                     //MessageBox.Show("1");
-                    //if (DismissCheckForMeeting(itemMeetings.DismissDate))
+                    if (DismissCheckForMeeting(itemMeetings.DismissDate))
                     //if(true)
-                    if (DismissCheckForCommit(itemMeetings.DismissDate, TeamDays1))
+                    //if (DismissCheckForCommit(itemMeetings.DismissDate, TeamDays1))
                     {
                         //MessageBox.Show("2");
                         if (meetingCheck)
                         {
-                           // MessageBox.Show("3");
+                            //MessageBox.Show("3");
                             //item.Active = false;
                             Variables.db.UpdateTriggers(itemMeetings, false);
                             //dissmiss notification
@@ -153,14 +155,14 @@ namespace WindowsFormsApp1
                             //MessageBox.Show("4");
                             //itemMeetings.Active = true;
                             Variables.db.UpdateTriggers(itemMeetings, true);
-                            itemMeetings.DismissDate = DateTime.Today;
+                            //itemMeetings.DismissDate = DateTime.Today;
                             //Variables.db.UpdateTriggerDismiss(itemMeetings, DateTime.Today);
                             //more code to make it apper
                         }
                     }
                     else
                     {
-                       // MessageBox.Show("5");
+                        //MessageBox.Show("5");
                         //itemMeetings.Active = false;
                         Variables.db.UpdateTriggers(itemMeetings, false);
                         //dissmiss notification
@@ -174,13 +176,13 @@ namespace WindowsFormsApp1
         {
             foreach (Team team in Variables.db.GetAll())
             {
-                Boolean commit = CommitDateCheck(team.Url, TeamDays1);
+                Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
                 Boolean meetings = MeetingDateCheck(team.Url);
                 //MessageBox.Show(meetings.ToString());
 
                 CommitTrigger2(team, commit);
                 MeetingsTrigger(team, meetings);
-                //TeamCommitTrigger(team);
+                TeamCommitTrigger(team);
 
             }
         }
@@ -305,7 +307,7 @@ namespace WindowsFormsApp1
         {
             Boolean dismiss = false;
             DateTime today = DateTime.Today;
-            date = date.AddDays(-numberOfDays);
+            date = date.AddDays(+numberOfDays);
             if (today > date)
             {
                 dismiss = true;
@@ -315,27 +317,27 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// check if the notification need to be shown again, it will not shown until next Monday
+        /// get the date when the notification was dismissed, and calculate the date of that next Monday, check if today is the next Monday, 
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>if it returns true, the notification should shown up, false means not shown 
-        public Boolean DismissCheckForMeeting(DateTime date)
+        public Boolean DismissCheckForMeeting(DateTime DismissDate)
         {
-            Boolean dismiss = false;
+            Boolean notification = false;
             DayOfWeek weekStart = DayOfWeek.Monday;
-            DateTime startingDate = DateTime.Today;
-            while (startingDate.DayOfWeek != weekStart)
-                startingDate = startingDate.AddDays(1);
+            DateTime today = DateTime.Today;
+            while (DismissDate.DayOfWeek != weekStart)
+                DismissDate = DismissDate.AddDays(1);
 
-            DateTime nextWeekStart = startingDate.AddDays(1);
-            DateTime nextWeekEnd = startingDate.AddDays(7);
+            DateTime nextWeekStart = DismissDate.AddDays(1);
+            //DateTime nextWeekEnd = startingDate.AddDays(7);
 
-            if(!(date<nextWeekStart))
+            if(!(today<nextWeekStart))
             {
-                dismiss = true;
+                notification = true;
             }
 
-            return dismiss;
+            return notification;
         }
         /// <summary>
         /// to check if the team has a meeting file in the previous week
