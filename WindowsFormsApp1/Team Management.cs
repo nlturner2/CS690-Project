@@ -16,8 +16,6 @@ namespace WindowsFormsApp1
          * "Variables.TM"
          * in front of them.
          */
-
-        //DataConnection dbc = new DataConnection();
         
         public Team[] teamBook = new Team[1];
         //public TeamMembers[] memberBook = new TeamMembers[1];
@@ -26,11 +24,7 @@ namespace WindowsFormsApp1
 
         public void CreateTeam(HomeDashboard obj, string name, string url)
         {
-            //DataConnection dbc = new DataConnection();
-            //get team name and url
-            //var name = TeamNameBox.Text;
-            //var url = GithubURLBox.Text;
-            //string fileName = @"C:\Teamfiles\" + TeamNameBox.Text;
+
             // check if either box was empty
             if ((name != "") && (url != ""))
             {
@@ -46,11 +40,6 @@ namespace WindowsFormsApp1
                     Triggers Trigger2 = new Triggers("teamMeeting", name,url);
                     Variables.db.AddTriggers(Trigger2);
                     
-                    /*
-                     Triggers Trigger3 = new Triggers("standards", name);
-                    Variables.db.AddTriggers(Trigger3);
-                    */
-                    //obj.tableLayoutPanel1.Controls.Add(team.getButton());
                     obj.tableLayoutPanel1.Show();
                     obj.Show();
                     var main = Application.OpenForms.OfType<HomeDashboard>().First();
@@ -86,8 +75,6 @@ namespace WindowsFormsApp1
         }
         public void removeTeam(string teamName)
         {
-            //string team = @"C:\Teamfiles\" + teamName;
-
             //create new smaller temporary array
             Team[] tempTeam = new Team[teamBook.Count() - 1];
             int index = 0;
@@ -147,8 +134,6 @@ namespace WindowsFormsApp1
             {
                 
                 teamBook[i] = item;
-                //TeamButton newTeamButton = new TeamButton(item);
-                //teamButton[i] = newTeamButton;
                 
                 i++; 
             }

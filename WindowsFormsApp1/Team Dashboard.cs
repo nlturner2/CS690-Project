@@ -24,8 +24,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
-            //notification.loadNoitification(this);
-            //this.DisplayNotifications();
         }
 
        public void DisplayNotifications()
@@ -36,8 +34,6 @@ namespace WindowsFormsApp1
             {
                 if (i.Active && i.TeamName == currentTeam.Name)
                 {
-                    //string name = i.TeamName + ":" + i.MemberName;
-                    //Notification name = new Notification();
                     Notification a = new Notification();
                     memberNotification.Add(a);
                     a.loadNoitification(this, i);
