@@ -31,6 +31,7 @@
             this.TeadDashboard = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
             this.Notes = new System.Windows.Forms.TabPage();
+            this.NotesRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.saveNotes = new System.Windows.Forms.Button();
             this.WeeklyProgress = new System.Windows.Forms.TabPage();
             this.Progress_List = new System.Windows.Forms.ListBox();
@@ -43,7 +44,6 @@
             this.Summary = new System.Windows.Forms.TabPage();
             this.summaryrichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TextBox = new System.Windows.Forms.TabControl();
-            this.NotesRichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Notes.SuspendLayout();
             this.WeeklyProgress.SuspendLayout();
             this.TeamMeeting.SuspendLayout();
@@ -84,6 +84,14 @@
             this.Notes.Text = "Notes";
             this.Notes.UseVisualStyleBackColor = true;
             // 
+            // NotesRichTextBox1
+            // 
+            this.NotesRichTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.NotesRichTextBox1.Name = "NotesRichTextBox1";
+            this.NotesRichTextBox1.Size = new System.Drawing.Size(791, 366);
+            this.NotesRichTextBox1.TabIndex = 2;
+            this.NotesRichTextBox1.Text = "";
+            // 
             // saveNotes
             // 
             this.saveNotes.Location = new System.Drawing.Point(797, 6);
@@ -111,7 +119,7 @@
             this.Progress_List.Margin = new System.Windows.Forms.Padding(2);
             this.Progress_List.Name = "Progress_List";
             this.Progress_List.ScrollAlwaysVisible = true;
-            this.Progress_List.Size = new System.Drawing.Size(861, 446);
+            this.Progress_List.Size = new System.Drawing.Size(861, 355);
             this.Progress_List.TabIndex = 0;
             this.Progress_List.SelectedIndexChanged += new System.EventHandler(this.Progress_List_SelectedIndexChanged);
             // 
@@ -225,9 +233,10 @@
             this.summaryrichTextBox1.Location = new System.Drawing.Point(17, 16);
             this.summaryrichTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.summaryrichTextBox1.Name = "summaryrichTextBox1";
-            this.summaryrichTextBox1.Size = new System.Drawing.Size(835, 425);
+            this.summaryrichTextBox1.Size = new System.Drawing.Size(835, 348);
             this.summaryrichTextBox1.TabIndex = 0;
             this.summaryrichTextBox1.Text = "";
+            this.summaryrichTextBox1.VScroll += new System.EventHandler(this.summaryrichTextBox1_VScroll);
             this.summaryrichTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // TextBox
@@ -242,14 +251,6 @@
             this.TextBox.SelectedIndex = 0;
             this.TextBox.Size = new System.Drawing.Size(883, 395);
             this.TextBox.TabIndex = 8;
-            // 
-            // NotesRichTextBox1
-            // 
-            this.NotesRichTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.NotesRichTextBox1.Name = "NotesRichTextBox1";
-            this.NotesRichTextBox1.Size = new System.Drawing.Size(791, 366);
-            this.NotesRichTextBox1.TabIndex = 2;
-            this.NotesRichTextBox1.Text = "";
             // 
             // Team_Dashboard
             // 

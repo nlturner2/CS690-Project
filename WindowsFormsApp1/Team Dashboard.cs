@@ -137,6 +137,11 @@ namespace WindowsFormsApp1
             }
           
         }
+
+        private void summaryrichTextBox1_VScroll(object sender, EventArgs e)
+        {
+
+        }
     }
    
 }
