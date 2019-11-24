@@ -41,14 +41,14 @@ namespace WindowsFormsApp1
                             //url is sroting in partialText
                             partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
                             break;
-                        //if meetings is called
+                        
                         case "meetings":
-                            //url is sroting in partialText
+                            
                             partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes/Team?ref=master";
                             break;
-                        //if commit is called
+                        
                         case "commit":
-                            //url is sroting in partialText
+                            
                             partialText = "https://api.github.com/repos" + partialText + "/commits";
                             break;
                     }
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             }
             return partialText;
         }
-
+        
         public List<string> meetingFile(string URL,List<string> fileNames)
         {
             List<string> fileContentList = new List<string>();
@@ -72,13 +72,13 @@ namespace WindowsFormsApp1
                 {
                     foreach (var fileName in fileNames)
                     {
-                        //getting specific text from URL
+                        
                         partialText = URL.Substring(charLocation + 1);
-                        //getting partialText last index text and storing it secondLocation
+                        
                         int secondLocation = partialText.LastIndexOf('.');
-                        //removing that index which is store in secondLocation from partialText and storing it in partialText
+                        
                         partialText = partialText.Remove(secondLocation);
-                        //stroing url in partialText
+                       
                         partialText = "https://raw.githubusercontent.com" + partialText + "/master/MeetingMinutes/Team/" + fileName;
                         fileContentList.Add(WebClient(partialText));
 
@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
                 file = client.DownloadString(rawFileUrl);
             }
 
-            //returning file
+            
             return file;
         }
 
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
             //used foreach loop on an array summaryWithH
             foreach (string s in summaryWithH)
             {
-                //if s is containing Summarym or summary
+                //if s is containing Summary or summary
                 if (s.Contains("Summary") || s.Contains("summary"))
                 {
                     // while index value is less then summaryWithH.Length
@@ -130,15 +130,15 @@ namespace WindowsFormsApp1
                             //attach summaryWithH specific index into summary
                             summary += summaryWithH[index + 1];
                         }
-                        //incerementing index
+                        
                         index++;
                     }
-                    //breaking foreach loop
+                    
                     break;
                 }
                 else
                 {
-                    //incrementing index
+                    
                     index++;
                 }
             }
@@ -154,17 +154,17 @@ namespace WindowsFormsApp1
         }
         public string parse_Members(string data)
         {
-            //removing \n from an array
+            
             string[] teamMembers = data.Split('\n');
             string Members = null;
             int index = 0;
-            //used foreach loop on an array teamMembers
+            
             foreach (string s in teamMembers)
             {
                 //if s is containing Team Members or Team members or team members or team Members
                 if (s.Contains("Team Members") || s.Contains("Team members") || s.Contains("team Members") || s.Contains("team members"))
                 {
-                    // while index value is less then teamMembers.Length
+                    
                     while (index < teamMembers.Length)
                     {
                         //if specific index of teamMembers contains Client
@@ -182,10 +182,10 @@ namespace WindowsFormsApp1
                             //adding line break in teamMembers index and joining with members
                             Members += teamMembers[index + 1] + "\n";
                         }
-                        //incrementing
+                       
                         index++;
                     }
-                    //break loop
+                    
                     break;
                 }
                 else
@@ -196,7 +196,7 @@ namespace WindowsFormsApp1
             }
             //triming members
             Members = Members.Trim();
-            //returing it from where it is being called
+            
             return Members;
         }
 
@@ -248,11 +248,11 @@ namespace WindowsFormsApp1
                             line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " .  " + data[i].commit.message;
                         }
                         break;
-                    //if username is called
+                   
                     case "username":
                         line = data[i].commit.author.name;
                         break;
-                    //if filename is called
+                    
                     case "filename":
                         line = data[i].name;
                         break;
