@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -239,7 +239,6 @@ namespace WindowsFormsApp1
             {
                 Variables.db.AddSettings(Variables.SettingsInstance);
             }
-
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var settingsCollection = db.GetCollection<SettingsData>("settings");

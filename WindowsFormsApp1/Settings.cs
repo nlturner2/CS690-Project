@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         public Settings()
         {
             InitializeComponent();
+            TeamBox.Text = Convert.ToString(Variables.SettingsInstance.TeamWeeks);
+            MembersBox.Text = Convert.ToString(Variables.SettingsInstance.MembersDays);
         }
         private void SaveTeam_Click(object sender, EventArgs e)
         {

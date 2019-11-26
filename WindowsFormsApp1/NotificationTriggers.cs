@@ -12,11 +12,11 @@ namespace WindowsFormsApp1
 {
     public class NotificationTriggers
     {
+        int TeamDays1;
+        int TeamDays2;
+        int MembersDays1;
+        int MembersDays2;
 
-        private int TeamDays1 = 7;
-        private int TeamDays2 = 14;
-        private int MembersDays1 = 7;
-        private int MembersDays2 = 14;
         public Variables Callingform { get; set; }
 
         public NotificationTriggers()

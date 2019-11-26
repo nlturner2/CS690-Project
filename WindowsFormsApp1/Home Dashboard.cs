@@ -24,7 +24,17 @@ namespace WindowsFormsApp1
         {
             
             InitializeComponent();
-            Variables.db.UpdateSettings(Variables.SettingsInstance);
+            if (Variables.db.GetSettings() != null)
+            {
+                foreach (var item in Variables.db.GetSettings())
+                {
+                    Variables.SettingsInstance.MembersDays = item.MembersDays;
+                    Variables.SettingsInstance.TeamWeeks = item.TeamWeeks;
+                }
+
+            }
+            else
+                Variables.db.UpdateSettings(Variables.SettingsInstance);
             this.DisplayNotifications();
 
         }
