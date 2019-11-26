@@ -16,13 +16,7 @@ namespace WindowsFormsApp1
     public class Notification
     {
         public Variables Callingform { get; set; }
-        
         int x =Variables.db.CountTeams();
-
-        
-
-        
-
         public void loadNotification(HomeDashboard hd,Triggers t)
         {
                 if (t.Type == "teamMeeting")
@@ -33,9 +27,7 @@ namespace WindowsFormsApp1
                 {
                     TeamCommit(hd, t);
                 }
-
         }
-
         public void loadNoitification(Team_Dashboard hd, Triggers t)
         {
             IList<Triggers> trigger = Variables.db.GetTriggers();
@@ -44,32 +36,21 @@ namespace WindowsFormsApp1
                     TeamMemberCommit(hd, t);
                 }
         }
-
-
-
         // creates notification for Team Meeting if the team does not meet
         public void TeamMeeting(HomeDashboard hd, Triggers x)
         {
-
             NotificationButton a = new NotificationButton();
-
             hd.Notification_Table.Controls.Add(a.createNotificationButton(x));
-            hd.Notification_Table.Show();
-            
+            hd.Notification_Table.Show();   
         }
-
         // creates notification for commit if the whole team does not commit
         public void TeamCommit(HomeDashboard hd, Triggers x)
         {
-
             NotificationButton b = new NotificationButton();
-
             hd.Notification_Table.Controls.Add(b.createNotificationButton(x));
             hd.Notification_Table.Show();
         }
-
         // creates notification if a team member does not commit
-        
         public void TeamMemberCommit(Team_Dashboard hd,Triggers x)
         {
             NotificationButton d = new NotificationButton();
@@ -77,7 +58,5 @@ namespace WindowsFormsApp1
             d.closeButton.Click += (sender, EventArgs) => { d.closeButton_Click(sender, EventArgs, x); };
             hd.Notification_Table2.Show();
         }
-        
-
     }
 }
