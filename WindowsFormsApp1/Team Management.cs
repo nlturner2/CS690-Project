@@ -24,22 +24,18 @@ namespace WindowsFormsApp1
             // check if either box was empty
             if ((name != "") && (url != ""))
             {
-                // replaced "!File.Exists(fileName)" with true
-                if (true)
-                {
-                    // create team
-                    Team team = new Team(name, url);
-                    Variables.db.AddTeam(team);
-                    CreateMembers(name, url);
-                    Triggers Trigger1 = new Triggers("teamCommit", name,url);
-                    Variables.db.AddTriggers(Trigger1);
-                    Triggers Trigger2 = new Triggers("teamMeeting", name,url);
-                    Variables.db.AddTriggers(Trigger2);       
-                    obj.tableLayoutPanel1.Show();
-                    obj.Show();
-                    var main = Application.OpenForms.OfType<HomeDashboard>().First();
-                    Variables.TMInstance.Write(team);
-                }
+                // create team
+                Team team = new Team(name, url);
+                Variables.db.AddTeam(team);
+                CreateMembers(name, url);
+                Triggers Trigger1 = new Triggers("teamCommit", name,url);
+                Variables.db.AddTriggers(Trigger1);
+                Triggers Trigger2 = new Triggers("teamMeeting", name,url);
+                Variables.db.AddTriggers(Trigger2);       
+                obj.tableLayoutPanel1.Show();
+                obj.Show();
+                var main = Application.OpenForms.OfType<HomeDashboard>().First();
+                Variables.TMInstance.Write(team);
             }
         }
         public void CreateMembers(string teamName, string url)
@@ -65,7 +61,7 @@ namespace WindowsFormsApp1
             int index = 0;
             foreach (Team i in teamBook)
             {
-                    //check if a file is in array when it is delete it.
+                //check if a file is in array when it is delete it.
                 if (i.Name != teamName)
                 {
                     tempTeam[index] = i;
@@ -86,7 +82,6 @@ namespace WindowsFormsApp1
                 teamBook[index] = i;
                 index++;
             }
-            
         }
         public void Write(Team obj)
         {
