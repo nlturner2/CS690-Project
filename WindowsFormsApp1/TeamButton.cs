@@ -71,8 +71,6 @@ namespace WindowsFormsApp1
                     foreach(var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
                     {
                         TD.filesBox.Items.Add(item);
-                        
-
                     }
 
                     foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))

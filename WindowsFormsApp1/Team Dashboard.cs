@@ -121,6 +121,7 @@ namespace WindowsFormsApp1
 
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             // make the selected file clicakable 
             if (filesBox.SelectedItem != null)
             {
@@ -128,8 +129,7 @@ namespace WindowsFormsApp1
                 string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
                 // display the content for the file in textbox
                 meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[filesBox.SelectedIndex]);
-
-
+                    
             }
           
         }
