@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public class DataConnection
     {
-        
         public DataConnection()
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -19,12 +18,10 @@ namespace WindowsFormsApp1
                 var membersCollection = db.GetCollection<TeamMembers>("members"); 
                 var triggersCollection = db.GetCollection<Triggers>("triggers");
             }
-                
         }
         //Function to add a team to the database, it takes a Team object.
         public void Add(Object item)
         {
-
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 if(item is Team)
@@ -43,46 +40,33 @@ namespace WindowsFormsApp1
                     var triggersCollection = db.GetCollection<Triggers>("triggers");
                     triggersCollection.Insert((Triggers)item);
                 }
-                
             }
-
         }
-
-
         public void AddTeam(Team item)
         {
-
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var teamCollection = db.GetCollection<Team>("teams");
                 teamCollection.Insert(item);
             }
-            
         }
         //Function to add members of a team to the database, it take TeamMembers object.
-
         public void AddMember(TeamMembers item)
         {
-
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var membersCollection = db.GetCollection<TeamMembers>("members");
                 membersCollection.Insert(item);
             }
-            
         }
-
         public void AddTriggers(Triggers item)
         {
-
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var triggersCollection = db.GetCollection<Triggers>("triggers");
                 triggersCollection.Insert((Triggers)item);
-
             }
         }
-
         public void AddSettings(SettingsData item)
         {
 
@@ -106,7 +90,6 @@ namespace WindowsFormsApp1
             }
             return count;
         }
-
         //Function to count the number of members in the database
         public int CountMembers()
         {
@@ -118,7 +101,6 @@ namespace WindowsFormsApp1
             }
             return count;
         }
-
         public int CountTriggers()
         {
             int count;
@@ -129,7 +111,6 @@ namespace WindowsFormsApp1
             }
             return count;
         }
-
         //Function to delete the team and the members that belongs to that team. it takes the string team name
         public void DeleteRecord(string theTeam)
         {
@@ -143,18 +124,7 @@ namespace WindowsFormsApp1
                 triggersCollection.Delete(Query.EQ("TeamName", theTeam));
             }
         }
-
-        public void DeleteSettings()
-        {
-            using (var db = new LiteDatabase(@"TestDataBase1.db"))
-            {
-                var settingsCollection = db.GetCollection<SettingsData>("settings");
-                settingsCollection.Delete(Query.All());
-                }
-        }
-
         //return a list of team
-
         public IList<Team> GetAll()
         {
             var teamToReturn = new List<Team>();
@@ -169,7 +139,6 @@ namespace WindowsFormsApp1
                 return teamToReturn;
             }
         }
-
         public IList<TeamMembers> GetMembers()
         {
             var teamToReturn = new List<TeamMembers>();
@@ -184,7 +153,6 @@ namespace WindowsFormsApp1
                 return teamToReturn;
             }
         }
-
         public IList<Triggers> GetTriggers()
         {
             var triggerToReturn = new List<Triggers>();
@@ -199,7 +167,6 @@ namespace WindowsFormsApp1
                 return triggerToReturn;
             }
         }
-
         public IList<SettingsData> GetSettings()
         {
             var settingsToReturn = new List<SettingsData>();
@@ -214,7 +181,6 @@ namespace WindowsFormsApp1
                 return settingsToReturn;
             }
         }
-
         public void UpdateTriggers(Triggers atrigger, Boolean x)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
@@ -227,7 +193,6 @@ namespace WindowsFormsApp1
 
             }
         }
-
         public void UpdateSettings(SettingsData item)
         {
             int count = 0;
@@ -239,28 +204,22 @@ namespace WindowsFormsApp1
             {
                 Variables.db.AddSettings(Variables.SettingsInstance);
             }
-
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 var settingsCollection = db.GetCollection<SettingsData>("settings");
                 settingsCollection.Update(item);
             }
-
         }
-
         public void UpdateTriggerDismiss(Triggers atrigger, DateTime dismissDate)
         {
             using (var db = new LiteDatabase(@"TestDataBase1.db"))
             {
                 // Open data file (or create if not exits)  
                 var triggersCollection = db.GetCollection<Triggers>("triggers");
-
                 atrigger.DismissDate = dismissDate;
                 triggersCollection.Update(atrigger);
-
             }
         }
-
         public string ReadTeam()
         {
             return "a";

@@ -17,36 +17,26 @@ namespace WindowsFormsApp1
     {
         private string name;
         private string url;
-        
-
-
         public Team()
         {
             
         }
-
         public Team(String n, String u)
         {
             name = n;
             url = u;
         }
-
-        
-
         public int Id { get; set; }
         public String Name
         {
             get { return name; }
             set { name = value; }
         }
-
         public String Url
         {
             get { return url; }
             set { url = value; }
         }
-        
-
         internal static bool isNull(Team[] tempTeam)
         {
             throw new NotImplementedException();

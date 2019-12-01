@@ -15,20 +15,24 @@ namespace WindowsFormsApp1
 {
     public partial class HomeDashboard : Form
     {
-              
         public Variables Callingform { get; set; }
         //public variables
         public int count = 0;
-
         public HomeDashboard()
         {
-            
             InitializeComponent();
-            Variables.db.UpdateSettings(Variables.SettingsInstance);
+            if (Variables.db.GetSettings() != null)
+            {
+                foreach (var item in Variables.db.GetSettings())
+                {
+                    Variables.SettingsInstance.MembersDays = item.MembersDays;
+                    Variables.SettingsInstance.TeamWeeks = item.TeamWeeks;
+                }
+            }
+            else
+                Variables.db.UpdateSettings(Variables.SettingsInstance);
             this.DisplayNotifications();
-
         }
-
         //Display teams after the read function
         public void Display()
         {
@@ -49,21 +53,12 @@ namespace WindowsFormsApp1
             {
                 if (i.Active)
                 {
-                    //string name = i.TeamName + ":" + i.MemberName;
-                    //Notification name = new Notification();
                     Notification a = new Notification();
                     homeNotifications.Add(a);
                     a.loadNotification(this, i);
                 }
             }
         }
-
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         // Add Team Button
         private void button3_Click(object sender, EventArgs e)
         {
@@ -71,74 +66,42 @@ namespace WindowsFormsApp1
             var f2 = new Add_Team();
             f2.Show();
         }
-
-
         // Remove Team Button
         private void button2_Click(object sender, EventArgs e)
         {
             var f2 = new Remove_Team();
             f2.Show();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
-
-
         private void Team_Dashboard_Click(object sender, EventArgs e)
         {
-
         }
-
         private void TeamDashboard_Load(object sender, EventArgs e)
         {
             Variables.TMInstance.Read();
             Display();
         }
-
-        private void Refresh_Click(object sender, EventArgs e)
-
-            
+        private void Refresh_Click(object sender, EventArgs e)   
         {
-
             Variables.NTInstance.Refresh();
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
             this.DisplayNotifications();
-            
-
-
-
         }
         private void Settings_Click(object sender, EventArgs e)
         {
             var f2 = new Settings();
             f2.Show();
-
         }
-        private void Notifications_List_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
-
         private void label1_Click_1(object sender, EventArgs e)
         {
-
         }
-
         private void Notification_Table_Paint(object sender, PaintEventArgs e)
         {
-
         }
     }
-    
 }

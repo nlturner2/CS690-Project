@@ -13,6 +13,11 @@ namespace WindowsFormsApp1
             MembersDays = 7;
             TeamWeeks = 1;
         }
+        public SettingsData(int tDays, int mDays)
+        {
+            MembersDays = mDays;
+            TeamWeeks = tDays;
+        }
         public int Id { get; set; }
         public int MembersDays { get; set; }
         public int TeamWeeks { get; set; }

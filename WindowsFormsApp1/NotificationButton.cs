@@ -15,7 +15,6 @@ namespace WindowsFormsApp1
     class NotificationButton
     {
         public Variables Callingform { get; set; }
-
         public Button notiButton;
         public Button closeButton;
         public Button createNotificationButton(Triggers x)
@@ -27,9 +26,7 @@ namespace WindowsFormsApp1
             closeButton.Image = WindowsFormsApp1.Properties.Resources.close5;
             closeButton.Location = new Point(238, 0);
             notiButton.Controls.Add(closeButton);            
-
             string s = x.Type;
-
             if (s == "teamMeeting")
             {
                 string teamName = x.TeamName;
@@ -38,7 +35,6 @@ namespace WindowsFormsApp1
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x); };
-
             }
             else if (s == "teamCommit")
             {
@@ -60,32 +56,27 @@ namespace WindowsFormsApp1
             }
             return notiButton;
         }
-
         // click method for notifications on HomeDahboard
         public void closeButton_Click(object sender, EventArgs e, Triggers t)
         {
             removeNotification(t);
         }
-
         // click method for notifications of team members on Team_Dashboard
         public void closeButton_Click2(object sender, EventArgs e, Triggers t)
         {
             removeNotificationMember(t);
         }
-
         public void removeNotification(Triggers trig)
         {
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
             Variables.db.UpdateTriggers(trig, false);
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
         }
-
         public void removeNotificationMember(Triggers trig)
         {
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
             Variables.db.UpdateTriggers(trig, false);
             Application.OpenForms.OfType<Team_Dashboard>().First().Notification_Table2.Controls.Remove(notiButton);
         }
-
     }
 }

@@ -9,23 +9,17 @@ namespace WindowsFormsApp1
 {
     public class TeamMembers
     {
-
-
         public TeamMembers()
-        {
-            
+        {   
         }
-
         public TeamMembers(string name, string team)
         {
             MemberName = name;
             TeamName = team;
         }
-        
         public int Id { get; set; }
         public string MemberName { get; set; }
         public string TeamName { get; set; }
-        
     }
 }
 

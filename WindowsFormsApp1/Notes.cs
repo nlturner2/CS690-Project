@@ -9,7 +9,6 @@ namespace WindowsFormsApp1
 {
     public class Notes
     {
-
         public void WriteNotes(Team teams, string note)
         {
             string filepath = @"C:\Teamfiles\" + teams.Name;
@@ -21,9 +20,7 @@ namespace WindowsFormsApp1
             {
                 File.Delete(filepath);
             }
-
             File.WriteAllText(filepath,note);
-
         }
         public string ReadNotes(Team teams)
         {
@@ -31,7 +28,6 @@ namespace WindowsFormsApp1
             string filepath = @"C:\Teamfiles\" + teams.Name;
             if (!File.Exists(filepath))
             {
-
             }
             else
             {
@@ -42,7 +38,5 @@ namespace WindowsFormsApp1
             }
             return s;
         }
-
     }
-
 }
