@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
 {
     public class TeamManagement
     {
+
         public Variables Callingform { get; set; }
         /* To use Functions from this class or variables from this class in other places put 
          * "Variables.TM"
@@ -85,6 +86,7 @@ namespace WindowsFormsApp1
         }
         public void Write(Team obj)
         {
+            //add team to array of team objects
             Array.Resize<Team>(ref teamBook, count + 1);
             teamBook[teamBook.Count() - 1] = obj;
             count = teamBook.Count();   
@@ -92,7 +94,6 @@ namespace WindowsFormsApp1
         public void Read()
         {
             int i = 0;
-            string url = "";
             //create array of files and set teamBook length
             teamBook = new Team[Variables.db.CountTeams()];
             //read in all the file names and the first line of each file which contains the URL
