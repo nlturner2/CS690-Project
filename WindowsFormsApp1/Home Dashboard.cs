@@ -116,6 +116,10 @@ namespace WindowsFormsApp1
             
         {
 
+            
+            
+
+            
             Variables.NTInstance.Refresh();
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
             this.DisplayNotifications();

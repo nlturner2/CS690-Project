@@ -260,9 +260,17 @@ namespace WindowsFormsApp1
             }
         }
 
-        public string ReadTeam()
+        public Boolean CheckTeam(string theName, string theUrl)
         {
-            return "a";
+            Boolean result;
+            using (var db = new LiteDatabase(@"TestDataBase1.db"))
+            {
+                var teamCollection = db.GetCollection<Team>("teams");
+                var nameResult = teamCollection.Exists(Query.EQ("Name", theName));
+                var urlResult = teamCollection.Exists(Query.EQ("Url", theUrl));
+                result = nameResult || urlResult;
+            }
+            return result;
         }
     }
 }

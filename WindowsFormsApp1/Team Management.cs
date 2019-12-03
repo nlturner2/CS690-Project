@@ -28,22 +28,32 @@ namespace WindowsFormsApp1
             if ((name != "") && (url != ""))
             {
                 // replaced "!File.Exists(fileName)" with true
-                if (true)
+                if (!(Variables.db.CheckTeam(name, url)))
                 {
                     // create team
                     Team team = new Team(name, url);
                     Variables.db.AddTeam(team);
                     CreateMembers(name, url);
-                    Triggers Trigger1 = new Triggers("teamCommit", name,url);
+                    Triggers Trigger1 = new Triggers("teamCommit", name);
                     Variables.db.AddTriggers(Trigger1);
-                    Triggers Trigger2 = new Triggers("teamMeeting", name,url);
+                    Triggers Trigger2 = new Triggers("teamMeeting", name);
                     Variables.db.AddTriggers(Trigger2);
-                    
+                    Triggers Trigger3 = new Triggers("standard", name);
+                    Variables.db.AddTriggers(Trigger3);
+
                     obj.tableLayoutPanel1.Show();
                     obj.Show();
                     var main = Application.OpenForms.OfType<HomeDashboard>().First();
                     Variables.TMInstance.Write(team);
                 }
+                else
+                {
+                    MessageBox.Show("Either Team name or URL already exists");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Both Team name or URL cannot be empty");
             }
 
 
@@ -61,7 +71,7 @@ namespace WindowsFormsApp1
                 {
                     userName = item;
                     TeamMembers Member = new TeamMembers(item, teamName);
-                    Triggers Trigger = new Triggers("memberCommit", teamName,url,item);
+                    Triggers Trigger = new Triggers("memberCommit", teamName,item);
                     Variables.db.AddMember(Member);
                     Variables.db.AddTriggers(Trigger);
                 }
@@ -116,7 +126,6 @@ namespace WindowsFormsApp1
         {
             
             int i = 0;
-            string url = "";
             //create folder if none exists
             
             //create array of files and set teamBook length
