@@ -10,7 +10,6 @@ namespace WindowsFormsApp1
     {
         public Triggers()
         {
-
         }
 
 
@@ -34,8 +33,6 @@ namespace WindowsFormsApp1
         public string Type { get; set; }
         public string TeamName { get; set; }
         public string MemberName { get; set; }
-
-
         public Boolean Active { get; set; }
         public DateTime DismissDate { get; set; }
     }

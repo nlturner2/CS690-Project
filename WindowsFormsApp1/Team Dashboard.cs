@@ -18,14 +18,12 @@ namespace WindowsFormsApp1
         public Variables Callingform { get; set; }
         Team currentTeam;
         Notification notification = new Notification();
-        
         public Team_Dashboard(Team obj)
         {
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
         }
-
        public void DisplayNotifications()
         {
             IList<Triggers> trig = Variables.db.GetTriggers();
@@ -40,43 +38,23 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
         private void Home_Click(object sender, EventArgs e)
         {
             //Close teamdashboard
             Close();
         }
-
         private void TabPage1_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void TabPage2_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-
         private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-            
+        {   
         }
-
         private void Team_Dashboard_Load(object sender, EventArgs e)
         {
-
         }
-
-        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
-        {
-            
-        }
-
         private void TeamMeeting_Click(object sender, EventArgs e)
         {
-
         }
         private void SaveNotes_Click(object sender, EventArgs e)
         {
@@ -87,40 +65,15 @@ namespace WindowsFormsApp1
             }
             Variables.NotesInstance.WriteNotes(currentTeam,s);
         }
-
         private void richTextBox1_TextChanged_2(object sender, EventArgs e)
         {
-
         }
-
-        private void richTextBox1_TextChanged_3(object sender, EventArgs e)
-        {
-
-        }
-
         private void Progress_List_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filesBox_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             // make the selected file clicakable 
             if (filesBox.SelectedItem != null)
             {
@@ -131,19 +84,9 @@ namespace WindowsFormsApp1
 
 
             }
-          
         }
-
         private void summaryrichTextBox1_VScroll(object sender, EventArgs e)
         {
-
         }
     }
-   
 }
-
-
-              
-          
-
-        

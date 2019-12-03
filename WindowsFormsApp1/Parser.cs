@@ -85,7 +85,9 @@ namespace WindowsFormsApp1
 
                     }
 
+
                 }
+
             }
             return fileContentList;
         }
@@ -232,14 +234,8 @@ namespace WindowsFormsApp1
                 {
                     //if commit is called
                     case "commit":
-                        if (i <= 3)
-                        {
-                            line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t" + "         " + data[i].commit.message;
-                        }
-                        else
-                        {
-                            line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " .  " + data[i].commit.message;
-                        }
+                        //line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t"  + data[i].commit.message;
+                        line = String.Format("{0,-25} | {1,-25} | {2,0}", data[i].commit.committer.date, data[i].commit.author.name, data[i].commit.message);
                         break;
                    
                     case "username":

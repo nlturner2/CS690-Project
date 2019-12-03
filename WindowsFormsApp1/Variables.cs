@@ -15,9 +15,7 @@ namespace WindowsFormsApp1
             get => TM;
 
         }
-
         private static DataConnection dbc = new DataConnection();
-
         public static DataConnection db
         {
             get => dbc;
@@ -37,19 +35,10 @@ namespace WindowsFormsApp1
         {
             get => note;
         }
-
         private static SettingsData Settings = new SettingsData();
         public static SettingsData SettingsInstance
         {
             get => Settings;
-
         }
-
-
-
     }
-
-
-
-        
 }
