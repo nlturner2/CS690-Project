@@ -75,32 +75,40 @@ namespace WindowsFormsApp1
         }
         public void removeTeam(string teamName)
         {
-            //create new smaller temporary array
-            Team[] tempTeam = new Team[teamBook.Count() - 1];
-            int index = 0;
-            foreach (Team i in teamBook)
+            if (Variables.db.CheckTeam(teamName,"any url"))
             {
-                //check if a file is in array when it is delete it.
-                if (i.Name != teamName)
+                //create new smaller temporary array
+                Team[] tempTeam = new Team[teamBook.Count() - 1];
+                int index = 0;
+                foreach (Team i in teamBook)
                 {
-                    tempTeam[index] = i;
+                    //check if a file is in array when it is delete it.
+                    if (i.Name != teamName)
+                    {
+                        tempTeam[index] = i;
+                        index++;
+                    }
+                    else
+                    {
+                        Variables.db.DeleteRecord(teamName);
+                    }
+                }
+                //resize teamBook array
+                count = tempTeam.Count();
+                Array.Resize<Team>(ref teamBook, count);
+                //add all the items back to the original array
+                index = 0;
+                foreach (Team i in tempTeam)
+                {
+                    teamBook[index] = i;
                     index++;
                 }
-                else
-                {
-                    Variables.db.DeleteRecord(teamName);
-                }
             }
-            //resize teamBook array
-            count = tempTeam.Count();
-            Array.Resize<Team>(ref teamBook, count);
-            //add all the items back to the original array
-            index = 0;
-            foreach (Team i in tempTeam)
+            else
             {
-                teamBook[index] = i;
-                index++;
+                MessageBox.Show("This team does not exists");
             }
+            
         }
         public void Write(Team obj)
         {
