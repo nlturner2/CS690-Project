@@ -92,27 +92,6 @@ namespace WindowsFormsApp1
         private void Team_Dashboard_Click(object sender, EventArgs e)
         {
         }
-        private void TeamDashboard_Load(object sender, EventArgs e)
-        {
-            Variables.TMInstance.Read();
-            Display();
-        }
-        private void Refresh_Click(object sender, EventArgs e)   
-        {
-            //Variables.NTInstance.Refresh();
-            //Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
-            //this.DisplayNotifications();
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void Team_Dashboard_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void TeamDashboard_Load(object sender, EventArgs e)
         {
