@@ -39,6 +39,9 @@ namespace WindowsFormsApp1
                     switch (options)
                     {
                         //if readme is called
+                        case "contents":
+                            partialText = "https://api.github.com/repos" + partialText + "/contents";
+                            break;
                         case "readme":
                             //url is sroting in partialText
                             partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
@@ -279,18 +282,26 @@ namespace WindowsFormsApp1
             //Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
 
             //dict.Clear();
-
+            string template ="";
             var tupleList = new List<(DateTime, string)>();
             foreach (var item in list)
             {
-                int LineLocation = item.IndexOf("_", StringComparison.Ordinal);
-                string date = item.Remove(LineLocation);
-                date = date.Replace('-', '/');
-                DateTime dateTime = DateTime.Parse(date);
-                timeList.Add(dateTime);
-                //dict.Add(dateTime,item);
-                tupleList.Add((dateTime, item));
-
+                
+                if (Char.IsDigit(item[0]))
+                {
+                    int LineLocation = item.IndexOf("_", StringComparison.Ordinal);
+                    string date = item.Remove(LineLocation);
+                    date = date.Replace('-', '/');
+                    DateTime dateTime = DateTime.Parse(date);
+                    timeList.Add(dateTime);
+                    //dict.Add(dateTime,item);
+                    tupleList.Add((dateTime, item));
+                }
+                else
+                {
+                    template = item;
+                }
+                
             }
 
             tupleList.Sort((x,y)=> y.Item1.CompareTo(x.Item1));
@@ -302,6 +313,7 @@ namespace WindowsFormsApp1
             {
                 resultList.Add(item.Item2);
             }
+            resultList.Add(template);
             return resultList;
         }
 
