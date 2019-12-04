@@ -56,10 +56,10 @@ namespace WindowsFormsApp1
                 TD.meetingRichTextBox1.Text += Variables.parseInstance.parse_Meeting(meetingMinutesFile);
                 TD.NotesRichTextBox1.Text += Variables.NotesInstance.ReadNotes(newTeam);
                 // Display the some commits in like date, name, and message in weekly progress
-                foreach(var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+                /*foreach(var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
                 {
                     TD.filesBox.Items.Add(item);
-                }
+                }*/
                 foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))
                 {
                     TD.Progress_List.Items.Add(item);

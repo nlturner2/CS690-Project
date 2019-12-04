@@ -66,6 +66,7 @@ namespace WindowsFormsApp1
         
         public List<string> meetingFile(string URL,List<string> fileNames)
         {
+            fileNames = fileNameSorting(fileNames);
             List<string> fileContentList = new List<string>();
             string partialText = "";
             if (!String.IsNullOrWhiteSpace(URL))
