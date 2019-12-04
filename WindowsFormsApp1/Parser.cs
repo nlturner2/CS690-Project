@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web.Helpers;
 
 namespace WindowsFormsApp1
@@ -37,6 +39,9 @@ namespace WindowsFormsApp1
                     switch (options)
                     {
                         //if readme is called
+                        case "contents":
+                            partialText = "https://api.github.com/repos" + partialText + "/contents";
+                            break;
                         case "readme":
                             //url is sroting in partialText
                             partialText = "https://raw.githubusercontent.com" + partialText + "/master/README.md";
@@ -85,7 +90,9 @@ namespace WindowsFormsApp1
 
                     }
 
+
                 }
+
             }
             return fileContentList;
         }
@@ -148,9 +155,9 @@ namespace WindowsFormsApp1
             summary = summary.Trim();
 
             return summary;
-
-
         }
+
+
         public string parse_Members(string data)
         {
             
@@ -194,12 +201,15 @@ namespace WindowsFormsApp1
             return Members;
         }
 
+
+
         /// <summary>
         /// taking url and convert it to api, after that getting json file for api and start read data for commit history
         /// </summary>
         /// <param name="apiURL"></param> The team api for URL
         /// <param name="options"></param>Have options to load data for commit history from apiurl as json
         /// <returns></returns>
+        //this is using the API to send request
         public List<string> LoadGithubDataAsync(string apiURL,string options)
         {
             //List of string 
@@ -232,14 +242,8 @@ namespace WindowsFormsApp1
                 {
                     //if commit is called
                     case "commit":
-                        if (i <= 3)
-                        {
-                            line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t" + "         " + data[i].commit.message;
-                        }
-                        else
-                        {
-                            line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " .  " + data[i].commit.message;
-                        }
+                        //line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t"  + data[i].commit.message;
+                        line = String.Format("{0,-25} | {1,-25} | {2,0}", data[i].commit.committer.date, data[i].commit.author.name, data[i].commit.message);
                         break;
                    
                     case "username":
@@ -268,6 +272,52 @@ namespace WindowsFormsApp1
             return list;
 
         }
+
+
+        public List<string> fileNameSorting(List<string> list)
+        {
+            List<DateTime> timeList = new List<DateTime>();
+            List<string> stringList = new List<string>();
+
+            //Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
+
+            //dict.Clear();
+            string template ="";
+            var tupleList = new List<(DateTime, string)>();
+            foreach (var item in list)
+            {
+                
+                if (Char.IsDigit(item[0]))
+                {
+                    int LineLocation = item.IndexOf("_", StringComparison.Ordinal);
+                    string date = item.Remove(LineLocation);
+                    date = date.Replace('-', '/');
+                    DateTime dateTime = DateTime.Parse(date);
+                    timeList.Add(dateTime);
+                    //dict.Add(dateTime,item);
+                    tupleList.Add((dateTime, item));
+                }
+                else
+                {
+                    template = item;
+                }
+                
+            }
+
+            tupleList.Sort((x,y)=> y.Item1.CompareTo(x.Item1));
+
+            //var sortedList = dict.Keys.OrderByDescending(e => e).ToList();
+
+            List<string> resultList = new List<string>();
+            foreach(var item in tupleList)
+            {
+                resultList.Add(item.Item2);
+            }
+            resultList.Add(template);
+            return resultList;
+        }
+
+
 
         public string parse_Meeting(string data)
         {

@@ -12,20 +12,14 @@ namespace WindowsFormsApp1
 {
     public class NotificationTriggers
     {
-
-        private int TeamDays1 = 7;
-        private int TeamDays2 = 14;
-        private int MembersDays1 = 7;
-        private int MembersDays2 = 14;
+        int TeamDays1;
+        int TeamDays2;
+        int MembersDays1;
+        int MembersDays2;
         public Variables Callingform { get; set; }
-
         public NotificationTriggers()
         {
-
         }
-
-
-        
         public void TeamCommitTrigger(Team t)
         {
             //making sure team have at least one memmber
@@ -37,7 +31,6 @@ namespace WindowsFormsApp1
                     counter++;
                 }
             }
-
             if (counter > 0)
             {
                 Boolean checkTeamCommit = true;
@@ -56,66 +49,49 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
-                
                 //update team commit
                 foreach (Triggers itemTeamCommit in Variables.db.GetTriggers())
                 {
-                    
                     if(t.Name == itemTeamCommit.TeamName && (itemTeamCommit.Type == "teamCommit"))
                     {
                         Variables.db.UpdateTriggers(itemTeamCommit, checkTeamCommit);
-                    }
-                   
-                }
-                
+                    }  
+                }   
             }
-
         }
-
         public void CommitTrigger2(Team t, Boolean commitCheck)
         {
             //update members commit
             foreach (Triggers item in Variables.db.GetTriggers())
+            {
+                if (t.Name == item.TeamName)
                 {
-                    if (t.Name == item.TeamName)
-                    {
-                        if (item.Type == "memberCommit")
+                    if (item.Type == "memberCommit")
                         {
-                            if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                        if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                        {
+                            if (commitCheck)
                             {
-                                if (commitCheck)
-                                {
-                                    item.Active = false;
-                                    
-                                    Variables.db.UpdateTriggers(item, false);
-                                }
-                                else
-                                {
-                                    // databse error, it does not update database even though it function work somewhere else
-                                    //it can update the date but does not update the status
-                                    item.Active = true;
-                                    
-                                    Variables.db.UpdateTriggers(item, true);
-                                    
-                                }
+                                item.Active = false;
+                                Variables.db.UpdateTriggers(item, false);
                             }
                             else
                             {
-                                item.Active = false;
-                              
-                                Variables.db.UpdateTriggers(item, false);
-                           }
-
+                                // databse error, it does not update database even though it function work somewhere else
+                                //it can update the date but does not update the status
+                                item.Active = true;
+                                Variables.db.UpdateTriggers(item, true); 
+                            }
+                        }
+                        else
+                        {
+                            item.Active = false;
+                            Variables.db.UpdateTriggers(item, false);
                         }
                     }
-
-
                 }
+            }
         }
-
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -146,34 +122,27 @@ namespace WindowsFormsApp1
                         //dissmiss notification
                     }
                 }
-            }
-                
+            }       
         }
-        
         public void Refresh()
         {
             foreach (Team team in Variables.db.GetAll())
             {
                 Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
                 Boolean meetings = MeetingDateCheck(team.Url);
-
                 CommitTrigger2(team, commit);
                 MeetingsTrigger(team, meetings);
                 TeamCommitTrigger(team);
-
             }
         }
-
         /// <summary>
         /// to check if the team committed in the past #numberOfDays. 
         /// </summary>
         /// <param name="url"></param>
         /// <param name="numberOfDays"></param>
-        /// <returns></returns> return true if they did, return false if they didn't.
+        /// <returns></returns> return true if they did, return false if they didn't, throw .
         ///
-
-        public Boolean CommitDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                  return acceptable;         }   
-
+        public Boolean CommitDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                 return acceptable;         }   
         /// <summary>
         /// to check if the commit notification should shown or not. in the $numberOfDays, after the user dismiss the notification, the notification should shown up again.
         /// </summary>
@@ -189,10 +158,8 @@ namespace WindowsFormsApp1
             {
                 dismiss = true;
             }
-
             return dismiss;
         }
-
         /// <summary>
         /// get the date when the notification was dismissed, and calculate the date of that next Monday, check if today is the next Monday, 
         /// </summary>
@@ -205,14 +172,11 @@ namespace WindowsFormsApp1
             DateTime today = DateTime.Today;
             while (DismissDate.DayOfWeek != weekStart)
                 DismissDate = DismissDate.AddDays(1);
-
             DateTime nextWeekStart = DismissDate.AddDays(1);
-
             if(!(today<nextWeekStart))
             {
                 notification = true;
             }
-
             return notification;
         }
         /// <summary>
@@ -225,21 +189,16 @@ namespace WindowsFormsApp1
             Boolean acceptable = true;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
             List<string> filename = new List<string>();
-
-
             DayOfWeek weekStart = DayOfWeek.Monday;
             DateTime startingDate = DateTime.Today;
             while (startingDate.DayOfWeek != weekStart)
                 startingDate = startingDate.AddDays(-1);
-
             DateTime previousWeekStart = startingDate.AddDays(-7);
             DateTime previousWeekEnd = startingDate.AddDays(-1);
-
             foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
             {
                 filename.Add(item);
             }
-
             //only check the last 
             foreach (var item in filename)
             {
@@ -254,13 +213,11 @@ namespace WindowsFormsApp1
                         string endDate = list[1].Replace('-', '/');
                         DateTime start = DateTime.Parse(startDate);
                         DateTime end = DateTime.Parse(endDate);
-
                         if (previousWeekStart > end)
                         {
                             acceptable = false;
                         }
                     }
-
                     if (revisedItem.Contains('-') && !(revisedItem.Contains("_")))
                     {
                         string startDate = revisedItem.Replace('-', '/');
@@ -271,21 +228,15 @@ namespace WindowsFormsApp1
                         {
                             acceptable = false;
                         }
-
-
                     }
-
                 }
                 catch (Exception)
                 {
                     throw new Exception("The MeetingMinutes file is not following the standard format.");
                 } 
-
             }
-            
             return acceptable;
         }
-
         public void setTeamDays(string days)
         {
             int count = 0;
@@ -297,12 +248,10 @@ namespace WindowsFormsApp1
             {
                 Variables.db.AddSettings(Variables.SettingsInstance);
             }
-            
             this.TeamDays1 = Convert.ToInt32(days);
             Variables.SettingsInstance.TeamWeeks = this.TeamDays1;
             Variables.db.UpdateSettings(Variables.SettingsInstance);
             this.TeamDays2 = 2*this.TeamDays1;
-
         }
         public void setMemberDays(string days)
         {
@@ -315,7 +264,6 @@ namespace WindowsFormsApp1
             {
                 Variables.db.AddSettings(Variables.SettingsInstance);
             }
-
             this.MembersDays1 = Convert.ToInt32(days);
             this.MembersDays2 = 2 * this.MembersDays1;
             Variables.SettingsInstance.MembersDays = MembersDays1;

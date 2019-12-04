@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
         public Variables Callingform { get; set; }
         Team currentTeam;
         Notification notification = new Notification();
-        
         public Team_Dashboard(Team obj)
         {
             InitializeComponent();
@@ -26,7 +25,6 @@ namespace WindowsFormsApp1
             currentTeam = obj;
             this.DisplayNotifications();
         }
-
        public void DisplayNotifications()
         {
             IList<Triggers> trig = Variables.db.GetTriggers();
@@ -41,43 +39,23 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
         private void Home_Click(object sender, EventArgs e)
         {
             //Close teamdashboard
             Close();
         }
-
         private void TabPage1_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void TabPage2_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-
         private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-            
+        {   
         }
-
         private void Team_Dashboard_Load(object sender, EventArgs e)
         {
-
         }
-
-        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
-        {
-            
-        }
-
         private void TeamMeeting_Click(object sender, EventArgs e)
         {
-
         }
         private void SaveNotes_Click(object sender, EventArgs e)
         {
@@ -88,63 +66,29 @@ namespace WindowsFormsApp1
             }
             Variables.NotesInstance.WriteNotes(currentTeam,s);
         }
-
         private void richTextBox1_TextChanged_2(object sender, EventArgs e)
         {
-
         }
-
-        private void richTextBox1_TextChanged_3(object sender, EventArgs e)
-        {
-
-        }
-
         private void Progress_List_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filesBox_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             // make the selected file clicakable 
             if (filesBox.SelectedItem != null)
             {
                 // getting the url for specifc file
                 string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
                 // display the content for the file in textbox
-                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[filesBox.SelectedIndex]);
+                var fileNames = Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename");
+                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, fileNames)[filesBox.SelectedIndex]);
 
 
             }
-          
         }
-
         private void summaryrichTextBox1_VScroll(object sender, EventArgs e)
         {
-
         }
     }
-   
 }
-
-
-              
-          
-
-        

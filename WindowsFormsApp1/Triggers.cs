@@ -10,11 +10,10 @@ namespace WindowsFormsApp1
     {
         public Triggers()
         {
-
         }
 
 
-        public Triggers(string triggerType, string teamName, string url)
+        public Triggers(string triggerType, string teamName)
         {
             Type = triggerType;
             TeamName = teamName;
@@ -22,7 +21,7 @@ namespace WindowsFormsApp1
             Active = false;
             DismissDate = DateTime.Today.AddDays(-360);
         }
-        public Triggers(string triggerType, string teamName, string url, string memberName)
+        public Triggers(string triggerType, string teamName, string memberName)
         {
             Type = triggerType;
             TeamName = teamName;
@@ -34,8 +33,6 @@ namespace WindowsFormsApp1
         public string Type { get; set; }
         public string TeamName { get; set; }
         public string MemberName { get; set; }
-
-
         public Boolean Active { get; set; }
         public DateTime DismissDate { get; set; }
     }
