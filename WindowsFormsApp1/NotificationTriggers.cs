@@ -140,7 +140,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="url"></param>
         /// <param name="numberOfDays"></param>
-        /// <returns></returns> return true if they did, return false if they didn't.
+        /// <returns></returns> return true if they did, return false if they didn't, throw .
         ///
         public Boolean CommitDateCheck (string url, int numberOfDays)         {              Boolean acceptable = true;             List<DateTime> dates = new List<DateTime>();             List<string> datesText = Variables.parseInstance.LoadGithubDataAsync(Variables.parseInstance.URLFactory(url, "commit"), "date");             foreach (var date in datesText)             {                 DateTime dateTime = DateTime.Parse(date);                 dates.Add(dateTime);             }             dates.Sort();             DateTime today = DateTime.Today;             DateTime daysAgo = today.AddDays(-numberOfDays);             int datesCount = dates.Count;             if (daysAgo > dates[datesCount - 1])             {                 acceptable = false;             }                 return acceptable;         }   
         /// <summary>

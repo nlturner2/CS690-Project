@@ -34,7 +34,8 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.team5;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x); };
+                closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x, Application.OpenForms.OfType<HomeDashboard>().First()); };
+
             }
             else if (s == "teamCommit")
             {
@@ -43,7 +44,7 @@ namespace WindowsFormsApp1
                 notiButton.TextAlign = ContentAlignment.MiddleLeft;
                 notiButton.Image = WindowsFormsApp1.Properties.Resources.commit4;
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
-                closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x); };
+                closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x, Application.OpenForms.OfType<HomeDashboard>().First()); };
             }
             else if (s == "memberCommit")
             {
@@ -56,10 +57,23 @@ namespace WindowsFormsApp1
             }
             return notiButton;
         }
-        // click method for notifications on HomeDahboard
-        public void closeButton_Click(object sender, EventArgs e, Triggers t)
+
+        // click method for team notifications on HomeDahboard
+        public void closeButton_Click(object sender, EventArgs e, Triggers t, HomeDashboard hd)
         {
             removeNotification(t);
+
+            foreach (Button tb in hd.tableLayoutPanel1.Controls)
+            {
+                if (tb.Text == t.TeamName)
+                {
+                    tb.Image = null;
+
+                    Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
+
+                    Application.OpenForms.OfType<HomeDashboard>().First().DisplayNotifications();
+                }
+            }
         }
         // click method for notifications of team members on Team_Dashboard
         public void closeButton_Click2(object sender, EventArgs e, Triggers t)

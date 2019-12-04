@@ -32,7 +32,9 @@ namespace WindowsFormsApp1
             else
                 Variables.db.UpdateSettings(Variables.SettingsInstance);
             this.DisplayNotifications();
+
         }
+
         //Display teams after the read function
         public void Display()
         {
@@ -53,12 +55,21 @@ namespace WindowsFormsApp1
             {
                 if (i.Active)
                 {
+                    //string name = i.TeamName + ":" + i.MemberName;
+                    //Notification name = new Notification();
                     Notification a = new Notification();
                     homeNotifications.Add(a);
                     a.loadNotification(this, i);
                 }
             }
         }
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // Add Team Button
         private void button3_Click(object sender, EventArgs e)
         {
@@ -66,6 +77,8 @@ namespace WindowsFormsApp1
             var f2 = new Add_Team();
             f2.Show();
         }
+
+
         // Remove Team Button
         private void button2_Click(object sender, EventArgs e)
         {
@@ -74,20 +87,32 @@ namespace WindowsFormsApp1
         }
         private void label1_Click(object sender, EventArgs e)
         {
+
         }
         private void Team_Dashboard_Click(object sender, EventArgs e)
         {
         }
+
         private void TeamDashboard_Load(object sender, EventArgs e)
         {
             Variables.TMInstance.Read();
             Display();
         }
-        private void Refresh_Click(object sender, EventArgs e)   
+
+        private void Refresh_Click(object sender, EventArgs e)    
         {
+            foreach (Button tb in Application.OpenForms.OfType<HomeDashboard>().First().tableLayoutPanel1.Controls)
+            {
+                tb.Image = null;
+            }
             Variables.NTInstance.Refresh();
+            
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
             this.DisplayNotifications();
+            
+
+
+
         }
         private void Settings_Click(object sender, EventArgs e)
         {

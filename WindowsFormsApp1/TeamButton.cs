@@ -17,7 +17,9 @@ namespace WindowsFormsApp1
     {
         public Variables Callingform { get; set; }
         Team newTeam;
-        private Button button;
+
+        public Button button;    
+
         public TeamButton(Team aTeam)
         {
             this.newTeam = aTeam;
@@ -47,7 +49,7 @@ namespace WindowsFormsApp1
                 // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
                 //downloading string from url which is store in rdmeu     
                 string readMe = Variables.parseInstance.WebClient(readmeURL);
-                string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[0];
+                string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.fileNameSorting(Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename")))[0];
                 //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
                 TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                 //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
@@ -56,14 +58,39 @@ namespace WindowsFormsApp1
                 TD.meetingRichTextBox1.Text += Variables.parseInstance.parse_Meeting(meetingMinutesFile);
                 TD.NotesRichTextBox1.Text += Variables.NotesInstance.ReadNotes(newTeam);
                 // Display the some commits in like date, name, and message in weekly progress
-                foreach(var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+                /*foreach(var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
                 {
                     TD.filesBox.Items.Add(item);
-                }
+                }*/
                 foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))
                 {
                     TD.Progress_List.Items.Add(item);
                 }
+                    TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
+                    //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
+                    TD.teamMembersRichTextBox1.Text += Variables.parseInstance.parse_Members(readMe);
+                    //changing string data into parse_Meeting and storing into TD.meetingRichTextBox1
+                    TD.meetingRichTextBox1.Text += Variables.parseInstance.parse_Meeting(meetingMinutesFile);
+
+                    TD.NotesRichTextBox1.Text += Variables.NotesInstance.ReadNotes(newTeam);
+                // Display the some commits in like date, name, and message in weekly progress
+
+                TD.filesBox.Items.Clear();
+                    foreach(var item in Variables.parseInstance.fileNameSorting(Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename")))
+                    {
+
+                        //if(item = "")
+
+                        TD.filesBox.Items.Add(item);
+                        
+
+                    }
+
+                    foreach (var item in Variables.parseInstance.LoadGithubDataAsync(commitURL, "commit"))
+                    {
+                        TD.Progress_List.Items.Add(item);
+                    }
+                
                 TD.Show();
             }
             catch (Exception)
