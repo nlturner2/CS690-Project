@@ -85,9 +85,9 @@ namespace WindowsFormsApp1
         }
         private void Refresh_Click(object sender, EventArgs e)   
         {
-            Variables.NTInstance.Refresh();
-            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
-            this.DisplayNotifications();
+            //Variables.NTInstance.Refresh();
+            //Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
+            //this.DisplayNotifications();
 
             List<string> list = new List<string>();
 

@@ -276,13 +276,11 @@ namespace WindowsFormsApp1
             List<DateTime> timeList = new List<DateTime>();
             List<string> stringList = new List<string>();
 
-            Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
+            //Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
 
-            foreach(var item in list)
-            {
-            }
-        
+            //dict.Clear();
 
+            var tupleList = new List<(DateTime, string)>();
             foreach (var item in list)
             {
                 int LineLocation = item.IndexOf("_", StringComparison.Ordinal);
@@ -290,19 +288,25 @@ namespace WindowsFormsApp1
                 date = date.Replace('-', '/');
                 DateTime dateTime = DateTime.Parse(date);
                 timeList.Add(dateTime);
-                dict.Add(dateTime,item);
+                //dict.Add(dateTime,item);
+                tupleList.Add((dateTime, item));
 
             }
-            var sortedList = dict.Keys.OrderByDescending(e => e).ToList();
+
+            tupleList.Sort((x,y)=> y.Item1.CompareTo(x.Item1));
+
+            //var sortedList = dict.Keys.OrderByDescending(e => e).ToList();
 
             List<string> resultList = new List<string>();
-            foreach(var item in sortedList)
+            foreach(var item in tupleList)
             {
-                resultList.Add(dict[item]);
+                resultList.Add(item.Item2);
             }
-
             return resultList;
         }
+
+
+
         public string parse_Meeting(string data)
         {
             data = data.Replace("#", "");
