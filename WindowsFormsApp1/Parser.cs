@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web.Helpers;
 
 namespace WindowsFormsApp1
@@ -150,9 +152,9 @@ namespace WindowsFormsApp1
             summary = summary.Trim();
 
             return summary;
-
-
         }
+
+
         public string parse_Members(string data)
         {
             
@@ -196,12 +198,15 @@ namespace WindowsFormsApp1
             return Members;
         }
 
+
+
         /// <summary>
         /// taking url and convert it to api, after that getting json file for api and start read data for commit history
         /// </summary>
         /// <param name="apiURL"></param> The team api for URL
         /// <param name="options"></param>Have options to load data for commit history from apiurl as json
         /// <returns></returns>
+        //this is using the API to send request
         public List<string> LoadGithubDataAsync(string apiURL,string options)
         {
             //List of string 
@@ -265,6 +270,39 @@ namespace WindowsFormsApp1
 
         }
 
+
+        public List<string> fileNameSorting(List<string> list)
+        {
+            List<DateTime> timeList = new List<DateTime>();
+            List<string> stringList = new List<string>();
+
+            Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
+
+            foreach(var item in list)
+            {
+            }
+        
+
+            foreach (var item in list)
+            {
+                int LineLocation = item.IndexOf("_", StringComparison.Ordinal);
+                string date = item.Remove(LineLocation);
+                date = date.Replace('-', '/');
+                DateTime dateTime = DateTime.Parse(date);
+                timeList.Add(dateTime);
+                dict.Add(dateTime,item);
+
+            }
+            var sortedList = dict.Keys.OrderByDescending(e => e).ToList();
+
+            List<string> resultList = new List<string>();
+            foreach(var item in sortedList)
+            {
+                resultList.Add(dict[item]);
+            }
+
+            return resultList;
+        }
         public string parse_Meeting(string data)
         {
             data = data.Replace("#", "");

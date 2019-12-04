@@ -80,7 +80,8 @@ namespace WindowsFormsApp1
                 // getting the url for specifc file
                 string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
                 // display the content for the file in textbox
-                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[filesBox.SelectedIndex]);
+                var fileNames = Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename");
+                meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, fileNames)[filesBox.SelectedIndex]);
 
 
             }
