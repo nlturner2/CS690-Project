@@ -19,9 +19,6 @@ namespace WindowsFormsApp1
         
         int x =Variables.db.CountTeams();
 
-        
-
-        
 
         public void loadNotification(HomeDashboard hd,Triggers t)
         {
@@ -56,6 +53,27 @@ namespace WindowsFormsApp1
             hd.Notification_Table.Controls.Add(a.createNotificationButton(x));
             hd.Notification_Table.Show();
             
+
+            foreach (Button tb in hd.tableLayoutPanel1.Controls)
+            {
+                if (tb.Text == x.TeamName)
+                {
+
+                    if (tb.Image == null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.team5;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+
+                    else if (tb.Image != null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.both;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+                }
+            }
+
+            
         }
 
         // creates notification for commit if the whole team does not commit
@@ -66,6 +84,24 @@ namespace WindowsFormsApp1
 
             hd.Notification_Table.Controls.Add(b.createNotificationButton(x));
             hd.Notification_Table.Show();
+
+            foreach (Button tb in hd.tableLayoutPanel1.Controls)
+            {
+                if (tb.Text == x.TeamName)
+                {   
+                    if(tb.Image == null) {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.commit4;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+
+                    else if (tb.Image != null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.both;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+                    
+                }
+            }
         }
 
         // creates notification if a team member does not commit
@@ -74,7 +110,7 @@ namespace WindowsFormsApp1
         {
             NotificationButton d = new NotificationButton();
             hd.Notification_Table2.Controls.Add(d.createNotificationButton(x));
-            d.closeButton.Click += (sender, EventArgs) => { d.closeButton_Click(sender, EventArgs, x); };
+            d.closeButton.Click += (sender, EventArgs) => { d.closeButton_Click2(sender, EventArgs, x); };
             hd.Notification_Table2.Show();
         }
         

@@ -101,12 +101,14 @@ namespace WindowsFormsApp1
             Display();
         }
 
-        private void Refresh_Click(object sender, EventArgs e)
-
-            
+        private void Refresh_Click(object sender, EventArgs e)    
         {
-
+            foreach (Button tb in Application.OpenForms.OfType<HomeDashboard>().First().tableLayoutPanel1.Controls)
+            {
+                tb.Image = null;
+            }
             Variables.NTInstance.Refresh();
+            
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
             this.DisplayNotifications();
             

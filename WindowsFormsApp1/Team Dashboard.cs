@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
+            this.DisplayNotifications();
         }
 
        public void DisplayNotifications()

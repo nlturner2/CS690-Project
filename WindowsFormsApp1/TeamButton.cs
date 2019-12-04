@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         public Variables Callingform { get; set; }
         Team newTeam;
 
-        private Button button;
+        public Button button;    
 
         public TeamButton(Team aTeam)
         {
@@ -27,8 +27,22 @@ namespace WindowsFormsApp1
             button.Text = aTeam.Name;
             button.Size = new Size(540, 50);
             button.Click += button_Click;
-
         }
+
+        /*public void createPicBox(Image img)
+        {
+            var picture = new PictureBox()
+            {
+                Name = "pictureBox1",
+                Size = new Size(32, 16),
+                Location = new Point(100, 0),
+                Visible = true,
+                Image = img,
+            };
+
+            button.Controls.Add(picture);
+
+        }*/
 
         public String Text
         {
