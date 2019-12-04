@@ -202,8 +202,7 @@ namespace WindowsFormsApp1
             //only check the last 
             foreach (var item in filename)
             {
-                try
-                {
+                
                     int Location = item.LastIndexOf('.');
                     var revisedItem = item.Remove(Location);
                     if (revisedItem.Contains('_'))
@@ -229,13 +228,32 @@ namespace WindowsFormsApp1
                             acceptable = false;
                         }
                     }
-                }
-                catch (Exception)
-                {
-                    throw new Exception("The MeetingMinutes file is not following the standard format.");
-                } 
+                
+               
             }
             return acceptable;
+        }
+
+        public Boolean StandardCheck(string url)
+        {
+            Boolean flag = true;
+            string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
+            foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+            {
+                if(item.Contains('_'))
+                {
+                    flag = false;
+                }
+                if (item.Contains('-') && !(item.Contains("_")))
+                {
+                    flag = false;
+                }
+
+            }
+
+
+
+            return flag;
         }
         public void setTeamDays(string days)
         {
