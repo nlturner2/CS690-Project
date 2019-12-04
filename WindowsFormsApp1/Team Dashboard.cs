@@ -23,6 +23,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             this.Hide();
             currentTeam = obj;
+            this.DisplayNotifications();
         }
        public void DisplayNotifications()
         {
@@ -80,7 +81,7 @@ namespace WindowsFormsApp1
                 // getting the url for specifc file
                 string meetingfileNameURL = Variables.parseInstance.URLFactory(currentTeam.Url, "meetings");
                 // display the content for the file in textbox
-                var fileNames = Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename");
+                var fileNames = Variables.parseInstance.fileNameSorting(Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"));
                 meetingRichTextBox1.Text = Variables.parseInstance.parse_Meeting(Variables.parseInstance.meetingFile(currentTeam.Url, fileNames)[filesBox.SelectedIndex]);
 
 

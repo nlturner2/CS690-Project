@@ -17,7 +17,9 @@ namespace WindowsFormsApp1
     {
         public Variables Callingform { get; set; }
         Team newTeam;
-        private Button button;
+
+        public Button button;    
+
         public TeamButton(Team aTeam)
         {
             this.newTeam = aTeam;
@@ -47,7 +49,7 @@ namespace WindowsFormsApp1
                 // NOTE: THE FOLLOWING LINE DOES NOT WORK WHEN THE MEETING MINUTES FOLDER NAME CONTAINS A SPACE
                 //downloading string from url which is store in rdmeu     
                 string readMe = Variables.parseInstance.WebClient(readmeURL);
-                string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))[0];
+                string meetingMinutesFile = Variables.parseInstance.meetingFile(newTeam.Url, Variables.parseInstance.fileNameSorting(Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename")))[0];
                 //changing string data into parse_Summary and storing into TD.summaryrichTextBox1
                 TD.summaryrichTextBox1.Text += Variables.parseInstance.parse_Summary(readMe);
                 //changing string data into parse_Members and storing into TD.teamMembersRichTextBox1
