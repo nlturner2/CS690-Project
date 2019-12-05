@@ -129,7 +129,7 @@ namespace WindowsFormsApp1
             foreach (Team team in Variables.db.GetAll())
             {
                 Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
-                Boolean meetings = MeetingDateCheck(team.Url);
+                Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks );
                 CommitTrigger2(team, commit);
                 MeetingsTrigger(team, meetings);
                 TeamCommitTrigger(team);
@@ -184,7 +184,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>if the return value is false, it means the team didn't meet last week, otherwise, it's true. 
-        public Boolean MeetingDateCheck (string url)
+        public Boolean MeetingDateCheck (string url, int numberOfWeeks)
         {
             Boolean acceptable = true;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
@@ -193,7 +193,7 @@ namespace WindowsFormsApp1
             DateTime startingDate = DateTime.Today;
             while (startingDate.DayOfWeek != weekStart)
                 startingDate = startingDate.AddDays(-1);
-            DateTime previousWeekStart = startingDate.AddDays(-7);
+            DateTime previousWeekStart = startingDate.AddDays(-7* numberOfWeeks);
             DateTime previousWeekEnd = startingDate.AddDays(-1);
             foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
             {
@@ -228,8 +228,6 @@ namespace WindowsFormsApp1
                             acceptable = false;
                         }
                     }
-                
-               
             }
             return acceptable;
         }

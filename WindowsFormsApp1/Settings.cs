@@ -21,11 +21,27 @@ namespace WindowsFormsApp1
         }
         private void SaveTeam_Click(object sender, EventArgs e)
         {
-            Variables.NTInstance.setTeamDays(TeamBox.Text);
+            int value;
+            if (int.TryParse(TeamBox.Text, out value)  && Convert.ToInt32(TeamBox.Text) > 0)
+            {
+                Variables.NTInstance.setTeamDays(TeamBox.Text);
+            }
+            else
+            {
+                MessageBox.Show("Number of weeks has to be greater than 0");
+            }
         }
         private void SaveMembers_Click(object sender, EventArgs e)
         {
-            Variables.NTInstance.setMemberDays(MembersBox.Text);
+            int value;
+            if (int.TryParse(MembersBox.Text, out value) && Convert.ToInt32(MembersBox.Text) > 0)
+            {
+                Variables.NTInstance.setMemberDays(MembersBox.Text);
+            }
+            else
+            {
+                MessageBox.Show("Number of days has to be greater than 0");
+            }
         }
         private void Cancel_Click(object sender, EventArgs e)
         {
