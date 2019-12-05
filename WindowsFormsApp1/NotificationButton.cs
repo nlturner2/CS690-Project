@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
         }
 
-        // // removes notification from Team Dashboard
+        // removes notification from Team Dashboard
         public void removeNotificationMember(Triggers trig)
         {
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);

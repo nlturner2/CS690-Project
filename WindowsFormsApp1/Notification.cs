@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
     {
         public Variables Callingform { get; set; }
         int x =Variables.db.CountTeams();
+
+        // loads notifications for the teams in the Home Dashboard
         public void loadNotification(HomeDashboard hd,Triggers t)
         {
                 if (t.Type == "teamMeeting")
@@ -32,6 +34,8 @@ namespace WindowsFormsApp1
                     FollowingStandard(hd, t);
                 }
         }
+
+        // loads notification for the team members in the Team Dashboard
         public void loadNoitification(Team_Dashboard hd, Triggers t)
         {
             IList<Triggers> trigger = Variables.db.GetTriggers();
@@ -70,6 +74,7 @@ namespace WindowsFormsApp1
 
         }
 
+        // creates notification for not following the standards
         public void FollowingStandard(HomeDashboard hd, Triggers x)
         {
             NotificationButton a = new NotificationButton();
