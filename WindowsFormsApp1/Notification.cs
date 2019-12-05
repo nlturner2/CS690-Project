@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
                     TeamMemberCommit(hd, t);
                 }
         }
+
         // creates notification for Team Meeting if the team does not meet
         public void TeamMeeting(HomeDashboard hd, Triggers x)
         {
