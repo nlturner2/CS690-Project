@@ -11,7 +11,11 @@ This a sample readme file for our Github Exapmle repo.
 	e. Team List: has all teams names with urls
 	
 ## Notification 
-
+	a. if team member did not meet for certain days 
+	b. if a team meember did not commit
+	c. if a member did not commit
+	d. if the team did not follow the standerd 
+	 
 
 ## Team Dashboard
 	a. Summary: to parse only a summary from reademe file after clicking on a team's name in Team List 
