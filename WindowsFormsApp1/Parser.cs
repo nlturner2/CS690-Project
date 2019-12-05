@@ -314,7 +314,11 @@ namespace WindowsFormsApp1
             {
                 resultList.Add(item.Item2);
             }
-            resultList.Add(template);
+
+            if(!template.Equals(""))
+            {
+                resultList.Add(template);
+            }
             return resultList;
         }
 
