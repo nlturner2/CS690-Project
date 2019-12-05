@@ -101,17 +101,19 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)    
         {
-            foreach (Button tb in Application.OpenForms.OfType<HomeDashboard>().First().tableLayoutPanel1.Controls)
-            {
-                tb.Image = null;
-            }
-            Variables.NTInstance.Refresh();
+              foreach (Button tb in Application.OpenForms.OfType<HomeDashboard>().First().tableLayoutPanel1.Controls)
+              {
+                  tb.Image = null;
+              }
+              Variables.NTInstance.Refresh();
 
-            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
-            this.DisplayNotifications();
+              Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
+              this.DisplayNotifications();
+  
+            /*Boolean x = Variables.NTInstance.StandardCheck("https://github.com/hergin/CapstoneProjectTemplate.git");
+            MessageBox.Show(x.ToString());
 
-
-
+*/
         }
         private void Settings_Click(object sender, EventArgs e)
         {

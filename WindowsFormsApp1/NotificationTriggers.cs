@@ -272,6 +272,13 @@ namespace WindowsFormsApp1
                         {
                             flag = true;
                         }
+                        else
+                        {
+                            if(!item.Contains(".md"))
+                            {
+                                flag = true;
+                            }
+                        }
 
                     }
                 }

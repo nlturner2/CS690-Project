@@ -66,6 +66,12 @@ namespace WindowsFormsApp1
             return partialText;
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="URL"></param>
+        /// <param name="fileNames"></param>
+        /// <returns></returns>
         public List<string> meetingFile(string URL,List<string> fileNames)
         {
             fileNames = fileNameSorting(fileNames);
@@ -101,7 +107,11 @@ namespace WindowsFormsApp1
         }
 
         
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rawFileUrl"></param>
+        /// <returns></returns>
         public string WebClient(string rawFileUrl)
         {
             string file = "";
@@ -115,6 +125,11 @@ namespace WindowsFormsApp1
             return file;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public string parse_Summary(string data)
         {
             //removing \n from an array
@@ -160,7 +175,11 @@ namespace WindowsFormsApp1
             return summary;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public string parse_Members(string data)
         {
             
@@ -277,7 +296,11 @@ namespace WindowsFormsApp1
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public List<string> fileNameSorting(List<string> list)
         {
             List<DateTime> timeList = new List<DateTime>();
@@ -326,7 +349,11 @@ namespace WindowsFormsApp1
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public string parse_Meeting(string data)
         {
             data = data.Replace("#", "");

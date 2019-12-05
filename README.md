@@ -23,7 +23,7 @@ This a sample readme file for our Github Exapmle repo.
 	c. Team Meeting: to parse all files and contenten that are under MeetingMinutes/Team
 	d. Weekly Progress: to parse three variables from commits ( date, username, commit history)
 	e. Notes: to write a comment for each team
-	f. Home: to go bach to prevoius page 
+	f. Home: to go back to prevoius page 
 
 
 # Technologies Used
@@ -31,6 +31,7 @@ This a sample readme file for our Github Exapmle repo.
 1. GUI
 2. Visual Studio
 3. API
+4. C#
 
 
 
