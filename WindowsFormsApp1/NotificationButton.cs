@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
             closeButton.Location = new Point(238, 0);
             notiButton.Controls.Add(closeButton);            
             string s = x.Type;
+
             if (s == "teamMeeting")
             {
                 string teamName = x.TeamName;
@@ -46,6 +47,15 @@ namespace WindowsFormsApp1
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x, Application.OpenForms.OfType<HomeDashboard>().First()); };
             }
+            else if (s == "standard")
+            {
+                string teamName = x.TeamName;
+                notiButton.Text = "       " + teamName + " not following standards";
+                notiButton.TextAlign = ContentAlignment.MiddleLeft;
+                notiButton.Image = WindowsFormsApp1.Properties.Resources.standardIcon;
+                notiButton.ImageAlign = ContentAlignment.MiddleLeft;
+                closeButton.Click += (sender, EventArgs) => { closeButton_Click(sender, EventArgs, x, Application.OpenForms.OfType<HomeDashboard>().First()); };
+            }
             else if (s == "memberCommit")
             {
                 string memberName = x.MemberName;
@@ -55,10 +65,11 @@ namespace WindowsFormsApp1
                 notiButton.ImageAlign = ContentAlignment.MiddleLeft;
                 closeButton.Click += (sender, EventArgs) => { closeButton_Click2(sender, EventArgs, x); };
             }
+            
             return notiButton;
         }
 
-        // click method for team notifications on HomeDahboard
+        // click method for close button of team notifications on HomeDahboard
         public void closeButton_Click(object sender, EventArgs e, Triggers t, HomeDashboard hd)
         {
             removeNotification(t);
@@ -75,17 +86,21 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        // click method for notifications of team members on Team_Dashboard
+        // click method for close button of team member notifications on Team_Dashboard
         public void closeButton_Click2(object sender, EventArgs e, Triggers t)
         {
             removeNotificationMember(t);
         }
+
+        // removes notification from Home Dashboard
         public void removeNotification(Triggers trig)
         {
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
             Variables.db.UpdateTriggers(trig, false);
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Remove(notiButton);
         }
+
+        // // removes notification from Team Dashboard
         public void removeNotificationMember(Triggers trig)
         {
             Variables.db.UpdateTriggerDismiss(trig, DateTime.Today);
