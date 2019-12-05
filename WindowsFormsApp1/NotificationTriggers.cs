@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                 {
                     if (item.Type == "memberCommit")
                         {
-                        if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                        if (DismissCheckForCommit(item.DismissDate, Variables.SettingsInstance.MembersDays))
                         {
                             if (commitCheck)
                             {
@@ -124,15 +124,42 @@ namespace WindowsFormsApp1
                 }
             }       
         }
+
+        public void StandardTrigger(Team t, Boolean check)
+        {
+            foreach (Triggers itemStandard in Variables.db.GetTriggers())
+            {
+                if (itemStandard.Type == "standard")
+                {
+                    if (DismissCheckForCommit(itemStandard.DismissDate, Variables.SettingsInstance.MembersDays))
+                    {
+                        if (check)
+                        {
+                            Variables.db.UpdateTriggers(itemStandard, true);
+                        }
+                        else
+                        {
+                            Variables.db.UpdateTriggers(itemStandard, false);
+                        }
+                    }
+                   
+                }
+            }
+        }
         public void Refresh()
         {
             foreach (Team team in Variables.db.GetAll())
             {
                 Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
-                Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks );
+                Boolean standardCheck = StandardCheck(team.Url);
+                if (!(standardCheck))
+                {
+                    Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks);
+                    MeetingsTrigger(team, meetings);
+                }
                 CommitTrigger2(team, commit);
-                MeetingsTrigger(team, meetings);
                 TeamCommitTrigger(team);
+                StandardTrigger(team, standardCheck);
             }
         }
         /// <summary>
@@ -278,13 +305,6 @@ namespace WindowsFormsApp1
             {
                 flag = true;
             }
-
-            
-
-
-
-
-
             return flag;
         }
         public void setTeamDays(string days)
