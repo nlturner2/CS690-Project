@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
                     this.tableLayoutPanel1.Controls.Add(newButton.getButton());
                 }
             }
-            Variables.NTInstance.Refresh();
+            //Variables.NTInstance.Refresh();
             this.Notification_Table.Controls.Clear();
             this.DisplayNotifications();
         }

@@ -268,7 +268,6 @@ namespace WindowsFormsApp1
         /// <returns></returns>
         public Boolean StandardCheck(string url)
         {
-
    
             Boolean flag = false;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
@@ -295,18 +294,27 @@ namespace WindowsFormsApp1
                     foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
                     {
 
-                        if (!item.Contains('-') && !(item.Contains("_")))
+                        if (!(item.Contains('-') && (item.Contains("_"))))
                         {
                             flag = true;
+                        }
+                        else
+                        {
+                            if(!item.Contains(".md"))
+                            {
+                                flag = true;
+                            }
                         }
 
                     }
                 }
             }
-            if(!Contentlist.Contains("README.md"))
+            
+            /*if(!Contentlist.Contains("README.md"))
             {
                 flag = true;
-            }
+            }*/
+            
             return flag;
         }
         public void setTeamDays(string days)
