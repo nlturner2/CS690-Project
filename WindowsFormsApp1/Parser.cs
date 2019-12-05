@@ -265,7 +265,6 @@ namespace WindowsFormsApp1
                 {
                     //if commit is called
                     case "commit":
-                        //line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t"  + data[i].commit.message;
                         line = String.Format("{0,-25} | {1,-25} | {2,0}", data[i].commit.committer.date, data[i].commit.author.name, data[i].commit.message);
                         break;
                    
@@ -306,9 +305,6 @@ namespace WindowsFormsApp1
             List<DateTime> timeList = new List<DateTime>();
             List<string> stringList = new List<string>();
 
-            //Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
-
-            //dict.Clear();
             string template ="";
             var tupleList = new List<(DateTime, string)>();
             foreach (var item in list)
@@ -332,8 +328,6 @@ namespace WindowsFormsApp1
             }
 
             tupleList.Sort((x,y)=> y.Item1.CompareTo(x.Item1));
-
-            //var sortedList = dict.Keys.OrderByDescending(e => e).ToList();
 
             List<string> resultList = new List<string>();
             foreach(var item in tupleList)
