@@ -51,7 +51,9 @@ namespace WindowsFormsApp1
                             
                             partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes/Team?ref=master";
                             break;
-                        
+                        case "TeamFolder":
+                            partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes";
+                            break;
                         case "commit":
                             
                             partialText = "https://api.github.com/repos" + partialText + "/commits";
@@ -238,6 +240,7 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
+                
                 //getting values store in options
                 switch (options)
                 {
