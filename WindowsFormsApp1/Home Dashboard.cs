@@ -105,12 +105,22 @@ namespace WindowsFormsApp1
             {
                 tb.Image = null;
             }
-            Variables.NTInstance.Refresh();
-            
-            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
-            this.DisplayNotifications();
-            
+            //Variables.NTInstance.Refresh();
 
+            //Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
+            //this.DisplayNotifications();
+
+            List<string> list = new List<string>();
+
+            list.Add("06-13-2019_06-14-2019.md");
+            list.Add("07-13-2019_07-15-2019.md");
+            list.Add("05-13-2019_05-15-2019.md");
+            list.Add("templateFile.md");
+
+            foreach(var item in Variables.parseInstance.fileNameSorting(list))
+            {
+                MessageBox.Show(item);
+            }
 
 
         }
