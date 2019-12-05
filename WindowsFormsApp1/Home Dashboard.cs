@@ -30,8 +30,9 @@ namespace WindowsFormsApp1
                 }
             }
             else
-                Variables.db.UpdateSettings(Variables.SettingsInstance);
-            this.DisplayNotifications();
+            { 
+                Variables.db.UpdateSettings(Variables.SettingsInstance); 
+            }
 
         }
 
@@ -45,7 +46,10 @@ namespace WindowsFormsApp1
                     TeamButton newButton = new TeamButton(Variables.TMInstance.teamBook[i]);
                     this.tableLayoutPanel1.Controls.Add(newButton.getButton());
                 }
-            }     
+            }
+            Variables.NTInstance.Refresh();
+            this.Notification_Table.Controls.Clear();
+            this.DisplayNotifications();
         }
         public void DisplayNotifications()
         {
@@ -101,10 +105,11 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)    
         {
-            foreach (Button tb in Application.OpenForms.OfType<HomeDashboard>().First().tableLayoutPanel1.Controls)
+            foreach (Button tb in this.tableLayoutPanel1.Controls)
             {
                 tb.Image = null;
             }
+
             Variables.NTInstance.Refresh();
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
             this.DisplayNotifications();
