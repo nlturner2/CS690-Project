@@ -108,9 +108,9 @@ namespace WindowsFormsApp1
 
         
         /// <summary>
-        /// 
+        /// get the raw file from url and download it as string 
         /// </summary>
-        /// <param name="rawFileUrl"></param>
+        /// <param name="rawFileUrl"></param>Having rawFileUrl to get the data in raw file for url
         /// <returns></returns>
         public string WebClient(string rawFileUrl)
         {
@@ -126,9 +126,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// 
+        /// to parse summary from readme file 
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data"></param> Having data to get the readme file and parse summary for that file
         /// <returns></returns>
         public string parse_Summary(string data)
         {
@@ -176,9 +176,9 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// 
+        /// to parse the name of members for each team from readme file
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data"></param> Having data to parse team members through readme file 
         /// <returns></returns>
         public string parse_Members(string data)
         {
@@ -350,9 +350,9 @@ namespace WindowsFormsApp1
 
 
         /// <summary>
-        /// 
+        /// to parse the content for team meeting file without symbols 
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data"></param> Having data to get content for file in MeetingMunites and display it without any sybmol
         /// <returns></returns>
         public string parse_Meeting(string data)
         {
