@@ -220,7 +220,7 @@ namespace WindowsFormsApp1
             DateTime startingDate = DateTime.Today;
             while (startingDate.DayOfWeek != weekStart)
                 startingDate = startingDate.AddDays(-1);
-            DateTime previousWeekStart = startingDate.AddDays(-7* numberOfWeeks);
+            DateTime previousWeekStart = startingDate.AddDays(-7);
             DateTime previousWeekEnd = startingDate.AddDays(-1);
             foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
             {
@@ -236,9 +236,11 @@ namespace WindowsFormsApp1
                     {
                         string[] list = revisedItem.Split('_');
                         string startDate = list[0].Replace('-', '/');
-                        string endDate = list[1].Replace('-', '/');
+                        //string endDate = list[1].Replace('-', '/');
                         DateTime start = DateTime.Parse(startDate);
-                        DateTime end = DateTime.Parse(endDate);
+                        var end = new DateTime(); 
+                        end = start.AddDays(7);
+                        //DateTime end = DateTime.Parse(endDate);
                         if (previousWeekStart > end)
                         {
                             acceptable = false;
