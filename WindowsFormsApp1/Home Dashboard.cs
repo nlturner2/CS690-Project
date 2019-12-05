@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
                     this.tableLayoutPanel1.Controls.Add(newButton.getButton());
                 }
             }
-            //Variables.NTInstance.Refresh();
+            Variables.NTInstance.Refresh();
             this.Notification_Table.Controls.Clear();
             this.DisplayNotifications();
         }
@@ -59,8 +59,6 @@ namespace WindowsFormsApp1
             {
                 if (i.Active)
                 {
-                    //string name = i.TeamName + ":" + i.MemberName;
-                    //Notification name = new Notification();
                     Notification a = new Notification();
                     homeNotifications.Add(a);
                     a.loadNotification(this, i);
@@ -113,6 +111,7 @@ namespace WindowsFormsApp1
             Variables.NTInstance.Refresh();
             Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
             this.DisplayNotifications();
+            
         }
         private void Settings_Click(object sender, EventArgs e)
         {
