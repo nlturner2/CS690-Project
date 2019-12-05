@@ -232,22 +232,56 @@ namespace WindowsFormsApp1
             return acceptable;
         }
 
+        /// <summary>
+        /// check if the team's files are following the standard or not based on the these aspects: if they have README.md file, MeetingMinutes folder, Team folder and if meetingFiles have "-" or "_".
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public Boolean StandardCheck(string url)
         {
-            Boolean flag = true;
-            string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
-            foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
-            {
-                if(item.Contains('_'))
-                {
-                    flag = false;
-                }
-                if (item.Contains('-') && !(item.Contains("_")))
-                {
-                    flag = false;
-                }
 
+   
+            Boolean flag = false;
+            string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
+            string contentFileNameURL = Variables.parseInstance.URLFactory(url, "contents");
+            var Contentlist = Variables.parseInstance.LoadGithubDataAsync(contentFileNameURL, "filename");
+
+            if(!Contentlist.Contains("MeetingMinutes"))
+            {
+                flag = true;
             }
+            else
+            {
+                string TeamFolderURL = Variables.parseInstance.URLFactory(url, "TeamFolder");
+                var list = Variables.parseInstance.LoadGithubDataAsync(TeamFolderURL, "filename");
+
+
+                if (!list.Contains("Team"))
+                {
+                    flag = true;
+                }
+                else
+                {
+
+                    foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+                    {
+
+                        if (!item.Contains('-') && !(item.Contains("_")))
+                        {
+                            flag = true;
+                        }
+
+                    }
+                }
+            }
+            if(!Contentlist.Contains("README.md"))
+            {
+                flag = true;
+            }
+
+            
+
+
 
 
 
