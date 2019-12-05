@@ -77,8 +77,6 @@ namespace WindowsFormsApp1
                             }
                             else
                             {
-                                // databse error, it does not update database even though it function work somewhere else
-                                //it can update the date but does not update the status
                                 item.Active = true;
                                 Variables.db.UpdateTriggers(item, true); 
                             }
@@ -101,7 +99,7 @@ namespace WindowsFormsApp1
         {
             foreach (Triggers itemMeetings in Variables.db.GetTriggers())
             {
-                if (itemMeetings.Type == "teamMeeting")
+                if (itemMeetings.Type == "teamMeeting" && t.Name == itemMeetings.TeamName)
                 {
                     if (DismissCheckForMeeting(itemMeetings.DismissDate))
                     {
@@ -129,20 +127,16 @@ namespace WindowsFormsApp1
         {
             foreach (Triggers itemStandard in Variables.db.GetTriggers())
             {
-                if (itemStandard.Type == "standard")
-                {
-                    if (DismissCheckForCommit(itemStandard.DismissDate, Variables.SettingsInstance.MembersDays))
-                    {
-                        if (check)
+                if (itemStandard.Type == "standard" && t.Name ==itemStandard.TeamName)
+                {                  
+                    if (check)
                         {
                             Variables.db.UpdateTriggers(itemStandard, true);
                         }
-                        else
+                    else
                         {
                             Variables.db.UpdateTriggers(itemStandard, false);
                         }
-                    }
-                   
                 }
             }
         }
@@ -220,7 +214,7 @@ namespace WindowsFormsApp1
             DateTime startingDate = DateTime.Today;
             while (startingDate.DayOfWeek != weekStart)
                 startingDate = startingDate.AddDays(-1);
-            DateTime previousWeekStart = startingDate.AddDays(-7);
+            DateTime previousWeekStart = startingDate.AddDays((-7) * numberOfWeeks);
             DateTime previousWeekEnd = startingDate.AddDays(-1);
             foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
             {
