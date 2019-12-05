@@ -27,6 +27,10 @@ namespace WindowsFormsApp1
                 {
                     TeamCommit(hd, t);
                 }
+                else if (t.Type == "standard")
+                {
+                    FollowingStandard(hd, t);
+                }
         }
         public void loadNoitification(Team_Dashboard hd, Triggers t)
         {
@@ -36,6 +40,7 @@ namespace WindowsFormsApp1
                     TeamMemberCommit(hd, t);
                 }
         }
+
         // creates notification for Team Meeting if the team does not meet
         public void TeamMeeting(HomeDashboard hd, Triggers x)
         {
@@ -63,8 +68,35 @@ namespace WindowsFormsApp1
                 }
             }
 
-            
         }
+
+        public void FollowingStandard(HomeDashboard hd, Triggers x)
+        {
+            NotificationButton a = new NotificationButton();
+            hd.Notification_Table.Controls.Add(a.createNotificationButton(x));
+            hd.Notification_Table.Show();
+
+
+            foreach (Button tb in hd.tableLayoutPanel1.Controls)
+            {
+                if (tb.Text == x.TeamName)
+                {
+
+                    if (tb.Image == null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.standardIcon;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+
+                    else if (tb.Image != null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.both;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+                }
+            }
+        }
+
         // creates notification for commit if the whole team does not commit
         public void TeamCommit(HomeDashboard hd, Triggers x)
         {
