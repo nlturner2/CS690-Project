@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                 {
                     if (item.Type == "memberCommit")
                         {
-                        if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                        if (DismissCheckForCommit(item.DismissDate, Variables.SettingsInstance.MembersDays))
                         {
                             if (commitCheck)
                             {
@@ -124,15 +124,42 @@ namespace WindowsFormsApp1
                 }
             }       
         }
+
+        public void StandardTrigger(Team t, Boolean check)
+        {
+            foreach (Triggers itemStandard in Variables.db.GetTriggers())
+            {
+                if (itemStandard.Type == "standard")
+                {
+                    if (DismissCheckForCommit(itemStandard.DismissDate, Variables.SettingsInstance.MembersDays))
+                    {
+                        if (check)
+                        {
+                            Variables.db.UpdateTriggers(itemStandard, true);
+                        }
+                        else
+                        {
+                            Variables.db.UpdateTriggers(itemStandard, false);
+                        }
+                    }
+                   
+                }
+            }
+        }
         public void Refresh()
         {
             foreach (Team team in Variables.db.GetAll())
             {
                 Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
-                Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks );
+                Boolean standardCheck = StandardCheck(team.Url);
+                if (!(standardCheck))
+                {
+                    Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks);
+                    MeetingsTrigger(team, meetings);
+                }
                 CommitTrigger2(team, commit);
-                MeetingsTrigger(team, meetings);
                 TeamCommitTrigger(team);
+                StandardTrigger(team, standardCheck);
             }
         }
         /// <summary>
@@ -241,7 +268,6 @@ namespace WindowsFormsApp1
         /// <returns></returns>
         public Boolean StandardCheck(string url)
         {
-
    
             Boolean flag = false;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
@@ -268,7 +294,7 @@ namespace WindowsFormsApp1
                     foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
                     {
 
-                        if (!item.Contains('-') && !(item.Contains("_")))
+                        if (!(item.Contains('-') && (item.Contains("_"))))
                         {
                             flag = true;
                         }
@@ -283,17 +309,12 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            if(!Contentlist.Contains("README.md"))
+            
+            /*if(!Contentlist.Contains("README.md"))
             {
                 flag = true;
-            }
-
+            }*/
             
-
-
-
-
-
             return flag;
         }
         public void setTeamDays(string days)

@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
             button.Text = aTeam.Name;
             button.Size = new Size(540, 50);
             button.Click += button_Click;
+            button.Image = null;
         }
         public String Text
         {
