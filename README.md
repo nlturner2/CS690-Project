@@ -28,7 +28,7 @@ This a sample readme file for our Github Exapmle repo.
 
 # Technologies Used
 
-1. GUI
+1. GUI - Windows Form
 2. Visual Studio
 3. API
 4. C#
