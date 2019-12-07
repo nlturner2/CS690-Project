@@ -6,12 +6,12 @@ Technology Stack
 
 # Dashboard & API:
 
-1.Windows 10
-2.Microsoft Visual Studio(Or any C# capable IDE)
-3.LiteDBViewer
-4..Net 4.6.1 Framework
-5.LiteDB
-6.C#
+a. Windows 10
+b. Microsoft Visual Studio(Or any C# capable IDE)
+c. LiteDBViewer
+d. .Net 4.6.1 Framework
+e. LiteDB
+f. C#
 
 
 Replicating Development Environment:
