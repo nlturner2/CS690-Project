@@ -1,29 +1,29 @@
-Github Team information System
+# Github Team information System
 
-Development Documentation
+# Development Documentation
 
-Technology Stack
+# Technology Stack
 
 # Dashboard & API:
 
-a. Windows 10
-b. Microsoft Visual Studio(Or any C# capable IDE)
-c. LiteDBViewer
-d. .Net 4.6.1 Framework
-e. LiteDB
-f. C#
+Windows 10
+Microsoft Visual Studio(Or any C# capable IDE)
+LiteDBViewer
+.Net 4.6.1 Framework
+LiteDB
+C#
 
 
-Replicating Development Environment:
+# Replicating Development Environment:
 
 Click Start/Run on the IDE and App will load.
 
-Testing:
+# Testing:
 
 In the IDE go to the Testing Area and Click "Run All Tests"
 This will run all the unit Tests.
 
-File and Folder Structure:
+# File and Folder Structure:
 
  
 
