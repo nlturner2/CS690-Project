@@ -2,7 +2,7 @@
 ## User Manual
 
 ## Home Dashboard:
-
+![Home Dashboard](https://github.com/nlturner2/CS690-Project/blob/master/HomeDashboard.PNG)
 ### Add a team:
 
 How to:
