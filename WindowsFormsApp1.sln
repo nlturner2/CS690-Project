@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1Tests1", "WindowsFormsApp1Tests1\WindowsFormsApp1Tests1.csproj", "{174DFCFC-51D2-4A18-9441-8720246AA390}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{7084AFC5-59F3-4E45-BA94-CC843B2C5F97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7084AFC5-59F3-4E45-BA94-CC843B2C5F97} = {75F205D8-CC32-4D15-A3B1-40D587ED7DF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C7E2DF7-B385-455D-BEBA-D411649D6A48}
