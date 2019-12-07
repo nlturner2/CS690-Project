@@ -6,26 +6,26 @@
 
 # Dashboard & API:
 
-Windows 10
-Microsoft Visual Studio(Or any C# capable IDE)
-LiteDBViewer
-.Net 4.6.1 Framework
-LiteDB
-C#
+	Windows 10
+	Microsoft Visual Studio(Or any C# capable IDE)
+	LiteDBViewer
+	.Net 4.6.1 Framework
+	LiteDB
+	C#
 
 
 # Replicating Development Environment:
 
-Click Start/Run on the IDE and App will load.
+	Click Start/Run on the IDE and App will load.
 
 # Testing:
 
-In the IDE go to the Testing Area and Click "Run All Tests"
-This will run all the unit Tests.
+	In the IDE go to the Testing Area and Click "Run All Tests"
+	This will run all the unit Tests.
 
 # File and Folder Structure:
 
  
 
-WindowsFormsApp1 contains all source files and icon images in its resources subfolder.
-WindowsFormsApp1Tests1 contains all unit tests for the project.
+	WindowsFormsApp1 contains all source files and icon images in its resources subfolder.
+	WindowsFormsApp1Tests1 contains all unit tests for the project.
