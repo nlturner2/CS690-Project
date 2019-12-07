@@ -20,5 +20,5 @@ How to:
 ![Remove Team](https://github.com/nlturner2/CS690-Project/blob/master/removeTeam.PNG)
 
 
-1. Click on the "Remove Team" button on the top of the Home Dashboard, the remove team window will show up.
+1. Click on the "Remove Team" button ![remove Team Button](https://github.com/nlturner2/CS690-Project/blob/master/RemoveTeamButton.png)on the top of the Home Dashboard, the remove team window will show up.
 2. Insert the team's name in the text box and click on the "Remove" button to remove the team.
