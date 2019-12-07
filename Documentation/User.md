@@ -42,7 +42,7 @@ How to:
  ### Setting:
  ![settings](https://github.com/nlturner2/CS690-Project/blob/master/settings.PNG)
  
- 1. click on the setting button in the top right corner, the setting window will show up. 
+ 1. click on the setting button ![setting button](https://github.com/nlturner2/CS690-Project/blob/master/Setting.png)in the top right corner, the setting window will show up. 
  2. in the settnigs window, insert number of days in the text box following "Member Notification", and then click "Save" button to save the setting. 
  3. In the settings window, insert number of weeks in the text box following "Team Notification", and ten click "Save" button to save the setting. 
  4. The number enter has to be a integer larger than 0, any other input will cause a warning.
