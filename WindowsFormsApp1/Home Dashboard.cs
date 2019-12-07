@@ -30,8 +30,9 @@ namespace WindowsFormsApp1
                 }
             }
             else
-                Variables.db.UpdateSettings(Variables.SettingsInstance);
-            this.DisplayNotifications();
+            { 
+                Variables.db.UpdateSettings(Variables.SettingsInstance); 
+            }
 
         }
 
@@ -45,7 +46,10 @@ namespace WindowsFormsApp1
                     TeamButton newButton = new TeamButton(Variables.TMInstance.teamBook[i]);
                     this.tableLayoutPanel1.Controls.Add(newButton.getButton());
                 }
-            }     
+            }
+            Variables.NTInstance.Refresh();
+            this.Notification_Table.Controls.Clear();
+            this.DisplayNotifications();
         }
         public void DisplayNotifications()
         {
@@ -55,8 +59,6 @@ namespace WindowsFormsApp1
             {
                 if (i.Active)
                 {
-                    //string name = i.TeamName + ":" + i.MemberName;
-                    //Notification name = new Notification();
                     Notification a = new Notification();
                     homeNotifications.Add(a);
                     a.loadNotification(this, i);
@@ -101,28 +103,15 @@ namespace WindowsFormsApp1
 
         private void Refresh_Click(object sender, EventArgs e)    
         {
-            foreach (Button tb in Application.OpenForms.OfType<HomeDashboard>().First().tableLayoutPanel1.Controls)
+            foreach (Button tb in this.tableLayoutPanel1.Controls)
             {
                 tb.Image = null;
             }
-            //Variables.NTInstance.Refresh();
 
-            //Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
-            //this.DisplayNotifications();
-
-            List<string> list = new List<string>();
-
-            list.Add("06-13-2019_06-14-2019.md");
-            list.Add("07-13-2019_07-15-2019.md");
-            list.Add("05-13-2019_05-15-2019.md");
-            list.Add("templateFile.md");
-
-            foreach(var item in Variables.parseInstance.fileNameSorting(list))
-            {
-                MessageBox.Show(item);
-            }
-
-
+            Variables.NTInstance.Refresh();
+            Application.OpenForms.OfType<HomeDashboard>().First().Notification_Table.Controls.Clear();
+            this.DisplayNotifications();
+            
         }
         private void Settings_Click(object sender, EventArgs e)
         {

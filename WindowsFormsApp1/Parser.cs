@@ -51,7 +51,9 @@ namespace WindowsFormsApp1
                             
                             partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes/Team?ref=master";
                             break;
-                        
+                        case "TeamFolder":
+                            partialText = "https://api.github.com/repos" + partialText + "/contents/MeetingMinutes";
+                            break;
                         case "commit":
                             
                             partialText = "https://api.github.com/repos" + partialText + "/commits";
@@ -64,6 +66,12 @@ namespace WindowsFormsApp1
             return partialText;
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="URL"></param>
+        /// <param name="fileNames"></param>
+        /// <returns></returns>
         public List<string> meetingFile(string URL,List<string> fileNames)
         {
             fileNames = fileNameSorting(fileNames);
@@ -99,7 +107,11 @@ namespace WindowsFormsApp1
         }
 
         
-
+        /// <summary>
+        /// get the raw file from url and download it as string 
+        /// </summary>
+        /// <param name="rawFileUrl"></param>Having rawFileUrl to get the data in raw file for url
+        /// <returns></returns>
         public string WebClient(string rawFileUrl)
         {
             string file = "";
@@ -113,6 +125,11 @@ namespace WindowsFormsApp1
             return file;
         }
 
+        /// <summary>
+        /// to parse summary from readme file 
+        /// </summary>
+        /// <param name="data"></param> Having data to get the readme file and parse summary for that file
+        /// <returns></returns>
         public string parse_Summary(string data)
         {
             //removing \n from an array
@@ -158,7 +175,11 @@ namespace WindowsFormsApp1
             return summary;
         }
 
-
+        /// <summary>
+        /// to parse the name of members for each team from readme file
+        /// </summary>
+        /// <param name="data"></param> Having data to parse team members through readme file 
+        /// <returns></returns>
         public string parse_Members(string data)
         {
             
@@ -238,12 +259,12 @@ namespace WindowsFormsApp1
             dynamic data = Json.Decode(responseString);
             for (int i = 0; i < data.Length; i++)
             {
+                
                 //getting values store in options
                 switch (options)
                 {
                     //if commit is called
                     case "commit":
-                        //line = data[i].commit.committer.date + " .  " + data[i].commit.author.name + " . " + "\t"  + data[i].commit.message;
                         line = String.Format("{0,-25} | {1,-25} | {2,0}", data[i].commit.committer.date, data[i].commit.author.name, data[i].commit.message);
                         break;
                    
@@ -274,15 +295,16 @@ namespace WindowsFormsApp1
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public List<string> fileNameSorting(List<string> list)
         {
             List<DateTime> timeList = new List<DateTime>();
             List<string> stringList = new List<string>();
 
-            //Dictionary<DateTime, string> dict = new Dictionary<DateTime, string>();
-
-            //dict.Clear();
             string template ="";
             var tupleList = new List<(DateTime, string)>();
             foreach (var item in list)
@@ -307,8 +329,6 @@ namespace WindowsFormsApp1
 
             tupleList.Sort((x,y)=> y.Item1.CompareTo(x.Item1));
 
-            //var sortedList = dict.Keys.OrderByDescending(e => e).ToList();
-
             List<string> resultList = new List<string>();
             foreach(var item in tupleList)
             {
@@ -323,7 +343,11 @@ namespace WindowsFormsApp1
         }
 
 
-
+        /// <summary>
+        /// to parse the content for team meeting file without symbols 
+        /// </summary>
+        /// <param name="data"></param> Having data to get content for file in MeetingMunites and display it without any sybmol
+        /// <returns></returns>
         public string parse_Meeting(string data)
         {
             data = data.Replace("#", "");

@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                 {
                     if (item.Type == "memberCommit")
                         {
-                        if (DismissCheckForCommit(item.DismissDate, TeamDays1))
+                        if (DismissCheckForCommit(item.DismissDate, Variables.SettingsInstance.MembersDays))
                         {
                             if (commitCheck)
                             {
@@ -77,8 +77,6 @@ namespace WindowsFormsApp1
                             }
                             else
                             {
-                                // databse error, it does not update database even though it function work somewhere else
-                                //it can update the date but does not update the status
                                 item.Active = true;
                                 Variables.db.UpdateTriggers(item, true); 
                             }
@@ -101,7 +99,7 @@ namespace WindowsFormsApp1
         {
             foreach (Triggers itemMeetings in Variables.db.GetTriggers())
             {
-                if (itemMeetings.Type == "teamMeeting")
+                if (itemMeetings.Type == "teamMeeting" && t.Name == itemMeetings.TeamName)
                 {
                     if (DismissCheckForMeeting(itemMeetings.DismissDate))
                     {
@@ -124,15 +122,38 @@ namespace WindowsFormsApp1
                 }
             }       
         }
+
+        public void StandardTrigger(Team t, Boolean check)
+        {
+            foreach (Triggers itemStandard in Variables.db.GetTriggers())
+            {
+                if (itemStandard.Type == "standard" && t.Name ==itemStandard.TeamName)
+                {                  
+                    if (check)
+                        {
+                            Variables.db.UpdateTriggers(itemStandard, true);
+                        }
+                    else
+                        {
+                            Variables.db.UpdateTriggers(itemStandard, false);
+                        }
+                }
+            }
+        }
         public void Refresh()
         {
             foreach (Team team in Variables.db.GetAll())
             {
                 Boolean commit = CommitDateCheck(team.Url, Variables.SettingsInstance.MembersDays);
-                Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks );
+                Boolean standardCheck = StandardCheck(team.Url);
+                if (!(standardCheck))
+                {
+                    Boolean meetings = MeetingDateCheck(team.Url, Variables.SettingsInstance.TeamWeeks);
+                    MeetingsTrigger(team, meetings);
+                }
                 CommitTrigger2(team, commit);
-                MeetingsTrigger(team, meetings);
                 TeamCommitTrigger(team);
+                StandardTrigger(team, standardCheck);
             }
         }
         /// <summary>
@@ -193,7 +214,7 @@ namespace WindowsFormsApp1
             DateTime startingDate = DateTime.Today;
             while (startingDate.DayOfWeek != weekStart)
                 startingDate = startingDate.AddDays(-1);
-            DateTime previousWeekStart = startingDate.AddDays(-7* numberOfWeeks);
+            DateTime previousWeekStart = startingDate.AddDays((-7) * numberOfWeeks);
             DateTime previousWeekEnd = startingDate.AddDays(-1);
             foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
             {
@@ -209,9 +230,11 @@ namespace WindowsFormsApp1
                     {
                         string[] list = revisedItem.Split('_');
                         string startDate = list[0].Replace('-', '/');
-                        string endDate = list[1].Replace('-', '/');
+                        //string endDate = list[1].Replace('-', '/');
                         DateTime start = DateTime.Parse(startDate);
-                        DateTime end = DateTime.Parse(endDate);
+                        var end = new DateTime(); 
+                        end = start.AddDays(7);
+                        //DateTime end = DateTime.Parse(endDate);
                         if (previousWeekStart > end)
                         {
                             acceptable = false;
@@ -232,25 +255,60 @@ namespace WindowsFormsApp1
             return acceptable;
         }
 
+        /// <summary>
+        /// check if the team's files are following the standard or not based on the these aspects: if they have README.md file, MeetingMinutes folder, Team folder and if meetingFiles have "-" or "_".
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public Boolean StandardCheck(string url)
         {
-            Boolean flag = true;
+   
+            Boolean flag = false;
             string meetingfileNameURL = Variables.parseInstance.URLFactory(url, "meetings");
-            foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+            string contentFileNameURL = Variables.parseInstance.URLFactory(url, "contents");
+            var Contentlist = Variables.parseInstance.LoadGithubDataAsync(contentFileNameURL, "filename");
+
+            if(!Contentlist.Contains("MeetingMinutes"))
             {
-                if(item.Contains('_'))
-                {
-                    flag = false;
-                }
-                if (item.Contains('-') && !(item.Contains("_")))
-                {
-                    flag = false;
-                }
-
+                flag = true;
             }
+            else
+            {
+                string TeamFolderURL = Variables.parseInstance.URLFactory(url, "TeamFolder");
+                var list = Variables.parseInstance.LoadGithubDataAsync(TeamFolderURL, "filename");
 
 
+                if (!list.Contains("Team"))
+                {
+                    flag = true;
+                }
+                else
+                {
 
+                    foreach (var item in Variables.parseInstance.LoadGithubDataAsync(meetingfileNameURL, "filename"))
+                    {
+
+                        if (!(item.Contains('-') && (item.Contains("_"))))
+                        {
+                            flag = true;
+                        }
+                        else
+                        {
+                            if(!item.Contains(".md"))
+                            {
+                                flag = true;
+                            }
+                        }
+
+                    }
+                }
+            }
+            
+            /*if(!Contentlist.Contains("README.md"))
+            {
+                flag = true;
+            }*/
+            
             return flag;
         }
         public void setTeamDays(string days)

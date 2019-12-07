@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
     {
         public Variables Callingform { get; set; }
         int x =Variables.db.CountTeams();
+
+        // loads notifications for the teams in the Home Dashboard
         public void loadNotification(HomeDashboard hd,Triggers t)
         {
                 if (t.Type == "teamMeeting")
@@ -27,7 +29,13 @@ namespace WindowsFormsApp1
                 {
                     TeamCommit(hd, t);
                 }
+                else if (t.Type == "standard")
+                {
+                    FollowingStandard(hd, t);
+                }
         }
+
+        // loads notification for the team members in the Team Dashboard
         public void loadNoitification(Team_Dashboard hd, Triggers t)
         {
             IList<Triggers> trigger = Variables.db.GetTriggers();
@@ -36,6 +44,7 @@ namespace WindowsFormsApp1
                     TeamMemberCommit(hd, t);
                 }
         }
+
         // creates notification for Team Meeting if the team does not meet
         public void TeamMeeting(HomeDashboard hd, Triggers x)
         {
@@ -63,8 +72,36 @@ namespace WindowsFormsApp1
                 }
             }
 
-            
         }
+
+        // creates notification for not following the standards
+        public void FollowingStandard(HomeDashboard hd, Triggers x)
+        {
+            NotificationButton a = new NotificationButton();
+            hd.Notification_Table.Controls.Add(a.createNotificationButton(x));
+            hd.Notification_Table.Show();
+
+
+            foreach (Button tb in hd.tableLayoutPanel1.Controls)
+            {
+                if (tb.Text == x.TeamName)
+                {
+
+                    if (tb.Image == null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.standardIcon;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+
+                    else if (tb.Image != null)
+                    {
+                        tb.Image = WindowsFormsApp1.Properties.Resources.both;
+                        tb.ImageAlign = ContentAlignment.TopRight;
+                    }
+                }
+            }
+        }
+
         // creates notification for commit if the whole team does not commit
         public void TeamCommit(HomeDashboard hd, Triggers x)
         {
