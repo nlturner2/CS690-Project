@@ -25,3 +25,7 @@ This will run all the unit Tests.
 
 File and Folder Structure:
 
+ 
+
+WindowsFormsApp1 contains all source files and icon images in its resources subfolder.
+WindowsFormsApp1Tests1 contains all unit tests for the project.
