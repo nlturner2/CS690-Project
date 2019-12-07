@@ -39,3 +39,10 @@ How to:
   b. when you dismiss a "did not commit" notification, the notification will not show up until the number of days(based on the user's setting).
   c. when you dimiss a "not following the standard" notification, the notification will show up when you refresh the page or reopen the application, unless the team fixed the format of files. 
  
+ ### Setting:
+ ![settings](https://github.com/nlturner2/CS690-Project/blob/master/settings.PNG)
+ 
+ 1. click on the setting button in the top right corner, the setting window will show up. 
+ 2. in the settnigs window, insert number of days in the text box following "Member Notification", and then click "Save" button to save the setting. 
+ 3. In the settings window, insert number of weeks in the text box following "Team Notification", and ten click "Save" button to save the setting. 
+ 4. The number enter has to be a integer larger than 0, any other input will cause a warning.
