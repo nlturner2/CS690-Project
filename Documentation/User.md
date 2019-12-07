@@ -7,7 +7,7 @@ Add a team:
 
 How to:
 
-![add team.PNG](https://github.com/nlturner2/CS690-Project/edit/master/add team.PNG)
+![addTeam.PNG](https://github.com/nlturner2/CS690-Project/edit/master/addTeam.PNG)
 
 1. click on the “Add Team” button on the top of the Home Dashboard, a window will pop up.
 2. Insert the team’s name in the textbox under “team name”, and Insert the team’s github URL in the textBox under “Github URL:”.
