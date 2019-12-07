@@ -25,7 +25,7 @@
 
 # File and Folder Structure:
 
- ![FoldersnFiles] (items.png)
+ ![] (https://photos.app.goo.gl/PaTYhJWUPoe5GyBz8)
 
 	WindowsFormsApp1 contains all source files and icon images in its resources subfolder.
 	WindowsFormsApp1Tests1 contains all unit tests for the project.
