@@ -4,7 +4,7 @@ Development Documentation
 
 Technology Stack
 
-#Dashboard & API:
+# Dashboard & API:
 
 1.Windows 10
 2.Microsoft Visual Studio(Or any C# capable IDE)
