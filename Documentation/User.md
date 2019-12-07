@@ -1,9 +1,9 @@
-#Capstone team projects tracking system
-##User Manual
+# Capstone team projects tracking system
+## User Manual
 
-##Home Dashboard:
+## Home Dashboard:
 
-###Add a team:
+### Add a team:
 
 How to:
 
@@ -14,7 +14,7 @@ How to:
 3. Click on “Add” button on the bottom to add the team, or click on “Cancel” button to cancel the operation. 
 
 
-###Remove a Team:
+### Remove a Team:
 
 
 ![Remove Team](https://github.com/nlturner2/CS690-Project/blob/master/removeTeam.PNG)
