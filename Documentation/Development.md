@@ -4,14 +4,14 @@ Development Documentation
 
 Technology Stack
 
-Dashboard & API:
+#Dashboard & API:
 
-Windows 10
-Microsoft Visual Studio(Or any C# capable IDE)
-LiteDBViewer
-.Net 4.6.1 Framework
-LiteDB
-C#
+1.Windows 10
+2.Microsoft Visual Studio(Or any C# capable IDE)
+3.LiteDBViewer
+4..Net 4.6.1 Framework
+5.LiteDB
+6.C#
 
 
 Replicating Development Environment:
