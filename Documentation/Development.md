@@ -25,7 +25,7 @@
 
 # File and Folder Structure:
 
- ![](https://photos.app.goo.gl/PaTYhJWUPoe5GyBz8)
+ ![](https://github.com/nlturner2/CS690-Project/blob/master/Documentation/items.PNG)
 
 	WindowsFormsApp1 contains all source files and icon images in its resources subfolder.
 	WindowsFormsApp1Tests1 contains all unit tests for the project.
