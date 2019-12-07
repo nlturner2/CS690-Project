@@ -30,3 +30,12 @@ How to:
 
 1. All the teams that has been added will be shown on the team list, each team is shown as a button, when you click on the team, it will go to the team dashboard of this team. 
 2. If there are notifiations from a team, a icon will show up in the top of the right corner of team button. There are four different icons. ![commit Iron](https://github.com/nlturner2/CS690-Project/blob/master/commitIron.png) means that the team has not committed for a number of days(based on the user's setting). ![meeting icon](https://github.com/nlturner2/CS690-Project/blob/master/MeetingIcon.png) means that the team did not meet in the past number of weeks(based on the user's setting). ![standard icon](https://github.com/nlturner2/CS690-Project/blob/master/StandardIcon.png) means that the team is not following the standard format in their files. ![multiple icons](https://github.com/nlturner2/CS690-Project/blob/master/multipleIcon.png) means that the team has more than one notifications.
+
+### Manage notifications:
+
+1. All the notificaitons about the teams will be shown on the right side of the Home Dashboard. 
+2. Dismiss notifications: click on the "X" button on the right corner of each notification will dimiss the notification. 
+  a. When you dismiss a "did not meet" notification, the notification will not show up until the number of weeks (based on the user's setting).
+  b. when you dismiss a "did not commit" notification, the notification will not show up until the number of days(based on the user's setting).
+  c. when you dimiss a "not following the standard" notification, the notification will show up when you refresh the page or reopen the application, unless the team fixed the format of files. 
+ 
