@@ -56,7 +56,7 @@ How to:
 2. In the top right corner of the Team Dashboard, there is a "Home" button. When you click on the "Home" button, it will go back to the Home Dashboard. 
 ### View Members and member notification:
 
-![Summary](https://github.com/nlturner2/CS690-Project/blob/master/TeamDashboard.PNG)
+![TeamDashboard](https://github.com/nlturner2/CS690-Project/blob/master/TeamDashboard.PNG)
 
 
 1. On the Team Dashboard, click on "Members" in the menu bar on the top of the page. List of all the members' github username of the team will show up in the text box below. 
@@ -65,7 +65,7 @@ How to:
 
 ### View Team Meeting Files
 
-![Summary](https://github.com/nlturner2/CS690-Project/blob/master/TeamMeeting.PNG)
+![TeamMeeting](https://github.com/nlturner2/CS690-Project/blob/master/TeamMeeting.PNG)
 
 1. On the Team Dashboard, click on "Team Meeting" in the menu bar on the top of the page, the latest meeting minutes file will show up in the text box below the menu bar. 
 2. on the right side of the page, in the list box, a list of all the meeting minutes files will be displayed from the latest to the oldest. If the team has a team template file, it will be shown in the bottom of the list. 
@@ -73,7 +73,7 @@ How to:
 
 ### View Weekly Program
 
-![Summary](https://github.com/nlturner2/CS690-Project/blob/master/WeeklyProgress.PNG)
+![WeeklyProgress](https://github.com/nlturner2/CS690-Project/blob/master/WeeklyProgress.PNG)
 
 
 1. On the Team Dashboard, click on "Weekly Progress" in the menu bar on the top of the page, weekly progress details according to the commit history on the github repository of the team will show up. 
@@ -82,7 +82,7 @@ How to:
 
 ### Notes
 
-![Summary](https://github.com/nlturner2/CS690-Project/blob/master/notes.PNG)
+![notes](https://github.com/nlturner2/CS690-Project/blob/master/notes.PNG)
 
 1. On the Team Dashboard, click on "notes" in the menu bar on the top of the page, a text box will show up. User can write notes in the text box and click on the "save” button on the right side of the page to save the note. 
-2. When the note is created.
+2. When the note is created and saved, the note will stay on the note page.
