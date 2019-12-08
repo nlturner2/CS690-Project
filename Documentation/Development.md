@@ -1,6 +1,6 @@
 # Github Team information System
 
-## Development Documentation
+## Development Manual
 
 ## Technology Stack
 
