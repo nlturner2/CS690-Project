@@ -1,10 +1,10 @@
 # Github Team information System
 
-# Development Documentation
+## Development Documentation
 
-# Technology Stack
+## Technology Stack
 
-# Dashboard & API:
+## Dashboard & API:
 
 	Windows 10
 	Microsoft Visual Studio(Or any C# capable IDE)
@@ -14,16 +14,16 @@
 	C#
 
 
-# Replicating Development Environment:
+## Replicating Development Environment:
 
 	Click Start/Run on the IDE and App will load.
 
-# Testing:
+## Testing:
 
 	In the IDE go to the Testing Area and Click "Run All Tests"
 	This will run all the unit Tests.
 
-# File and Folder Structure:
+## File and Folder Structure:
 
  ![](https://github.com/nlturner2/CS690-Project/blob/master/Documentation/items.PNG)
 

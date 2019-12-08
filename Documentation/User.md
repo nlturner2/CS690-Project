@@ -4,7 +4,7 @@
 ## Home Dashboard:
 ![Home Dashboard](https://github.com/nlturner2/CS690-Project/blob/master/HomeDashboard.PNG)
 
-Home Dashboard is the main page of the application, it has features of adding a team, removing a team, refresh the page, viewing the team list, viewing notifications of teams, dismiss notifications and also settings for the notification. 
+Home Dashboard is the main page of the application, it has features of adding a team, removing a team, refreshing the page, viewing the team list, viewing notifications of teams, dismissing notifications and also settings for the notification. 
 ### Add a team:
 
 How to:

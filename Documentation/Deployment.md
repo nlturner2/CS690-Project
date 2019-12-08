@@ -11,11 +11,11 @@
 	1.If you do not see Administrator run request,do the following:
 		1.1.Right click on the shortcut on Desktop, then go to the tap "Shortcut".
 		1.2.Copy the path for the main file to navigate to its location.
-		1.3.Right-click on the exe file "WindowsFormsApp1.exe".
+		1.3.Right click on the exe file "WindowsFormsApp1.exe".
 		1.4.Go to compatibility tap.
 		1.5.Click on "Change settings for all users".
 		1.6.Check the box were it says "Run this program as an administrator", then press "Ok".
-		1.7 try to the run program again.
+		1.7 try to run the program again.
 	2.If you get "error 403" while running the program.
 		2.1 This error happens due to many requests sent to the server in a short period of time.
 		2.2 The program will function after few hours when the resriction to your IP is removed from the server.
