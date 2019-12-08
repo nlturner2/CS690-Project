@@ -29,7 +29,7 @@ How to:
 ### View Team List:
 
 1. All the teams that has been added will be shown on the team list, each team is shown as a button, when you click on the team, it will go to the team dashboard of this team. 
-2. If there are notifiations from a team, a icon will show up in the top of the right corner of team button. There are four different icons. ![commit Iron](https://github.com/nlturner2/CS690-Project/blob/master/commitIron.png) means that the team has not committed for a number of days(based on the user's setting). ![meeting icon](https://github.com/nlturner2/CS690-Project/blob/master/MeetingIcon.png) means that the team did not meet in the past number of weeks(based on the user's setting). ![standard icon](https://github.com/nlturner2/CS690-Project/blob/master/StandardIcon.png) means that the team is not following the standard format in their files. ![multiple icons](https://github.com/nlturner2/CS690-Project/blob/master/multipleIcon.png) means that the team has more than one notifications.
+2. If there are notifiations from a team, icons will show up in the top of the right corner of team button. There are four different icons. ![commit Iron](https://github.com/nlturner2/CS690-Project/blob/master/commitIron.png) means that the team has not committed for a number of days(based on the user's setting). ![meeting icon](https://github.com/nlturner2/CS690-Project/blob/master/MeetingIcon.png) means that the team did not meet in the past number of weeks(based on the user's setting). ![standard icon](https://github.com/nlturner2/CS690-Project/blob/master/StandardIcon.png) means that the team is not following the standard format in their files. ![multiple icons](https://github.com/nlturner2/CS690-Project/blob/master/multipleIcon.png) means that the team has more than one notifications.
 
 ### Manage notifications:
 
@@ -54,12 +54,13 @@ How to:
 
 1. When you click on one of the team, it will go to Team Dashboard. The summary of the team's project will show up as default. The content of the summary is from the team's README file of project repository.
 2. In the top right corner of the Team Dashboard, there is a "Home" button. When you click on the "Home" button, it will go back to the Home Dashboard. 
+
 ### View Members and member notification:
 
 ![TeamDashboard](https://github.com/nlturner2/CS690-Project/blob/master/TeamDashboard.PNG)
 
 
-1. On the Team Dashboard, click on "Members" in the menu bar on the top of the page. List of all the members' github username of the team will show up in the text box below. 
+1. On the Team Dashboard, click on "Members" in the menu bar on the top of the page. List of all the members' github username of a team will show up in the text box below. 
 2. on the right side of the page, a notification section will show the commit notification of team members. If a team member did not commit in the past number of days(based on the user's setting), a notification of "xxx(member) did not commit" will show up in the notification section. 
 3. When you click on the "X" button in the top right corner of each notification, that notification will be dismissed. That notification will not show up until number of days(based on the user's setting).
 
@@ -67,9 +68,9 @@ How to:
 
 ![TeamMeeting](https://github.com/nlturner2/CS690-Project/blob/master/TeamMeeting.PNG)
 
-1. On the Team Dashboard, click on "Team Meeting" in the menu bar on the top of the page, the latest meeting minutes file will show up in the text box below the menu bar. 
-2. on the right side of the page, in the list box, a list of all the meeting minutes files will be displayed from the latest to the oldest. If the team has a team template file, it will be shown in the bottom of the list. 
-3. when you click on each of the file that is displayed in the list box, the content of the meeting minutes file will show up in the text box in the middle of the page. 
+1. On the Team Dashboard, click on "Team Meeting" in the menu bar on the top of the page, the latest meeting minutes file will show up in the rich text box below the menu bar. 
+2. on the right side of the page, in the list box, a list of all the meeting minutes files will be displayed from the latest to the oldest date. If the team has a team template file, it will be shown in the bottom of the list. 
+3. when you click on each of the file that is displayed in the list box, the content of the meeting minutes file will show up in the rich text box in the middle of the page. 
 
 ### View Weekly Progress
 
