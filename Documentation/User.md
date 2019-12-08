@@ -71,9 +71,9 @@ How to:
 2. on the right side of the page, in the list box, a list of all the meeting minutes files will be displayed from the latest to the oldest. If the team has a team template file, it will be shown in the bottom of the list. 
 3. when you click on each of the file that is displayed in the list box, the content of the meeting minutes file will show up in the text box in the middle of the page. 
 
-### View Weekly Program
+### View Weekly Progress
 
-![WeeklyProgress](https://github.com/nlturner2/CS690-Project/blob/master/WeeklyProgress.PNG)
+![WeeklyProgress](https://github.com/nlturner2/CS690-Project/blob/master/weeklyProgress.PNG)
 
 
 1. On the Team Dashboard, click on "Weekly Progress" in the menu bar on the top of the page, weekly progress details according to the commit history on the github repository of the team will show up. 
