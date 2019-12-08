@@ -1,4 +1,6 @@
-# Deployment Manual
+# Capstone team projects tracking system
+## Deployment Manual
+
 ## Instalation
 	The application run on Windows platform.
 	1.Use the "setup.exe" file to install the application while having "GitHubTrackerSetup.msi" file in the same folder.

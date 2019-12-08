@@ -1,5 +1,4 @@
-# Github Team information System
-
+# Capstone team projects tracking system
 ## Development Manual
 
 ## Technology Stack
