@@ -3,7 +3,7 @@
 	The application run on Windows platform.
 	1.Use the "setup.exe" file to install the application while having "GitHubTrackerSetup.msi" file in the same folder.
 	2.Follow the instructions on the screen of the installer, and chose a path for the instalation.
-## Starting and stoping the Application
+## Starting and Stoping the Application
 	1.You can start the application using the shortcut created on the Desktop.
 		1.1. Make sure to run the program as an Administrator for it to start.
 	2.You can stop the application by clicking the "X" button on the top right.
@@ -16,5 +16,7 @@
 		1.5.Click on "Change settings for all users".
 		1.6.Check the box were it says "Run this program as an administrator", then press "Ok".
 		1.7 try to the run program again.
-			
-		
+	2.If you get "error 403" while running the program.
+		2.1 This error happens due to many requests sent to the server in a short period of time.
+		2.2 The program will function after few hours when the resriction to your IP is removed from the server.
+		2.3 The program will function normally if you change your IP address.
