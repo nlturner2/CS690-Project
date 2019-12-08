@@ -46,3 +46,43 @@ How to:
  2. in the settnigs window, insert number of days in the text box following "Member Notification", and then click "Save" button to save the setting. 
  3. In the settings window, insert number of weeks in the text box following "Team Notification", and ten click "Save" button to save the setting. 
  4. The number enter has to be a integer larger than 0, any other input will cause a warning.
+
+
+## Team Dashboard
+
+![Summary](https://github.com/nlturner2/CS690-Project/blob/master/summary.PNG)
+
+1. When you click on one of the team, it will go to Team Dashboard. The summary of the team's project will show up as default. The content of the summary is from the team's README file of project repository.
+2. In the top right corner of the Team Dashboard, there is a "Home" button. When you click on the "Home" button, it will go back to the Home Dashboard. 
+### View Members and member notification:
+
+![Summary](https://github.com/nlturner2/CS690-Project/blob/master/TeamDashboard.PNG)
+
+
+1. On the Team Dashboard, click on "Members" in the menu bar on the top of the page. List of all the members' github username of the team will show up in the text box below. 
+2. on the right side of the page, a notification section will show the commit notification of team members. If a team member did not commit in the past number of days(based on the user's setting), a notification of "xxx(member) did not commit" will show up in the notification section. 
+3. When you click on the "X" button in the top right corner of each notification, that notification will be dismissed. That notification will not show up until number of days(based on the user's setting).
+
+### View Team Meeting Files
+
+![Summary](https://github.com/nlturner2/CS690-Project/blob/master/TeamMeeting.PNG)
+
+1. On the Team Dashboard, click on "Team Meeting" in the menu bar on the top of the page, the latest meeting minutes file will show up in the text box below the menu bar. 
+2. on the right side of the page, in the list box, a list of all the meeting minutes files will be displayed from the latest to the oldest. If the team has a team template file, it will be shown in the bottom of the list. 
+3. when you click on each of the file that is displayed in the list box, the content of the meeting minutes file will show up in the text box in the middle of the page. 
+
+### View Weekly Program
+
+![Summary](https://github.com/nlturner2/CS690-Project/blob/master/WeeklyProgress.PNG)
+
+
+1. On the Team Dashboard, click on "Weekly Progress" in the menu bar on the top of the page, weekly progress details according to the commit history on the github repository of the team will show up. 
+2. It includes time, name of the person who commited and commit description of all the commits that has been made for the repository.
+
+
+### Notes
+
+![Summary](https://github.com/nlturner2/CS690-Project/blob/master/notes.PNG)
+
+1. On the Team Dashboard, click on "notes" in the menu bar on the top of the page, a text box will show up. User can write notes in the text box and click on the "save” button on the right side of the page to save the note. 
+2. When the note is created.
